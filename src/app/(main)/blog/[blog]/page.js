@@ -45,7 +45,7 @@ export default async function BlogPage({ params }) {
 
   return (
     <main
-      className={`flex min-h-[100dvh] w-full flex-col items-center justify-center pb-10 transition-all ${source_sans_3.className}`}
+      className={`a flex min-h-[100dvh] w-full flex-col items-center justify-center pb-10 transition-all ${source_sans_3.className}`}
     >
       <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:px-44">
         <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center bg-white p-8 py-12 shadow-ltr-small md:rounded-t-md">
