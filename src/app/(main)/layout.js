@@ -1,0 +1,71 @@
+import "./globals.css";
+import { Providers } from "@/components/Providers";
+import Header from "@/components/Header";
+import Footer from "../../components/Footer";
+import KofeAlWidget from "@/components/KofeAlWidget";
+import { Toaster } from "react-hot-toast";
+import { poppins } from "@/lib/fonts";
+import { BASE_URL } from "@/lib/constants";
+
+export const metadata = {
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Yusif Aliyev",
+    template: "Yusif Aliyev | %s",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Yusif Aliyev",
+    locale: "az_AZ",
+    url: BASE_URL,
+  },
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+  // robots: {
+  //   index: true,
+  //   follow: true,
+  //   googleBot: {
+  //     index: true,
+  //     follow: true,
+  //   },
+  // },
+  creator: "Yusif Aliyev",
+  publisher: "Yusif Aliyev",
+  applicationName: "YusifAliyevPro",
+  generator: "Next.js",
+  authors: [{ name: "Yusif Aliyev", url: "https://yusifaliyevpro.com" }],
+  keywords: ["Yusif Aliyev", "yusifaliyevpro"],
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="az">
+      <body className={`${poppins.className} min-h-[100dvh] font-semibold`}>
+        <Providers>
+          <Toaster
+            toastOptions={{
+              className: "",
+            }}
+            position="bottom-right"
+            reverseOrder={false}
+          />
+          <Header />
+          {children}
+          <KofeAlWidget
+            username="yusifaliyevpro"
+            isActiveOnMobile
+            isHoverable
+          />
+          <Footer />
+        </Providers>
+      </body>
+    </html>
+  );
+}
