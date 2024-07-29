@@ -6,7 +6,8 @@ import KofeAlWidget from "@/components/KofeAlWidget";
 import { Toaster } from "react-hot-toast";
 import { poppins } from "@/lib/fonts";
 import { BASE_URL } from "@/lib/constants";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -65,6 +66,8 @@ export default function RootLayout({ children }) {
           />
           <Footer />
         </Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
