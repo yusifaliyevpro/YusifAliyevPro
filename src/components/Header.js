@@ -61,7 +61,7 @@ export default function Header() {
       onMenuOpenChange={setIsMenuOpen}
       isBlurred
       classNames={{
-        base: `w-auto fixed z-[9999] bg-white xl:mx-40 rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium lg:translate-y-3 lg:rounded-lg"}`,
+        base: `w-auto fixed z-[10000]  xl:mx-40 rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium lg:translate-y-3 lg:rounded-lg"}`,
       }}
     >
       <NavbarContent>

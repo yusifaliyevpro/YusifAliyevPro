@@ -48,11 +48,10 @@ export default async function Home() {
             Developer
           </Reveal>
         </div>
-        <div className="xl:min-h-[360px] xl:min-w-[360px]">
+        <div className="">
           {/* <Motion initial={{ translateZ: 0 }} whileHover={{ translateZ: 180 }}> */}
           <Motion
             initial={{ opacity: 0, scale: 0.3 }}
-            whileHover={{ rotateY: 45 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
               delay: 0.3,
@@ -60,7 +59,7 @@ export default async function Home() {
               type: "spring",
               stiffness: 70,
             }}
-            className="aspect-square select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large xl:mt-0"
+            className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large xl:mt-0"
           >
             <Image
               src={"/profile.png"}
@@ -69,7 +68,7 @@ export default async function Home() {
               priority
               alt="Profile Picture"
               height={350}
-              className="h-full w-full select-none rounded-full"
+              className="max-h-[250px] max-w-[250px] select-none rounded-full md:max-h-[300px] md:max-w-[300px] lg:px-0 xl:min-h-[360px] xl:min-w-[360px]"
             />
           </Motion>
           {/* </Motion> */}
