@@ -48,7 +48,7 @@ export default async function Home() {
             Developer
           </Reveal>
         </div>
-        <div className="">
+        <div className="mb-8 lg:mb-0">
           {/* <Motion initial={{ translateZ: 0 }} whileHover={{ translateZ: 180 }}> */}
           <Motion
             initial={{ opacity: 0, scale: 0.3 }}
@@ -76,7 +76,7 @@ export default async function Home() {
       </section>
 
       {/* My ProJects */}
-      <section className="flex min-h-[100dvh] flex-col items-center justify-center">
+      <section className="flex min-h-[100vh] flex-col items-center justify-center">
         <div className="mb-16 text-center text-4xl font-bold md:text-5xl">
           <Reveal as="h2" className="after:text-blue-500 after:content-['.']">
             Layihələrim
@@ -86,7 +86,7 @@ export default async function Home() {
       </section>
 
       {/* My Skils */}
-      <section className="flex min-h-[90dvh] w-full flex-col items-center">
+      <section className="flex min-h-[90vh] w-full flex-col items-center">
         <Reveal
           as="h2"
           className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
@@ -126,7 +126,7 @@ export default async function Home() {
       </section>
 
       {/* Technologies */}
-      <section className="flex min-h-[100dvh] w-full flex-col items-center justify-center px-8 max-md:pt-10 md:px-52">
+      <section className="flex min-h-[100vh] w-full flex-col items-center justify-center px-8 max-md:pt-10 md:px-52">
         <Reveal
           as="h2"
           className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
@@ -173,7 +173,7 @@ export default async function Home() {
       </section>
 
       {/* Other Skills */}
-      <section className="flex min-h-[70dvh] w-full flex-col items-center justify-start px-3 md:px-40 xl:px-64">
+      <section className="flex min-h-[70vh] w-full flex-col items-center justify-start px-3 md:px-40 xl:px-64">
         <Reveal
           as="h2"
           className="w-full text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
