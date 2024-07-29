@@ -5,8 +5,7 @@ import { FiWatch } from "react-icons/fi";
 import RichText from "@/components/RichText";
 import Link from "next/link";
 import { source_sans_3 } from "@/lib/fonts";
-import dateFormatter from "@/lib/formatter";
-import { BASE_URL } from "@/lib/constants";
+import dateFormatter, { ReadtimeCalculator } from "@/lib/formatters";
 
 export async function generateMetadata({ params }) {
   const blog = await getBlog({ params });
@@ -33,21 +32,11 @@ export async function generateStaticParams() {
 export default async function BlogPage({ params }) {
   const blog = await getBlog({ params });
 
-  const words =
-    blog.plainText.split(" ").length +
-    blog.description.split(" ").length +
-    blog.title.split(" ").length;
-
-  const seconds = Number("0." + (words / 200).toString().split(".")[1]) * 0.6;
-  const minutes =
-    Math.floor(words / 200) +
-    (seconds > 0.4 || Math.floor(words / 200) === 0 ? 1 : 0);
-
   return (
     <main
       className={`a flex min-h-[100dvh] w-full flex-col items-center justify-center pb-10 transition-all ${source_sans_3.className}`}
     >
-      <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:px-44">
+      <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:px-10 lg:px-24 xl:px-44">
         <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center bg-white p-8 py-12 shadow-ltr-small md:rounded-t-md">
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
@@ -73,20 +62,22 @@ export default async function BlogPage({ params }) {
             </div>
             <div className="flex flex-row items-center gap-x-1">
               <FiWatch />
-              <p className="text-md tabular-nums">{minutes} dəq oxuma</p>
+              <p className="text-md tabular-nums">
+                {ReadtimeCalculator({ text: blog.plainText })} dəq oxuma
+              </p>
             </div>
           </div>
           <header className="flex flex-col items-center justify-center">
-            <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug md:text-5xl">
+            <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
               {blog.title}
             </h1>
-            <p className="text-pretty text-center text-xl font-normal leading-normal text-gray-500 md:px-20">
+            <p className="text-pretty text-center text-xl font-normal leading-normal text-gray-500 md:px-12 lg:px-20">
               {blog.description}
             </p>
           </header>
         </div>
       </article>
-      <div className="flex w-full flex-col items-start justify-center md:px-44">
+      <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
         <div className="flex min-h-[100dvh] w-full flex-col shadow-small md:rounded-b-md">
           <figure className="relative aspect-[16/9] h-full w-full">
             <Image
@@ -97,7 +88,7 @@ export default async function BlogPage({ params }) {
             />
             <figcaption className="sr-only">{blog.title}</figcaption>
           </figure>
-          <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-20">
+          <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-16">
             <RichText blogText={blog.text} />
           </article>
         </div>

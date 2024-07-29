@@ -30,7 +30,7 @@ export default function Search() {
 
   return (
     <>
-      <div className="mt-5 w-full px-6 lg:mt-0 lg:w-[22rem]">
+      <div className="mt-5 w-full px-6 md:w-[22rem] lg:mt-0">
         <Input
           classNames={{
             inputWrapper:

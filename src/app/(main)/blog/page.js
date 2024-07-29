@@ -23,7 +23,7 @@ export default async function BlogsPage() {
       className={`flex min-h-[100dvh] flex-col items-center pt-20 ${signika_negative.className}`}
     >
       <div className="bg-gradiesnt-to-b mt-5 flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
-        <div className="flex w-full flex-col items-center justify-between px-5 lg:flex-row lg:px-32">
+        <div className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
           <div className={`space-y-5 ${poppins.className} w-full sm:w-fit`}>
             <h1 className="w-full text-left text-4xl font-semibold">
               ✍️ Bloq yazılarım

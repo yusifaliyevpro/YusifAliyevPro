@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/react";
 import Fuse from "fuse.js";
 import useQuery from "@/lib/store";
 import { useEffect, useState } from "react";
-import dateFormatter from "@/lib/formatter";
+import dateFormatter from "@/lib/formatters";
 
 export default function Blogs({ blogs, totalBlogCount }) {
   const [page, setPage] = useState(1);

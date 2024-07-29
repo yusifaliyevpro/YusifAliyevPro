@@ -45,7 +45,7 @@ export async function getCount() {
 }
 
 export async function getBlog({ params }) {
-  const query = `*[_type=='blogs' && slug.current=='${params.blog}']{title, "plainText": pt::text(text), "poster": poster.asset->url, text, "slug": slug.current,_createdAt, description}[0]`;
+  const query = `*[_type=='blogs' && slug.current=='${params.blog}']{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, text, "slug": slug.current,_createdAt, description}[0]`;
   const data = await client.fetch(
     query,
     { cache: "force-cache" },

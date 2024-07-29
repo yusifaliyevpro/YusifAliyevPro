@@ -61,7 +61,7 @@ export default function Header() {
       onMenuOpenChange={setIsMenuOpen}
       isBlurred
       classNames={{
-        base: `w-auto fixed z-[9999] bg-white sm:mx-40 rounded-b-lg transition-all ${isScrolled && " md:shadow-medium md:translate-y-3 md:rounded-lg"}`,
+        base: `w-auto fixed z-[9999] bg-white xl:mx-40 rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium lg:translate-y-3 lg:rounded-lg"}`,
       }}
     >
       <NavbarContent>
@@ -112,7 +112,7 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all lg:flex">
+        <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
           {socialAccounts.map((account, i) => (
             <Link
               key={i}
@@ -147,7 +147,7 @@ export default function Header() {
       </NavbarMenu>
       <NavbarMenuToggle
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="sm:hidden"
+        className="md:hidden"
       />
     </Navbar>
   );

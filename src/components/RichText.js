@@ -9,18 +9,18 @@ import Image from "next/image";
 export default function RichText({ blogText }) {
   const components = {
     types: {
-      image: ({ value, isInline }) => {
+      image: ({ value }) => {
         const { width, height } = getImageDimensions(value);
         return (
           <div
-            className={`flex w-full flex-col aspect-[${width / height}] items-center justify-center`}
+            className={`flex w-full flex-col py-7 aspect-[${width / height}] items-center justify-center`}
           >
             <Image
               src={urlForImage(value)}
               width={width}
               height={height}
               alt=""
-              className="h-fit w-fit rounded-2xl object-cover py-7"
+              className="h-fit w-fit rounded-md object-cover"
             />
           </div>
         );

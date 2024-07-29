@@ -7,7 +7,6 @@ export default function Template({ children }) {
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: -100, opacity: 0 }}
       transition={{
-        ease: "easeInOut",
         duration: 0.2,
         type: "spring",
         stiffness: 80,

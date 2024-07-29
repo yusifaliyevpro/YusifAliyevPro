@@ -18,13 +18,13 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-[100dvh] flex-col items-center gap-y-32 pb-20 transition-all">
-      <section className="mt-2 flex min-h-[95dvh] w-full flex-col items-center justify-center px-8 sm:flex-row md:justify-between md:px-28 md:pb-[10dvh] lg:min-h-[100dvh]">
-        <div className="mt-12 flex flex-col gap-y-2 text-4xl md:mt-0 md:gap-y-2 md:text-6xl">
+      <section className="mt-28 flex min-h-[76dvh] w-full flex-col items-center justify-between px-8 md:mt-32 md:min-h-[88dvh] md:justify-between md:pb-[10dvh] lg:px-28 xl:mt-2 xl:min-h-[100dvh] xl:flex-row">
+        <div className="relative flex flex-col gap-y-2 text-4xl md:mt-0 md:gap-y-2 md:text-5xl xl:text-6xl">
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev</h1>
           <Reveal
             first
             bt
-            className="flex flex-col items-center justify-center gap-y-2 text-center md:flex-row md:justify-start md:gap-y-0"
+            className="flex flex-col flex-nowrap items-center justify-center gap-y-2 text-center md:flex-row md:justify-start md:gap-y-0"
           >
             <span className="text-nowrap">Hi👋, I&apos;m a&nbsp;</span>
             <span className="inline-block bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] bg-clip-text text-left text-transparent md:text-center">
@@ -48,10 +48,11 @@ export default async function Home() {
             Developer
           </Reveal>
         </div>
-        <div className="min-w-[250px] md:min-w-[200px]">
+        <div className="xl:min-h-[360px] xl:min-w-[360px]">
           {/* <Motion initial={{ translateZ: 0 }} whileHover={{ translateZ: 180 }}> */}
           <Motion
             initial={{ opacity: 0, scale: 0.3 }}
+            whileHover={{ rotateY: 45 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
               delay: 0.3,
@@ -59,7 +60,7 @@ export default async function Home() {
               type: "spring",
               stiffness: 70,
             }}
-            className="mt-20 select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large md:mt-0"
+            className="aspect-square select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large xl:mt-0"
           >
             <Image
               src={"/profile.png"}
@@ -68,7 +69,7 @@ export default async function Home() {
               priority
               alt="Profile Picture"
               height={350}
-              className="h-[250px] w-[250px] select-none rounded-full sm:h-[350px] sm:w-[350px]"
+              className="h-full w-full select-none rounded-full"
             />
           </Motion>
           {/* </Motion> */}
@@ -77,7 +78,7 @@ export default async function Home() {
 
       {/* My ProJects */}
       <section className="flex min-h-[100dvh] flex-col items-center justify-center">
-        <div className="mb-16 text-center text-4xl font-bold lg:text-5xl">
+        <div className="mb-16 text-center text-4xl font-bold md:text-5xl">
           <Reveal as="h2" className="after:text-blue-500 after:content-['.']">
             Layihələrim
           </Reveal>
@@ -89,11 +90,11 @@ export default async function Home() {
       <section className="flex min-h-[90dvh] w-full flex-col items-center">
         <Reveal
           as="h2"
-          className="text-4xl font-bold after:text-blue-500 after:content-['.'] lg:text-5xl"
+          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
         >
           Bacarıqlarım
         </Reveal>
-        <div className="mt-12 flex w-full flex-col gap-y-8 overflow-x-hidden px-10 md:px-80">
+        <div className="mt-12 flex w-full flex-col gap-y-8 overflow-x-hidden px-10 sm:px-28 lg:px-56 xl:px-80">
           {skills.map((skill, i) => (
             <Motion
               initial={{ opacity: 0, x: -300 }}
@@ -129,7 +130,7 @@ export default async function Home() {
       <section className="flex min-h-[100dvh] w-full flex-col items-center justify-center px-8 max-md:pt-10 md:px-52">
         <Reveal
           as="h2"
-          className="text-4xl font-bold after:text-blue-500 after:content-['.'] lg:text-5xl"
+          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
         >
           Texnologiyalar
         </Reveal>
@@ -173,10 +174,10 @@ export default async function Home() {
       </section>
 
       {/* Other Skills */}
-      <section className="flex min-h-[70dvh] w-full flex-col items-center justify-start px-6 md:px-80">
+      <section className="flex min-h-[70dvh] w-full flex-col items-center justify-start px-3 md:px-40 xl:px-64">
         <Reveal
           as="h2"
-          className="w-full text-center text-4xl font-bold after:text-blue-500 after:content-['.'] lg:text-5xl"
+          className="w-full text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
         >
           Digər Bacarıqlar
         </Reveal>

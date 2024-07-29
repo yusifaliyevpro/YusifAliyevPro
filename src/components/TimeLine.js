@@ -3,9 +3,9 @@ import { Motion } from "./Motion";
 
 export default function Timeline() {
   return (
-    <div className="relative mt-16 flex min-h-[60dvh] w-full flex-col items-start justify-start overflow-x-hidden md:w-5/12">
+    <div className="relative mt-16 flex min-h-[60dvh] w-full flex-col items-start justify-start overflow-x-hidden md:w-7/12 xl:w-5/12">
       <div className="absolute flex h-full min-h-[60dvh] w-full flex-col">
-        <div className="absolute ml-[46px] h-full w-1 rounded-xl bg-gray-300 md:ml-[84.5px]"></div>
+        <div className="absolute ml-[47px] h-full w-1 rounded-xl bg-gray-300 md:ml-[5.34rem]"></div>
       </div>
       {events.map((event, i) => (
         <div key={i} className="relative mt-10 flex flex-row items-center">
@@ -22,8 +22,10 @@ export default function Timeline() {
               stiffness: 80,
             }}
             viewport={{ once: true }}
-            className="ml-10 h-4 min-h-4 w-4 min-w-4 rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] md:ml-0"
-          ></Motion>
+            className="ml-10 items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[3px] md:ml-0"
+          >
+            <div className="h-3 w-3 rounded-full bg-white"></div>
+          </Motion>
           <p className={"flex pl-12 text-xl md:hidden"}>{event.year}</p>
           <Motion
             initial={{ opacity: 0, x: -50 }}
@@ -37,7 +39,7 @@ export default function Timeline() {
             viewport={{ once: true }}
             className="flex flex-col pl-0 md:pl-10"
           >
-            <p className="text-wrap text-2xl md:w-[25rem]">{event.name}</p>
+            <p className="text-wrap text-2xl xl:max-w-[27rem]">{event.name}</p>
             <p className="pr-5 text-sm text-gray-500">{event.description}</p>
           </Motion>
         </div>
