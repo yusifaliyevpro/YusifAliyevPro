@@ -50,7 +50,7 @@ export const events = [
     ),
   },
   {
-    name: " & SEO & Debugger",
+    name: "Text Editor & SEO & Debugger",
     description: (
       <>
         <Link

@@ -40,12 +40,12 @@ export default function Blogs({ blogs, totalBlogCount }) {
             className="col-span-1 flex h-auto cursor-pointer flex-col items-center justify-start rounded-lg border-solid bg-white pb-5 shadow-medium shadow-blue-600 transition-all hover:scale-105"
           >
             <Link href={`/blog/${blog.slug}`}>
-              <figure className="flex max-h-[15rem] w-full">
+              <figure className="flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg border-b-1 border-solid">
                 <Image
                   src={blog.poster}
                   width={250}
                   height={200}
-                  className="w-full rounded-t-lg"
+                  className="w-full rounded-t-lg object-contain"
                   alt={`${blog.title} Poster`}
                 />
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>

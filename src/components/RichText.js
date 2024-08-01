@@ -73,16 +73,39 @@ export default function RichText({ blogText }) {
           {children}
         </p>
       ),
+      blockquote: ({ children }) => (
+        <blockquote className="my-6 ml-5 border-3 border-y-white border-l-yellow-400 border-r-white pl-6 text-base text-gray-500 md:text-lg">
+          {children}
+        </blockquote>
+      ),
     },
     marks: {
       link: ({ value, children }) => (
         <Link
           href={value.href}
+          prefetch={false}
+          rel="noopener noreferrer"
           target="_blank"
           className="text-blue-500 hover:text-blue-700"
         >
           {children}
         </Link>
+      ),
+    },
+    list: {
+      bullet: ({ children }) => (
+        <ul className="my-8 ml-12 text-base md:text-lg">{children}</ul>
+      ),
+      number: ({ children }) => (
+        <ol className="my-8 ml-12 text-base md:text-lg">{children}</ol>
+      ),
+    },
+    listItem: {
+      bullet: ({ children }) => (
+        <li className="mt-3 list-disc text-gray-600">{children}</li>
+      ),
+      number: ({ children }) => (
+        <li className="mt-3 list-decimal text-gray-600">{children}</li>
       ),
     },
   };

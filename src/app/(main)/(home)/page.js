@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-y-32 pb-20 transition-all">
-      <section className="mt-28 flex min-h-[76vh] w-full flex-col items-center justify-between px-8 md:mt-32 md:min-h-[88vh] md:justify-between md:pb-[10vh] lg:px-28 xl:mt-2 xl:min-h-[100vh] xl:flex-row">
+      <section className="mt-28 flex min-h-[76vh] w-full flex-col items-center justify-between px-8 md:mt-32 md:min-h-[88vh] md:pb-[10vh] lg:px-28 xl:mt-2 xl:min-h-[100vh] xl:flex-row">
         <div className="relative flex flex-col gap-y-2 text-4xl md:mt-0 md:gap-y-2 md:text-5xl xl:text-6xl">
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev</h1>
           <Reveal

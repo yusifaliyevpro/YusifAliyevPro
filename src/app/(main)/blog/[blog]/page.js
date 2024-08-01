@@ -37,7 +37,7 @@ export default async function BlogPage({ params }) {
       className={`a flex min-h-[100dvh] w-full flex-col items-center justify-center pb-10 transition-all ${source_sans_3.className}`}
     >
       <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:px-10 lg:px-24 xl:px-44">
-        <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center bg-white p-8 py-12 shadow-ltr-small md:rounded-t-md">
+        <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center border-b-[0.8px] bg-white p-8 py-12 shadow-ltr-small md:rounded-t-md">
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               src={"/profile.png"}
@@ -79,7 +79,7 @@ export default async function BlogPage({ params }) {
       </article>
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
         <div className="flex min-h-[100dvh] w-full flex-col shadow-small md:rounded-b-md">
-          <figure className="relative aspect-[16/9] h-full w-full">
+          <figure className="relative aspect-[16/9] h-full w-full border-b-[0.5px]">
             <Image
               src={blog.poster}
               alt="Blog Poster"
@@ -88,7 +88,7 @@ export default async function BlogPage({ params }) {
             />
             <figcaption className="sr-only">{blog.title}</figcaption>
           </figure>
-          <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-16">
+          <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-20">
             <RichText blogText={blog.text} />
           </article>
         </div>

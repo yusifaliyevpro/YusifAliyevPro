@@ -14,7 +14,9 @@ export default {
         "neon-white":
           "0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 1rem #fff, 0 0 0.8rem #fff, 0 0 2.8rem #fff, inset 0 0 1.3rem #fff",
         "ltr-small":
-          "0px 0px 5px 0px rgb(0 0 0 / 0.02), 0px 2px 10px 0px rgb(0 0 0 / 0.06),",
+          "0px 0px 5px 0px rgb(0 0 0 / 0.02), 0px 2px 10px 0px rgb(0 0 0 / 0.06),0px 2px 10px 0px rgb(0 0 0 / 0.06)",
+        "b-small":
+          "0px 0px 5px 0px rgb(0 0 0 / 0.02), 0px 2px 10px 0px rgb(0 0 0 / 0.06), 0px 0px 1px 0px rgb(0 0 0 / 0.3);",
       },
     },
   },
