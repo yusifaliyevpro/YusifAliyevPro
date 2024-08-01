@@ -19,10 +19,6 @@ export const skills = [
     name: "NextJS",
     value: 90,
   },
-  {
-    name: "SanityCMS, MongoDB",
-    value: 70,
-  },
 ];
 
 export const addSkills = [
@@ -30,10 +26,10 @@ export const addSkills = [
   "HTML5",
   "Layihə İdarə etməsi",
   "Git",
-  "Vaxt idarə etməsi",
   "Komanda ilə işləmə",
   "CSS3",
   "Tez öyrənmə",
   "Analitika",
+  "Vaxt idarə etməsi",
   "English B1",
 ];

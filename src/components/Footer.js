@@ -73,12 +73,12 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex h-10 w-full flex-col items-center justify-center py-4 font-medium max-sm:px-5 max-sm:py-10">
+      {/* <div className="flex h-10 w-full flex-col items-center justify-center py-4 font-medium max-sm:px-5 max-sm:py-10">
         <p className="text-center">
           Bu sayt hazırlanma mərhələsindədir. Yazılar və məlumatlar düzgün
           olmaya bilər
         </p>
-      </div>
+      </div> */}
     </footer>
   );
 }

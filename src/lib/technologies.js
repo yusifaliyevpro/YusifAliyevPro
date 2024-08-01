@@ -30,6 +30,11 @@ export const technologies = [
     icon: "/techs/ts.png",
   },
   {
+    name: "NodeJS",
+    link: "https://nextjs.org/",
+    icon: "/techs/nodejs.png",
+  },
+  {
     name: "React Icons",
     link: "https://react-icons.github.io/react-icons/",
     icon: "/techs/react-icons.svg",
@@ -38,6 +43,11 @@ export const technologies = [
     name: "Framer Motion",
     link: "https://www.framer.com/motion/",
     icon: "/techs/framer-motion.png",
+  },
+  {
+    name: "Clerk Auth",
+    link: "https://nextjs.org/",
+    icon: "/techs/clerk.webp",
   },
   {
     name: "MongoDB",

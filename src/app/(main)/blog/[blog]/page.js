@@ -6,9 +6,11 @@ import RichText from "@/components/RichText";
 import Link from "next/link";
 import { source_sans_3 } from "@/lib/fonts";
 import dateFormatter, { ReadtimeCalculator } from "@/lib/formatters";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const blog = await getBlog({ params });
+  if (!blog) notFound();
   return {
     title: blog.title,
     description: blog.description,
@@ -32,12 +34,13 @@ export async function generateStaticParams() {
 export default async function BlogPage({ params }) {
   const blog = await getBlog({ params });
 
+  if (!blog) notFound();
   return (
     <main
       className={`a flex min-h-[100dvh] w-full flex-col items-center justify-center pb-10 transition-all ${source_sans_3.className}`}
     >
-      <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:px-10 lg:px-24 xl:px-44">
-        <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center border-b-[0.8px] bg-white p-8 py-12 shadow-ltr-small md:rounded-t-md">
+      <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:border-b-[0.8px] md:px-10 lg:px-24 xl:px-44">
+        <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center border-b-[0px] border-solid bg-white p-8 py-12 md:rounded-t-md lg:shadow-ltr-small">
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               src={"/profile.png"}
@@ -71,20 +74,20 @@ export default async function BlogPage({ params }) {
             <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
               {blog.title}
             </h1>
-            <p className="text-pretty text-center text-xl font-normal leading-normal text-gray-500 md:px-12 lg:px-20">
+            <p className="text-pretty text-center text-lg font-normal leading-normal text-gray-500 md:px-12 lg:px-20 lg:text-xl">
               {blog.description}
             </p>
           </header>
         </div>
       </article>
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
-        <div className="flex min-h-[100dvh] w-full flex-col shadow-small md:rounded-b-md">
-          <figure className="relative aspect-[16/9] h-full w-full border-b-[0.5px]">
+        <div className="flex min-h-[100dvh] w-full flex-col md:rounded-b-md lg:shadow-small">
+          <figure className="relative aspect-[16/9] h-full border-solid md:border-b-1">
             <Image
               src={blog.poster}
               alt="Blog Poster"
               fill
-              className="object-cover p-5 md:p-0"
+              className="object-cover p-3 md:p-0"
             />
             <figcaption className="sr-only">{blog.title}</figcaption>
           </figure>

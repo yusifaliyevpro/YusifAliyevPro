@@ -17,7 +17,7 @@ export default function KofeAlWidget({
 
   return (
     <div
-      className={`sticky bottom-0 right-0 w-full flex-row justify-end pb-7 pr-7 ${!isActiveOnMobile ? "hidden md:flex" : "flex"} `}
+      className={`sticky bottom-0 right-0 w-full flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7 ${!isActiveOnMobile ? "hidden md:flex" : "flex"} `}
     >
       <motion.div
         initial={{ scale: 0.3, opacity: 0 }}
@@ -43,10 +43,10 @@ export default function KofeAlWidget({
           onMouseLeave={() => setHovered(false)}
         >
           <div
-            className={`text-lg transition-all duration-200 ${hovered && isHoverable && "w-auto px-4 py-2 pl-6"} `}
+            className={`text-lg transition-all duration-200 ${hovered && isHoverable && "lg:w-auto lg:px-4 lg:py-2 lg:pl-6"} `}
           >
             {hovered && isHoverable && (
-              <p>
+              <p className="hidden lg:flex">
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   kofe.al
                 </span>
@@ -61,7 +61,7 @@ export default function KofeAlWidget({
             transition={{
               y: { duration: 0.5, repeat: Infinity, repeatType: "mirror" },
               rotate: {
-                repeatDelay: 5,
+                repeatDelay: 4.5,
                 duration: 1.2,
                 repeat: Infinity,
                 repeatType: "mirror",

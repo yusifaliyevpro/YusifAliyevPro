@@ -5,15 +5,13 @@
 
 - 🔭 I’m currently working on [YusifAliyevPro](https://yusifaliyevpro.com)
 
-- 👨‍💻 All of my projects are available at [https://yusifaliyevpro.com](https://yusifaliyevpro.com)
+- 👨‍💻 All of my projects are available at [https://yusifaliyevpro.com](there)
 
-- 📝 I regularly write articles on [https://yusifaliyevpro.com/blog](https://yusifaliyevpro.com/blog)
+- 📝 I regularly write articles on [https://yusifaliyevpro.com/blog](my blog)
 
 - 💬 Ask me about **React, NextJS**
 
 - 📫 How to reach me **yusifaliyevpro@gmail.com**
-
-- 📄 Know about my experiences [https://yusifaliyevpro.com](https://yusifaliyevpro.com)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">

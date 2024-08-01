@@ -1,4 +1,5 @@
 import Blogs from "@/components/Blogs";
+import Reveal from "@/components/Reveal";
 import Search from "@/components/Search";
 import { poppins, signika_negative } from "@/lib/fonts";
 import { getBlogs, getCount } from "@/lib/utils";
@@ -25,9 +26,13 @@ export default async function BlogsPage() {
       <div className="bg-gradiesnt-to-b mt-5 flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
         <div className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
           <div className={`space-y-5 ${poppins.className} w-full sm:w-fit`}>
-            <h1 className="w-full text-left text-4xl font-semibold">
+            <Reveal
+              as="h1"
+              first
+              className="w-full text-left text-4xl font-semibold"
+            >
               ✍️ Bloq yazılarım
-            </h1>
+            </Reveal>
             <p className="sr-only">
               Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi
               paylaşıram.

@@ -17,7 +17,7 @@ export default async function Home() {
   const projects = await getProjects();
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-y-32 pb-20 transition-all">
+    <main className="flex min-h-screen flex-col items-center gap-y-56 pb-20 transition-all">
       <section className="mt-28 flex min-h-[76vh] w-full flex-col items-center justify-between px-8 md:mt-32 md:min-h-[88vh] md:pb-[10vh] lg:px-28 xl:mt-2 xl:min-h-[100vh] xl:flex-row">
         <div className="relative flex flex-col gap-y-2 text-4xl md:mt-0 md:gap-y-2 md:text-5xl xl:text-6xl">
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev</h1>
@@ -48,35 +48,31 @@ export default async function Home() {
             Developer
           </Reveal>
         </div>
-        <div className="mb-8 lg:mb-0">
-          {/* <Motion initial={{ translateZ: 0 }} whileHover={{ translateZ: 180 }}> */}
-          <Motion
-            initial={{ opacity: 0, scale: 0.3 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: 0.3,
-              duration: 0.4,
-              type: "spring",
-              stiffness: 70,
-            }}
-            className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large xl:mt-0"
-          >
-            <Image
-              src={"/profile.png"}
-              width={350}
-              quality={100}
-              priority
-              alt="Profile Picture"
-              height={350}
-              className="max-h-[250px] max-w-[250px] select-none rounded-full md:max-h-[300px] md:max-w-[300px] lg:px-0 xl:min-h-[360px] xl:min-w-[360px]"
-            />
-          </Motion>
-          {/* </Motion> */}
-        </div>
+        <Motion
+          initial={{ opacity: 0, scale: 0.3 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.4,
+            type: "spring",
+            stiffness: 70,
+          }}
+          className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large"
+        >
+          <Image
+            src={"/profile.png"}
+            width={350}
+            unoptimized
+            priority
+            alt="Profile Picture"
+            height={350}
+            className="max-h-[250px] max-w-[250px] select-none rounded-full md:max-h-[300px] md:max-w-[300px] lg:px-0 xl:min-h-[360px] xl:min-w-[360px]"
+          />
+        </Motion>
       </section>
 
       {/* My ProJects */}
-      <section className="flex min-h-[100vh] flex-col items-center justify-center">
+      <section className="flex min-h-[100vh] flex-col items-center">
         <div className="mb-16 text-center text-4xl font-bold md:text-5xl">
           <Reveal as="h2" className="after:text-blue-500 after:content-['.']">
             Layihələrim
@@ -86,12 +82,12 @@ export default async function Home() {
       </section>
 
       {/* My Skils */}
-      <section className="flex min-h-[90vh] w-full flex-col items-center">
+      <section className="flex min-h-[100vh] w-full flex-col items-center">
         <Reveal
           as="h2"
-          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
+          className="text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
         >
-          Bacarıqlarım
+          Kod Bacarıqları
         </Reveal>
         <div className="mt-12 flex w-full flex-col gap-y-8 overflow-x-hidden px-10 sm:px-28 lg:px-56 xl:px-80">
           {skills.map((skill, i) => (
@@ -126,7 +122,7 @@ export default async function Home() {
       </section>
 
       {/* Technologies */}
-      <section className="flex min-h-[100vh] w-full flex-col items-center justify-center px-8 max-md:pt-10 md:px-52">
+      <section className="flex min-h-[100vh] w-full flex-col items-center px-8 md:px-52">
         <Reveal
           as="h2"
           className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
@@ -159,7 +155,7 @@ export default async function Home() {
               >
                 {
                   <Image
-                    className="select-none"
+                    className="select-none object-contain"
                     src={tech.icon}
                     alt={tech.name}
                     width={90}
@@ -173,14 +169,14 @@ export default async function Home() {
       </section>
 
       {/* Other Skills */}
-      <section className="flex min-h-[70vh] w-full flex-col items-center justify-start px-3 md:px-40 xl:px-64">
+      <section className="flex min-h-[70vh] w-full flex-col items-center px-3 md:px-40 xl:px-64">
         <Reveal
           as="h2"
           className="w-full text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
         >
           Digər Bacarıqlar
         </Reveal>
-        <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-4 overflow-x-hidden px-3 text-xl md:ml-3 md:gap-x-5 md:px-5">
+        <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-x-2 gap-y-4 overflow-x-hidden px-3 text-xl md:ml-3 md:gap-x-5 md:px-5">
           {addSkills.map((skill, i) => (
             <Motion
               initial={{ opacity: 0, x: 100 }}

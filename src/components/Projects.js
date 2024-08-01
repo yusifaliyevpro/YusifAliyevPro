@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaGlobe } from "react-icons/fa";
 import { Motion } from "./Motion";
 
 export default function Projects({ projects }) {
@@ -30,27 +30,27 @@ export default function Projects({ projects }) {
             height={200}
             className="aspect-[16/8.4] rounded-lg object-fill shadow-medium transition-all hover:scale-105"
           />
-          <h3
+          <h4
             title={project.name}
-            className="line-clamp-1 w-full px-2 text-left text-[22px]"
+            className="line-clamp-1 w-full px-2 text-center text-2xl font-semibold text-gray-800"
           >
             {project.name}
-          </h3>
+          </h4>
           <p
             title={project.description}
-            className="line-clamp-2 w-fit max-w-[20rem] text-pretty px-2 text-xs"
+            className="line-clamp-2 w-fit max-w-[20rem] text-pretty px-2 text-center text-sm text-gray-500"
           >
             {project.description}
           </p>
-          <div className="mt-7 flex w-full flex-row items-center justify-around">
+          <div className="mt-3 flex w-full flex-row items-center justify-around">
             <Link
               href={project.link}
               prefetch={false}
               rel="noopener noreferrer"
               target="_blank"
-              className="rounded-full bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-3 text-white hover:opacity-90 md:px-8"
+              className="flex flex-row items-center gap-x-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-3 text-white hover:opacity-90 md:px-5"
             >
-              Websayt
+              <FaGlobe className="text-2xl" /> Websayt
             </Link>
             <Link
               href={project.repo}

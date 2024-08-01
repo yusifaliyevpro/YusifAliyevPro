@@ -18,7 +18,7 @@ export async function getBlogs() {
   const data = await client.fetch(
     query,
     { cache: "force-cache" },
-    { next: { revalidate: 3600 } },
+    { next: { revalidate: isInDevelopment ? 10 : 3600 } },
   );
   return data;
 }
@@ -29,7 +29,7 @@ export async function getSlugs() {
   const data = await client.fetch(
     query,
     { cache: "force-cache" },
-    { next: { revalidate: 3600 } },
+    { next: { revalidate: isInDevelopment ? 10 : 3600 } },
   );
   return data;
 }
@@ -39,7 +39,7 @@ export async function getCount() {
   const data = await client.fetch(
     query,
     { cache: "force-cache" },
-    { next: { revalidate: 3600 } },
+    { next: { revalidate: isInDevelopment ? 10 : 3600 } },
   );
   return data;
 }
@@ -49,7 +49,7 @@ export async function getBlog({ params }) {
   const data = await client.fetch(
     query,
     { cache: "force-cache" },
-    { next: { revalidate: isInDevelopment ? 0 : 3600 } },
+    { next: { revalidate: isInDevelopment ? 10 : 3600 } },
   );
   return data;
 }
