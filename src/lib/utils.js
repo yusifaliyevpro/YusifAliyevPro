@@ -33,7 +33,7 @@ export async function getSlugs() {
 }
 
 export async function getBlog({ params, isEnabled }) {
-  const query = `*[_type=='blogs' && slug.current=='${params.blog} && (isPublished || ${isEnabled} || ${isInDevelopment})']{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]`;
+  const query = `*[_type=='blogs' && slug.current=='${params.blog}' && (isPublished || ${isEnabled} || ${isInDevelopment})]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]`;
   const data = await client.fetch(
     query,
     { cache: "force-cache" },
