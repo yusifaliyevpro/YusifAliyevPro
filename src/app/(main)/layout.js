@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "../../components/Footer";
 import KofeAlWidget from "@/components/KofeAlWidget";
 import { Toaster } from "react-hot-toast";
-import { poppins } from "@/lib/fonts";
+import { jua, poppins, source_sans_3 } from "@/lib/fonts";
 import { BASE_URL } from "@/lib/constants";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -44,11 +44,12 @@ export const metadata = {
   authors: [{ name: "Yusif Aliyev", url: "https://yusifaliyevpro.com" }],
   keywords: ["Yusif Aliyev", "yusifaliyevpro"],
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="az">
-      <body className={`${poppins.className} min-h-[100dvh] font-semibold`}>
+      <body
+        className={`${poppins.className} ${poppins.variable} ${jua.variable} ${source_sans_3.variable} min-h-[100dvh] scroll-smooth font-semibold`}
+      >
         <Providers>
           <Toaster
             toastOptions={{

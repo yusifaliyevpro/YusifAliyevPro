@@ -18,6 +18,18 @@ export default {
       },
     },
     {
+      name: "isPublished",
+      title: "Is published?",
+      type: "boolean",
+      initialValue: false,
+    },
+    {
+      name: "publishedAt",
+      title: "Publication Date",
+      type: "datetime",
+      initialValue: new Date().toISOString(),
+    },
+    {
       name: "poster",
       title: "Blog Poster",
       type: "image",

@@ -1,4 +1,5 @@
 import { nextui } from "@nextui-org/react";
+import tailwindTypo from "@tailwindcss/typography";
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +9,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        signika: ["var(--font-signika)"],
+        jua: ["var(--font-jua)"],
+        poppins: ["var(--font-poppins)"],
+      },
       boxShadow: {
         "neon-blue":
           "0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 1rem #5271ff, 0 0 0.8rem #5271ff, 0 0 2.8rem #5271ff, inset 0 0 1.3rem #5271ff",
@@ -20,5 +27,5 @@ export default {
       },
     },
   },
-  plugins: [nextui()],
+  plugins: [nextui(), tailwindTypo()],
 };

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const events = [
   {
-    name: "Technest Təaqüd Proqramı",
+    name: "Technest Təqaüd Proqramı",
     description: "CodeNext | MERN Stack | 100% təqaüd",
   },
   {

@@ -4,11 +4,12 @@ import { FaReact } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 import CopyButton from "./CopyButton";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { githubGist } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 export default function CodeBlock({ code, language, fileName }) {
   return (
     <div className={`rounded-lg border transition-all`}>
-      <div className="flex items-center justify-between border-b bg-gray-100 px-4 py-2">
+      <div className="flex items-center justify-between border-b bg-gray-200/80 px-4 py-2">
         <div className="text-md flex flex-row items-center justify-center gap-2 py-2 font-semibold">
           {(() => {
             switch (language) {
@@ -32,11 +33,11 @@ export default function CodeBlock({ code, language, fileName }) {
           <CopyButton text={code} />
         </div>
       </div>
-      <div className={`py-1 transition-all scrollbar-hide`}>
+      <div className={`transition-all scrollbar-hide`}>
         <SyntaxHighlighter
           language={language}
           showLineNumbers
-          style={oneLight}
+          style={githubGist}
           customStyle={{
             margin: 0,
             height: "23.4rem",
@@ -45,8 +46,6 @@ export default function CodeBlock({ code, language, fileName }) {
             scrollbarWidth: "none",
             overflow: "auto",
             paddingRight: 0,
-            background: "#fff",
-            backgroundColor: "#fff",
           }}
         >
           {code}
