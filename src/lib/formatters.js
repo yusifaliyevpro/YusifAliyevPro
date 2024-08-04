@@ -1,17 +1,31 @@
-export default function DateFormatter({ createdAt }) {
-  const date = new Date(createdAt);
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
+export default function DateFormatter({ date }) {
+  const monthNames = [
+    "Yanvar",
+    "Fevral",
+    "Mart",
+    "Aprel",
+    "May",
+    "İyun",
+    "İyul",
+    "Avqust",
+    "Sentyabr",
+    "Oktabr",
+    "Noyabr",
+    "Dekabr",
+  ];
+  const fullDate = new Date(date);
+  const day = fullDate.getDate();
+  const month = fullDate.getMonth() + 1;
+  const year = fullDate.getFullYear();
 
-  return `${day}/ ${month < 10 && "0"}${month}/ ${year}`;
+  return `${day < 10 ? "0" : ""}${day}/ ${month < 10 ? "0" : ""}${month}/ ${year}`;
+  // return `${day} ${monthNames[month - 1]}, ${year}`;
 }
 
 export function ReadtimeCalculator({ text }) {
-  const words = text.split(" ").length;
-  const seconds = Number("0." + (words / 200).toString().split(".")[1]) * 0.6;
-  return (
-    Math.floor(words / 200) +
-    (seconds > 0.4 || Math.floor(words / 200) === 0 ? 1 : 0)
-  );
+  const wordsPerMinute = 200;
+  const words = text.split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+
+  return minutes;
 }

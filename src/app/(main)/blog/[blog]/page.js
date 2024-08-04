@@ -8,6 +8,8 @@ import { source_sans_3 } from "@/lib/fonts";
 import dateFormatter, { ReadtimeCalculator } from "@/lib/formatters";
 import { notFound } from "next/navigation";
 import { draftMode } from "next/headers";
+import { RefreshSpecificBlog } from "@/components/Refresh";
+import { isInDevelopment } from "@/lib/constants";
 
 export async function generateMetadata({ params }) {
   const blog = await getBlog({ params });
@@ -19,7 +21,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       url: `/blog/${blog.slug}`,
       type: "article",
-      publishedTime: blog._createdAt,
+      publishedTime: blog.publishedAt,
       authors: ["Yusif Aliyev"],
     },
   };
@@ -41,8 +43,8 @@ export default async function BlogPage({ params }) {
     <main
       className={`a flex min-h-[100dvh] w-full flex-col items-center justify-center pb-10 transition-all ${source_sans_3.className}`}
     >
-      <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:border-b-[0.8px] md:px-10 lg:px-24 xl:px-44">
-        <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center border-b-[0px] border-solid bg-white p-8 py-12 md:rounded-t-md lg:shadow-ltr-small">
+      <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:px-10 lg:px-24 xl:px-44">
+        <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center border-b-[0px] border-solid border-gray-300 bg-white p-8 py-12 md:rounded-t-md md:border-b-[0.8px] lg:shadow-ltr-small">
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               src={"/profile.png"}
@@ -61,8 +63,11 @@ export default async function BlogPage({ params }) {
           <div className="mt-4 flex flex-row items-center justify-center gap-x-5 font-semibold text-gray-500">
             <div className="flex flex-row items-center gap-x-1">
               <GoClock />
-              <time dateTime={blog._createdAt} className="text-md tabular-nums">
-                {dateFormatter({ createdAt: blog._createdAt })}
+              <time
+                dateTime={blog.publishedAt}
+                className="text-md tabular-nums"
+              >
+                {dateFormatter({ date: blog.publishedAt })}
               </time>
             </div>
             <div className="flex flex-row items-center gap-x-1">
@@ -87,6 +92,7 @@ export default async function BlogPage({ params }) {
           <figure className="relative aspect-[16/9] h-full border-solid md:border-b-1">
             <Image
               src={blog.poster}
+              priority
               alt="Blog Poster"
               fill
               className="object-cover p-3 md:p-0"
@@ -98,6 +104,7 @@ export default async function BlogPage({ params }) {
           </article>
         </div>
       </div>
+      {(isEnabled || isInDevelopment) && <RefreshSpecificBlog />}
     </main>
   );
 }

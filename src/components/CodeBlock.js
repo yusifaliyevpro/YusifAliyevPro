@@ -9,7 +9,7 @@ import { githubGist } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 export default function CodeBlock({ code, language, fileName }) {
   return (
     <div className={`rounded-lg border transition-all`}>
-      <div className="flex items-center justify-between border-b bg-gray-200/80 px-4 py-2">
+      <div className="flex items-center justify-between rounded-t-md border-b bg-gray-200/80 px-4 py-2">
         <div className="text-md flex flex-row items-center justify-center gap-2 py-2 font-semibold">
           {(() => {
             switch (language) {
@@ -37,7 +37,7 @@ export default function CodeBlock({ code, language, fileName }) {
         <SyntaxHighlighter
           language={language}
           showLineNumbers
-          style={githubGist}
+          style={oneLight}
           customStyle={{
             margin: 0,
             height: "23.4rem",

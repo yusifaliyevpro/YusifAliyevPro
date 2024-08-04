@@ -73,10 +73,10 @@ export default function Blogs({ blogs, totalBlogCount }) {
                 <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700">
                   <GoClock />
                   <time
-                    dateTime={blog._createdAt}
+                    dateTime={blog.publishedAt}
                     className="text-sm font-normal tabular-nums"
                   >
-                    {dateFormatter({ createdAt: blog._createdAt })}
+                    {dateFormatter({ date: blog.publishedAt })}
                   </time>
                 </div>
               </div>

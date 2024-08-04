@@ -28,7 +28,7 @@ export default function Projects({ projects }) {
             width={310}
             alt={project.name}
             height={200}
-            className="aspect-[16/8.4] rounded-lg object-fill shadow-medium transition-all hover:scale-105"
+            className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-fill shadow-medium transition-all hover:scale-105"
           />
           <h4
             title={project.name}

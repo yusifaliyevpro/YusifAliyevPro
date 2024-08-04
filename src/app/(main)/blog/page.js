@@ -1,11 +1,12 @@
 import Blogs from "@/components/Blogs";
+import { RefreshBlogs } from "@/components/Refresh";
 import Reveal from "@/components/Reveal";
 import Search from "@/components/Search";
+import { isInDevelopment } from "@/lib/constants";
 import { poppins, signika_negative } from "@/lib/fonts";
 import { getBlogs } from "@/lib/utils";
 import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
-
 export async function generateMetadata() {
   return {
     title: "Bloq",
@@ -53,6 +54,7 @@ export default async function BlogsPage() {
         </div>
         <Blogs blogs={blogs} totalBlogCount={totalBlogCount} />
       </div>
+      {(isEnabled || isInDevelopment) && <RefreshBlogs />}
     </main>
   );
 }

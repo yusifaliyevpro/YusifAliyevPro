@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-y-56 pb-20 transition-all">
       <section className="mt-28 flex min-h-[76vh] w-full flex-col items-center justify-between px-8 md:mt-32 md:min-h-[88vh] md:pb-[10vh] lg:px-28 xl:mt-2 xl:min-h-[100vh] xl:flex-row">
-        <div className="relative flex flex-col gap-y-2 text-4xl md:mt-0 md:gap-y-2 md:text-5xl xl:text-6xl">
+        <div className="relative flex flex-col gap-y-2 text-4xl max-lg:w-full max-lg:items-center max-lg:justify-center md:mt-0 md:gap-y-2 md:text-5xl xl:text-6xl">
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev</h1>
           <Reveal
             first
@@ -27,7 +27,7 @@ export default async function Home() {
             className="flex flex-col flex-nowrap items-center justify-center gap-y-2 text-center md:flex-row md:justify-start md:gap-y-0"
           >
             <span className="text-nowrap">Hi👋, I&apos;m a&nbsp;</span>
-            <span className="inline-block bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] bg-clip-text text-left text-transparent md:text-center">
+            <span className="inline-block min-w-72 flex-row bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] bg-clip-text text-center text-transparent md:flex md:items-start md:text-center lg:text-left xl:min-w-[22.7rem]">
               <Typewriter
                 words={["Full-Stack", "React", "NextJS"]}
                 typeSpeed={130}
@@ -41,7 +41,7 @@ export default async function Home() {
           </Reveal>
           <Reveal
             as="p"
-            className="mt-2 flex flex-row items-center justify-center text-nowrap after:text-blue-500 after:content-['.'] md:w-[35rem]"
+            className="mt-2 flex flex-row items-center justify-center text-nowrap after:text-blue-500 after:content-['.'] md:w-[39rem]"
             first
             bt
           >
@@ -121,53 +121,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Technologies */}
-      <section className="flex min-h-[100vh] w-full flex-col items-center px-8 md:px-52">
-        <Reveal
-          as="h2"
-          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
-        >
-          Texnologiyalar
-        </Reveal>
-        <div className="mt-16 flex flex-row flex-wrap items-center justify-center gap-x-7 gap-y-7 transition-all">
-          {technologies.map((tech, i) => (
-            <Motion
-              initial={{ scale: 0, opacity: 0 }}
-              viewport={{ once: true }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              key={i}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.3,
-                type: "spring",
-                stiffness: 100,
-              }}
-              className="flex aspect-square rounded-lg p-3 shadow-medium"
-            >
-              <Tooltip
-                shouldFlip
-                showArrow
-                size="lg"
-                placement="top"
-                color="primary"
-                offset={23}
-                content={tech.name}
-              >
-                {
-                  <Image
-                    className="select-none object-contain"
-                    src={tech.icon}
-                    alt={tech.name}
-                    width={90}
-                    height={90}
-                  />
-                }
-              </Tooltip>
-            </Motion>
-          ))}
-        </div>
-      </section>
-
       {/* Other Skills */}
       <section className="flex min-h-[70vh] w-full flex-col items-center px-3 md:px-40 xl:px-64">
         <Reveal
@@ -194,6 +147,53 @@ export default async function Home() {
               <p className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-4 text-lg text-white lg:text-xl">
                 {skill}
               </p>
+            </Motion>
+          ))}
+        </div>
+      </section>
+
+      {/* Technologies */}
+      <section className="flex min-h-[100vh] w-full flex-col items-center px-5 md:px-52">
+        <Reveal
+          as="h2"
+          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
+        >
+          Texnologiyalar
+        </Reveal>
+        <div className="mt-16 flex flex-row flex-wrap items-center justify-center gap-x-5 gap-y-5 transition-all lg:gap-x-7 lg:gap-y-7">
+          {technologies.map((tech, i) => (
+            <Motion
+              initial={{ scale: 0, opacity: 0 }}
+              viewport={{ once: true }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              key={i}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.3,
+                type: "spring",
+                stiffness: 100,
+              }}
+              className="flex aspect-square rounded-lg p-3 shadow-medium max-lg:items-center max-lg:justify-center lg:p-3"
+            >
+              <Tooltip
+                shouldFlip
+                showArrow
+                size="lg"
+                placement="top"
+                color="primary"
+                offset={23}
+                content={tech.name}
+              >
+                {
+                  <Image
+                    className="select-none object-contain max-lg:size-16"
+                    src={tech.icon}
+                    alt={tech.name}
+                    width={90}
+                    height={90}
+                  />
+                }
+              </Tooltip>
             </Motion>
           ))}
         </div>
