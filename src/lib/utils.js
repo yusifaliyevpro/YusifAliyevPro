@@ -11,8 +11,8 @@ export async function getProjects() {
   return data;
 }
 
-export async function getBlogs({ isEnabled }) {
-  const query = `*[_type=='blogs' && (isPublished || ${isEnabled} || ${isInDevelopment})]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}`;
+export async function getBlogs() {
+  const query = `*[_type=='blogs' && isPublished]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}`;
   const data = await client.fetch(
     query,
     { cache: "force-cache" },
@@ -32,8 +32,8 @@ export async function getSlugs() {
   return data;
 }
 
-export async function getBlog({ params, isEnabled }) {
-  const query = `*[_type=='blogs' && slug.current=='${params.blog}' && (isPublished || ${isEnabled} || ${isInDevelopment})]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]`;
+export async function getBlog({ params }) {
+  const query = `*[_type=='blogs' && slug.current=='${params.blog}']{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]`;
   const data = await client.fetch(
     query,
     { cache: "force-cache" },
