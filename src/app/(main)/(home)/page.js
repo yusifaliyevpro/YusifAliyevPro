@@ -11,6 +11,13 @@ import Reveal from "@/components/Reveal";
 
 export const metadata = {
   title: "Ana Səhifə",
+  openGraph: {
+    images: [
+      {
+        url: `/api/og?title=${encodeURI("Ana səhifə")}`,
+      },
+    ],
+  },
 };
 
 export default async function Home() {

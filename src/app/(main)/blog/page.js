@@ -14,6 +14,11 @@ export async function generateMetadata() {
       "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
     openGraph: {
       url: `/blog`,
+      images: [
+        {
+          url: `/api/og?title=${encodeURI("Bloq")}`,
+        },
+      ],
     },
   };
 }

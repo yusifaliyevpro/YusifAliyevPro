@@ -65,7 +65,7 @@ export default function Header() {
       }}
     >
       <NavbarContent>
-        <NavbarBrand>
+        <NavbarBrand as={"li"}>
           <Link
             href={`/`}
             className="relative left-0 flex flex-row items-center gap-1.5 text-xl font-bold"

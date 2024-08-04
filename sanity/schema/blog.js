@@ -1,3 +1,5 @@
+import PreviewMode from "../components/Preview";
+
 export default {
   name: "blogs",
   title: "Blog",
@@ -15,6 +17,14 @@ export default {
       options: {
         source: "title",
         maxLength: 50,
+      },
+    },
+    {
+      name: "preview",
+      title: "Preview",
+      type: "string",
+      components: {
+        field: PreviewMode,
       },
     },
     {

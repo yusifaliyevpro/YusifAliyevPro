@@ -14,6 +14,8 @@ export const metadata = {
     default: "Yusif Aliyev",
     template: "Yusif Aliyev | %s",
   },
+  description:
+    "Mənim şəxsi websaytıma xoş gəlmişsiniz. Bu websaytda mən özüm haqqımda vacib detalları, blog postlarımı paylaşıram. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını tövsiyə edərdim.",
   openGraph: {
     type: "website",
     siteName: "Yusif Aliyev",
