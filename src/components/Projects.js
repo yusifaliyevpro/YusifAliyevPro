@@ -30,12 +30,12 @@ export default function Projects({ projects }) {
             height={200}
             className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-fill shadow-medium transition-all hover:scale-105"
           />
-          <h4
+          <h3
             title={project.name}
             className="line-clamp-1 w-full px-2 text-center text-2xl font-semibold text-gray-800"
           >
             {project.name}
-          </h4>
+          </h3>
           <p
             title={project.description}
             className="line-clamp-2 w-fit max-w-[20rem] text-pretty px-2 text-center text-sm text-gray-500"

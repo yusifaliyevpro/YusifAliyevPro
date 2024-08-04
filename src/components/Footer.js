@@ -64,6 +64,7 @@ export default function Footer() {
                 prefetch={false}
                 href={account.link}
                 target="_blank"
+                aria-label={`My ${account.name} Account`}
                 className={account.className}
                 rel="noopener noreferrer"
               >

@@ -118,6 +118,7 @@ export default function Header() {
               key={i}
               prefetch={false}
               href={account.link}
+              aria-label={`My ${account.name} Account`}
               target="_blank"
               className={account.className}
               rel="noopener noreferrer me"
