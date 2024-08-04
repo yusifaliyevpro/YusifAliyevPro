@@ -1,6 +1,6 @@
 "use client";
 
-import { PREVIEW_URL } from "@/lib/constants";
+import { BASE_URL } from "@/lib/constants";
 import { Button } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { useFormValue } from "sanity";
@@ -13,7 +13,7 @@ export default function PreviewMode() {
   }, [form]);
   return (
     <div className="relative my-0 flex w-full flex-row justify-end">
-      <a href={`${PREVIEW_URL}/blog/${slug}?__vercel_draft=1`} target="_blank">
+      <a href={`${BASE_URL}/blog/${slug}?__vercel_draft=1`} target="_blank">
         <Button color="primary" className="font-bold">
           Preview Mode
         </Button>
