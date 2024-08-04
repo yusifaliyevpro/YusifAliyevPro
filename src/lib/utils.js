@@ -13,29 +13,21 @@ export async function getProjects() {
   return data;
 }
 
-export async function getBlogs() {
-  const query = `*[_type=='blogs' && isPublished]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}`;
+export async function getBlogs({ isEnabled }) {
+  const query = `*[_type=='blogs' && (isPublished || ${isEnabled})]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}`;
   const data = await client.fetch(
     query,
-    { cache: "force-cache" },
-    { next: { revalidate: isInDevelopment ? 10 : 3600 } },
+    isEnabled
+      ? { cache: "no-store" }
+      : ({ cache: "force-cache" },
+        { next: { revalidate: isInDevelopment ? 10 : 3600 } }),
   );
   return data;
 }
 
 export async function getSlugs() {
-  const query = `*[_type=='blogs' && isPublished]|order(publishedAt desc)
+  const query = `*[_type=='blogs']|order(publishedAt desc)
       {"slug": slug.current}`;
-  const data = await client.fetch(
-    query,
-    { cache: "force-cache" },
-    { next: { revalidate: isInDevelopment ? 10 : 3600 } },
-  );
-  return data;
-}
-
-export async function getCount() {
-  const query = `count(*[_type == "blogs" && isPublished])`;
   const data = await client.fetch(
     query,
     { cache: "force-cache" },

@@ -2,7 +2,8 @@ import Blogs from "@/components/Blogs";
 import Reveal from "@/components/Reveal";
 import Search from "@/components/Search";
 import { poppins, signika_negative } from "@/lib/fonts";
-import { getBlogs, getCount } from "@/lib/utils";
+import { getBlogs } from "@/lib/utils";
+import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
 
 export async function generateMetadata() {
@@ -17,8 +18,9 @@ export async function generateMetadata() {
 }
 
 export default async function BlogsPage() {
-  const blogs = await getBlogs();
-  const totalBlogCount = await getCount();
+  const { isEnabled } = draftMode();
+  const blogs = await getBlogs({ isEnabled });
+  const totalBlogCount = blogs.length;
   return (
     <main
       className={`flex min-h-[100dvh] flex-col items-center pt-20 ${signika_negative.className}`}
