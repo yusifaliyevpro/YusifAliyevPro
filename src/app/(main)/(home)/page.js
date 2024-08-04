@@ -15,7 +15,6 @@ export const metadata = {
 
 export default async function Home() {
   const projects = await getProjects();
-  console.log(process.env.NODE_ENV);
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-y-56 pb-20 transition-all">

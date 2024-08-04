@@ -44,12 +44,14 @@ export async function getCount() {
   return data;
 }
 
-export async function getBlog({ params }) {
+export async function getBlog({ params, isEnabled }) {
   const query = `*[_type=='blogs' && slug.current=='${params.blog}']{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]`;
   const data = await client.fetch(
     query,
-    { cache: "force-cache" },
-    { next: { revalidate: isInDevelopment ? 10 : 3600 } },
+    isEnabled
+      ? { cache: "no-store" }
+      : ({ cache: "force-cache" },
+        { next: { revalidate: isInDevelopment ? 10 : 3600 } }),
   );
   return data;
 }

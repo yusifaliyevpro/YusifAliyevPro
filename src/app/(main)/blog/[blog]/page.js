@@ -7,6 +7,7 @@ import Link from "next/link";
 import { source_sans_3 } from "@/lib/fonts";
 import dateFormatter, { ReadtimeCalculator } from "@/lib/formatters";
 import { notFound } from "next/navigation";
+import { draftMode } from "next/headers";
 
 export async function generateMetadata({ params }) {
   const blog = await getBlog({ params });
@@ -32,7 +33,8 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPage({ params }) {
-  const blog = await getBlog({ params });
+  const { isEnabled } = draftMode();
+  const blog = await getBlog({ params, isEnabled });
 
   if (!blog) notFound();
   return (
