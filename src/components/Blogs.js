@@ -51,7 +51,7 @@ export default function Blogs({ blogs, totalBlogCount }) {
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
               <div className="px-6">
-                <h2 className="line-clamp-3 py-5 text-2xl font-bold">
+                <h2 className="line-clamp-2 py-5 text-2xl font-bold">
                   {blog.title}
                 </h2>
                 <p className="line-clamp-1 w-fit text-wrap text-lg font-normal text-gray-500 md:line-clamp-5">

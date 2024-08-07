@@ -77,7 +77,6 @@ export default async function Home() {
           />
         </Motion>
       </section>
-
       {/* My ProJects */}
       <section className="flex min-h-[100vh] flex-col items-center">
         <div className="mb-16 text-center text-4xl font-bold md:text-5xl">
