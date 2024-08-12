@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@/sanity/*": ["./sanity/*"]
+      "@/sanity/*": ["./src/sanity/*"]
     }
   }
 }

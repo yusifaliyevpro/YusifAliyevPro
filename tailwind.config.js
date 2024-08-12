@@ -27,5 +27,5 @@ export default {
       },
     },
   },
-  plugins: [nextui(), tailwindTypo()],
+  plugins: [nextui()],
 };

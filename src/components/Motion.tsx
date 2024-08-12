@@ -6,7 +6,7 @@ import React from "react";
 interface CustomMotionProps<Tag extends keyof JSX.IntrinsicElements>
   extends MotionProps {
   type?: Tag;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className: string | undefined | null;
 }
 
