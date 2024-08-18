@@ -1,6 +1,6 @@
 import PreviewMode from "../lib/Preview";
 
-export default {
+const project = {
   name: "blogs",
   title: "Blog",
   type: "document",
@@ -71,3 +71,5 @@ export default {
     },
   ],
 };
+
+export default project;

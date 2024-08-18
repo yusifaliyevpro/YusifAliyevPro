@@ -1,7 +1,6 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "react-hooks/exhaustive-deps": "off",
-    "import/no-anonymous-default-export": "off"
+    "react-hooks/exhaustive-deps": "off"
   }
 }

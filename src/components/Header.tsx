@@ -95,7 +95,7 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent justify="center" className="hidden gap-x-10 md:flex">
         {navbars.map((navbar, i) => (
-          <NavbarItem>
+          <NavbarItem key={i}>
             <Link
               color="foreground"
               className="hidden text-lg font-semibold text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-slate-400 sm:flex"
@@ -128,7 +128,7 @@ export default function Header() {
       </NavbarContent>
       <NavbarMenu className="max-h-[200px] items-center justify-center gap-3 overflow-hidden bg-gray-100/90 backdrop-blur-md">
         {navbars.map((navbar, i) => (
-          <NavbarMenuItem>
+          <NavbarMenuItem key={i}>
             <Link href={navbar.link} className={`w-full text-xl font-semibold`}>
               {navbar.name}
             </Link>

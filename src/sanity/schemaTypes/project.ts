@@ -1,4 +1,4 @@
-export default {
+const blog = {
   name: "projects",
   title: "Projects",
   type: "document",
@@ -40,31 +40,6 @@ export default {
       title: "Short Description",
       type: "string",
     },
-    // {
-    //   name: "genre",
-    //   title: "Genre",
-    //   type: "array",
-    //   of: [{ type: "string" }],
-    //   options: {
-    //     list: [
-    //       { title: "Aksiyon", value: "Action" },
-    //       { title: "Macəra", value: "Adventure" },
-    //       { title: "Dram", value: "Drama" },
-    //       { title: "Triller", value: "Thriller" },
-    //       { title: "Animasiya", value: "Animation" },
-    //       { title: "Komediya", value: "Comedy" },
-    //       { title: "Ailə", value: "Family" },
-    //       { title: "Sci-Fi", value: "Sci-Fi" },
-    //       { title: "Fantaziya", value: "Fantasy" },
-    //       { title: "Qorxu", value: "Horror" },
-    //       { title: "Sirli", value: "Mystery" },
-    //       { title: "Belgesel", value: "Documentary" },
-    //       { title: "Müharibə", value: "War" },
-    //       { title: "Cinayət", value: "Crime" },
-    //       { title: "Tarixi", value: "Historical" },
-    //     ],
-    //     layout: "grid",
-    //   },
-    // },
   ],
 };
+export default blog;
