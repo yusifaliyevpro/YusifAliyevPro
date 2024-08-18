@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="az">
       <body
-        className={`${poppins.className} ${poppins.variable} ${jua.variable} ${source_sans_3.variable} min-h-[100dvh] scroll-smooth font-semibold`}
+        className={`${poppins.className} ${poppins.variable} ${jua.variable} ${source_sans_3.variable} min-h-[100svh] scroll-smooth bg-white font-semibold dark:bg-foreground dark:text-slate-200`}
       >
         <Providers>
           <Toaster

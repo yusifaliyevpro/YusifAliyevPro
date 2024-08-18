@@ -44,10 +44,10 @@ export default function Blogs({
         {renderedBlogs.map((blog, i) => (
           <article
             key={i}
-            className="col-span-1 flex h-auto cursor-pointer flex-col items-center justify-start rounded-lg border-solid bg-white pb-5 shadow-medium shadow-blue-600 transition-all hover:scale-105"
+            className="col-span-1 flex h-auto cursor-pointer flex-col items-center justify-start rounded-lg border-solid bg-white pb-5 shadow-medium shadow-blue-600 transition-all hover:scale-105 dark:bg-gray-800"
           >
             <Link href={`/blog/${blog.slug}`}>
-              <figure className="borde-x-0 flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg border-b-1 border-t-0 border-solid">
+              <figure className="borde-x-0 flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg border-b-1 border-t-0 border-solid dark:border-0">
                 <Image
                   src={blog.poster}
                   width={250}
@@ -58,10 +58,10 @@ export default function Blogs({
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
               <div className="px-6">
-                <h2 className="my-5 line-clamp-2 text-2xl font-bold">
+                <h2 className="my-5 line-clamp-2 text-2xl font-bold dark:text-slate-300">
                   {blog.title}
                 </h2>
-                <p className="line-clamp-1 w-fit text-wrap text-lg font-normal text-gray-500 md:line-clamp-5">
+                <p className="line-clamp-1 w-fit text-wrap text-lg font-normal text-gray-500 dark:text-slate-400/80 md:line-clamp-5">
                   {blog.description}
                 </p>
               </div>
@@ -77,7 +77,7 @@ export default function Blogs({
                   />
                   <p className="font-medium">Yusif Aliyev</p>
                 </div>
-                <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700">
+                <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700 dark:text-slate-400">
                   <GoClock />
                   <time
                     dateTime={blog.publishedAt}
@@ -95,7 +95,7 @@ export default function Blogs({
         <Button
           onPress={() => setPage(page + 1)}
           size="lg"
-          className="mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white"
+          className="mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white dark:from-blue-600 dark:to-blue-500 dark:text-slate-200"
         >
           Daha çox göstər
         </Button>

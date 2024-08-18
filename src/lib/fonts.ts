@@ -1,5 +1,4 @@
 import {
-  Fira_Code,
   Jua,
   Poppins,
   Signika_Negative,

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-y-56 pb-20 transition-all">
-      <section className="mt-28 flex min-h-[76vh] w-full flex-col items-center justify-between px-8 md:mt-32 md:min-h-[88vh] md:pb-[10vh] lg:px-28 xl:mt-2 xl:min-h-[100vh] xl:flex-row">
+      <section className="mt-28 flex min-h-[76svh] w-full flex-col items-center justify-between px-8 md:mt-32 md:min-h-[88vh] md:pb-[10vh] lg:px-28 xl:mt-2 xl:min-h-svh xl:flex-row">
         <div className="relative flex flex-col gap-y-2 text-4xl max-lg:w-full max-lg:items-center max-lg:justify-center md:mt-0 md:gap-y-2 md:text-5xl xl:text-6xl">
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev</h1>
           <Reveal
@@ -67,7 +67,6 @@ export default async function Home() {
           <Image
             src={"/profile.png"}
             width={350}
-            unoptimized
             priority
             alt="Profile Picture"
             height={350}
@@ -76,7 +75,7 @@ export default async function Home() {
         </Motion>
       </section>
       {/* My ProJects */}
-      <section className="flex min-h-[100vh] flex-col items-center">
+      <section className="flex min-h-svh flex-col items-center">
         <div className="mb-16 text-center text-4xl font-bold md:text-5xl">
           <Reveal as="h2" className="after:text-blue-500 after:content-['.']">
             Layihələrim
@@ -86,7 +85,7 @@ export default async function Home() {
       </section>
 
       {/* My Skils */}
-      <section className="flex min-h-[100vh] w-full flex-col items-center">
+      <section className="flex min-h-svh w-full flex-col items-center">
         <Reveal
           as="h2"
           className="text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
@@ -126,7 +125,7 @@ export default async function Home() {
       </section>
 
       {/* Other Skills */}
-      <section className="flex min-h-[70vh] w-full flex-col items-center px-3 md:px-40 xl:px-64">
+      <section className="flex min-h-[70vh] w-full flex-col items-center md:px-40 xl:px-64">
         <Reveal
           as="h2"
           className="w-full text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
@@ -148,7 +147,7 @@ export default async function Home() {
               key={i}
               className="flex flex-row items-center"
             >
-              <p className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-4 text-lg text-white lg:text-xl">
+              <p className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-3 text-lg text-white dark:text-slate-300 md:px-4 lg:text-xl">
                 {skill}
               </p>
             </Motion>
@@ -157,7 +156,7 @@ export default async function Home() {
       </section>
 
       {/* Technologies */}
-      <section className="flex min-h-[100vh] w-full flex-col items-center px-5 md:px-52">
+      <section className="flex min-h-svh w-full flex-col items-center px-5 md:px-52">
         <Reveal
           as="h2"
           className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
@@ -177,7 +176,7 @@ export default async function Home() {
                 type: "spring",
                 stiffness: 100,
               }}
-              className="flex aspect-square rounded-lg p-3 shadow-medium max-lg:items-center max-lg:justify-center lg:p-3"
+              className="flex aspect-square rounded-lg bg-white p-3 shadow-medium dark:bg-slate-800 max-lg:items-center max-lg:justify-center lg:p-3"
             >
               <Tooltip
                 shouldFlip
@@ -190,7 +189,7 @@ export default async function Home() {
               >
                 {
                   <Image
-                    className="select-none object-contain max-lg:size-16"
+                    className="select-none object-contain drop-shadow-xl max-lg:size-16"
                     src={tech.icon}
                     alt={tech.name}
                     width={90}

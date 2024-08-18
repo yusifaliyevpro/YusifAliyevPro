@@ -41,10 +41,10 @@ export default async function BlogPage({ params }) {
   if (!blog) notFound();
   return (
     <main
-      className={`a flex min-h-[100dvh] w-full flex-col items-center justify-center pb-10 font-sans transition-all`}
+      className={`a flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all`}
     >
-      <article className="relative top-0 flex min-h-[50dvh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 md:px-10 lg:px-24 xl:px-44">
-        <div className="mt-24 flex min-h-[50dvh] w-full flex-col items-center border-b-[0px] border-solid border-gray-300 bg-white p-8 py-12 md:rounded-t-md md:border-b-[0.8px] lg:shadow-ltr-small">
+      <article className="relative top-0 flex min-h-[50svh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 dark:from-blue-600 dark:to-blue-300 md:px-10 lg:px-24 xl:px-44">
+        <div className="mt-24 flex min-h-[50svh] w-full flex-col items-center border-b-[0px] border-solid border-gray-300 bg-white p-8 py-12 dark:border-0 dark:bg-foreground md:rounded-t-md md:border-b-[0.8px] lg:shadow-ltr-small">
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               src={"/profile.png"}
@@ -81,15 +81,15 @@ export default async function BlogPage({ params }) {
             <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
               {blog.title}
             </h1>
-            <p className="text-pretty text-center text-lg font-normal leading-normal text-gray-500 md:px-12 lg:px-20 lg:text-xl">
+            <p className="text-pretty text-center text-lg font-normal leading-normal text-gray-500 dark:text-slate-400/80 md:px-12 lg:px-20 lg:text-xl">
               {blog.description}
             </p>
           </header>
         </div>
       </article>
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
-        <div className="flex min-h-[100dvh] w-full flex-col md:rounded-b-md lg:shadow-small">
-          <figure className="relative aspect-[16/9] h-full border-solid md:border-b-1">
+        <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
+          <figure className="relative aspect-[16/9] h-full border-solid dark:border-0 md:border-b-1">
             <Image
               src={blog.poster}
               priority

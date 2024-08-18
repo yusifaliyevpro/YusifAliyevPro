@@ -1,4 +1,8 @@
-export const technologies = [
+export const technologies: {
+  name: string;
+  link: string;
+  icon: string;
+}[] = [
   {
     name: "NextJS 14",
     link: "https://nextjs.org/",

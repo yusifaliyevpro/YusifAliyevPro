@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 export const events: {
   name?: string;
-  description?: string | ReactNode;
+  description?: ReactNode;
   year?: number;
 }[] = [
   {

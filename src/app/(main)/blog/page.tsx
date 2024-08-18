@@ -30,7 +30,7 @@ export default async function BlogsPage() {
   const totalBlogCount = blogs.length;
   return (
     <main
-      className={`flex min-h-[100dvh] flex-col items-center pt-20 font-signika`}
+      className={`flex min-h-[100svh] flex-col items-center pt-20 font-signika`}
     >
       <div className="bg-gradiesnt-to-b mt-5 flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
         <div className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
@@ -46,7 +46,7 @@ export default async function BlogsPage() {
               Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi
               paylaşıram.
             </p>
-            <span className="flex h-24 max-w-[25rem] text-wrap pl-3 text-lg font-normal text-slate-600 sm:h-12">
+            <span className="flex h-24 max-w-[25rem] text-wrap pl-3 text-lg font-normal text-slate-600 dark:text-slate-400 sm:h-12">
               <Typewriter
                 words={[
                   " Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",

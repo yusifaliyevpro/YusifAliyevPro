@@ -3,19 +3,21 @@ import { useAnimation, useInView, motion } from "framer-motion";
 import React, { ReactNode, useEffect, useRef } from "react";
 import { Motion } from "./Motion";
 
+type RevealProps = {
+  children: ReactNode;
+  first?: boolean;
+  bt?: boolean;
+  className?: string;
+  as?: keyof JSX.IntrinsicElements;
+};
+
 export default function Reveal({
   children,
   first,
   bt,
   className,
   as = "div",
-}: {
-  children: ReactNode;
-  first?: boolean;
-  bt?: boolean;
-  className?: string;
-  as?: keyof JSX.IntrinsicElements;
-}) {
+}: RevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.7 });
   const mainControls = useAnimation();

@@ -3,12 +3,12 @@
 import { motion, MotionProps } from "framer-motion";
 import React from "react";
 
-interface CustomMotionProps<Tag extends keyof JSX.IntrinsicElements>
-  extends MotionProps {
-  type?: Tag;
-  children?: React.ReactNode;
-  className: string | undefined | null;
-}
+type CustomMotionProps<Tag extends keyof JSX.IntrinsicElements> =
+  MotionProps & {
+    type?: Tag;
+    children?: React.ReactNode;
+    className?: string | null;
+  };
 
 export const Motion = <Tag extends keyof JSX.IntrinsicElements>({
   type,

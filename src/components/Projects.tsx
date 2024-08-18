@@ -7,7 +7,7 @@ import { getProjects } from "@/lib/utils";
 export default async function Projects() {
   const projects = await getProjects();
   return (
-    <div className="flex w-full flex-row flex-wrap items-stretch justify-center gap-x-10 gap-y-8 px-5 transition-all md:mx-48">
+    <div className="flex w-full flex-row flex-wrap items-stretch justify-center gap-x-10 gap-y-8 px-7 transition-all md:mx-48">
       {projects.map((project, i) => (
         <Motion
           initial={{
@@ -23,7 +23,7 @@ export default async function Projects() {
             stiffness: 60,
           }}
           key={i}
-          className="flex flex-col items-center justify-center gap-y-4 rounded-2xl border-1 border-blue-400 p-4 shadow-medium"
+          className="flex flex-col items-center justify-center gap-y-3 rounded-2xl border-1 border-blue-400 p-4 shadow-medium md:gap-y-4"
         >
           <Image
             src={project.image}
@@ -34,13 +34,13 @@ export default async function Projects() {
           />
           <h3
             title={project.name}
-            className="line-clamp-1 w-full px-2 text-center text-2xl font-semibold text-gray-800"
+            className="line-clamp-1 w-full px-2 text-center text-2xl font-semibold text-gray-800 dark:text-slate-300"
           >
             {project.name}
           </h3>
           <p
             title={project.description}
-            className="line-clamp-2 w-fit max-w-[20rem] text-pretty px-2 text-center text-sm text-gray-500"
+            className="line-clamp-2 w-fit max-w-[20rem] text-pretty text-center text-sm text-gray-500 dark:text-slate-400 md:px-2"
           >
             {project.description}
           </p>

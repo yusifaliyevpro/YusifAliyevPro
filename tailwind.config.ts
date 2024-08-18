@@ -1,6 +1,7 @@
 import { nextui } from "@nextui-org/react";
-import tailwindTypo from "@tailwindcss/typography";
-export default {
+import type { Config } from "tailwindcss/types/config";
+
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,6 +10,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        foreground: "#1a202c",
+      },
       fontFamily: {
         sans: ["var(--font-sans)"],
         signika: ["var(--font-signika)"],
@@ -27,5 +31,8 @@ export default {
       },
     },
   },
+  darkMode: "class",
   plugins: [nextui()],
 };
+
+export default config;

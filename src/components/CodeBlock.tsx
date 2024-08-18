@@ -3,7 +3,10 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { FaReact } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 import CopyButton from "./CopyButton";
-import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  oneDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function CodeBlock({
   code,
@@ -15,8 +18,8 @@ export default function CodeBlock({
   fileName: string;
 }) {
   return (
-    <div className={`rounded-lg border transition-all`}>
-      <div className="flex items-center justify-between rounded-t-md border-b bg-gray-200/80 px-4 py-2">
+    <div className={`rounded-lg border transition-none`}>
+      <div className="flex items-center justify-between rounded-t-md border-b bg-gray-200/80 px-4 py-2 dark:border-0 dark:bg-gray-500">
         <div className="text-md flex flex-row items-center justify-center gap-2 py-2 font-semibold">
           {(() => {
             switch (language) {
@@ -40,11 +43,29 @@ export default function CodeBlock({
           <CopyButton text={code} />
         </div>
       </div>
-      <div className={`transition-all scrollbar-hide`}>
+      <div className={`transition-all scrollbar-hide dark:hidden`}>
         <SyntaxHighlighter
           language={language}
           showLineNumbers
           style={oneLight}
+          customStyle={{
+            margin: 0,
+            height: "23.4rem",
+            paddingLeft: 0,
+            msOverflowStyle: "none",
+            scrollbarWidth: "none",
+            overflow: "auto",
+            paddingRight: 0,
+          }}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
+      <div className={`hidden transition-all scrollbar-hide dark:flex`}>
+        <SyntaxHighlighter
+          language={language}
+          showLineNumbers
+          style={oneDark}
           customStyle={{
             margin: 0,
             height: "23.4rem",

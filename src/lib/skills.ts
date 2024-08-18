@@ -1,4 +1,7 @@
-export const skills = [
+export const skills: {
+  name: string;
+  value: number;
+}[] = [
   {
     name: "HTML",
     value: 90,
@@ -9,7 +12,7 @@ export const skills = [
   },
   {
     name: "JavaScript, TypeScript",
-    value: 75,
+    value: 85,
   },
   {
     name: "React",
@@ -21,7 +24,7 @@ export const skills = [
   },
 ];
 
-export const addSkills = [
+export const addSkills: string[] = [
   "SEO",
   "HTML5",
   "Layihə İdarə etməsi",

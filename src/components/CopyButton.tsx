@@ -5,7 +5,8 @@ import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
 import { Tooltip } from "@nextui-org/react";
-export default function CopyButton({ text }) {
+
+export default function CopyButton({ text }: { text: string }) {
   const [mouseLeaved, setMouseLeaved] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const handle = () => {

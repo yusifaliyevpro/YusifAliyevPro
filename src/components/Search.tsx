@@ -33,8 +33,9 @@ export default function Search() {
         <Input
           classNames={{
             inputWrapper:
-              "group-data-[focus=true]:border-blue-400  hover:!border-blue-300 border-blue-200 ",
-            input: "placeholder:text-gray-500 text-lg font-normal",
+              "group-data-[focus=true]:border-blue-400  hover:!border-blue-300 border-blue-200 dark:border-slate-400",
+            input:
+              "placeholder:text-gray-500 dark:placeholder:text-slate-400 text-lg font-normal",
           }}
           placeholder={"Axtarış"}
           variant="bordered"

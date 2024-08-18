@@ -13,7 +13,7 @@ export const metadata = {
 };
 export default function About() {
   return (
-    <main className="flex min-h-[100dvh] w-full flex-col items-center justify-center text-3xl md:px-64">
+    <main className="flex min-h-svh w-full flex-col items-center justify-center text-3xl md:px-64">
       {isInDevelopment ? (
         <div className="flex min-h-[30rem] w-full flex-col items-center justify-start rounded-3xl bg-white shadow-large">
           <h1 className="my-5">Haqqımda</h1>
