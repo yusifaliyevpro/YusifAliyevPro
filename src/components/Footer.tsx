@@ -1,10 +1,11 @@
+import type { TSocialAccounts } from "@/lib/customTypes";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
 
-export const socialAccounts = [
+const socialAccounts: TSocialAccounts = [
   {
     icon: <GrInstagram />,
     name: "Instagram",
@@ -41,7 +42,7 @@ export default function Footer() {
       <div className="flex w-full flex-col items-center justify-between p-4 px-10 md:flex-row md:py-6">
         <div className="flex flex-row items-center justify-start pb-5 pt-4 md:px-10 md:py-0">
           <Link
-            href=""
+            href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <span

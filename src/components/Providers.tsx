@@ -3,7 +3,7 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { MotionConfig } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export function Providers({ children }: { children: ReactNode }) {

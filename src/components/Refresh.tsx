@@ -1,6 +1,6 @@
 "use client";
 
-import { UpdateBlogs, UpdateSpecificBlog } from "@/lib/actions";
+import { updateBlogs, updateSpecificBlog } from "@/lib/actions";
 import { Button } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { RxUpdate } from "react-icons/rx";
@@ -8,7 +8,7 @@ import { RxUpdate } from "react-icons/rx";
 export function RefreshBlogs() {
   const refresh = () => {
     try {
-      UpdateBlogs();
+      updateBlogs();
       toast.success("Blogs Refreshed");
     } catch (error) {
       console.log(error);
@@ -36,7 +36,7 @@ export function RefreshBlogs() {
 export function RefreshSpecificBlog() {
   const refresh = () => {
     try {
-      UpdateSpecificBlog();
+      updateSpecificBlog();
       toast.success("Refreshed Specific Blog");
     } catch (error) {
       console.log(error);

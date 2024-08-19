@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export const events: {
   name?: string;
@@ -14,15 +13,14 @@ export const events: {
     name: "Developer & Creator",
     description: (
       <>
-        <Link
-          prefetch={false}
+        <a
           rel="noopener noreferrer"
           href={"https://world-countriess.vercel.app/"}
           className="text-blue-500"
           target="_blank"
         >
           World-Countriess
-        </Link>{" "}
+        </a>{" "}
         | Websayt
       </>
     ),
@@ -41,15 +39,14 @@ export const events: {
     name: "Developer & Creator",
     description: (
       <>
-        <Link
+        <a
           href={"https://filmisbest.com/"}
           className="text-blue-500"
           target="_blank"
-          prefetch={false}
           rel="noopener noreferrer"
         >
           FilmIsBest
-        </Link>{" "}
+        </a>{" "}
         | Film Websaytı
       </>
     ),
@@ -58,15 +55,14 @@ export const events: {
     name: "Text Editor & SEO & Debugger",
     description: (
       <>
-        <Link
+        <a
           href={"https://kitabxanano2.vercel.app/"}
           className="text-blue-500"
           target="_blank"
-          prefetch={false}
           rel="noopener noreferrer"
         >
           Kitabxano2
-        </Link>{" "}
+        </a>{" "}
         | StartUp
       </>
     ),

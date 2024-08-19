@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import "./style.css";
 export const metadata = {
   title: "Next.js",

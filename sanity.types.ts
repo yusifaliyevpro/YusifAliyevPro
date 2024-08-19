@@ -268,9 +268,10 @@ export type BLOGS_QUERYResult = Array<{
   description: string | null;
 }>;
 // Variable: SLUGS_QUERY
-// Query: *[_type=='blogs' && isPublished]|order(publishedAt desc)      {"slug": slug.current}
+// Query: *[_type=='blogs' && isPublished]|order(publishedAt desc)      {"slug": slug.current, publishedAt}
 export type SLUGS_QUERYResult = Array<{
   slug: string | null;
+  publishedAt: string | null;
 }>;
 // Variable: BLOG_QUERY
 // Query: *[_type=='blogs' && slug.current=='$blog']{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]

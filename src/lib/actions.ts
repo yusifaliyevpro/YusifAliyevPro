@@ -4,12 +4,12 @@ import { revalidateTag } from "next/cache";
 import { isInDevelopment } from "./constants";
 import { draftMode } from "next/headers";
 
-export async function UpdateBlogs() {
+export async function updateBlogs() {
   const { isEnabled } = draftMode();
   if (isInDevelopment || isEnabled) revalidateTag("blogs");
 }
 
-export async function UpdateSpecificBlog() {
+export async function updateSpecificBlog() {
   const { isEnabled } = draftMode();
   if (isInDevelopment || isEnabled) revalidateTag("blog");
 }

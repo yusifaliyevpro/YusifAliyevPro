@@ -1,25 +1,10 @@
-export default function DateFormatter({ date }: { date: string }): string {
-  const monthNames = [
-    "Yanvar",
-    "Fevral",
-    "Mart",
-    "Aprel",
-    "May",
-    "İyun",
-    "İyul",
-    "Avqust",
-    "Sentyabr",
-    "Oktabr",
-    "Noyabr",
-    "Dekabr",
-  ];
+export function dateFormatter(date: string): string {
   const fullDate = new Date(date);
   const day = fullDate.getDate();
   const month = fullDate.getMonth() + 1;
   const year = fullDate.getFullYear();
 
   return `${day < 10 ? "0" : ""}${day}/ ${month < 10 ? "0" : ""}${month}/ ${year}`;
-  // return `${day} ${monthNames[month - 1]}, ${year}`;
 }
 
 export function readtimeCalculator({ text }: { text: string }): number {

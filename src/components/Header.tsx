@@ -12,36 +12,44 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import type { TNavbars, TSocialAccounts } from "@/lib/customTypes";
+import { FaGithub } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
-import { ThemeSwitcher } from "./ThemeSwitcher";
 
-export const socialAccounts = [
+const socialAccounts: TSocialAccounts = [
   {
     icon: <GrInstagram />,
     name: "Instagram",
     link: "https://www.instagram.com/yusifaliyevpro",
     className:
-      "rounded-md from-[#833ab4] via-[#fd1d1d] to-[#fcb045] p-[3px] text-3xl hover:bg-gradient-to-r hover:text-white",
+      "rounded-md from-[#833ab4] via-[#fd1d1d] dark:text-slate-300 to-[#fcb045] p-[3px] text-3xl hover:bg-gradient-to-r hover:text-white",
   },
   {
     icon: <LiaFacebook strokeWidth={0.3} />,
     name: "FaceBook",
     link: "https://www.facebook.com/yusifaliyevpro",
     className:
-      "rounded-full from-[#00c6ff] to-[#0072ff] text-[42px] hover:bg-gradient-to-r hover:text-white",
+      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
   },
   {
     icon: <PiLinkedinLogoBold />,
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/yusifaliyevpro/",
     className:
-      "rounded-md from-[#0c8bea] to-[#0B66C2] text-4xl hover:bg-gradient-to-r hover:text-white",
+      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
+  },
+  {
+    icon: <FaGithub />,
+    name: "GitHub",
+    link: "https://github.com/YusifAliyevPro",
+    className:
+      "rounded-full to-gray-800 p-[2px] text-4xl dark:text-slate-300 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white",
   },
 ];
 
-const navbars = [
+const navigationLinks: TNavbars = [
   {
     name: "Ana Səhifə",
     link: "/",
@@ -80,11 +88,11 @@ export default function Header() {
     >
       <NavbarContent>
         <NavbarBrand as={"li"}>
+          <p className="sr-only">YusifAliyevPro</p>
           <Link
             href={`/`}
             className="relative left-0 flex flex-row items-center gap-1.5 text-xl font-bold"
           >
-            <p className="sr-only">YusifAliyevPro</p>
             <div
               className={`font-jua text-3xl font-normal text-black dark:text-white`}
             >
@@ -94,7 +102,7 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent justify="center" className="hidden gap-x-10 md:flex">
-        {navbars.map((navbar, i) => (
+        {navigationLinks.map((navbar, i) => (
           <NavbarItem key={i}>
             <Link
               color="foreground"
@@ -110,7 +118,7 @@ export default function Header() {
       <NavbarContent justify="end">
         <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
           {/* <ThemeSwitcher /> */}
-          {socialAccounts.map((account, i) => (
+          {socialAccounts.slice(0, 3).map((account, i) => (
             <Link
               key={i}
               prefetch={false}
@@ -127,7 +135,7 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu className="max-h-[200px] items-center justify-center gap-3 overflow-hidden bg-gray-100/90 backdrop-blur-md">
-        {navbars.map((navbar, i) => (
+        {navigationLinks.map((navbar, i) => (
           <NavbarMenuItem key={i}>
             <Link href={navbar.link} className={`w-full text-xl font-semibold`}>
               {navbar.name}

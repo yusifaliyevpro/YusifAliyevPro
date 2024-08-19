@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { Motion } from "./Motion";
 import { getProjects } from "@/lib/utils";
@@ -45,24 +44,22 @@ export default async function Projects() {
             {project.description}
           </p>
           <div className="mt-3 flex w-full flex-row items-center justify-around">
-            <Link
+            <a
               href={project.link}
-              prefetch={false}
               rel="noopener noreferrer"
               target="_blank"
               className="flex flex-row items-center gap-x-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-3 text-white hover:opacity-90 md:px-5"
             >
               <FaGlobe className="text-2xl" /> Websayt
-            </Link>
-            <Link
+            </a>
+            <a
               href={project.repo}
-              prefetch={false}
               rel="noopener noreferrer"
               target="_blank"
               className="flex flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
             >
               <FaGithub className="text-2xl" /> Repo
-            </Link>
+            </a>
           </div>
         </Motion>
       ))}

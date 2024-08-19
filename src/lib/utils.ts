@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 import { client } from "./../sanity/lib/client";
 import { isInDevelopment } from "./constants";
-import {
+import type {
   BLOG_QUERYResult,
   BLOGS_QUERYResult,
   PROJECTS_QUERYResult,
@@ -30,7 +30,7 @@ export async function getBlogs({ isEnabled }: { isEnabled: boolean }) {
 
 export async function getSlugs() {
   const SLUGS_QUERY = groq`*[_type=='blogs' && isPublished]|order(publishedAt desc)
-      {"slug": slug.current}`;
+      {"slug": slug.current, publishedAt}`;
   const data = await client.fetch<SLUGS_QUERYResult>(
     SLUGS_QUERY,
     {},

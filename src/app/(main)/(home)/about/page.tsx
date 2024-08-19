@@ -1,16 +1,5 @@
 import { isInDevelopment } from "@/lib/constants";
 
-export const metadata = {
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
-  },
-};
 export default function About() {
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center text-3xl md:px-64">

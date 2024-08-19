@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import Search from "@/components/Search";
 import { isInDevelopment } from "@/lib/constants";
 import { getBlogs } from "@/lib/utils";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
 

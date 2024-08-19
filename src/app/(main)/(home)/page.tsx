@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Motion } from "../../../components/Motion";
 import { Typewriter } from "nextjs-simple-typewriter";
 import Reveal from "@/components/Reveal";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Ana Səhifə",

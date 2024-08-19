@@ -4,7 +4,6 @@ import { FaReact } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 import CopyButton from "./CopyButton";
 import {
-  oneDark,
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -65,7 +64,7 @@ export default function CodeBlock({
         <SyntaxHighlighter
           language={language}
           showLineNumbers
-          style={oneDark}
+          style={oneLight}
           customStyle={{
             margin: 0,
             height: "23.4rem",

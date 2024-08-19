@@ -8,9 +8,8 @@ import { jua, poppins, source_sans_3 } from "@/lib/fonts";
 import { BASE_URL } from "@/lib/constants";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { ReactNode } from "react";
-import { Metadata } from "next";
-
+import type { ReactNode } from "react";
+import type { Metadata } from "next";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="az">
+    <html lang="az" suppressHydrationWarning>
       <body
         className={`${poppins.className} ${poppins.variable} ${jua.variable} ${source_sans_3.variable} min-h-[100svh] scroll-smooth bg-white font-semibold dark:bg-foreground dark:text-slate-200`}
       >

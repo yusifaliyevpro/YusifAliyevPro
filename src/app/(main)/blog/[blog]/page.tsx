@@ -4,12 +4,12 @@ import { GoClock } from "react-icons/go";
 import { FiWatch } from "react-icons/fi";
 import RichText from "@/components/RichText";
 import Link from "next/link";
-import dateFormatter, { readtimeCalculator } from "@/lib/formatters";
+import { dateFormatter, readtimeCalculator } from "@/lib/formatters";
 import { notFound } from "next/navigation";
 import { draftMode } from "next/headers";
 import { RefreshSpecificBlog } from "@/components/Refresh";
 import { isInDevelopment } from "@/lib/constants";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   const blog = await getBlog({ params });
@@ -67,7 +67,7 @@ export default async function BlogPage({ params }) {
                 dateTime={blog.publishedAt}
                 className="text-md tabular-nums"
               >
-                {dateFormatter({ date: blog.publishedAt })}
+                {dateFormatter(blog.publishedAt)}
               </time>
             </div>
             <div className="flex flex-row items-center gap-x-1">

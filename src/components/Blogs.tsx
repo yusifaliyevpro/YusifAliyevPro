@@ -6,8 +6,8 @@ import { Button } from "@nextui-org/react";
 import Fuse from "fuse.js";
 import useQuery from "@/lib/store";
 import { useEffect, useState } from "react";
-import dateFormatter from "@/lib/formatters";
-import { BLOGS_QUERYResult } from "../../sanity.types";
+import { dateFormatter } from "@/lib/formatters";
+import type { BLOGS_QUERYResult } from "../../sanity.types";
 
 export default function Blogs({
   blogs,
@@ -83,7 +83,7 @@ export default function Blogs({
                     dateTime={blog.publishedAt}
                     className="text-sm font-normal tabular-nums"
                   >
-                    {dateFormatter({ date: blog.publishedAt })}
+                    {dateFormatter(blog.publishedAt)}
                   </time>
                 </div>
               </div>
