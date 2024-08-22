@@ -119,9 +119,8 @@ export default function Header() {
         <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
           {/* <ThemeSwitcher /> */}
           {socialAccounts.slice(0, 3).map((account, i) => (
-            <Link
+            <a
               key={i}
-              prefetch={false}
               href={account.link}
               aria-label={`My ${account.name} Account`}
               target="_blank"
@@ -130,7 +129,7 @@ export default function Header() {
             >
               {account.icon}
               <span className="sr-only">{account.name}</span>
-            </Link>
+            </a>
           ))}
         </NavbarItem>
       </NavbarContent>

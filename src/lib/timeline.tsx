@@ -6,6 +6,10 @@ export const events: {
   year?: number;
 }[] = [
   {
+    name: "AzTU | Kompüter Elmləri",
+    description: "İngiliscə tədrislə | 2024-2028 | Dövlət Sifarişli",
+  },
+  {
     name: "Technest Təqaüd Proqramı",
     description: "CodeNext | MERN Stack | 100% təqaüd",
   },

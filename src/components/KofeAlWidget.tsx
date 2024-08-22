@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { cn } from "@nextui-org/react";
+
 export default function KofeAlWidget({
   username,
   isActiveOnMobile = false,
@@ -16,7 +17,11 @@ export default function KofeAlWidget({
 
   return (
     <div
-      className={`sticky bottom-0 right-0 w-full flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7 ${!isActiveOnMobile ? "hidden md:flex" : "flex"} `}
+      className={cn(
+        "sticky bottom-0 right-0 w-full flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7",
+        { "hidden md:flex": !isActiveOnMobile },
+        { flex: isActiveOnMobile },
+      )}
     >
       <motion.div
         initial={{ scale: 0.3, opacity: 0 }}
@@ -28,8 +33,7 @@ export default function KofeAlWidget({
           stiffness: 80,
         }}
       >
-        <Link
-          prefetch={false}
+        <a
           rel="noopener noreferrer"
           href={`https://kofe.al/@${username}`}
           target="_blank"
@@ -37,12 +41,17 @@ export default function KofeAlWidget({
             boxShadow:
               "0px 0px 30px 0px rgba(0, 0, 0, 0.04), 0px 30px 60px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.3)",
           }}
-          className={`flex w-fit cursor-pointer flex-row items-center rounded-full bg-white ${!hovered && "p-3"}`}
+          className={cn(
+            "flex w-fit cursor-pointer flex-row items-center rounded-full bg-white",
+            { "p-3": !hovered },
+          )}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
           <div
-            className={`text-lg transition-all duration-200 ${hovered && isHoverable && "lg:w-auto lg:px-4 lg:py-2 lg:pl-6"} `}
+            className={cn("text-lg transition-all duration-200", {
+              "lg:w-auto lg:px-4 lg:py-2 lg:pl-6": hovered && isHoverable,
+            })}
           >
             {hovered && isHoverable && (
               <p className="hidden lg:flex">
@@ -83,7 +92,7 @@ export default function KofeAlWidget({
               height={40}
             />
           </motion.div>
-        </Link>
+        </a>
       </motion.div>
     </div>
   );

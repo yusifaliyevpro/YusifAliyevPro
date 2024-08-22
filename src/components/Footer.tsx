@@ -46,7 +46,7 @@ export default function Footer() {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <span
-              className={`self-center whitespace-nowrap font-jua text-3xl font-extrabold text-black dark:text-white`}
+              className={`self-center whitespace-nowrap font-jua text-3xl font-normal text-black dark:text-white`}
             >
               Yusif<span className="text-blue-500">Aliyev</span>Pro
             </span>
@@ -58,9 +58,8 @@ export default function Footer() {
         <div>
           <div className="flex flex-row items-center justify-center gap-x-4">
             {socialAccounts.map((account, i) => (
-              <Link
+              <a
                 key={i}
-                prefetch={false}
                 href={account.link}
                 target="_blank"
                 aria-label={`My ${account.name} Account`}
@@ -68,7 +67,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 {account.icon}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
