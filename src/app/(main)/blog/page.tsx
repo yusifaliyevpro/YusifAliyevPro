@@ -13,6 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Bloq",
     description:
       "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
+    alternates: {
+      canonical: `/blog`,
+    },
     openGraph: {
       url: `/blog`,
       images: [

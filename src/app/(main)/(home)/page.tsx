@@ -11,6 +11,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Ana Səhifə",
+  alternates: {
+    canonical: `/`,
+  },
   openGraph: {
     images: [
       {

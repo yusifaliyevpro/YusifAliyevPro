@@ -1,5 +1,11 @@
 import { isInDevelopment } from "@/lib/constants";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `/about`,
+  },
+};
 export default function About() {
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center text-3xl md:px-64">

@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     url: BASE_URL,
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     nocache: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
   },
   // robots: {
