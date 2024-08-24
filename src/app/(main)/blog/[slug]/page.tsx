@@ -11,8 +11,12 @@ import { RefreshSpecificBlog } from "@/components/Refresh";
 import { isInDevelopment } from "@/lib/constants";
 import type { Metadata } from "next";
 
-export async function generateMetadata({ params }): Promise<Metadata> {
-  const blog = await getBlog({ params });
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const blog = await getBlog(slug);
   if (!blog) notFound();
   return {
     title: blog.title,
@@ -23,6 +27,14 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       type: "article",
       publishedTime: blog.publishedAt,
       authors: ["Yusif Aliyev"],
+      images: [
+        {
+          url: blog.poster,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
     },
   };
 }
@@ -34,9 +46,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPage({ params }) {
+export default async function BlogPage({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
   const { isEnabled } = draftMode();
-  const blog = await getBlog({ params });
+  const blog = await getBlog(slug);
 
   if (!blog) notFound();
   return (
