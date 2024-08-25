@@ -1,5 +1,4 @@
 import { PREVIEW_URL } from "@/lib/constants";
-import { Button } from "@nextui-org/react";
 import { useFormValue } from "sanity";
 
 export default function PreviewMode() {
@@ -9,10 +8,9 @@ export default function PreviewMode() {
       <a
         href={`${PREVIEW_URL}/blog/${slug.current}?__vercel_draft=1`}
         target="_blank"
+        className="rounded-xl bg-blue-500 px-5 py-2 font-bold"
       >
-        <Button color="primary" className="font-bold">
-          Preview Mode
-        </Button>
+        Preview Mode
       </a>
     </div>
   );
