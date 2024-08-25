@@ -1,25 +1,27 @@
 import { PortableText, PortableTextComponents } from "next-sanity";
-import { getImageDimensions } from "@sanity/asset-utils";
+import { getImageDimensions, getImage } from "@sanity/asset-utils";
 import CodeBlock from "@/components/CodeBlock";
 import { Suspense } from "react";
-import { urlForImage } from "@/sanity/lib/image";
+import { blurDataURL, urlForImage } from "@/sanity/lib/image";
 import Image from "next/image";
 import { CodeInputValue } from "@sanity/code-input";
 
 export default function RichText({ blogText }) {
   const components: PortableTextComponents = {
     types: {
-      image: ({ value }: { value: string }) => {
-        const { width, height } = getImageDimensions(value);
+      image: ({ value }) => {
+        const { width, height, aspectRatio } = getImageDimensions(value);
         return (
           <div
-            className={`flex w-full flex-col py-7 aspect-[${width / height}] items-center justify-center`}
+            className={`flex w-full flex-col py-7 aspect-[${aspectRatio}] items-center justify-center`}
           >
             <Image
               src={urlForImage(value)}
               width={width}
               height={height}
-              alt=""
+              alt={value.alt || ""}
+              placeholder="blur"
+              blurDataURL={blurDataURL(value, 100)}
               className="h-fit w-fit rounded-md object-cover"
             />
           </div>

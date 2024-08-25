@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from "sanity";
-import blog from "./blog";
 import project from "./project";
+import blog from "./blog";
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [blog, project],
 };

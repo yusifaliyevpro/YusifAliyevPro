@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import PreviewMode from "../lib/Preview";
 
-const project = defineType({
+const blog = defineType({
   name: "blogs",
   title: "Blog",
   type: "document",
@@ -59,7 +59,18 @@ const project = defineType({
       type: "array",
       of: [
         defineArrayMember({ type: "block" }),
-        defineArrayMember({ type: "image" }),
+        defineArrayMember({
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alternative Text",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
         defineArrayMember({
           type: "code",
           options: {
@@ -71,4 +82,4 @@ const project = defineType({
   ],
 });
 
-export default project;
+export default blog;

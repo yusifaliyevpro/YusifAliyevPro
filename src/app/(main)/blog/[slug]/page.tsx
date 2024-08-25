@@ -45,7 +45,7 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const blogSlugs = await getSlugs();
   return blogSlugs.map((blogSlug) => ({
-    blog: blogSlug.slug,
+    slug: blogSlug.slug,
   }));
 }
 

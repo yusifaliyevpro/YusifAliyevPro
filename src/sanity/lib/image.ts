@@ -9,3 +9,7 @@ const builder = createImageUrlBuilder({ projectId, dataset });
 export const urlForImage = (source: SanityImageSource) => {
   return builder?.image(source).auto("format").fit("max").url();
 };
+
+export const blurDataURL = (source: SanityImageSource, blur: number) => {
+  return builder?.image(source).auto("format").fit("max").blur(blur).url();
+};

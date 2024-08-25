@@ -13,11 +13,11 @@ import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
 import { codeInput } from "@sanity/code-input";
+
 export default defineConfig({
   basePath: "/studio",
   projectId,
   dataset,
-  // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   plugins: [
     structureTool({ structure }),

@@ -151,6 +151,7 @@ export type Blogs = {
         };
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
         _type: "image";
         _key: string;
       }
@@ -258,7 +259,7 @@ export type PROJECTS_QUERYResult = Array<{
   repo: string | null;
 }>;
 // Variable: BLOGS_QUERY
-// Query: *[_type=='blogs' && isPublished]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}
+// Query: *[_type=='blogs' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}
 export type BLOGS_QUERYResult = Array<{
   title: string | null;
   _createdAt: string;
@@ -274,7 +275,7 @@ export type SLUGS_QUERYResult = Array<{
   publishedAt: string | null;
 }>;
 // Variable: BLOG_QUERY
-// Query: *[_type=='blogs' && slug.current=='$blog']{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]
+// Query: *[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]
 export type BLOG_QUERYResult = {
   title: string | null;
   plainText: string | null;
@@ -320,6 +321,7 @@ export type BLOG_QUERYResult = {
         };
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
         _type: "image";
         _key: string;
       }
@@ -328,3 +330,14 @@ export type BLOG_QUERYResult = {
   _createdAt: string;
   description: string | null;
 } | null;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    "*[_type=='projects']|order(_createdAt desc){name, \"image\": image.asset->url, description, link, repo}": PROJECTS_QUERYResult;
+    '*[_type==\'blogs\' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}': BLOGS_QUERYResult;
+    "*[_type=='blogs' && isPublished]|order(publishedAt desc)\n      {\"slug\": slug.current, publishedAt}": SLUGS_QUERYResult;
+    '*[_type==\'blogs\' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]': BLOG_QUERYResult;
+  }
+}
