@@ -10,6 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -22,15 +23,8 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Yusif Aliyev",
     locale: "az_AZ",
+    countryName: "Azerbaijan",
     url: BASE_URL,
-    images: [
-      {
-        url: "/profile.png",
-        width: 1080,
-        height: 1080,
-        alt: "Yusif Aliyev Picture",
-      },
-    ],
   },
   robots: {
     index: true,
@@ -41,20 +35,19 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  // robots: {
-  //   index: true,
-  //   follow: true,
-  //   googleBot: {
-  //     index: true,
-  //     follow: true,
-  //   },
-  // },
   creator: "Yusif Aliyev",
   publisher: "Yusif Aliyev",
   applicationName: "YusifAliyevPro",
   generator: "Next.js",
   authors: [{ name: "Yusif Aliyev", url: "https://yusifaliyevpro.com" }],
-  keywords: ["Yusif Aliyev", "yusifaliyevpro"],
+  keywords: [
+    "Yusif Aliyev",
+    "yusifaliyevpro",
+    "Full-Stack Developer",
+    "Developer",
+    "Web Developer",
+    "NextJS Developer",
+  ],
   other: {
     "google-site-verification": "19T4aaaA0mlU3qd0sFEl3z8e_Y_Zb_am5Cfkr5wxRWM",
   },

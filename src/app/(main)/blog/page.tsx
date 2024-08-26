@@ -18,9 +18,16 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       url: `/blog`,
+      type: "website",
+      siteName: "Yusif Aliyev",
+      locale: "az_AZ",
+      countryName: "Azerbaijan",
       images: [
         {
-          url: `/api/og?title=${encodeURI("Bloq")}`,
+          url: "/profile.png",
+          width: 1080,
+          height: 1080,
+          alt: "Yusif Aliyev Picture",
         },
       ],
     },

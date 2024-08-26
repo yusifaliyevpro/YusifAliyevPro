@@ -40,7 +40,7 @@ export async function getSlugs() {
 }
 
 export async function getBlog(slug: string) {
-  const BLOG_QUERY = groq`*[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]`;
+  const BLOG_QUERY = groq`*[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, tags, _updatedAt, text, "slug": slug.current,_createdAt, description}[0]`;
   const data = await client.fetch<BLOG_QUERYResult>(
     BLOG_QUERY,
     { slug },

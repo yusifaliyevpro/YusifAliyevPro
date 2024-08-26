@@ -8,6 +8,7 @@ import { Motion } from "../../../components/Motion";
 import { Typewriter } from "nextjs-simple-typewriter";
 import Reveal from "@/components/Reveal";
 import type { Metadata } from "next";
+import { BASE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Hi👋, I'm a Full-Stack Developer",
@@ -15,9 +16,17 @@ export const metadata: Metadata = {
     canonical: `/`,
   },
   openGraph: {
+    type: "website",
+    siteName: "Yusif Aliyev",
+    locale: "az_AZ",
+    countryName: "Azerbaijan",
+    url: `${BASE_URL}/`,
     images: [
       {
-        url: `/api/og?title=${encodeURI("Ana səhifə")}`,
+        url: "/profile.png",
+        width: 1080,
+        height: 1080,
+        alt: "Yusif Aliyev Picture",
       },
     ],
   },

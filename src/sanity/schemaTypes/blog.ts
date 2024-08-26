@@ -10,6 +10,8 @@ const blog = defineType({
       name: "title",
       title: "Blog Title",
       type: "string",
+      validation: (rule) =>
+        rule.max(50).warning("Shorter titles are usually better for SEO"),
     }),
     defineField({
       name: "slug",
@@ -19,6 +21,7 @@ const blog = defineType({
         source: "title",
         maxLength: 50,
       },
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "preview",
@@ -54,6 +57,17 @@ const blog = defineType({
       type: "text",
     }),
     defineField({
+      title: "Tags",
+      name: "tags",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+      options: {
+        layout: "tags",
+      },
+      validation: (rule) =>
+        rule.min(1).warning("At least one tag is recommended"),
+    }),
+    defineField({
       name: "text",
       title: "Blog Text",
       type: "array",
@@ -67,7 +81,6 @@ const blog = defineType({
               name: "alt",
               title: "Alternative Text",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
           ],
         }),

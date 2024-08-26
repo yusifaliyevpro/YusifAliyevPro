@@ -3,6 +3,7 @@ import { useFormValue } from "sanity";
 
 export default function PreviewMode() {
   const slug = useFormValue(["slug"]) as { current: string };
+  if (!slug) return null;
   return (
     <div className="relative my-0 flex w-full flex-row justify-end">
       <a

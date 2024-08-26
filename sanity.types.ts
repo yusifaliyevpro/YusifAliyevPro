@@ -115,6 +115,7 @@ export type Blogs = {
     _type: "image";
   };
   description?: string;
+  tags?: Array<string>;
   text?: Array<
     | {
         children?: Array<{
@@ -275,13 +276,15 @@ export type SLUGS_QUERYResult = Array<{
   publishedAt: string | null;
 }>;
 // Variable: BLOG_QUERY
-// Query: *[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]
+// Query: *[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, tags, _updatedAt, text, "slug": slug.current,_createdAt, description}[0]
 export type BLOG_QUERYResult = {
   title: string | null;
   plainText: string | null;
   poster: string | null;
   publishedAt: string | null;
   isPublished: boolean | null;
+  tags: Array<string> | null;
+  _updatedAt: string;
   text: Array<
     | ({
         _key: string;
@@ -338,6 +341,6 @@ declare module "@sanity/client" {
     "*[_type=='projects']|order(_createdAt desc){name, \"image\": image.asset->url, description, link, repo}": PROJECTS_QUERYResult;
     '*[_type==\'blogs\' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}': BLOGS_QUERYResult;
     "*[_type=='blogs' && isPublished]|order(publishedAt desc)\n      {\"slug\": slug.current, publishedAt}": SLUGS_QUERYResult;
-    '*[_type==\'blogs\' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, text, "slug": slug.current,_createdAt, description}[0]': BLOG_QUERYResult;
+    '*[_type==\'blogs\' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, tags, _updatedAt, text, "slug": slug.current,_createdAt, description}[0]': BLOG_QUERYResult;
   }
 }
