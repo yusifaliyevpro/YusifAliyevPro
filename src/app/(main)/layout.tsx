@@ -55,6 +55,9 @@ export const metadata: Metadata = {
   generator: "Next.js",
   authors: [{ name: "Yusif Aliyev", url: "https://yusifaliyevpro.com" }],
   keywords: ["Yusif Aliyev", "yusifaliyevpro"],
+  other: {
+    "google-site-verification": "19T4aaaA0mlU3qd0sFEl3z8e_Y_Zb_am5Cfkr5wxRWM",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
