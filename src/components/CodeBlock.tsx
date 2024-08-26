@@ -1,41 +1,51 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { BiLogoTypescript } from "react-icons/bi";
-import { FaReact } from "react-icons/fa";
+import { FaCss3, FaHtml5, FaReact } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
+import { FaRegFile } from "react-icons/fa";
+import { AiOutlinePython } from "react-icons/ai";
 import CopyButton from "./CopyButton";
-import {
-  oneLight,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+export function getFileIcon(language: string) {
+  switch (language) {
+    case "html":
+      return <FaHtml5 className="text-2xl text-orange-500" />;
+    case "css":
+      return <FaCss3 className="text-2xl text-blue-500" />;
+    case "javascript":
+      return <RiJavascriptFill className="text-3xl text-yellow-500" />;
+    case "jsx":
+      return <FaReact className="text-2xl text-blue-500" />;
+    case "ts":
+      return <BiLogoTypescript className="text-2xl text-blue-700" />;
+    case "tsx":
+      return <FaReact className="text-2xl text-blue-700" />;
+    case "python":
+      return (
+        <AiOutlinePython className="bg-clip-text text-2xl text-blue-500" />
+      );
+    default:
+      return <FaRegFile className="text-xl" />;
+  }
+}
+
+type CodeBlockProps = {
+  code: string;
+  language: string;
+  fileName: string;
+};
 
 export default function CodeBlock({
   code,
   language,
   fileName,
-}: {
-  code: string;
-  language: string;
-  fileName: string;
-}) {
+}: CodeBlockProps) {
   return (
-    <div className={`rounded-lg border transition-none`}>
+    <div className="rounded-lg border transition-none">
       <div className="flex items-center justify-between rounded-t-md border-b bg-gray-200/80 px-4 py-2 dark:border-0 dark:bg-gray-500">
         <div className="text-md flex flex-row items-center justify-center gap-2 py-2 font-semibold">
-          {(() => {
-            switch (language) {
-              case "javascript":
-                return (
-                  <RiJavascriptFill className="text-3xl text-yellow-500" />
-                );
-              case "ts":
-                return <BiLogoTypescript className="text-2xl text-blue-700" />;
-              case "tsx":
-                return <FaReact className="text-2xl text-blue-700" />;
-              case "jsx":
-                return <FaReact className="text-2xl text-blue-500" />;
-              default:
-                return <FileIcon />;
-            }
-          })()}
+          {getFileIcon(language)}
           <span className="text-lg">{fileName}</span>
         </div>
         <div className="flex items-center gap-2">
@@ -79,25 +89,5 @@ export default function CodeBlock({
         </SyntaxHighlighter>
       </div>
     </div>
-  );
-}
-
-function FileIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-    </svg>
   );
 }

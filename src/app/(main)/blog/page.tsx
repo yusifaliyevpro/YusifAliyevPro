@@ -10,7 +10,7 @@ import { Typewriter } from "nextjs-simple-typewriter";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Bloq",
+    title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
     description:
       "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
     alternates: {
@@ -38,17 +38,13 @@ export default async function BlogsPage() {
       <div className="bg-gradiesnt-to-b mt-5 flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
         <div className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
           <div className={`w-full space-y-5 font-poppins sm:w-fit`}>
-            <Reveal
-              as="h1"
-              first
-              className="w-full text-left text-4xl font-semibold"
-            >
+            <h1 className="w-full text-left text-4xl font-semibold">
               ✍️ Bloq yazılarım
-            </Reveal>
-            <p className="sr-only">
+            </h1>
+            <h2 className="sr-only">
               Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi
               paylaşıram.
-            </p>
+            </h2>
             <span className="flex h-24 max-w-[25rem] text-wrap pl-3 text-lg font-normal text-slate-600 dark:text-slate-400 sm:h-12">
               <Typewriter
                 words={[

@@ -17,7 +17,7 @@ import { FaGithub } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
-
+import { ThemeSwitcher } from "./ThemeSwitcher";
 const socialAccounts: TSocialAccounts = [
   {
     icon: <GrInstagram />,
@@ -83,7 +83,7 @@ export default function Header() {
       onMenuOpenChange={setIsMenuOpen}
       isBlurred
       classNames={{
-        base: `w-auto fixed z-[10000] dark:bg-foreground  xl:mx-40 rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg"}`,
+        base: `w-auto fixed z-[10000] dark:bg-foreground  xl:mx-40 md:rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg"}`,
       }}
     >
       <NavbarContent>
@@ -118,7 +118,7 @@ export default function Header() {
       <NavbarContent justify="end">
         <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
           {/* <ThemeSwitcher /> */}
-          {socialAccounts.slice(0, 3).map((account, i) => (
+          {socialAccounts.map((account, i) => (
             <a
               key={i}
               href={account.link}
@@ -128,15 +128,15 @@ export default function Header() {
               rel="noopener noreferrer me"
             >
               {account.icon}
-              <span className="sr-only">{account.name}</span>
+              <span className="sr-only">My {account.name} Account</span>
             </a>
           ))}
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="max-h-[200px] items-center justify-center gap-3 overflow-hidden bg-gray-100/90 backdrop-blur-md">
+      <NavbarMenu className="max-h-[30svh] items-center justify-center gap-y-3 overflow-hidden dark:bg-foreground/70">
         {navigationLinks.map((navbar, i) => (
           <NavbarMenuItem key={i}>
-            <Link href={navbar.link} className={`w-full text-xl font-semibold`}>
+            <Link href={navbar.link} className="w-full text-xl font-semibold">
               {navbar.name}
             </Link>
           </NavbarMenuItem>

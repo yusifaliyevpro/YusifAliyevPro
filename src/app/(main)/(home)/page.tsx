@@ -10,7 +10,7 @@ import Reveal from "@/components/Reveal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ana Səhifə",
+  title: "Hi👋, I'm a Full-Stack Developer",
   alternates: {
     canonical: `/`,
   },
@@ -33,7 +33,6 @@ export default async function Home() {
           </h1>
           <Reveal
             first
-            bt
             className="flex flex-col flex-nowrap items-center justify-center gap-y-2 text-center md:flex-row md:justify-start md:gap-y-0"
           >
             <span className="text-nowrap">Hi👋, I&apos;m a&nbsp;</span>
@@ -53,7 +52,6 @@ export default async function Home() {
             as="p"
             className="mt-2 flex flex-row items-center justify-center text-nowrap after:text-blue-500 after:content-['.'] md:w-[39rem]"
             first
-            bt
           >
             Developer
           </Reveal>

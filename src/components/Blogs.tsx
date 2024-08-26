@@ -21,11 +21,10 @@ export default function Blogs({
   const setResultCount = useQuery((state) => state.setResultCount);
   const resultCount = useQuery((state) => state.resultCount);
   let renderedBlogs = blogs;
-  const options = {
+  const fuse = new Fuse(blogs, {
     keys: ["title", "description"],
     threshold: 0.4,
-  };
-  const fuse = new Fuse(blogs, options);
+  });
   if (search) {
     const result = fuse.search(search);
     renderedBlogs = result.map(({ item }) => item);
@@ -38,30 +37,28 @@ export default function Blogs({
 
   return (
     <>
-      <div
-        className={`relative mt-16 grid w-full grid-cols-1 place-items-center items-center justify-center gap-x-10 gap-y-9 px-6 sm:grid-cols-2 md:grid-cols-2 md:px-20 lg:grid-cols-2 lg:px-40 xl:grid-cols-3`}
-      >
+      <div className="relative mt-16 grid w-full grid-cols-1 place-items-center items-center justify-center gap-x-7 gap-y-9 px-6 sm:grid-cols-2 md:grid-cols-2 md:px-20 lg:grid-cols-2 lg:px-36 xl:grid-cols-3">
         {renderedBlogs.map((blog, i) => (
           <article
             key={i}
             className="col-span-1 flex h-auto cursor-pointer flex-col items-center justify-start rounded-lg border-solid bg-white pb-5 shadow-medium shadow-blue-600 transition-all hover:scale-105 dark:bg-gray-800"
           >
             <Link href={`/blog/${blog.slug}`}>
-              <figure className="borde-x-0 flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg border-b-1 border-t-0 border-solid dark:border-0">
+              <figure className="flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg border-b-1 border-t-0 border-solid dark:border-0">
                 <Image
                   src={blog.poster}
                   width={250}
                   height={200}
-                  className="w-full rounded-t-lg object-cover"
+                  className="size-auto rounded-t-lg object-cover"
                   alt={`${blog.title} Poster`}
                 />
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
-              <div className="px-6">
-                <h2 className="my-5 line-clamp-2 text-2xl font-bold dark:text-slate-300">
+              <div className="pl-6 pr-4">
+                <h3 className="my-5 line-clamp-2 text-left text-2xl font-bold dark:text-slate-300">
                   {blog.title}
-                </h2>
-                <p className="line-clamp-1 w-fit text-wrap text-lg font-normal text-gray-500 dark:text-slate-400/80 md:line-clamp-5">
+                </h3>
+                <p className="line-clamp-2 w-fit text-wrap font-signika text-lg font-medium leading-relaxed text-gray-500 dark:text-slate-400/80 md:line-clamp-6">
                   {blog.description}
                 </p>
               </div>

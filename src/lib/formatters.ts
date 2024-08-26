@@ -1,4 +1,4 @@
-export function dateFormatter(date: string): string {
+export function dateFormatter(date: string) {
   const fullDate = new Date(date);
   const day = fullDate.getDate();
   const month = fullDate.getMonth() + 1;
@@ -7,7 +7,7 @@ export function dateFormatter(date: string): string {
   return `${day < 10 ? "0" : ""}${day}/ ${month < 10 ? "0" : ""}${month}/ ${year}`;
 }
 
-export function readtimeCalculator({ text }: { text: string }): number {
+export function getReadTime(text: string): number {
   const wordsPerMinute = 200;
   const words = text.split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);

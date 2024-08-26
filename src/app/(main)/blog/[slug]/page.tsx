@@ -4,7 +4,7 @@ import { GoClock } from "react-icons/go";
 import { FiWatch } from "react-icons/fi";
 import RichText from "@/components/RichText";
 import Link from "next/link";
-import { dateFormatter, readtimeCalculator } from "@/lib/formatters";
+import { dateFormatter, getReadTime } from "@/lib/formatters";
 import { notFound } from "next/navigation";
 import { draftMode } from "next/headers";
 import { RefreshSpecificBlog } from "@/components/Refresh";
@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!blog) notFound();
   return {
     title: blog.title,
-    description: blog.description,
+    description: blog.description.slice(0, 152).concat("..."),
     keywords: [blog.title, "bloq", "blog"],
     alternates: {
       canonical: `/blog/${blog.slug}`,
@@ -54,14 +54,13 @@ export default async function BlogPage({
 }: {
   params: { slug: string };
 }) {
-  const { isEnabled } = draftMode();
   const blog = await getBlog(slug);
-
   if (!blog) notFound();
+
+  const { isEnabled } = draftMode();
+
   return (
-    <main
-      className={`a flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all`}
-    >
+    <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
       <article className="relative top-0 flex min-h-[50svh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 dark:from-blue-600 dark:to-blue-300 md:px-10 lg:px-24 xl:px-44">
         <div className="mt-24 flex min-h-[50svh] w-full flex-col items-center border-b-[0px] border-solid border-gray-300 bg-white p-8 py-12 dark:border-0 dark:bg-foreground md:rounded-t-md md:border-b-[0.8px] lg:shadow-ltr-small">
           <div className="flex flex-row items-center justify-center gap-x-3">
@@ -92,7 +91,7 @@ export default async function BlogPage({
             <div className="flex flex-row items-center gap-x-1">
               <FiWatch />
               <p className="text-md tabular-nums">
-                {readtimeCalculator({ text: blog.plainText })} dəq oxuma
+                {getReadTime(blog.plainText)} dəq oxuma
               </p>
             </div>
           </div>
@@ -100,7 +99,7 @@ export default async function BlogPage({
             <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
               {blog.title}
             </h1>
-            <p className="text-pretty text-center text-lg font-normal leading-normal text-gray-500 dark:text-slate-400/80 md:px-12 lg:px-20 lg:text-xl">
+            <p className="text-pretty text-center text-lg font-normal leading-normal text-gray-500 dark:text-slate-300/80 md:px-12 lg:px-20 lg:text-xl">
               {blog.description}
             </p>
           </header>

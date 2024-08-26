@@ -17,17 +17,25 @@ export const metadata: Metadata = {
     template: "Yusif Aliyev | %s",
   },
   description:
-    "Mənim şəxsi websaytıma xoş gəlmişsiniz. Bu websaytda mən özüm haqqımda vacib detalları, blog postlarımı paylaşıram. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını tövsiyə edərdim.",
+    "Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını tövsiyə edirəm",
   openGraph: {
     type: "website",
     siteName: "Yusif Aliyev",
     locale: "az_AZ",
     url: BASE_URL,
+    images: [
+      {
+        url: "/profile.png",
+        width: 1080,
+        height: 1080,
+        alt: "Yusif Aliyev Picture",
+      },
+    ],
   },
   robots: {
     index: true,
     follow: true,
-    nocache: true,
+    notranslate: true,
     googleBot: {
       index: true,
       follow: true,
@@ -56,13 +64,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${poppins.className} ${poppins.variable} ${jua.variable} ${source_sans_3.variable} min-h-[100svh] scroll-smooth bg-white font-semibold dark:bg-foreground dark:text-slate-200`}
       >
         <Providers>
-          <Toaster
-            toastOptions={{
-              className: "",
-            }}
-            position="bottom-right"
-            reverseOrder={false}
-          />
           <Header />
           {children}
           <KofeAlWidget
@@ -74,6 +75,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </Providers>
         <Analytics />
         <SpeedInsights />
+        <Toaster
+          toastOptions={{
+            className: "",
+          }}
+          position="bottom-right"
+          reverseOrder={false}
+        />
       </body>
     </html>
   );

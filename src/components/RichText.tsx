@@ -41,37 +41,37 @@ export default function RichText({ blogText }) {
     },
     block: {
       h1: ({ children }) => (
-        <h1 className="pb-5 pt-10 text-5xl font-bold text-gray-800 dark:text-slate-300 md:text-6xl">
+        <h1 className="pb-5 pt-10 text-5xl font-bold text-gray-800 dark:text-slate-200 md:text-6xl">
           {children}
         </h1>
       ),
       h2: ({ children }) => (
-        <h2 className="pb-5 pt-10 text-4xl font-bold text-gray-800 dark:text-slate-300 md:text-5xl">
+        <h2 className="pb-5 pt-10 text-4xl font-bold text-gray-800 dark:text-slate-200 md:text-5xl">
           {children}
         </h2>
       ),
       h3: ({ children }) => (
-        <h3 className="pb-5 pt-10 text-3xl font-bold text-gray-800 dark:text-slate-300 md:text-4xl">
+        <h3 className="pb-5 pt-10 text-3xl font-bold text-gray-800 dark:text-slate-200 md:text-4xl">
           {children}
         </h3>
       ),
       h4: ({ children }) => (
-        <h4 className="pb-5 pt-10 text-2xl font-bold text-gray-800 dark:text-slate-300 md:text-3xl">
+        <h4 className="pb-5 pt-10 text-2xl font-bold text-gray-800 dark:text-slate-200 md:text-3xl">
           {children}
         </h4>
       ),
       h5: ({ children }) => (
-        <h5 className="pb-5 pt-10 text-xl font-bold text-gray-800 dark:text-slate-300 md:text-2xl">
+        <h5 className="pb-5 pt-10 text-xl font-bold text-gray-800 dark:text-slate-200 md:text-2xl">
           {children}
         </h5>
       ),
       h6: ({ children }) => (
-        <h6 className="pb-5 pt-10 text-lg font-bold text-gray-800 dark:text-slate-300 md:text-xl">
+        <h6 className="pb-5 pt-10 text-lg font-bold text-gray-800 dark:text-slate-200 md:text-xl">
           {children}
         </h6>
       ),
       normal: ({ children }) => (
-        <p className="pb-4 text-base font-medium text-gray-500 dark:text-slate-400 md:text-lg">
+        <p className="pb-4 text-lg font-medium text-gray-500 dark:text-slate-200">
           {children}
         </p>
       ),
@@ -109,10 +109,14 @@ export default function RichText({ blogText }) {
     },
     listItem: {
       bullet: ({ children }) => (
-        <li className="mt-3 list-disc text-gray-600">{children}</li>
+        <li className="mt-3 list-disc text-gray-600 dark:text-slate-300">
+          {children}
+        </li>
       ),
       number: ({ children }) => (
-        <li className="mt-3 list-decimal text-gray-600">{children}</li>
+        <li className="mt-3 list-decimal text-gray-600 dark:text-slate-300">
+          {children}
+        </li>
       ),
     },
   };

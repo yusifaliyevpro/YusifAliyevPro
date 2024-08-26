@@ -46,18 +46,26 @@ export default async function Projects() {
           <div className="mt-3 flex w-full flex-row items-center justify-around">
             <a
               href={project.link}
+              title="Canlı baxış üçün linkə klikləyin"
               rel="noopener noreferrer"
               target="_blank"
-              className="flex flex-row items-center gap-x-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-3 text-white hover:opacity-90 md:px-5"
+              className="flex select-none flex-row items-center justify-center gap-x-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-3 text-white hover:opacity-90 md:px-5"
             >
+              <span className="sr-only">{project.name} </span>
               <FaGlobe className="text-2xl" /> Websayt
             </a>
             <a
               href={project.repo}
+              title={
+                project.repo
+                  ? "Github Reposuna baxmaq üçün klikləyin"
+                  : "Repo ictimai deyil"
+              }
               rel="noopener noreferrer"
               target="_blank"
-              className="flex flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
+              className="flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
             >
+              <span className="sr-only">{project.name} GitHub </span>
               <FaGithub className="text-2xl" /> Repo
             </a>
           </div>
