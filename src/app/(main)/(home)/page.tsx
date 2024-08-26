@@ -57,10 +57,9 @@ export default async function Home() {
           </Reveal>
         </div>
         <Motion
-          initial={{ opacity: 0, scale: 0.3 }}
+          initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
-            delay: 0.3,
             duration: 0.4,
             type: "spring",
             stiffness: 70,
@@ -68,8 +67,9 @@ export default async function Home() {
           className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large"
         >
           <Image
-            src={"/profile.png"}
+            src={"/profile.webp"}
             width={350}
+            quality={100}
             priority
             alt="Profile Picture"
             height={350}

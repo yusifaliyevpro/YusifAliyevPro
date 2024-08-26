@@ -2,6 +2,8 @@ import Image from "next/image";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { Motion } from "./Motion";
 import { getProjects } from "@/lib/utils";
+import Link from "next/link";
+import { Route } from "next";
 
 export default async function Projects() {
   const projects = await getProjects();
@@ -54,20 +56,26 @@ export default async function Projects() {
               <span className="sr-only">{project.name} </span>
               <FaGlobe className="text-2xl" /> Websayt
             </a>
-            <a
-              href={project.repo}
-              title={
-                project.repo
-                  ? "Github Reposuna baxmaq üçün klikləyin"
-                  : "Repo ictimai deyil"
-              }
-              rel="noopener noreferrer"
-              target="_blank"
-              className="flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
-            >
-              <span className="sr-only">{project.name} GitHub </span>
-              <FaGithub className="text-2xl" /> Repo
-            </a>
+            {project.repo ? (
+              <a
+                href={project.repo}
+                title={"Github Reposuna baxmaq üçün klikləyin"}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
+              >
+                <span className="sr-only">{project.name} GitHub </span>
+                <FaGithub className="text-2xl" /> Repo
+              </a>
+            ) : (
+              <div
+                title="Repo ictimaiyyətə açıq deyil"
+                className="flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
+              >
+                <span className="sr-only">{project.name} GitHub </span>
+                <FaGithub className="text-2xl" /> Repo
+              </div>
+            )}
           </div>
         </Motion>
       ))}

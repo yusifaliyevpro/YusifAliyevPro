@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 export default function Template({ children }) {
   return (
     <motion.div
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -1000, opacity: 1 }}
       transition={{
         duration: 0.2,
         type: "spring",

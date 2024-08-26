@@ -41,7 +41,7 @@ export default function Reveal({
         initial="hidden"
         animate={mainControls}
         className={cn(className, { "py-2": !first })}
-        transition={{ duration: 0.3, delay: 0.5 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
       >
         {children}
       </Motion>
@@ -52,7 +52,7 @@ export default function Reveal({
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         className="absolute bottom-0 left-0 right-0 top-0 z-[200] rounded-sm bg-blue-500"
       />
     </div>
