@@ -109,7 +109,7 @@ export default async function Home() {
           <Image
             src={"/profile.webp"}
             width={350}
-            quality={100}
+            unoptimized
             priority
             alt="Profile Picture"
             height={350}

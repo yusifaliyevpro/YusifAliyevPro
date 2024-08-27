@@ -29,6 +29,7 @@ export default async function Projects() {
           <Image
             src={project.image}
             width={310}
+            unoptimized
             alt={`${project.name} websaytının şəkili`}
             height={200}
             className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-fill shadow-medium transition-all hover:scale-105"
