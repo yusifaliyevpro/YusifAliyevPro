@@ -13,7 +13,7 @@ export async function getProjects() {
   const data = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
-    { next: { revalidate: 3600, tags: ["blogs"] } },
+    { next: { revalidate: 3600 * 24 * 7, tags: ["blogs"] } },
   );
   return data;
 }

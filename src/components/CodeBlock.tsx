@@ -52,25 +52,7 @@ export default function CodeBlock({
           <CopyButton text={code} />
         </div>
       </div>
-      <div className={`transition-all scrollbar-hide dark:hidden`}>
-        <SyntaxHighlighter
-          language={language}
-          showLineNumbers
-          style={oneLight}
-          customStyle={{
-            margin: 0,
-            height: "23.4rem",
-            paddingLeft: 0,
-            msOverflowStyle: "none",
-            scrollbarWidth: "none",
-            overflow: "auto",
-            paddingRight: 0,
-          }}
-        >
-          {code}
-        </SyntaxHighlighter>
-      </div>
-      <div className={`hidden transition-all scrollbar-hide dark:flex`}>
+      <div className="transition-all scrollbar-hide">
         <SyntaxHighlighter
           language={language}
           showLineNumbers

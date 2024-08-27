@@ -1,10 +1,4 @@
-import type { TSocialAccounts } from "@/lib/customTypes";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
-import { GrInstagram } from "react-icons/gr";
-import { LiaFacebook } from "react-icons/lia";
-import { PiLinkedinLogoBold } from "react-icons/pi";
-
 export default function Footer() {
   return (
     <footer className="z-50 w-full bg-white shadow-medium dark:bg-foreground">

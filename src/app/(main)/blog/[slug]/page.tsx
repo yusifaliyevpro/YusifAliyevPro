@@ -10,6 +10,7 @@ import { draftMode } from "next/headers";
 import { RefreshSpecificBlog } from "@/components/Refresh";
 import { isInDevelopment } from "@/lib/constants";
 import type { Metadata } from "next";
+import { cn } from "@/lib/cn";
 
 export async function generateMetadata({
   params: { slug },
@@ -71,17 +72,33 @@ export default async function BlogPage({
 }) {
   const blog = await getBlog(slug);
   if (!blog) notFound();
-
   const { isEnabled } = draftMode();
 
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
-      <article className="relative top-0 flex min-h-[50svh] w-full flex-col justify-center bg-gradient-to-tr from-blue-500 to-blue-200 pt-5 dark:from-blue-600 dark:to-blue-300 md:px-10 lg:px-24 xl:px-44">
-        <div className="mt-24 flex min-h-[50svh] w-full flex-col items-center border-b-[0px] border-solid border-gray-300 bg-white p-8 py-12 dark:border-0 dark:bg-foreground md:rounded-t-md md:border-b-[0.8px] lg:shadow-ltr-small">
+      <article
+        className={cn(
+          "relative top-0 flex min-h-[50svh] w-full flex-col justify-center pt-5",
+          "md:px-10",
+          "lg:px-24",
+          "xl:px-44",
+          "dark:from-blue-600 dark:to-blue-300",
+          "bg-gradient-to-tr from-blue-500 to-blue-200",
+        )}
+      >
+        <header
+          className={cn(
+            "mt-24 flex min-h-[50svh] w-full flex-col items-center bg-white p-8 py-12",
+            "md:rounded-t-md md:border-b-[0.8px]",
+            "lg:shadow-ltr-small",
+            "dark:border-0 dark:bg-foreground",
+            "border-b-[0px] border-solid border-gray-300",
+          )}
+        >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               src={"/profile.png"}
-              alt="Profile Picture"
+              alt="Yusif Aliyev Picture"
               width={50}
               height={50}
               unoptimized
@@ -95,7 +112,7 @@ export default async function BlogPage({
           </div>
           <div className="mt-4 flex flex-row items-center justify-center gap-x-5 font-semibold text-gray-500">
             <div className="flex flex-row items-center gap-x-1">
-              <GoClock />
+              <GoClock aria-hidden />
               <time
                 dateTime={blog.publishedAt}
                 className="text-md tabular-nums"
@@ -104,21 +121,28 @@ export default async function BlogPage({
               </time>
             </div>
             <div className="flex flex-row items-center gap-x-1">
-              <FiWatch />
+              <FiWatch aria-hidden />
               <p className="text-md tabular-nums">
                 {getReadTime(blog.plainText)} dəq oxuma
               </p>
             </div>
           </div>
-          <header className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center">
             <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
               {blog.title}
             </h1>
-            <p className="text-pretty text-center text-lg font-normal leading-normal text-gray-500 dark:text-slate-300/80 md:px-12 lg:px-20 lg:text-xl">
+            <p
+              className={cn(
+                "text-pretty text-center text-lg font-normal leading-normal text-gray-500",
+                "md:px-12",
+                "lg:px-20 lg:text-xl",
+                "dark:text-slate-300/80",
+              )}
+            >
               {blog.description}
             </p>
-          </header>
-        </div>
+          </div>
+        </header>
       </article>
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
         <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
