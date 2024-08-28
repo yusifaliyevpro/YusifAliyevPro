@@ -38,6 +38,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center gap-y-56 pb-20 transition-all">
       {/* CTA */}
       <section
+        aria-label="CTA"
         className={cn(
           "mt-28 flex min-h-[76svh] w-full flex-col items-center justify-between px-8",
           "md:mt-32 md:min-h-[88vh] md:pb-[10vh]",
@@ -56,6 +57,11 @@ export default async function Home() {
           <h1 className="sr-only">
             Hi👋, I&apos;m Yusif Aliyev, a Full-Stack Developer
           </h1>
+          <p className="sr-only">
+            Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha
+            çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını
+            tövsiyə edirəm
+          </p>
           <Reveal
             first
             className={cn(

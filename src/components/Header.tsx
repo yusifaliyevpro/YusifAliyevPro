@@ -42,14 +42,13 @@ export default function Header() {
     >
       <NavbarContent>
         <NavbarBrand as={"li"}>
-          <p className="sr-only">YusifAliyevPro</p>
           <Link
             href={`/`}
             className="relative left-0 flex flex-row items-center gap-1.5 text-xl font-bold"
           >
-            <div className="font-jua text-3xl font-normal text-black dark:text-white">
+            <p className="font-jua text-3xl font-normal text-black dark:text-white">
               Yusif<span className="text-blue-500">Aliyev</span>Pro
-            </div>
+            </p>
           </Link>
         </NavbarBrand>
       </NavbarContent>
