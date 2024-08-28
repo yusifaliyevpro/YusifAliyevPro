@@ -48,7 +48,7 @@ export default async function Projects() {
               {project.description}
             </p>
           </div>
-          <div className="mt-3 flex w-full flex-row items-center justify-around">
+          <div className="mt-3 flex w-full flex-row flex-wrap items-center justify-around gap-y-3">
             <a
               href={project.link}
               title="Canlı baxış üçün linkə klikləyin"
@@ -56,9 +56,9 @@ export default async function Projects() {
               target="_blank"
               aria-label={`${project.name} websaytına baxın`}
               className={cn(
-                "flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full text-white",
+                "flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full px-5 py-3 text-white",
                 "md:px-5",
-                "bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-3 hover:opacity-90",
+                "bg-gradient-to-r from-blue-400 to-blue-600 hover:opacity-90",
               )}
             >
               <span className="sr-only">{project.name} </span>

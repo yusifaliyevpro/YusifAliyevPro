@@ -42,7 +42,7 @@ export default async function Home() {
         className={cn(
           "mt-28 flex min-h-[76svh] w-full flex-col items-center justify-between px-8",
           "md:mt-32 md:min-h-[88vh] md:pb-[10vh]",
-          "lg:px-28",
+          "lg:px-20",
           "xl:mt-2 xl:min-h-svh xl:flex-row",
         )}
       >
@@ -51,7 +51,7 @@ export default async function Home() {
             "relative ml-3 flex flex-col gap-y-2 text-5xl",
             "max-lg:w-full max-lg:items-center max-lg:justify-center",
             "md:ml-0 md:mt-0 md:gap-y-2 md:text-5xl",
-            "xl:text-6xl",
+            "xl:text-7xl",
           )}
         >
           <h1 className="sr-only">
@@ -136,7 +136,7 @@ export default async function Home() {
       >
         <Reveal
           as="h2"
-          className="text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
+          className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
         >
           Layihələrim
         </Reveal>
@@ -150,21 +150,21 @@ export default async function Home() {
       >
         <Reveal
           as="h2"
-          className="text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
+          className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
         >
           Kod Bacarıqları
         </Reveal>
         <MyCodeSkills />
       </section>
 
-      {/* Other Skills */}
+      {/* Soft Skills */}
       <section
         aria-label="Soft Bacarıqlarım"
         className="flex min-h-[70vh] w-full flex-col items-center md:px-40 xl:px-64"
       >
         <Reveal
           as="h2"
-          className="w-full text-center text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
+          className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
         >
           Soft Bacarıqlarım
         </Reveal>
@@ -178,7 +178,7 @@ export default async function Home() {
       >
         <Reveal
           as="h2"
-          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl"
+          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl"
         >
           Texnologiyalar
         </Reveal>
@@ -192,7 +192,7 @@ export default async function Home() {
       >
         <Reveal
           as="h2"
-          className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.']"
+          className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
         >
           Təcrübələr
         </Reveal>

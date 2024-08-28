@@ -33,6 +33,7 @@
     "next-themes": "^0.3.0",
     "nextjs-simple-typewriter": "^5.2.2",
     "prettier": "^3.3.2",
+    "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "react": "^18",
     "react-copy-to-clipboard": "^5.1.0",
