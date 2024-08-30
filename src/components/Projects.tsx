@@ -56,13 +56,16 @@ export default async function Projects() {
               target="_blank"
               aria-label={`${project.name} websaytına baxın`}
               className={cn(
-                "flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full px-5 py-3 text-white",
+                "group flex min-w-[9.4rem] cursor-pointer select-none flex-row items-center justify-center gap-x-1 rounded-full px-5 py-3 text-white transition-all duration-400 ease-in-out",
                 "md:px-5",
                 "bg-gradient-to-r from-blue-400 to-blue-600 hover:opacity-90",
               )}
             >
               <span className="sr-only">{project.name} </span>
-              <FaGlobe className="text-2xl" aria-hidden /> Websayt
+              <FaGlobe className="text-2xl" aria-hidden />
+              <span className="sr-only transform opacity-0 transition-all duration-400 ease-in-out group-hover:not-sr-only group-hover:translate-x-1 group-hover:opacity-100">
+                Websayt
+              </span>
             </a>
             {project.repo ? (
               <a
@@ -70,18 +73,24 @@ export default async function Projects() {
                 title={"Github Reposuna baxmaq üçün klikləyin"}
                 rel="noopener noreferrer"
                 target="_blank"
-                className="flex select-none flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
+                className="group flex min-w-[8.4rem] select-none flex-row items-center justify-center gap-x-1 rounded-full bg-slate-800 px-5 py-3 text-white transition-all duration-400 ease-in-out hover:opacity-90 md:px-8"
               >
                 <span className="sr-only">{project.name} GitHub </span>
-                <FaGithub className="text-2xl" aria-hidden /> Repo
+                <FaGithub className="text-2xl" aria-hidden />
+                <span className="sr-only transform opacity-0 transition-all duration-400 ease-in-out group-hover:not-sr-only group-hover:translate-x-1 group-hover:opacity-100">
+                  Repo
+                </span>
               </a>
             ) : (
               <div
                 title="Repo ictimaiyyətə açıq deyil"
-                className="flex cursor-pointer select-none flex-row items-center justify-center gap-x-3 rounded-full bg-slate-800 px-5 py-3 text-white hover:opacity-90 md:px-8"
+                className="group flex min-w-[8.4rem] cursor-pointer select-none flex-row items-center justify-center gap-x-1 rounded-full bg-slate-800 px-5 py-3 text-white transition-all duration-400 ease-in-out hover:opacity-90 md:px-8"
               >
                 <span className="sr-only">{project.name} GitHub </span>
-                <FaGithub className="text-2xl" aria-hidden /> Repo
+                <FaGithub className="text-2xl" aria-hidden />
+                <span className="sr-only transform opacity-0 transition-all duration-400 ease-in-out group-hover:not-sr-only group-hover:translate-x-1 group-hover:opacity-100">
+                  Repo
+                </span>
               </div>
             )}
           </div>
