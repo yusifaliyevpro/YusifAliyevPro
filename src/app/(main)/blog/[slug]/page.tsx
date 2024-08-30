@@ -45,6 +45,7 @@ export async function generateMetadata({
       type: "article",
       modifiedTime: blog._updatedAt,
       publishedTime: blog.publishedAt,
+      authors: ["Yusif Aliyev"],
       tags: blog.tags,
       images: [
         {
@@ -153,6 +154,8 @@ export default async function BlogPage({
               alt="Blog Poster"
               fill
               className="object-cover p-3 md:p-0"
+              placeholder="blur"
+              blurDataURL={blog.posterLqip}
             />
             <figcaption className="sr-only">{blog.title}</figcaption>
           </figure>

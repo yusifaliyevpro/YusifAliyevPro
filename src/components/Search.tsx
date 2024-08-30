@@ -28,26 +28,24 @@ export default function Search() {
   }, [resultCount]);
 
   return (
-    <>
-      <div className="mt-5 w-full px-6 md:w-[22rem] lg:mt-0">
-        <Input
-          classNames={{
-            inputWrapper:
-              "group-data-[focus=true]:border-blue-400  hover:!border-blue-300 border-blue-200 dark:border-slate-400",
-            input:
-              "placeholder:text-gray-500 dark:placeholder:text-slate-400 text-lg font-normal",
-          }}
-          placeholder={"Axtarış"}
-          variant="bordered"
-          size="lg"
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-          radius="md"
-          endContent={<BiSearch className="text-[1.7rem] font-bold" />}
-        />
-      </div>
-    </>
+    <search className="mt-5 w-full px-6 md:w-[22rem] lg:mt-0">
+      <Input
+        classNames={{
+          inputWrapper:
+            "group-data-[focus=true]:border-blue-400  hover:!border-blue-300 border-blue-200 dark:border-slate-400",
+          input:
+            "placeholder:text-gray-500 dark:placeholder:text-slate-400 text-lg font-normal",
+        }}
+        placeholder={"Axtarış"}
+        variant="bordered"
+        size="lg"
+        value={text}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+        radius="md"
+        endContent={<BiSearch className="text-[1.7rem] font-bold" />}
+      />
+    </search>
   );
 }

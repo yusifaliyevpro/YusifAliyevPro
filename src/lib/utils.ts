@@ -19,7 +19,17 @@ export async function getProjects() {
 }
 
 export async function getBlogs({ isEnabled }: { isEnabled: boolean }) {
-  const BLOGS_QUERY = groq`*[_type=='blogs' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc){title, _createdAt, "poster": poster.asset->url, publishedAt, "slug": slug.current, description}`;
+  const BLOGS_QUERY = groq`*[_type=='blogs' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)
+  {title,
+   _createdAt,
+   "poster": poster.asset->url,
+   "posterMetadata": {
+                   "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions
+                  },
+   publishedAt,
+   "slug": slug.current,
+   description}`;
+
   const data = await client.fetch<BLOGS_QUERYResult>(
     BLOGS_QUERY,
     { isInDevelopment, isEnabled },
@@ -40,7 +50,14 @@ export async function getSlugs() {
 }
 
 export async function getBlog(slug: string) {
-  const BLOG_QUERY = groq`*[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, publishedAt, isPublished, tags, _updatedAt, text, "slug": slug.current,_createdAt, description}[0]`;
+  const BLOG_QUERY = groq`*[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished, tags, _updatedAt, "text": text[] {
+..., ...select(
+      _type == "image" => {
+        "image": asset->url,
+        "lqip": (asset->metadata).lqip
+      } 
+    )
+  }, "slug": slug.current,_createdAt, description}[0]`;
   const data = await client.fetch<BLOG_QUERYResult>(
     BLOG_QUERY,
     { slug },

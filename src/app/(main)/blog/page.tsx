@@ -39,19 +39,17 @@ export default async function BlogsPage() {
   const blogs = await getBlogs({ isEnabled });
   const totalBlogCount = blogs.length;
   return (
-    <main
-      className={`flex min-h-[100svh] flex-col items-center pt-20 font-signika`}
-    >
-      <div className="bg-gradiesnt-to-b mt-5 flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
-        <div className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
-          <div className={`w-full space-y-5 font-poppins sm:w-fit`}>
+    <main className="flex min-h-[100svh] flex-col items-center gap-y-6 pt-20 font-signika">
+      <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
+        <header className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
+          <div className="w-full space-y-5 font-poppins sm:w-fit">
             <h1 className="w-full text-left text-4xl font-semibold">
               ✍️ Bloq yazılarım
             </h1>
-            <h2 className="sr-only">
+            <p className="sr-only">
               Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi
               paylaşıram.
-            </h2>
+            </p>
             <span className="flex h-24 max-w-[25rem] text-wrap pl-3 text-lg font-normal text-slate-600 dark:text-slate-400 sm:h-12">
               <Typewriter
                 words={[
@@ -63,9 +61,9 @@ export default async function BlogsPage() {
             </span>
           </div>
           <Search />
-        </div>
-        <Blogs blogs={blogs} totalBlogCount={totalBlogCount} />
-      </div>
+        </header>
+      </section>
+      <Blogs blogs={blogs} totalBlogCount={totalBlogCount} />
       {(isEnabled || isInDevelopment) && <RefreshBlogs />}
     </main>
   );

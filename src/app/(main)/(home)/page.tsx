@@ -42,7 +42,7 @@ export default async function Home() {
         className={cn(
           "mt-28 flex min-h-[76svh] w-full flex-col items-center justify-between px-8",
           "md:mt-32 md:min-h-[88vh] md:pb-[10vh]",
-          "lg:px-20",
+          "lg:px-[6.7rem]",
           "xl:mt-2 xl:min-h-svh xl:flex-row",
         )}
       >
@@ -51,7 +51,7 @@ export default async function Home() {
             "relative ml-3 flex flex-col gap-y-2 text-5xl",
             "max-lg:w-full max-lg:items-center max-lg:justify-center",
             "md:ml-0 md:mt-0 md:gap-y-2 md:text-5xl",
-            "xl:text-7xl",
+            "xl:text-[4.2rem]",
           )}
         >
           <h1 className="sr-only">
@@ -110,15 +110,15 @@ export default async function Home() {
             type: "spring",
             stiffness: 70,
           }}
-          className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-large"
+          className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-2xl shadow-blue-500"
         >
           <Image
             src={"/profile.webp"}
             width={350}
-            unoptimized
-            priority
-            alt="Profile Picture"
             height={350}
+            priority
+            unoptimized
+            alt="Profile Picture"
             className={cn(
               "max-h-[250px] max-w-[250px] select-none rounded-full",
               "md:max-h-[300px] md:max-w-[300px]",

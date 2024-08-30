@@ -8,6 +8,7 @@ import useQuery from "@/lib/store";
 import { useEffect, useState } from "react";
 import { dateFormatter } from "@/lib/formatters";
 import type { BLOGS_QUERYResult } from "../../sanity.types";
+import { cn } from "@/lib/cn";
 
 export default function Blogs({
   blogs,
@@ -37,20 +38,41 @@ export default function Blogs({
 
   return (
     <>
-      <div className="relative mt-16 grid w-full grid-cols-1 place-items-center items-center justify-center gap-x-7 gap-y-9 px-6 sm:grid-cols-2 md:grid-cols-2 md:px-20 lg:grid-cols-2 lg:px-36 xl:grid-cols-3">
+      <section
+        aria-label="Blog Posts"
+        className={cn(
+          "relative grid w-full grid-cols-1 place-items-center items-center justify-center gap-x-7 gap-y-9 px-6",
+          "sm:grid-cols-2",
+          "md:grid-cols-2 md:px-20",
+          "lg:grid-cols-2 lg:px-36",
+          "xl:grid-cols-3",
+        )}
+      >
         {renderedBlogs.map((blog, i) => (
           <article
             key={i}
-            className="col-span-1 flex h-auto cursor-pointer flex-col items-center justify-start rounded-lg border-solid bg-white pb-5 shadow-medium shadow-blue-600 transition-all hover:scale-105 dark:bg-gray-800"
+            className={cn(
+              "cursor-pointer rounded-lg border-solid bg-white pb-5 shadow-medium transition-all",
+              "col-span-1 flex flex-col items-center justify-start",
+              "hover:scale-105",
+              "dark:bg-gray-800",
+            )}
           >
             <Link href={`/blog/${blog.slug}`}>
-              <figure className="flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg border-b-1 border-t-0 border-solid dark:border-0">
+              <figure
+                className={cn(
+                  "flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg",
+                  "border-b-1 border-t-0 border-solid dark:border-0",
+                )}
+              >
                 <Image
                   src={blog.poster}
-                  width={250}
-                  height={200}
-                  className="size-auto rounded-t-lg object-cover"
+                  width={blog.posterMetadata.dimensions.width}
+                  height={blog.posterMetadata.dimensions.height}
+                  className="size-full rounded-t-lg object-cover"
                   alt={`${blog.title} Poster`}
+                  placeholder="blur"
+                  blurDataURL={blog.posterMetadata.lqip}
                 />
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
@@ -58,7 +80,13 @@ export default function Blogs({
                 <h3 className="my-5 line-clamp-2 text-left text-2xl font-bold dark:text-slate-300">
                   {blog.title}
                 </h3>
-                <p className="line-clamp-2 w-fit text-wrap font-signika text-lg font-medium leading-relaxed text-gray-500 dark:text-slate-400/80 md:line-clamp-6">
+                <p
+                  className={cn(
+                    "line-clamp-2 w-fit text-wrap font-signika text-lg font-medium leading-relaxed text-gray-500",
+                    "md:line-clamp-6",
+                    "dark:text-slate-400/80",
+                  )}
+                >
                   {blog.description}
                 </p>
               </div>
@@ -87,12 +115,15 @@ export default function Blogs({
             </Link>
           </article>
         ))}
-      </div>
+      </section>
       {totalBlogCount > resultCount && !search && (
         <Button
           onPress={() => setPage(page + 1)}
           size="lg"
-          className="mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white dark:from-blue-600 dark:to-blue-500 dark:text-slate-200"
+          className={cn(
+            "mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white",
+            "dark:from-blue-600 dark:to-blue-500 dark:text-slate-200",
+          )}
         >
           Daha çox göstər
         </Button>
