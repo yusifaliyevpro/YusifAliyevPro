@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           "dark:bg-foreground dark:text-slate-200",
         )}
       >
-        <Providers>
+        <Providers attribute="class" defaultTheme="light">
           <Header />
           {children}
           <KofeAlWidget

@@ -133,7 +133,7 @@ const socialAccounts: {
     name: "GitHub",
     link: "https://github.com/YusifAliyevPro",
     className:
-      "rounded-full to-gray-800 p-[2px] text-4xl dark:text-slate-300 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white",
+      "rounded-full to-gray-800  p-[2px] text-4xl dark:text-slate-300 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white",
   },
 ];
 
@@ -150,7 +150,7 @@ const navigationLinks: {
     link: "/blog",
   },
   {
-    name: "Haqqımda",
-    link: "/about",
+    name: "Əlaqə",
+    link: "/contact",
   },
 ];

@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/lib/constants";
 import { getSlugs } from "@/lib/utils";
-import type { MetadataRoute } from "next";
+import type { MetadataRoute, Route } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blog = await getSlugs();
@@ -10,12 +10,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: blog.publishedAt,
   }));
 
-  const staticRoutes: MetadataRoute.Sitemap = [`/`, `/blog`, `/about`].map(
-    (route) => ({
-      url: `${BASE_URL}${route}`,
-      lastModified: new Date().toISOString(),
-    }),
-  );
+  const routes: Route[] = [`/`, `/blog`, `/contact`];
+
+  const staticRoutes: MetadataRoute.Sitemap = routes.map((route) => ({
+    url: `${BASE_URL}${route}`,
+    lastModified: new Date().toISOString(),
+  }));
 
   return [...staticRoutes, ...blogSitemapEntries];
 }

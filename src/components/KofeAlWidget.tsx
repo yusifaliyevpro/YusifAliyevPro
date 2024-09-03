@@ -20,7 +20,7 @@ export default function KofeAlWidget({
   return (
     <div
       className={cn(
-        "sticky bottom-0 right-0 w-full flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7",
+        "sticky bottom-0 right-0 z-0 w-full cursor-auto flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7",
         poppins.className,
         { "hidden md:flex": !isActiveOnMobile, flex: isActiveOnMobile },
       )}
