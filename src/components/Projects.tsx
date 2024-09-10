@@ -30,9 +30,9 @@ export default async function Projects() {
             src={project.image}
             width={310}
             unoptimized
-            alt={`${project.name} websaytının şəkili`}
+            alt={`${project.name} ana səhifəsi`}
             height={200}
-            className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-fill shadow-medium transition-all hover:scale-105"
+            className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-fill shadow-medium"
           />
           <div className="flex flex-col md:gap-y-4">
             <h3

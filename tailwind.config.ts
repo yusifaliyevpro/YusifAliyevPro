@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       colors: {
         foreground: "#1a202c",
+        "blue-light": "#007bff",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

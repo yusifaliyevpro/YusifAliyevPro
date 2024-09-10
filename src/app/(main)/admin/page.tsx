@@ -1,0 +1,29 @@
+import AdminLogin from "@/components/AdminLogin";
+import type { Metadata } from "next";
+import { getAllContacts } from "@/lib/actions";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `/about`,
+  },
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
+
+export default async function Admin() {
+  const contacts = await getAllContacts();
+  return (
+    <main className="mt-24 flex min-h-svh flex-col items-center justify-start px-36">
+      <AdminLogin
+        myPassowrd={process.env.NEXT_SECRET_ADMIN_PASSWORD}
+        contacts={contacts}
+      />
+    </main>
+  );
+}

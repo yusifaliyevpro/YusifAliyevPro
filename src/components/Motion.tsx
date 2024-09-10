@@ -6,7 +6,7 @@ import type { MotionProps } from "framer-motion";
 
 type CustomMotionProps<Tag extends keyof JSX.IntrinsicElements> = MotionProps &
   ComponentProps<Tag> & {
-    type?: Tag;
+    type?: Tag | "div";
     children?: ReactNode;
     className?: string | null;
   };

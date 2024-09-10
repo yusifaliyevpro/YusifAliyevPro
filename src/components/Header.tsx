@@ -17,6 +17,7 @@ import { GrInstagram } from "react-icons/gr";
 import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
 import type { Route } from "next";
+import { Motion } from "./Motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,8 +71,10 @@ export default function Header() {
         <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
           {/* <ThemeSwitcher /> */}
           {socialAccounts.map((account, i) => (
-            <a
+            <Motion
+              type="a"
               key={i}
+              whileHover={{ scale: 1.1 }}
               href={account.link}
               aria-label={`My ${account.name} Account`}
               target="_blank"
@@ -80,7 +83,7 @@ export default function Header() {
             >
               {account.icon}
               <span className="sr-only">My {account.name} Account</span>
-            </a>
+            </Motion>
           ))}
         </NavbarItem>
       </NavbarContent>

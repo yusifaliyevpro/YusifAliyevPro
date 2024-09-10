@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Tooltip } from "@nextui-org/react";
 import { Motion } from "./Motion";
 
 export default function Timeline() {
@@ -8,12 +8,14 @@ export default function Timeline() {
       <ol>
         {events.map((event, i) => (
           <li key={i} className="relative mt-10 flex flex-row items-center">
-            <p
-              className="hidden w-[4.9rem] pr-10 text-xl md:flex"
-              aria-hidden={!event.year}
-            >
-              {event.year}
-            </p>
+            {
+              <p
+                className="hidden w-[4.9rem] pr-10 text-xl md:flex"
+                aria-hidden={!event.year}
+              >
+                {event.year}
+              </p>
+            }
             <Motion
               type="span"
               initial={{ opacity: 0, scale: 0.4 }}
@@ -64,9 +66,13 @@ export default function Timeline() {
 
 const events: {
   name?: string;
-  description?: ReactNode;
+  description?: JSX.Element | string;
   year?: number;
 }[] = [
+  {
+    name: "Holberton School | Pasha Bank",
+    description: "Full-Stack | Computer Science | 80% Təqaüd",
+  },
   {
     name: "AzTU | Kompüter Elmləri",
     description: "İngiliscə tədrislə | 2024-2028 | Dövlət Sifarişli",

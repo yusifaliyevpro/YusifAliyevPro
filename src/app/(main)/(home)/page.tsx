@@ -150,7 +150,7 @@ export default async function Home() {
       >
         <Reveal
           as="h2"
-          className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
+          className="px-5 text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
         >
           Kod Bacarıqları
         </Reveal>

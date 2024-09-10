@@ -25,7 +25,7 @@ export default function About() {
         <div className="flex flex-row gap-x-7">
           <Link href="#2">
             <Button color="primary" className="px-5 py-6 text-2xl">
-              Bəli🤩
+              Bəli✨
             </Button>
           </Link>
         </div>
@@ -41,7 +41,7 @@ export default function About() {
         <div className="flex flex-row gap-x-7">
           <Link href="#3">
             <Button color="primary" className="px-5 py-6 text-2xl">
-              Əlbəttə🤩
+              Əlbəttə🚀
             </Button>
           </Link>
         </div>

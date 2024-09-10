@@ -6,35 +6,29 @@
   .text-balance {
     text-wrap: balance;
   }
-}
+  html::-webkit-scrollbar {
+    @apply w-2;
+  }
 
-html {
-  overflow-y: scroll;
-}
-html::-webkit-scrollbar {
-  width: 0.5rem;
-}
+  html::-webkit-scrollbar-thumb {
+    @apply bg-blue-light rounded-[5rem];
+  }
 
-html::-webkit-scrollbar-thumb {
-  background: #007bff;
-  border-radius: 5rem;
-}
-
-html::-webkit-scrollbar-thumb:hover {
-  background: #0b4cd6;
+  html::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#0b4cd6];
+  }
 }
 
 .custom-scroolbar::-webkit-scrollbar {
-  height: 0.3rem;
+  @apply h-[0.3rem];
 }
 
 .custom-scroolbar::-webkit-scrollbar-thumb {
-  background: #007bff;
-  border-radius: 5rem;
+  @apply bg-blue-light rounded-[5rem];
 }
 
 .custom-scroolbar::-webkit-scrollbar-thumb:hover {
-  background: #0b4cd6;
+  @apply bg-[#0b4cd6];
 }
 
 .syntax {

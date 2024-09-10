@@ -26,12 +26,11 @@ export default function MySoftSkills() {
 }
 
 const addSkills: string[] = [
-  "SEO",
   "Layihə İdarə etməsi",
-  "Git",
   "Komanda ilə işləmə",
   "Tez öyrənmə",
-  "Analitika",
+  "Analitik düşüncə",
   "Vaxt idarə etməsi",
   "English B1",
+  "Empatiya",
 ];

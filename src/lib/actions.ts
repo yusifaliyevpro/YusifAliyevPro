@@ -31,3 +31,8 @@ export async function addNewContactWithMe(
     return { error };
   }
 }
+
+export async function getAllContacts() {
+  const contacts = await prisma.contact.findMany();
+  return contacts;
+}

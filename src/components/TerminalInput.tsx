@@ -55,7 +55,8 @@ export default function TerminalInput({
             classNames={{
               inputWrapper:
                 "bg-transparent hover:bg-transparent shadow-none group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
-              input: "font-mono text-base font-bold placeholder:text-slate-400",
+              input:
+                "font-mono  after:bg-black text-base font-bold placeholder:text-slate-400",
             }}
           />
         ) : (
