@@ -84,6 +84,11 @@ const technologies: {
     icon: "/techs/nodejs.png",
   },
   {
+    name: "NestJS",
+    link: "https://nestjs.com/",
+    icon: "/techs/nestjs.svg",
+  },
+  {
     name: "React Icons",
     link: "https://react-icons.github.io/react-icons/",
     icon: "/techs/react-icons.svg",
