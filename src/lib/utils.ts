@@ -9,7 +9,7 @@ import type {
 } from "../../sanity.types";
 
 export async function getProjects() {
-  const PROJECTS_QUERY = groq`*[_type=='projects']|order(_createdAt desc){name, "image": image.asset->url, description, link, repo}`;
+  const PROJECTS_QUERY = groq`*[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url, description, link, repo}`;
   const data = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
