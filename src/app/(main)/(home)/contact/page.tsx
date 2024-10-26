@@ -3,25 +3,18 @@ import { Button } from "@nextui-org/react";
 import type { Metadata } from "next";
 import Link from "next/link";
 export const metadata: Metadata = {
+  title: "Əlaqə",
   alternates: {
-    canonical: `/about`,
-  },
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
+    canonical: "/contact",
   },
 };
 export default function About() {
   return (
     <main className="flex min-h-svh w-full flex-col scroll-smooth">
       <section className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40">
-        <p className="w-fit text-5xl leading-normal text-slate-900 lg:text-7xl">
+        <h1 className="w-fit text-5xl leading-normal text-slate-900 lg:text-7xl">
           Maraqlı layihən var?
-        </p>
+        </h1>
         <div className="flex flex-row gap-x-7">
           <Link href="#2">
             <Button color="primary" className="px-5 py-6 text-2xl">
@@ -35,9 +28,9 @@ export default function About() {
         id="2"
         className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40"
       >
-        <p className="text-5xl leading-normal text-slate-900 lg:text-7xl">
+        <h2 className="text-5xl leading-normal text-slate-900 lg:text-7xl">
           Layihən üçün websayt lazımdır?
-        </p>
+        </h2>
         <div className="flex flex-row gap-x-7">
           <Link href="#3">
             <Button color="primary" className="px-5 py-6 text-2xl">
@@ -51,9 +44,9 @@ export default function About() {
         id="3"
         className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40"
       >
-        <p className="w-fit text-5xl leading-normal text-slate-900 lg:text-7xl">
+        <h2 className="w-fit text-5xl leading-normal text-slate-900 lg:text-7xl">
           Mənlə birlikdə etmək istəyirsən?
-        </p>
+        </h2>
         <div className="flex flex-row gap-x-7">
           <Link href="#4">
             <Button color="primary" className="px-5 py-6 text-2xl">

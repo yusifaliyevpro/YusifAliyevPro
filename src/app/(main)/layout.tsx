@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import KofeAlWidget from "@/components/KofeAlWidget";
 import { Toaster } from "react-hot-toast";
-import { jua, poppins, source_sans_3 } from "@/lib/fonts";
+import { code, jua, poppins, source_sans_3 } from "@/lib/fonts";
 import { BASE_URL } from "@/lib/constants";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";

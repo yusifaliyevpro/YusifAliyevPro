@@ -56,7 +56,7 @@ export default function FormTerminal() {
     }
   };
   return (
-    <form className="z-10 w-full rounded-lg bg-slate-200/90 font-mono shadow-large backdrop-blur-3xl">
+    <form className="z-10 w-full rounded-lg bg-slate-200/90 shadow-large backdrop-blur-3xl lg:font-mono">
       <header className="flex w-full flex-row items-center justify-between rounded-t-lg bg-slate-300/90 px-4 py-3 backdrop-blur-3xl">
         <div className="flex flex-row gap-x-2">
           <span className="size-3 rounded-full bg-red-500"></span>
@@ -87,6 +87,7 @@ export default function FormTerminal() {
             setIsEntered={setIsEnteredFullName}
             setValue={setFullName}
             value={fullName}
+            inputPlaceholder="Yusif Aliyev"
             name="Ad"
           />
           <TerminalInput
@@ -101,6 +102,7 @@ export default function FormTerminal() {
             isEntered={isEnteredEmail}
             setIsEntered={setIsEnteredEmail}
             setValue={setEmail}
+            inputPlaceholder="example@gmail.com"
             value={email}
             name="Email"
           />
@@ -145,6 +147,7 @@ export default function FormTerminal() {
             setValue={setDescription}
             value={description}
             name="Açıqlama"
+            inputPlaceholder="Layihəm bu haqqdadır"
           />
           <p
             className={cn("text-lg font-bold", {
