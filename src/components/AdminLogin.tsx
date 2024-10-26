@@ -16,7 +16,7 @@ export default function AdminLogin({
   const [password, setPassword] = useState("");
   return (
     <>
-      {false ? (
+      {myPassowrd !== process.env.NEXT_SECRET_ADMIN_PASSWORD ? (
         <div className="flex flex-col rounded-2xl p-8 py-12 shadow-large">
           <Input
             placeholder="Enter Admin Password"
