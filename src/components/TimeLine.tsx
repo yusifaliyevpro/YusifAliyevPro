@@ -70,8 +70,12 @@ const events: {
   year?: number;
 }[] = [
   {
+    name: "Div Academy | Gələcəyi Yazanlar",
+    description: "Full-Stack Programming | Təqaüd",
+  },
+  {
     name: "Holberton School | Pasha Bank",
-    description: "Full-Stack | Computer Science | 80% Təqaüd",
+    description: "Full-Stack | Computer Science | Təqaüd",
   },
   {
     name: "AzTU | Kompüter Elmləri",
@@ -84,14 +88,17 @@ const events: {
   {
     name: "Developer & Creator",
     description: (
-      <a
-        rel="noopener noreferrer"
-        href={"https://world-countriess.vercel.app/"}
-        className="text-blue-500"
-        target="_blank"
-      >
-        World-Countriess <span className="">| Websayt</span>
-      </a>
+      <>
+        <a
+          rel="noopener noreferrer"
+          href={"https://world-countriess.vercel.app/"}
+          className="text-blue-500"
+          target="_blank"
+        >
+          World-Countriess
+        </a>{" "}
+        | Websayt
+      </>
     ),
   },
   {

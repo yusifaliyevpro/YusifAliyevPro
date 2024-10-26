@@ -8,7 +8,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@nextui-org/navbar";
+} from "@nextui-org/react";
 import Link from "next/link";
 import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";

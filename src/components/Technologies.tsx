@@ -84,6 +84,11 @@ const technologies: {
     icon: "/techs/nodejs.png",
   },
   {
+    name: "Prisma",
+    link: "https://nextjs.org/",
+    icon: "/techs/prisma.svg",
+  },
+  {
     name: "NestJS",
     link: "https://nestjs.com/",
     icon: "/techs/nestjs.svg",
@@ -99,9 +104,9 @@ const technologies: {
     icon: "/techs/framer-motion.png",
   },
   {
-    name: "Clerk Auth",
+    name: "NextAuth",
     link: "https://nextjs.org/",
-    icon: "/techs/clerk.webp",
+    icon: "/techs/nextauth.png",
   },
   {
     name: "MongoDB",

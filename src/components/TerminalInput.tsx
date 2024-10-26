@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/cn";
 import { Button, Input } from "@nextui-org/react";
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SiTicktick } from "react-icons/si";
 
@@ -15,10 +15,12 @@ type TerminalInputProps = {
   setIsEntered: any;
   inputPlaceholder?: string;
   isBoolean?: boolean;
+  name: string;
 };
 
 export default function TerminalInput({
   title,
+  name,
   placeholder,
   value,
   setValue,
@@ -28,13 +30,25 @@ export default function TerminalInput({
   inputPlaceholder,
   isBoolean,
 }: TerminalInputProps) {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (isPreviousEntered && ref.current) {
+      ref.current.focus();
+    }
+  }, [isPreviousEntered]);
+
   return (
     <>
-      <p className={cn({ "sr-only": !isPreviousEntered })}>{title}</p>
+      <p className={cn({ "sr-only": isEntered || !isPreviousEntered })}>
+        {title}
+      </p>
       <div
-        className={cn("flex flex-row items-center gap-x-3 text-lg", {
-          "sr-only": !isPreviousEntered || isEntered,
-        })}
+        className={cn(
+          "flex flex-row items-center gap-x-3 text-base lg:text-lg",
+          {
+            "sr-only": !isPreviousEntered || isEntered,
+          },
+        )}
       >
         <FaArrowRightLong className="text-lg text-green-600" />
         <span className="text-blue-500">$</span>{" "}
@@ -45,6 +59,9 @@ export default function TerminalInput({
             value={value as string}
             placeholder={inputPlaceholder}
             maxLength={150}
+            ref={ref}
+            isDisabled={isEntered}
+            autoFocus
             onKeyDown={(e: any) => {
               if (e.key === "Enter") {
                 e.preventDefault();
@@ -92,7 +109,7 @@ export default function TerminalInput({
         )}
       >
         <SiTicktick className="w-6 text-lg" />
-        {typeof value === "string" ? value : value ? "Bəli" : "Xeyr"}
+        {name}: {typeof value === "string" ? value : value ? "Bəli" : "Xeyr"}
       </p>
     </>
   );

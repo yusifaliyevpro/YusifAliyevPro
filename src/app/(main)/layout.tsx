@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import Header from "@/components/Header";
-import Footer from "../../components/Footer";
+import Footer from "@/components/Footer";
 import KofeAlWidget from "@/components/KofeAlWidget";
 import { Toaster } from "react-hot-toast";
 import { jua, poppins, source_sans_3 } from "@/lib/fonts";

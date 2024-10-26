@@ -4,6 +4,7 @@ import TerminalInput from "./TerminalInput";
 import { Button } from "@nextui-org/react";
 import { addNewContactWithMe } from "@/lib/actions";
 import { cn } from "@/lib/cn";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export default function FormTerminal() {
   const [fullName, setFullName] = useState("");
@@ -16,6 +17,7 @@ export default function FormTerminal() {
   const [isEnteredHasWhatsApp, setIsEnteredHasWhatsApp] = useState(false);
   const [description, setDescription] = useState("");
   const [isEnteredDescription, setIsEnteredDescription] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const [message, setMessage] = useState("");
 
@@ -30,9 +32,11 @@ export default function FormTerminal() {
     setIsEnteredHasWhatsApp(false);
     setDescription("");
     setIsEnteredDescription(false);
+    setMessage("");
   };
 
   const handleSubmit = async () => {
+    setIsSending(true);
     const { error } = await addNewContactWithMe(
       fullName,
       email,
@@ -45,8 +49,9 @@ export default function FormTerminal() {
       setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
       return;
     } else {
+      setIsSending(false);
       setMessage(
-        "Əla! Məlumatlarınız uğurla göndərildi. Ən qısa vaxtda əlaqə saxlayacayam! 🚀",
+        "Əlaqə qurduğunuz üçün təşəkkürlər✨. Ən qısa zamanda geri dönüş edəcəyəm! 🚀",
       );
     }
   };
@@ -58,17 +63,17 @@ export default function FormTerminal() {
           <span className="size-3 rounded-full bg-yellow-500"></span>
           <span className="size-3 rounded-full bg-green-500"></span>
         </div>
-        <p>Contact with me (Səhifə developmentdədir)</p>
+        <p>Əlaqə</p>
         <p className="w-12"></p>
       </header>
-      <div className="flex min-h-[26rem] flex-col overflow-y-scroll p-3 scrollbar-hide">
+      <div className="flex min-h-[22rem] flex-col overflow-y-scroll p-3 scrollbar-hide">
         <p>Elə isə layihən mənə çox maraqlı gəlir✨</p>
         <span className="mr-2 overflow-hidden text-nowrap pb-3">
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         </span>
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-3 transition-all">
           <TerminalInput
             title={
               <>
@@ -82,6 +87,7 @@ export default function FormTerminal() {
             setIsEntered={setIsEnteredFullName}
             setValue={setFullName}
             value={fullName}
+            name="Ad"
           />
           <TerminalInput
             title={
@@ -96,6 +102,7 @@ export default function FormTerminal() {
             setIsEntered={setIsEnteredEmail}
             setValue={setEmail}
             value={email}
+            name="Email"
           />
           <TerminalInput
             title={
@@ -111,6 +118,7 @@ export default function FormTerminal() {
             setIsEntered={setIsEnteredPhone}
             setValue={setPhone}
             value={phone}
+            name="Nömrə"
           />
           <TerminalInput
             title={
@@ -126,6 +134,7 @@ export default function FormTerminal() {
             setValue={setHasWhatsApp}
             value={hasWhatsApp}
             isBoolean
+            name="Whatsapp?"
           />
           <TerminalInput
             title={"Son bir sual! Layihən nə haqqdadır?🤔"}
@@ -135,6 +144,7 @@ export default function FormTerminal() {
             setIsEntered={setIsEnteredDescription}
             setValue={setDescription}
             value={description}
+            name="Açıqlama"
           />
           <p
             className={cn("text-lg font-bold", {
@@ -162,7 +172,11 @@ export default function FormTerminal() {
               className="text-base font-bold"
               onClick={handleSubmit}
             >
-              Göndər!
+              {isSending ? (
+                <AiOutlineLoading className="animate-spin text-2xl" />
+              ) : (
+                "Göndər!"
+              )}
             </Button>
           </div>
 
