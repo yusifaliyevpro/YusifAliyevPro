@@ -9,14 +9,16 @@ import { notFound } from "next/navigation";
 import { draftMode } from "next/headers";
 import { RefreshSpecificBlog } from "@/components/Refresh";
 import { isInDevelopment } from "@/lib/constants";
-import type { Metadata } from "next";
+import type { Metadata } from "next/types";
 import { cn } from "@/lib/cn";
 
-export async function generateMetadata({
-  params: { slug },
-}: {
-  params: { slug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  const params = await props.params;
+
+  const { slug } = params;
+
   const blog = await getBlog(slug);
   if (!blog) notFound();
   return {
@@ -66,14 +68,16 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPage({
-  params: { slug },
-}: {
-  params: { slug: string };
+export default async function BlogPage(props: {
+  params: Promise<{ slug: string }>;
 }) {
+  const params = await props.params;
+
+  const { slug } = params;
+
   const blog = await getBlog(slug);
   if (!blog) notFound();
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
 
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">

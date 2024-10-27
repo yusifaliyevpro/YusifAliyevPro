@@ -10,7 +10,7 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type JSX } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";

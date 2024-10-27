@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next/types";
 import Projects from "@/components/Projects";
 import Timeline from "@/components/TimeLine";
 import Image from "next/image";

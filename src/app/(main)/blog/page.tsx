@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import Search from "@/components/Search";
 import { isInDevelopment } from "@/lib/constants";
 import { getBlogs } from "@/lib/utils";
-import type { Metadata } from "next";
+import type { Metadata } from "next/types";
 import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
 
@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogsPage() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   const blogs = await getBlogs({ isEnabled });
   const totalBlogCount = blogs.length;
   return (

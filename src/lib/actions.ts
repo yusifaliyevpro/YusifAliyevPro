@@ -6,12 +6,12 @@ import { draftMode } from "next/headers";
 import prisma from "./prisma";
 
 export async function updateBlogs() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   if (isInDevelopment || isEnabled) revalidateTag("blogs");
 }
 
 export async function updateSpecificBlog() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   if (isInDevelopment || isEnabled) revalidateTag("blog");
 }
 

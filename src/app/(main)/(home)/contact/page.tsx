@@ -1,6 +1,5 @@
 import FormTerminal from "@/components/FormTerminal";
-import { Button } from "@nextui-org/react";
-import type { Metadata } from "next";
+import type { Metadata } from "next/types";
 import Link from "next/link";
 export const metadata: Metadata = {
   title: "Əlaqə",
@@ -17,9 +16,9 @@ export default function About() {
         </h1>
         <div className="flex flex-row gap-x-7">
           <Link href="#2">
-            <Button color="primary" className="px-5 py-6 text-2xl">
+            <button className="bg-next-blue rounded-xl px-5 py-2 text-2xl font-normal text-white transition-all hover:opacity-80">
               Bəli✨
-            </Button>
+            </button>
           </Link>
         </div>
       </section>
@@ -33,9 +32,12 @@ export default function About() {
         </h2>
         <div className="flex flex-row gap-x-7">
           <Link href="#3">
-            <Button color="primary" className="px-5 py-6 text-2xl">
+            <button
+              color="primary"
+              className="bg-next-blue rounded-xl px-5 py-2 text-2xl font-normal text-white transition-all hover:opacity-80"
+            >
               Əlbəttə🚀
-            </Button>
+            </button>
           </Link>
         </div>
       </section>
@@ -49,9 +51,12 @@ export default function About() {
         </h2>
         <div className="flex flex-row gap-x-7">
           <Link href="#4">
-            <Button color="primary" className="px-5 py-6 text-2xl">
+            <button
+              color="primary"
+              className="bg-next-blue rounded-xl px-5 py-2 text-2xl font-normal text-white transition-all hover:opacity-80"
+            >
               Olar🤩
-            </Button>
+            </button>
           </Link>
         </div>
       </section>

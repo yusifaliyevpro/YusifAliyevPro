@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         foreground: "#1a202c",
         "blue-light": "#007bff",
+        "next-blue": "#016FEE",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

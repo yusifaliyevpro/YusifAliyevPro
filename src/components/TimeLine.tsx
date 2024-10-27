@@ -1,5 +1,6 @@
-import { Tooltip } from "@nextui-org/react";
 import { Motion } from "./Motion";
+
+import type { JSX } from "react";
 
 export default function Timeline() {
   return (

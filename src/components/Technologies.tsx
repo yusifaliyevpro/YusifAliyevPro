@@ -1,3 +1,4 @@
+"use client";
 import { Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import { Motion } from "./Motion";
@@ -49,7 +50,7 @@ const technologies: {
   icon: string;
 }[] = [
   {
-    name: "NextJS 14",
+    name: "NextJS 15",
     link: "https://nextjs.org/",
     icon: "/techs/next.svg",
   },
