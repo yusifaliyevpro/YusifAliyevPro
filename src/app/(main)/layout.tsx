@@ -10,6 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { cn } from "@/lib/cn";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -53,11 +54,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="az" suppressHydrationWarning>
       <body
