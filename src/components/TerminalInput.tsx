@@ -1,18 +1,18 @@
 "use client";
 import { cn } from "@/lib/cn";
 import { Button, Input } from "@nextui-org/react";
-import { type ReactNode, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SiTicktick } from "react-icons/si";
 
 type TerminalInputProps = {
-  title: ReactNode;
+  title: JSX.Element | string;
   placeholder: string;
   value: string | boolean;
-  setValue: any;
+  setValue: React.Dispatch<React.SetStateAction<string | boolean>>;
   isPreviousEntered: boolean;
   isEntered: boolean;
-  setIsEntered: any;
+  setIsEntered: React.Dispatch<React.SetStateAction<boolean>>;
   inputPlaceholder?: string;
   isBoolean?: boolean;
   name: string;
@@ -62,7 +62,7 @@ export default function TerminalInput({
             ref={ref}
             isDisabled={isEntered}
             autoFocus
-            onKeyDown={(e: any) => {
+            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
               if (e.key === "Enter") {
                 e.preventDefault();
                 setIsEntered(true);

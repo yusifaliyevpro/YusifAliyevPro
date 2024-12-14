@@ -20,7 +20,7 @@ export default function KofeAlWidget({
   return (
     <div
       className={cn(
-        "sticky bottom-0 right-0 z-0 w-full cursor-auto flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7",
+        "pointer-events-none sticky bottom-0 right-0 z-0 w-full cursor-auto flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7",
         poppins.className,
         { "hidden md:flex": !isActiveOnMobile, flex: isActiveOnMobile },
       )}
@@ -38,7 +38,7 @@ export default function KofeAlWidget({
           stiffness: 80,
         }}
         className={cn(
-          "flex w-fit cursor-pointer flex-row items-center rounded-full bg-white shadow-[0px_0px_30px_0px_rgba(0,0,0,0.04),0px_30px_60px_0px_rgba(0,0,0,0.12),0px_0px_1px_0px_rgba(0,0,0,0.3)]",
+          "pointer-events-auto flex w-fit cursor-pointer flex-row items-center rounded-full bg-white shadow-[0px_0px_30px_0px_rgba(0,0,0,0.04),0px_30px_60px_0px_rgba(0,0,0,0.12),0px_0px_1px_0px_rgba(0,0,0,0.3)]",
           { "p-3": !hovered },
         )}
         onMouseEnter={() => setHovered(true)}

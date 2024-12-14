@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { ComponentProps, HtmlHTMLAttributes, ReactNode, JSX } from "react";
+import type { ComponentProps, ReactNode, JSX } from "react";
 import type { MotionProps } from "framer-motion";
 
 type CustomMotionProps<Tag extends keyof JSX.IntrinsicElements> = MotionProps &

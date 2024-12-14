@@ -1,7 +1,10 @@
-import type { ReactNode } from "react";
 import "./style.css";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: Readonly<React.ReactNode>;
+}) {
   return (
     <html lang="en">
       <body>{children}</body>

@@ -1,6 +1,5 @@
 import Blogs from "@/components/Blogs";
 import { RefreshBlogs } from "@/components/Refresh";
-import Reveal from "@/components/Reveal";
 import Search from "@/components/Search";
 import { isInDevelopment } from "@/lib/constants";
 import { getBlogs } from "@/lib/utils";

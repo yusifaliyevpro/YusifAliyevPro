@@ -251,10 +251,14 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/lib/utils.ts
 // Variable: PROJECTS_QUERY
-// Query: *[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url, description, link, repo}
+// Query: *[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,      "imageMetadata": {    "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions   }, description, link, repo}
 export type PROJECTS_QUERYResult = Array<{
   name: string | null;
   image: string | null;
+  imageMetadata: {
+    lqip: string | null;
+    dimensions: SanityImageDimensions | null;
+  };
   description: string | null;
   link: string | null;
   repo: string | null;
@@ -350,7 +354,7 @@ export type BLOG_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type=='projects']|order(_createdAt desc){name,  \"image\": image.asset->url, description, link, repo}": PROJECTS_QUERYResult;
+    '*[_type==\'projects\']|order(_createdAt desc){name,  "image": image.asset->url,    \n  "imageMetadata": {\n    "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions\n   }, description, link, repo}': PROJECTS_QUERYResult;
     '*[_type==\'blogs\' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)\n  {title,\n   _createdAt,\n   "poster": poster.asset->url,\n   "posterMetadata": {\n                   "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions\n                  },\n   publishedAt,\n   "slug": slug.current,\n   description}': BLOGS_QUERYResult;
     "*[_type=='blogs' && isPublished]|order(publishedAt desc)\n      {\"slug\": slug.current, publishedAt}": SLUGS_QUERYResult;
     '*[_type==\'blogs\' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished, tags, _updatedAt, "text": text[] {\n..., ...select(\n      _type == "image" => {\n        "image": asset->url,\n        "lqip": (asset->metadata).lqip\n      } \n    )\n  }, "slug": slug.current,_createdAt, description}[0]': BLOG_QUERYResult;

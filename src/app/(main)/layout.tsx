@@ -8,7 +8,6 @@ import { jua, poppins, source_sans_3 } from "@/lib/fonts";
 import { BASE_URL } from "@/lib/constants";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { cn } from "@/lib/cn";
 
@@ -54,7 +53,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: Readonly<React.ReactNode>;
+}) {
   return (
     <html lang="az" suppressHydrationWarning>
       <body

@@ -7,6 +7,7 @@ import { AiOutlinePython } from "react-icons/ai";
 import CopyButton from "./CopyButton";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+const High = SyntaxHighlighter as any;
 export function getFileIcon(language: string) {
   switch (language) {
     case "html":
@@ -53,7 +54,7 @@ export default function CodeBlock({
         </div>
       </div>
       <div className="transition-all scrollbar-hide">
-        <SyntaxHighlighter
+        <High
           language={language}
           showLineNumbers
           style={oneLight}
@@ -68,7 +69,7 @@ export default function CodeBlock({
           }}
         >
           {code}
-        </SyntaxHighlighter>
+        </High>
       </div>
     </div>
   );

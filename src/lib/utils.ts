@@ -9,11 +9,14 @@ import type {
 } from "../../sanity.types";
 
 export async function getProjects() {
-  const PROJECTS_QUERY = groq`*[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url, description, link, repo}`;
+  const PROJECTS_QUERY = groq`*[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,    
+  "imageMetadata": {
+    "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions
+   }, description, link, repo}`;
   const data = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
-    { next: { revalidate: 3600 * 24, tags: ["blogs"] } },
+    { next: { revalidate: 3600 } },
   );
   return data;
 }
