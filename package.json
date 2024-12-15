@@ -58,16 +58,6 @@
     "use-debounce": "^10.0.4",
     "zustand": "^5.0.2"
   },
-  "pnpm": {
-    "peerDependencyRules": {
-      "allowAny": [
-        "react",
-        "react-dom",
-        "@types/react",
-        "@types/react-dom"
-      ]
-    }
-  },
   "devDependencies": {
     "@prisma/client": "^6.0.1",
     "@tailwindcss/typography": "^0.5.15",
