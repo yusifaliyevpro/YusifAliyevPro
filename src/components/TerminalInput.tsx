@@ -1,12 +1,12 @@
 "use client";
 import { cn } from "@/lib/cn";
 import { Button, Input } from "@nextui-org/react";
-import { useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SiTicktick } from "react-icons/si";
 
 type TerminalInputProps = {
-  title: JSX.Element | string;
+  title: ReactNode | string;
   placeholder: string;
   value: string | boolean;
   setValue: React.Dispatch<React.SetStateAction<string | boolean>>;

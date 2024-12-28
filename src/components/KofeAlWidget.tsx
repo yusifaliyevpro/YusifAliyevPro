@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
