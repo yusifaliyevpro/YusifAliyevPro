@@ -164,7 +164,7 @@ export default function FormTerminal() {
             <Button
               color="warning"
               className="text-base font-bold text-slate-800"
-              onClick={clearAll}
+              onPress={clearAll}
               radius="sm"
             >
               Yenidən başlat
@@ -173,7 +173,7 @@ export default function FormTerminal() {
               radius="sm"
               color="primary"
               className="text-base font-bold"
-              onClick={handleSubmit}
+              onPress={handleSubmit}
             >
               {isSending ? (
                 <AiOutlineLoading className="animate-spin text-2xl" />

@@ -68,6 +68,15 @@ const blog = defineType({
         rule.min(1).warning("At least one tag is recommended"),
     }),
     defineField({
+      title: "Gallery",
+      name: "gallery",
+      type: "array",
+      of: [defineArrayMember({ type: "image" })],
+      options: {
+        layout: "grid",
+      },
+    }),
+    defineField({
       name: "text",
       title: "Blog Text",
       type: "array",

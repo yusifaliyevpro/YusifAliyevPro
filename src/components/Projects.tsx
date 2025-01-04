@@ -36,7 +36,6 @@ export default async function Projects() {
               alt={`${project.name} ana səhifəsi`}
               unoptimized
               placeholder="blur"
-              loading="lazy"
               blurDataURL={project.imageMetadata.lqip}
               className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-fill shadow-medium"
             />
@@ -51,12 +50,6 @@ export default async function Projects() {
             >
               {project.name}
             </h3>
-            <p
-              title={project.description}
-              className="line-clamp-2 w-fit max-w-[20rem] text-pretty text-center text-sm text-gray-500 dark:text-slate-400 md:px-2"
-            >
-              {project.description}
-            </p>
           </div>
           <div className="mt-3 flex w-full flex-row flex-wrap items-center justify-around gap-y-3">
             <a

@@ -18,7 +18,7 @@ export default function CopyButton({ text }: { text: string }) {
     <div className="transition-all delay-150 duration-300">
       <Tooltip isOpen={isOpen} color="primary" content="Copied">
         <Button
-          onClick={handle}
+          onPress={handle}
           isIconOnly
           variant="light"
           onMouseLeave={() => {

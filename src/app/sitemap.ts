@@ -1,11 +1,11 @@
 import { BASE_URL } from "@/lib/constants";
-import { getSlugs } from "@/lib/utils";
+import { getBlogs } from "@/lib/utils";
 import type { MetadataRoute, Route } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blog = await getSlugs();
+  const blogs = await getBlogs({ isEnabled: false });
 
-  const blogSitemapEntries: MetadataRoute.Sitemap = blog.map((blog) => ({
+  const blogSitemapEntries: MetadataRoute.Sitemap = blogs.map((blog) => ({
     url: `${BASE_URL}/blog/${blog.slug}`,
     lastModified: blog.publishedAt,
   }));

@@ -10,28 +10,7 @@ import MyCodeSkills from "@/components/MyCodeSkills";
 import MySoftSkills from "@/components/MySoftSkills";
 import Technologies from "@/components/Technologies";
 import { cn } from "@/lib/cn";
-
-export const metadata: Metadata = {
-  title: "Hi👋, I'm a Full-Stack Developer",
-  alternates: {
-    canonical: `/`,
-  },
-  openGraph: {
-    type: "website",
-    siteName: "Yusif Aliyev",
-    locale: "az_AZ",
-    countryName: "Azerbaijan",
-    url: `${BASE_URL}/`,
-    images: [
-      {
-        url: "/profile.png",
-        width: 1080,
-        height: 1080,
-        alt: "Yusif Aliyev Picture",
-      },
-    ],
-  },
-};
+import { Suspense } from "react";
 
 export default async function Home() {
   return (
@@ -140,7 +119,9 @@ export default async function Home() {
         >
           Layihələrim
         </Reveal>
-        <Projects />
+        <Suspense>
+          <Projects />
+        </Suspense>
       </section>
 
       {/* My Code Skils */}
@@ -201,3 +182,25 @@ export default async function Home() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Hi👋, I'm a Full-Stack Developer",
+  alternates: {
+    canonical: `/`,
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Yusif Aliyev",
+    locale: "az_AZ",
+    countryName: "Azerbaijan",
+    url: `${BASE_URL}/`,
+    images: [
+      {
+        url: "/profile.png",
+        width: 1080,
+        height: 1080,
+        alt: "Yusif Aliyev Picture",
+      },
+    ],
+  },
+};

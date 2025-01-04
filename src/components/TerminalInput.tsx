@@ -68,6 +68,7 @@ export default function TerminalInput({
                 setIsEntered(true);
               }
             }}
+            enterKeyHint="enter"
             onValueChange={setValue}
             classNames={{
               inputWrapper:
@@ -79,7 +80,7 @@ export default function TerminalInput({
         ) : (
           <div className="flex flex-row gap-x-3">
             <Button
-              onClick={() => setIsEntered(true)}
+              onPress={() => setIsEntered(true)}
               color="warning"
               className="font-bold"
               radius="sm"
@@ -87,7 +88,7 @@ export default function TerminalInput({
               Xeyr
             </Button>
             <Button
-              onClick={() => {
+              onPress={() => {
                 setIsEntered(true);
                 setValue(true);
               }}

@@ -18,7 +18,7 @@ export function RefreshBlogs() {
 
   return (
     <div
-      className={`sticky bottom-0 right-0 flex h-full w-full flex-row justify-end pb-28 pr-9`}
+      className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}
     >
       <Button
         radius="full"
@@ -26,6 +26,7 @@ export function RefreshBlogs() {
         color="primary"
         size="lg"
         isIconOnly
+        className="pointer-events-auto"
       >
         <RxUpdate />
       </Button>
@@ -46,14 +47,14 @@ export function RefreshSpecificBlog() {
 
   return (
     <div
-      className={`sticky bottom-0 right-0 flex h-full w-full flex-row justify-end pb-28 pr-9`}
+      className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}
     >
       <Button
         radius="full"
         onPress={refresh}
         color="primary"
         size="lg"
-        className="size-32"
+        className="pointer-events-auto size-32"
         isIconOnly
       >
         <RxUpdate />

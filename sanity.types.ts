@@ -116,6 +116,18 @@ export type Blogs = {
   };
   description?: string;
   tags?: Array<string>;
+  gallery?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
   text?: Array<
     | {
         children?: Array<{
@@ -251,7 +263,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/lib/utils.ts
 // Variable: PROJECTS_QUERY
-// Query: *[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,      "imageMetadata": {    "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions   }, description, link, repo}
+// Query: *[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,      "imageMetadata": { "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions },   description, link, repo}
 export type PROJECTS_QUERYResult = Array<{
   name: string | null;
   image: string | null;
@@ -264,7 +276,7 @@ export type PROJECTS_QUERYResult = Array<{
   repo: string | null;
 }>;
 // Variable: BLOGS_QUERY
-// Query: *[_type=='blogs' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)  {title,   _createdAt,   "poster": poster.asset->url,   "posterMetadata": {                   "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions                  },   publishedAt,   "slug": slug.current,   description}
+// Query: *[_type=='blogs' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)  {title,  _createdAt, "poster": poster.asset->url,  "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions },   publishedAt, "slug": slug.current, description}
 export type BLOGS_QUERYResult = Array<{
   title: string | null;
   _createdAt: string;
@@ -277,14 +289,8 @@ export type BLOGS_QUERYResult = Array<{
   slug: string | null;
   description: string | null;
 }>;
-// Variable: SLUGS_QUERY
-// Query: *[_type=='blogs' && isPublished]|order(publishedAt desc)      {"slug": slug.current, publishedAt}
-export type SLUGS_QUERYResult = Array<{
-  slug: string | null;
-  publishedAt: string | null;
-}>;
 // Variable: BLOG_QUERY
-// Query: *[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished, tags, _updatedAt, "text": text[] {..., ...select(      _type == "image" => {        "image": asset->url,        "lqip": (asset->metadata).lqip      }     )  }, "slug": slug.current,_createdAt, description}[0]
+// Query: *[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description,   "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished,   "gallery": gallery[]{ "image": asset->url, "lqip": asset->metadata.lqip }, tags, _updatedAt, "text": text[]   {..., ...select( _type == "image" => { "image": asset->url, "lqip": (asset->metadata).lqip } ) },   "slug": slug.current,_createdAt, description}[0]
 export type BLOG_QUERYResult = {
   title: string | null;
   plainText: string | null;
@@ -292,6 +298,10 @@ export type BLOG_QUERYResult = {
   posterLqip: string | null;
   publishedAt: string | null;
   isPublished: boolean | null;
+  gallery: Array<{
+    image: string | null;
+    lqip: string | null;
+  }> | null;
   tags: Array<string> | null;
   _updatedAt: string;
   text: Array<
@@ -354,9 +364,8 @@ export type BLOG_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type==\'projects\']|order(_createdAt desc){name,  "image": image.asset->url,    \n  "imageMetadata": {\n    "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions\n   }, description, link, repo}': PROJECTS_QUERYResult;
-    '*[_type==\'blogs\' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)\n  {title,\n   _createdAt,\n   "poster": poster.asset->url,\n   "posterMetadata": {\n                   "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions\n                  },\n   publishedAt,\n   "slug": slug.current,\n   description}': BLOGS_QUERYResult;
-    "*[_type=='blogs' && isPublished]|order(publishedAt desc)\n      {\"slug\": slug.current, publishedAt}": SLUGS_QUERYResult;
-    '*[_type==\'blogs\' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished, tags, _updatedAt, "text": text[] {\n..., ...select(\n      _type == "image" => {\n        "image": asset->url,\n        "lqip": (asset->metadata).lqip\n      } \n    )\n  }, "slug": slug.current,_createdAt, description}[0]': BLOG_QUERYResult;
+    '*[_type==\'projects\']|order(_createdAt desc){name,  "image": image.asset->url,    \n  "imageMetadata": { "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions }, \n  description, link, repo}': PROJECTS_QUERYResult;
+    '*[_type==\'blogs\' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)\n  {title,  _createdAt, "poster": poster.asset->url,\n  "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions }, \n  publishedAt, "slug": slug.current, description}': BLOGS_QUERYResult;
+    '*[_type==\'blogs\' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, \n  "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished, \n  "gallery": gallery[]{ "image": asset->url, "lqip": asset->metadata.lqip }, tags, _updatedAt, "text": text[] \n  {..., ...select( _type == "image" => { "image": asset->url, "lqip": (asset->metadata).lqip } ) },\n   "slug": slug.current,_createdAt, description}[0]': BLOG_QUERYResult;
   }
 }

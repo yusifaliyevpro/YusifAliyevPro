@@ -110,20 +110,20 @@ const components: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="my-8 ml-12 text-base md:text-lg">{children}</ul>
+      <ul className="ml-8 text-base md:ml-12 md:text-lg">{children}</ul>
     ),
     number: ({ children }) => (
-      <ol className="my-8 ml-12 text-base md:text-lg">{children}</ol>
+      <ol className="ml-8 text-base md:ml-12 md:text-lg">{children}</ol>
     ),
   },
   listItem: {
     bullet: ({ children }) => (
-      <li className="mt-3 list-disc text-gray-600 dark:text-slate-300">
+      <li className="mt-2 list-disc text-gray-600 dark:text-slate-300">
         {children}
       </li>
     ),
     number: ({ children }) => (
-      <li className="mt-3 list-decimal text-gray-600 dark:text-slate-300">
+      <li className="mt-2 list-decimal text-gray-600 dark:text-slate-300">
         {children}
       </li>
     ),

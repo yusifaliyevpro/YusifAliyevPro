@@ -1,4 +1,4 @@
-import { getBlog, getSlugs } from "@/lib/utils";
+import { getBlog, getBlogs } from "@/lib/utils";
 import Image from "next/image";
 import { GoClock } from "react-icons/go";
 import { FiWatch } from "react-icons/fi";
@@ -11,6 +11,7 @@ import { RefreshSpecificBlog } from "@/components/Refresh";
 import { isInDevelopment } from "@/lib/constants";
 import type { Metadata } from "next/types";
 import { cn } from "@/lib/cn";
+import Gallery from "@/components/Gallery";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -20,7 +21,6 @@ export async function generateMetadata(props: {
   const { slug } = params;
 
   const blog = await getBlog(slug);
-  if (!blog) notFound();
   return {
     title: blog.title,
     description: blog.description.slice(0, 152).concat("..."),
@@ -62,7 +62,7 @@ export async function generateMetadata(props: {
 }
 
 export async function generateStaticParams() {
-  const blogSlugs = await getSlugs();
+  const blogSlugs = await getBlogs({ isEnabled: false });
   return blogSlugs.map((blogSlug) => ({
     slug: blogSlug.slug,
   }));
@@ -165,6 +165,7 @@ export default async function BlogPage(props: {
           </figure>
           <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-20">
             <RichText blogText={blog.text} />
+            {blog.gallery && <Gallery images={blog.gallery} />}
           </article>
         </div>
       </div>
