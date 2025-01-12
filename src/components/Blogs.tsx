@@ -93,12 +93,12 @@ export default function Blogs({
               <div className="flex w-full flex-row items-center justify-between px-7 py-5 pr-8">
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
-                    src="/profile.png"
+                    src="/NotionProfile.png"
                     width={45}
                     height={45}
                     unoptimized
                     alt="Profile Picture"
-                    className="rounded-full shadow-medium"
+                    className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-medium"
                   />
                   <p className="font-medium">Yusif Aliyev</p>
                 </div>

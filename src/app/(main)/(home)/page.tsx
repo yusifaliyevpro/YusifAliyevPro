@@ -92,7 +92,7 @@ export default async function Home() {
           className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-2xl shadow-blue-500"
         >
           <Image
-            src={"/profile.webp"}
+            src={"/NotionProfile.png"}
             width={350}
             height={350}
             priority
@@ -196,7 +196,7 @@ export const metadata: Metadata = {
     url: `${BASE_URL}/`,
     images: [
       {
-        url: "/profile.png",
+        url: "/NotionProfile.png",
         width: 1080,
         height: 1080,
         alt: "Yusif Aliyev Picture",

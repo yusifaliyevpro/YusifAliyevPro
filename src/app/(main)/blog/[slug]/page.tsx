@@ -102,12 +102,12 @@ export default async function BlogPage(props: {
         >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
-              src={"/profile.png"}
+              src={"/NotionProfile.png"}
               alt="Yusif Aliyev Picture"
               width={50}
               height={50}
               unoptimized
-              className="rounded-full shadow-large"
+              className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-large shadow-blue-500"
             />
             <address className="font-bold not-italic">
               <Link href={"/"} rel="author" className="hover:text-blue-500">
