@@ -13,54 +13,6 @@ import type { Metadata } from "next/types";
 import { cn } from "@/lib/cn";
 import Gallery from "@/components/Gallery";
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
-
-  const { slug } = params;
-
-  const blog = await getBlog(slug);
-  return {
-    title: blog.title,
-    description: blog.description.slice(0, 152).concat("..."),
-    keywords: [
-      ...blog.tags,
-      "bloq",
-      "blog",
-      "Yusif Aliyev",
-      "YusifAliyevPro",
-      "YusifAliyevPro Blog",
-      "Full-Stack Developer",
-      "Developer",
-      "Web Developer",
-      "NextJS Developer",
-    ],
-    alternates: {
-      canonical: `/blog/${blog.slug}`,
-    },
-    openGraph: {
-      url: `/blog/${blog.slug}`,
-      siteName: "Yusif Aliyev",
-      locale: "az_AZ",
-      countryName: "Azerbaijan",
-      type: "article",
-      modifiedTime: blog._updatedAt,
-      publishedTime: blog.publishedAt,
-      authors: ["Yusif Aliyev"],
-      tags: blog.tags,
-      images: [
-        {
-          url: blog.poster,
-          width: 1200,
-          height: 630,
-          alt: blog.title + " Poster",
-        },
-      ],
-    },
-  };
-}
-
 export async function generateStaticParams() {
   const blogSlugs = await getBlogs({ isEnabled: false });
   return blogSlugs.map((blogSlug) => ({
@@ -68,12 +20,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPage(props: {
+export default async function BlogPage({
+  params,
+}: {
   params: Promise<{ slug: string }>;
 }) {
-  const params = await props.params;
-
-  const { slug } = params;
+  const { slug } = await params;
 
   const blog = await getBlog(slug);
   if (!blog) notFound();
@@ -102,7 +54,7 @@ export default async function BlogPage(props: {
         >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
-              src={"/NotionProfile.png"}
+              src={"/Profile.png"}
               alt="Yusif Aliyev Picture"
               width={50}
               height={50}
@@ -172,4 +124,53 @@ export default async function BlogPage(props: {
       {(isEnabled || isInDevelopment) && <RefreshSpecificBlog />}
     </main>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const blog = await getBlog(slug);
+  if (!blog) notFound();
+  return {
+    title: blog.title,
+    description: blog.description.slice(0, 152).concat("..."),
+    keywords: [
+      ...blog.tags,
+      "bloq",
+      "blog",
+      "Yusif Aliyev",
+      "YusifAliyevPro",
+      "YusifAliyevPro Blog",
+      "Full-Stack Developer",
+      "Developer",
+      "Web Developer",
+      "NextJS Developer",
+    ],
+    alternates: {
+      canonical: `/blog/${blog.slug}`,
+    },
+    openGraph: {
+      url: `/blog/${blog.slug}`,
+      siteName: "Yusif Aliyev",
+      locale: "az_AZ",
+      countryName: "Azerbaijan",
+      type: "article",
+      modifiedTime: blog._updatedAt,
+      publishedTime: blog.publishedAt,
+      authors: ["Yusif Aliyev"],
+      tags: blog.tags,
+      images: [
+        {
+          url: blog.poster,
+          width: 1200,
+          height: 630,
+          alt: blog.title + " Poster",
+        },
+      ],
+    },
+  };
 }

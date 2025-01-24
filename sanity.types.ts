@@ -98,12 +98,12 @@ export type Blogs = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  slug?: Slug;
+  title: string;
+  slug: Slug;
   preview?: string;
-  isPublished?: boolean;
-  publishedAt?: string;
-  poster?: {
+  isPublished: boolean;
+  publishedAt: string;
+  poster: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -114,8 +114,8 @@ export type Blogs = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  description?: string;
-  tags?: Array<string>;
+  description: string;
+  tags: Array<string>;
   gallery?: Array<{
     asset?: {
       _ref: string;
@@ -128,7 +128,7 @@ export type Blogs = {
     _type: "image";
     _key: string;
   }>;
-  text?: Array<
+  text: Array<
     | {
         children?: Array<{
           marks?: Array<string>;
@@ -233,7 +233,7 @@ export type SanityImageMetadata = {
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -278,31 +278,31 @@ export type PROJECTS_QUERYResult = Array<{
 // Variable: BLOGS_QUERY
 // Query: *[_type=='blogs' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)  {title,  _createdAt, "poster": poster.asset->url,  "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions },   publishedAt, "slug": slug.current, description}
 export type BLOGS_QUERYResult = Array<{
-  title: string | null;
+  title: string;
   _createdAt: string;
   poster: string | null;
   posterMetadata: {
     lqip: string | null;
     dimensions: SanityImageDimensions | null;
   };
-  publishedAt: string | null;
-  slug: string | null;
-  description: string | null;
+  publishedAt: string;
+  slug: string;
+  description: string;
 }>;
 // Variable: BLOG_QUERY
 // Query: *[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description,   "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished,   "gallery": gallery[]{ "image": asset->url, "lqip": asset->metadata.lqip }, tags, _updatedAt, "text": text[]   {..., ...select( _type == "image" => { "image": asset->url, "lqip": (asset->metadata).lqip } ) },   "slug": slug.current,_createdAt, description}[0]
 export type BLOG_QUERYResult = {
-  title: string | null;
-  plainText: string | null;
+  title: string;
+  plainText: string;
   poster: string | null;
   posterLqip: string | null;
-  publishedAt: string | null;
-  isPublished: boolean | null;
+  publishedAt: string;
+  isPublished: boolean;
   gallery: Array<{
     image: string | null;
     lqip: string | null;
   }> | null;
-  tags: Array<string> | null;
+  tags: Array<string>;
   _updatedAt: string;
   text: Array<
     | {
@@ -354,10 +354,10 @@ export type BLOG_QUERYResult = {
         image: string | null;
         lqip: string | null;
       }
-  > | null;
-  slug: string | null;
+  >;
+  slug: string;
   _createdAt: string;
-  description: string | null;
+  description: string;
 } | null;
 
 // Query TypeMap

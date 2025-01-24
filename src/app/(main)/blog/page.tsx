@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       countryName: "Azerbaijan",
       images: [
         {
-          url: "/NotionProfile.png",
+          url: "/Profile.png",
           width: 1080,
           height: 1080,
           alt: "Yusif Aliyev Picture",

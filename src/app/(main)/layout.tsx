@@ -12,6 +12,42 @@ import type { Metadata } from "next";
 import { cn } from "@/lib/cn";
 import { ReactNode } from "react";
 
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="az" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-svh scroll-smooth bg-white font-poppins font-semibold",
+          poppins.variable,
+          jua.variable,
+          source_sans_3.variable,
+          "dark:bg-foreground dark:text-slate-200",
+        )}
+      >
+        <Providers attribute="class" defaultTheme="light">
+          <Header />
+          {children}
+          <KofeAlWidget
+            username="yusifaliyevpro"
+            isActiveOnMobile
+            isHoverable
+          />
+          <Footer />
+        </Providers>
+        <Analytics />
+        <SpeedInsights />
+        <Toaster
+          toastOptions={{
+            className: "",
+          }}
+          position="bottom-right"
+          reverseOrder={false}
+        />
+      </body>
+    </html>
+  );
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
@@ -53,39 +89,3 @@ export const metadata: Metadata = {
     "google-site-verification": "19T4aaaA0mlU3qd0sFEl3z8e_Y_Zb_am5Cfkr5wxRWM",
   },
 };
-
-export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="az" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-svh scroll-smooth bg-white font-poppins font-semibold",
-          poppins.variable,
-          jua.variable,
-          source_sans_3.variable,
-          "dark:bg-foreground dark:text-slate-200",
-        )}
-      >
-        <Providers attribute="class" defaultTheme="light">
-          <Header />
-          {children}
-          <KofeAlWidget
-            username="yusifaliyevpro"
-            isActiveOnMobile
-            isHoverable
-          />
-          <Footer />
-        </Providers>
-        <Analytics />
-        <SpeedInsights />
-        <Toaster
-          toastOptions={{
-            className: "",
-          }}
-          position="bottom-right"
-          reverseOrder={false}
-        />
-      </body>
-    </html>
-  );
-}

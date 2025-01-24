@@ -11,7 +11,10 @@ const blog = defineType({
       title: "Blog Title",
       type: "string",
       validation: (rule) =>
-        rule.max(50).warning("Shorter titles are usually better for SEO"),
+        rule
+          .max(50)
+          .warning("Shorter titles are usually better for SEO")
+          .required(),
     }),
     defineField({
       name: "slug",
@@ -35,18 +38,21 @@ const blog = defineType({
       name: "isPublished",
       title: "Is published?",
       type: "boolean",
+      validation: (rule) => rule.required(),
       initialValue: false,
     }),
     defineField({
       name: "publishedAt",
       title: "Publication Date",
       type: "datetime",
+      validation: (rule) => rule.required(),
       initialValue: new Date().toISOString(),
     }),
     defineField({
       name: "poster",
       title: "Blog Poster",
       type: "image",
+      validation: (rule) => rule.required(),
       options: {
         hotspot: true,
       },
@@ -55,6 +61,7 @@ const blog = defineType({
       name: "description",
       title: "Short Description",
       type: "text",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       title: "Tags",
@@ -65,7 +72,7 @@ const blog = defineType({
         layout: "tags",
       },
       validation: (rule) =>
-        rule.min(1).warning("At least one tag is recommended"),
+        rule.min(1).warning("At least one tag is recommended").required(),
     }),
     defineField({
       title: "Gallery",
@@ -80,6 +87,7 @@ const blog = defineType({
       name: "text",
       title: "Blog Text",
       type: "array",
+      validation: (rule) => rule.required(),
       of: [
         defineArrayMember({ type: "block" }),
         defineArrayMember({

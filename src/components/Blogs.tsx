@@ -93,7 +93,7 @@ export default function Blogs({
               <div className="flex w-full flex-row items-center justify-between px-7 py-5 pr-8">
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
-                    src="/NotionProfile.png"
+                    src="/Profile.png"
                     width={45}
                     height={45}
                     unoptimized
