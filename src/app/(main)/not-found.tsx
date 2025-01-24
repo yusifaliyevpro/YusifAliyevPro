@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,3 +26,18 @@ export default function NotFound() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: "404 Not Found",
+  description: "The Page you are looking for was not found!",
+  openGraph: {
+    images: [
+      {
+        url: "/Not-Found.png",
+        width: 1200,
+        height: 630,
+        alt: "Not Found 404",
+      },
+    ],
+  },
+};
