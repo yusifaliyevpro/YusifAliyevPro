@@ -10,12 +10,12 @@ export default async function ShortLink({
 }) {
   const { slug } = await params;
   const Links = await prisma.shortenLink.findMany({ where: { slug } });
-  // if (Links.length !== 0) {
-  //   const link = Links[0].link;
-  //   redirect(link);
-  // } else {
-  //   notFound();
-  // }
+  if (Links.length !== 0) {
+    const link = Links[0].link;
+    redirect(link);
+  } else {
+    notFound();
+  }
   return (
     <div className="relative flex min-h-svh w-full items-center justify-center">
       <div className="relative animate-spinner-linear-spin text-8xl font-bold text-blue-600">
