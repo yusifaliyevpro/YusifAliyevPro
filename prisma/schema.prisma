@@ -27,3 +27,10 @@ model Contact {
   isCalled    Boolean  @default(false)
   createdAt   DateTime @default(now())
 }
+
+model ShortenLink {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String
+  link      String
+  createdAt DateTime @default(now())
+}
