@@ -14,7 +14,7 @@ export async function getProjects() {
   const data = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
-    { next: { revalidate: 3600 * 24 * 7 }, cache: "force-cache" },
+    { next: { revalidate: 3600 * 24 } },
   );
   return data;
 }
@@ -28,7 +28,7 @@ export async function getBlogs({ isEnabled }: { isEnabled: boolean }) {
   const data = await client.fetch<BLOGS_QUERYResult>(
     BLOGS_QUERY,
     { isInDevelopment, isEnabled },
-    { next: { revalidate: 3600, tags: ["blogs"] }, cache: "force-cache" },
+    { next: { revalidate: 3600, tags: ["blogs"] } },
   );
   return data;
 }
@@ -42,7 +42,7 @@ export async function getBlog(slug: string) {
   const data = await client.fetch<BLOG_QUERYResult>(
     BLOG_QUERY,
     { slug },
-    { next: { revalidate: 3600, tags: ["blog"] }, cache: "force-cache" },
+    { next: { revalidate: 3600, tags: ["blog"] } },
   );
   return data;
 }
