@@ -1,5 +1,4 @@
-"use client";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/tooltip";
 import Image from "next/image";
 import { Motion } from "./Motion";
 

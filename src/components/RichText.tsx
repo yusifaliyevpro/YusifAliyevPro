@@ -2,9 +2,8 @@ import { PortableText, PortableTextComponents } from "next-sanity";
 import { getImageDimensions } from "@sanity/asset-utils";
 import CodeBlock from "@/components/CodeBlock";
 import { type ReactNode, Suspense } from "react";
-import Image from "next/image";
 import { CodeInputValue } from "@sanity/code-input";
-import { SanityImageAsset } from "../../sanity.types";
+import { SanityImageAsset } from "@/sanity.types";
 import SanityImage from "./SanityImage";
 
 export default function RichText({ blogText }) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import { MotionConfig } from "motion/react";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
@@ -14,10 +14,10 @@ export function Providers({
 } & any) {
   const router = useRouter();
   return (
-    <NextUIProvider navigate={router.push}>
+    <HeroUIProvider navigate={router.push}>
       <NextThemesProvider {...props}>
         <MotionConfig>{children}</MotionConfig>
       </NextThemesProvider>
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 }

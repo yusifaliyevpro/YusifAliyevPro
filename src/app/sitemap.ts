@@ -7,7 +7,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogSitemapEntries: MetadataRoute.Sitemap = blogs.map((blog) => ({
     url: `${BASE_URL}/blog/${blog.slug}`,
-    lastModified: blog.publishedAt,
+    lastModified: blog._updatedAt,
+    images: [blog.poster],
   }));
 
   const routes: Route[] = [`/`, `/blog`, `/contact`];
@@ -15,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = routes.map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: new Date().toISOString(),
+    images: [`${BASE_URL}/Profile.png`],
   }));
 
   return [...staticRoutes, ...blogSitemapEntries];

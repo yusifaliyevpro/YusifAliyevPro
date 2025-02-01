@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/cn";
-import { Button, Input } from "@nextui-org/react";
+import { Button } from "@heroui/button";
+import { Input } from "@heroui/input";
 import { ReactNode, useEffect, useRef } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SiTicktick } from "react-icons/si";

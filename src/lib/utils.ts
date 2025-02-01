@@ -1,11 +1,11 @@
 import { groq } from "next-sanity";
-import { client } from "./../sanity/lib/client";
+import { client } from "@/sanity/lib/client";
 import { isInDevelopment } from "./constants";
 import type {
   BLOG_QUERYResult,
   BLOGS_QUERYResult,
   PROJECTS_QUERYResult,
-} from "../../sanity.types";
+} from "@/sanity.types";
 
 export async function getProjects() {
   const PROJECTS_QUERY = groq`*[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,    
@@ -21,7 +21,7 @@ export async function getProjects() {
 
 export async function getBlogs({ isEnabled }: { isEnabled: boolean }) {
   const BLOGS_QUERY = groq`*[_type=='blogs' && (isPublished || $isInDevelopment || $isEnabled)]|order(publishedAt desc)
-  {title,  _createdAt, "poster": poster.asset->url,
+  {title,  _createdAt, _updatedAt, "poster": poster.asset->url,
   "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions }, 
   publishedAt, "slug": slug.current, description}`;
 
@@ -42,7 +42,7 @@ export async function getBlog(slug: string) {
   const data = await client.fetch<BLOG_QUERYResult>(
     BLOG_QUERY,
     { slug },
-    { next: { revalidate: 3600, tags: ["blog"] } },
+    { next: { revalidate: 3600, tags: ["blog"] }, cache: "force-cache" },
   );
   return data;
 }

@@ -8,7 +8,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@nextui-org/react";
+} from "@heroui/navbar";
 import Link from "next/link";
 import { useState, type JSX } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";

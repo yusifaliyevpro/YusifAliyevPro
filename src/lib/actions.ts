@@ -15,7 +15,7 @@ export async function updateSpecificBlog() {
   if (isInDevelopment || isEnabled) revalidateTag("blog");
 }
 
-export async function addNewContactWithMe(
+export async function newContactInfo(
   fullName: string,
   email: string,
   phone: string,
@@ -23,10 +23,10 @@ export async function addNewContactWithMe(
   description: string,
 ) {
   try {
-    const newContactMe = await prisma.contact.create({
+    const newContactInfo = await prisma.contact.create({
       data: { fullName, email, phone, hasWhatsApp, description },
     });
-    return { newContactMe };
+    return { newContactMe: newContactInfo };
   } catch (error) {
     return { error };
   }
@@ -35,4 +35,9 @@ export async function addNewContactWithMe(
 export async function getAllContacts() {
   const contacts = await prisma.contact.findMany();
   return contacts;
+}
+
+export async function getLinkSlugs(slug: string) {
+  const slugs = await prisma.shortenLink.findMany({ where: { slug } });
+  return slugs;
 }

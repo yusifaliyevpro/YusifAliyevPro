@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/cn";
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/input";
 import { Contact } from "@prisma/client";
 import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";

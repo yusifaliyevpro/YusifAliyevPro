@@ -7,36 +7,9 @@ import type { Metadata } from "next/types";
 import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
-    description:
-      "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
-    alternates: {
-      canonical: `/blog`,
-    },
-    openGraph: {
-      url: `/blog`,
-      type: "website",
-      siteName: "Yusif Aliyev",
-      locale: "az_AZ",
-      countryName: "Azerbaijan",
-      images: [
-        {
-          url: "/Profile.png",
-          width: 1080,
-          height: 1080,
-          alt: "Yusif Aliyev Picture",
-        },
-      ],
-    },
-  };
-}
-
 export default async function BlogsPage() {
   const { isEnabled } = await draftMode();
   const blogs = await getBlogs({ isEnabled });
-  const totalBlogCount = blogs.length;
   return (
     <main className="flex min-h-[100svh] flex-col items-center gap-y-6 pt-20 font-signika">
       <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
@@ -62,8 +35,34 @@ export default async function BlogsPage() {
           <Search />
         </header>
       </section>
-      <Blogs blogs={blogs} totalBlogCount={totalBlogCount} />
+      <Blogs blogs={blogs} />
       {(isEnabled || isInDevelopment) && <RefreshBlogs />}
     </main>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
+    description:
+      "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
+    alternates: {
+      canonical: `/blog`,
+    },
+    openGraph: {
+      url: `/blog`,
+      type: "website",
+      siteName: "Yusif Aliyev",
+      locale: "az_AZ",
+      countryName: "Azerbaijan",
+      images: [
+        {
+          url: "/Profile.png",
+          width: 1080,
+          height: 1080,
+          alt: "Yusif Aliyev Picture",
+        },
+      ],
+    },
+  };
 }

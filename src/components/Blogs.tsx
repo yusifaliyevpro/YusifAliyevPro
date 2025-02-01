@@ -2,22 +2,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GoClock } from "react-icons/go";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/button";
 import Fuse from "fuse.js";
 import useQuery from "@/lib/store";
 import { useEffect, useState } from "react";
 import { dateFormatter } from "@/lib/formatters";
-import type { BLOGS_QUERYResult } from "../../sanity.types";
+import type { BLOGS_QUERYResult } from "@/sanity.types";
 import { cn } from "@/lib/cn";
 import SanityImage from "./SanityImage";
 
-export default function Blogs({
-  blogs,
-  totalBlogCount,
-}: {
-  blogs: BLOGS_QUERYResult;
-  totalBlogCount: number;
-}) {
+export default function Blogs({ blogs }: { blogs: BLOGS_QUERYResult }) {
   const [page, setPage] = useState(1);
   const search = useQuery((state) => state.search);
   const setResultCount = useQuery((state) => state.setResultCount);
@@ -117,7 +111,7 @@ export default function Blogs({
           </article>
         ))}
       </section>
-      {totalBlogCount > resultCount && !search && (
+      {blogs.length > resultCount && !search && (
         <Button
           onPress={() => setPage(page + 1)}
           size="lg"

@@ -1,9 +1,7 @@
-"use client";
-import { useState } from "react";
-import { motion } from "motion/react";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { Motion } from "./Motion";
 const poppins = Poppins({ subsets: ["latin"], weight: "600" });
 
 export default function KofeAlWidget({
@@ -15,17 +13,16 @@ export default function KofeAlWidget({
   isActiveOnMobile?: boolean;
   isHoverable?: boolean;
 }) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <div
       className={cn(
-        "pointer-events-none sticky bottom-0 right-0 z-0 w-full cursor-auto flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7",
+        "group pointer-events-none sticky bottom-0 right-0 z-0 w-full cursor-auto flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7",
         poppins.className,
         { "hidden md:flex": !isActiveOnMobile, flex: isActiveOnMobile },
       )}
     >
-      <motion.a
+      <Motion
+        type="a"
         href={`https://kofe.al/@${username}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -37,21 +34,17 @@ export default function KofeAlWidget({
           type: "spring",
           stiffness: 80,
         }}
-        className={cn(
-          "pointer-events-auto flex w-fit cursor-pointer flex-row items-center rounded-full bg-white shadow-[0px_0px_30px_0px_rgba(0,0,0,0.04),0px_30px_60px_0px_rgba(0,0,0,0.12),0px_0px_1px_0px_rgba(0,0,0,0.3)]",
-          { "p-3": !hovered },
-        )}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        className="pointer-events-auto flex w-fit cursor-pointer flex-row items-center rounded-full bg-white p-3 shadow-[0px_0px_30px_0px_rgba(0,0,0,0.04),0px_30px_60px_0px_rgba(0,0,0,0.12),0px_0px_1px_0px_rgba(0,0,0,0.3)] group-hover:p-0"
       >
         <div
           className={cn("transition-all duration-200", {
-            "lg:w-auto lg:px-4 lg:py-2 lg:pl-6": hovered && isHoverable,
+            "group-hover:lg:w-auto group-hover:lg:px-4 group-hover:lg:py-2 group-hover:lg:pl-6":
+              isHoverable,
           })}
         >
           <p
             className={cn("hidden text-lg dark:text-black", {
-              "lg:flex": isHoverable && hovered,
+              "group-hover:lg:flex": isHoverable,
             })}
           >
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -60,7 +53,7 @@ export default function KofeAlWidget({
             /@{username}
           </p>
         </div>
-        <motion.div
+        <Motion
           animate={{
             rotate: [0, -11, 11, -11, 11, 0],
           }}
@@ -73,10 +66,9 @@ export default function KofeAlWidget({
               repeatType: "mirror",
             },
           }}
-          className={cn({
-            "rounded-full p-3 shadow-[0px_0px_30px_0px_rgba(0,0,0,0.04),0px_30px_60px_0px_rgba(0,0,0,0.12),0px_0px_1px_0px_rgba(0,0,0,0.3)]":
-              hovered,
-          })}
+          className={cn(
+            "group-hover:rounded-full group-hover:p-3 group-hover:shadow-[0px_0px_30px_0px_rgba(0,0,0,0.04),0px_30px_60px_0px_rgba(0,0,0,0.12),0px_0px_1px_0px_rgba(0,0,0,0.3)]",
+          )}
         >
           <Image
             src="/kofeal.webp"
@@ -86,8 +78,8 @@ export default function KofeAlWidget({
             unoptimized
             className="select-none rounded-full"
           />
-        </motion.div>
-      </motion.a>
+        </Motion>
+      </Motion>
     </div>
   );
 }

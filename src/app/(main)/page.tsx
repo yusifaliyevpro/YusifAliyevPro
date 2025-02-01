@@ -2,7 +2,7 @@ import type { Metadata } from "next/types";
 import Projects from "@/components/Projects";
 import Timeline from "@/components/TimeLine";
 import Image from "next/image";
-import { Motion } from "../../../components/Motion";
+import { Motion } from "@/components/Motion";
 import { Typewriter } from "nextjs-simple-typewriter";
 import Reveal from "@/components/Reveal";
 import { BASE_URL } from "@/lib/constants";
@@ -11,7 +11,6 @@ import MySoftSkills from "@/components/MySoftSkills";
 import Technologies from "@/components/Technologies";
 import { cn } from "@/lib/cn";
 import { Suspense } from "react";
-import { getProjects } from "@/lib/utils";
 
 export default async function Home() {
   return (
@@ -20,7 +19,7 @@ export default async function Home() {
       <section
         aria-label="CTA"
         className={cn(
-          "mt-28 flex min-h-[76svh] w-full flex-col items-center justify-between px-8",
+          "mt-24 flex min-h-[70svh] w-full flex-col items-center justify-between px-8",
           "md:mt-32 md:min-h-[88vh] md:pb-[10vh]",
           "lg:px-[6.7rem]",
           "xl:mt-2 xl:min-h-svh xl:flex-row",
@@ -60,7 +59,7 @@ export default async function Home() {
               )}
             >
               <Typewriter
-                words={["Full-Stack", "React", "NextJS"]}
+                words={["Full-Stack", "Web", "NextJS"]}
                 typeSpeed={130}
                 deleteSpeed={90}
                 delaySpeed={3000}
@@ -185,7 +184,7 @@ export default async function Home() {
 }
 
 export const metadata: Metadata = {
-  title: "Hi👋, I'm a Full-Stack Developer",
+  title: "Yusif Aliyev | Hi👋, I'm a Full-Stack Developer",
   alternates: {
     canonical: `/`,
   },

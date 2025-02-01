@@ -1,7 +1,7 @@
 "use client";
 
 import { updateBlogs, updateSpecificBlog } from "@/lib/actions";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { RxUpdate } from "react-icons/rx";

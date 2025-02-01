@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import TerminalInput from "./TerminalInput";
-import { Button } from "@nextui-org/react";
-import { addNewContactWithMe } from "@/lib/actions";
+import { Button } from "@heroui/button";
+import { newContactInfo } from "@/lib/actions";
 import { cn } from "@/lib/cn";
 import { AiOutlineLoading } from "react-icons/ai";
 
@@ -37,7 +37,7 @@ export default function FormTerminal() {
 
   const handleSubmit = async () => {
     setIsSending(true);
-    const { error } = await addNewContactWithMe(
+    const { error } = await newContactInfo(
       fullName,
       email,
       phone,

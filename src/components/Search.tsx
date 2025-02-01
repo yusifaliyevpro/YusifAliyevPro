@@ -1,7 +1,7 @@
 "use client";
 
 import useQuery from "@/lib/store";
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/input";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BiSearch } from "react-icons/bi";

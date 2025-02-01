@@ -1,5 +1,5 @@
 "use client";
-import { Progress } from "@nextui-org/react";
+import { Progress } from "@heroui/progress";
 import { Motion } from "./Motion";
 
 export default function MyCodeSkills() {

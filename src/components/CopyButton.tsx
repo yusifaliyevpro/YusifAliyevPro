@@ -1,10 +1,10 @@
 "use client";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/button";
 import copy from "copy-to-clipboard";
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/tooltip";
 
 export default function CopyButton({ text }: { text: string }) {
   const [mouseLeaved, setMouseLeaved] = useState(true);
