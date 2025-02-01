@@ -11,6 +11,7 @@ import MySoftSkills from "@/components/MySoftSkills";
 import Technologies from "@/components/Technologies";
 import { cn } from "@/lib/cn";
 import { Suspense } from "react";
+import { getProjects } from "@/lib/utils";
 
 export default async function Home() {
   return (

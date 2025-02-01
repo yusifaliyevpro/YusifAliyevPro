@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { dateFormatter } from "@/lib/formatters";
 import type { BLOGS_QUERYResult } from "../../sanity.types";
 import { cn } from "@/lib/cn";
+import SanityImage from "./SanityImage";
 
 export default function Blogs({
   blogs,
@@ -65,7 +66,7 @@ export default function Blogs({
                   "border-b-1 border-t-0 border-solid dark:border-0",
                 )}
               >
-                <Image
+                <SanityImage
                   src={blog.poster}
                   width={blog.posterMetadata.dimensions.width}
                   height={blog.posterMetadata.dimensions.height}
@@ -77,7 +78,7 @@ export default function Blogs({
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
               <div className="pl-6 pr-4">
-                <h3 className="my-5 line-clamp-2 text-left text-2xl font-bold dark:text-slate-300">
+                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">
                   {blog.title}
                 </h3>
                 <p

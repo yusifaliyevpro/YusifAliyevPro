@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { Motion } from "./Motion";
-import { getProjects } from "@/lib/utils";
 import { cn } from "@/lib/cn";
+import { PROJECTS_QUERYResult } from "../../sanity.types";
+import { getProjects } from "@/lib/utils";
+import SanityImage from "./SanityImage";
 
 export default async function Projects() {
   const projects = await getProjects();
@@ -24,12 +26,12 @@ export default async function Projects() {
             stiffness: 60,
           }}
           key={i}
-          className="flex flex-col items-center justify-center gap-y-3 rounded-2xl border-1 border-blue-400 p-4 shadow-medium md:gap-y-4"
+          className="flex flex-col items-center justify-center gap-y-3 rounded-2xl border-blue-400 shadow-medium md:gap-y-4"
         >
           <figure
             className={`flex aspect-[16/9] flex-col items-center justify-center`}
           >
-            <Image
+            <SanityImage
               src={project.image}
               width={310}
               height={200}
@@ -37,13 +39,13 @@ export default async function Projects() {
               unoptimized
               placeholder="blur"
               blurDataURL={project.imageMetadata.lqip}
-              className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-fill shadow-medium"
+              className="aspect-[16/8.3] size-auto max-h-40 rounded-lg object-cover shadow-medium"
             />
             <figcaption className="sr-only">
               alt={`${project.name} ana səhifəsi`}
             </figcaption>
           </figure>
-          <div className="flex flex-col md:gap-y-4">
+          <div className="sr-only">
             <h3
               title={project.name}
               className="line-clamp-1 w-full px-2 text-center text-2xl font-semibold text-gray-800 dark:text-slate-300"

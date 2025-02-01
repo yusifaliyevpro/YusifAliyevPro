@@ -2,14 +2,17 @@
 
 import { updateBlogs, updateSpecificBlog } from "@/lib/actions";
 import { Button } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { RxUpdate } from "react-icons/rx";
 
 export function RefreshBlogs() {
+  const router = useRouter();
   const refresh = () => {
     try {
       updateBlogs();
-      toast.success("Blogs Refreshed");
+      router.refresh();
+      toast.success("Blogs Updated!");
     } catch (error) {
       console.log(error);
       toast.error("Couldn't refresh blogs");
@@ -34,11 +37,13 @@ export function RefreshBlogs() {
   );
 }
 
-export function RefreshSpecificBlog() {
+export function RefreshSpecificBlog({ title }: { title: string }) {
+  const router = useRouter();
   const refresh = () => {
     try {
       updateSpecificBlog();
-      toast.success("Refreshed Specific Blog");
+      router.refresh();
+      toast.success(`Updated "${title}"`);
     } catch (error) {
       console.log(error);
       toast.error("Couldn't refresh spicific blog");

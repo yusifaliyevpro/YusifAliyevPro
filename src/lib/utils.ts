@@ -14,7 +14,7 @@ export async function getProjects() {
   const data = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
-    { next: { revalidate: 3600 * 24 } },
+    { next: { revalidate: 3600 } },
   );
   return data;
 }

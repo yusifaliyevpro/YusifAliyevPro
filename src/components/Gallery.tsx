@@ -5,6 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/cn";
+import SanityImage from "./SanityImage";
 export default function Gallery({
   images,
 }: {
@@ -91,7 +92,7 @@ export default function Gallery({
             transition={{ duration: 0.4 }}
             className="relative flex aspect-square w-fit md:aspect-[13/9]"
           >
-            <Image
+            <SanityImage
               src={images[currentIndex].image}
               width={700}
               height={500}
@@ -118,7 +119,7 @@ export default function Gallery({
             className="relative flex aspect-[13/9] h-24 cursor-pointer"
             onClick={() => handleScroolBar(i)}
           >
-            <Image
+            <SanityImage
               src={image.image}
               width={200}
               height={100}

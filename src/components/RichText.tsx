@@ -5,6 +5,7 @@ import { type ReactNode, Suspense } from "react";
 import Image from "next/image";
 import { CodeInputValue } from "@sanity/code-input";
 import { SanityImageAsset } from "../../sanity.types";
+import SanityImage from "./SanityImage";
 
 export default function RichText({ blogText }) {
   return <PortableText value={blogText} components={components} />;
@@ -22,7 +23,7 @@ const components: PortableTextComponents = {
         <figure
           className={`flex size-full flex-col py-7 aspect-[${aspectRatio}] items-center justify-center`}
         >
-          <Image
+          <SanityImage
             src={value.image}
             width={width}
             height={height}

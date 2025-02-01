@@ -12,6 +12,7 @@ import { isInDevelopment } from "@/lib/constants";
 import type { Metadata } from "next/types";
 import { cn } from "@/lib/cn";
 import Gallery from "@/components/Gallery";
+import SanityImage from "@/components/SanityImage";
 
 export async function generateStaticParams() {
   const blogSlugs = await getBlogs({ isEnabled: false });
@@ -104,7 +105,7 @@ export default async function BlogPage({
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
         <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
           <figure className="relative aspect-[16/9] h-full border-solid dark:border-0 md:border-b-1">
-            <Image
+            <SanityImage
               src={blog.poster}
               priority
               alt="Blog Poster"
@@ -121,7 +122,9 @@ export default async function BlogPage({
           </article>
         </div>
       </div>
-      {(isEnabled || isInDevelopment) && <RefreshSpecificBlog />}
+      {(isEnabled || isInDevelopment) && (
+        <RefreshSpecificBlog title={blog.title} />
+      )}
     </main>
   );
 }
