@@ -18,6 +18,12 @@ import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
 import type { Route } from "next";
 import { Motion } from "./Motion";
+import {
+  FacebookAccount,
+  GitHubAccount,
+  InstagramAccount,
+  LinkedInAccount,
+} from "../lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,7 +75,6 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
-          {/* <ThemeSwitcher /> */}
           {socialAccounts.map((account, i) => (
             <Motion
               type="a"
@@ -104,42 +109,6 @@ export default function Header() {
   );
 }
 
-const socialAccounts: {
-  icon: JSX.Element;
-  name: string;
-  link: Route;
-  className: string;
-}[] = [
-  {
-    icon: <GrInstagram />,
-    name: "Instagram",
-    link: "https://www.instagram.com/yusifaliyevpro",
-    className:
-      "rounded-md from-[#833ab4] via-[#fd1d1d] dark:text-slate-300 to-[#fcb045] p-[3px] text-3xl hover:bg-gradient-to-r hover:text-white",
-  },
-  {
-    icon: <LiaFacebook strokeWidth={0.3} />,
-    name: "FaceBook",
-    link: "https://www.facebook.com/yusifaliyevpro",
-    className:
-      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
-  },
-  {
-    icon: <PiLinkedinLogoBold />,
-    name: "LinkedIn",
-    link: "https://www.linkedin.com/in/yusifaliyevpro/",
-    className:
-      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
-  },
-  {
-    icon: <FaGithub />,
-    name: "GitHub",
-    link: "https://github.com/YusifAliyevPro",
-    className:
-      "rounded-full to-gray-800  p-[2px] text-4xl dark:text-slate-300 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white",
-  },
-];
-
 const navigationLinks: {
   name: string;
   link: Route;
@@ -155,5 +124,41 @@ const navigationLinks: {
   {
     name: "Əlaqə",
     link: "/contact",
+  },
+];
+
+const socialAccounts: {
+  icon: JSX.Element;
+  name: string;
+  link: Route;
+  className: string;
+}[] = [
+  {
+    icon: <GrInstagram />,
+    name: "Instagram",
+    link: InstagramAccount,
+    className:
+      "rounded-md from-[#833ab4] via-[#fd1d1d] dark:text-slate-300 to-[#fcb045] p-[3px] text-3xl hover:bg-gradient-to-r hover:text-white",
+  },
+  {
+    icon: <LiaFacebook strokeWidth={0.3} />,
+    name: "FaceBook",
+    link: FacebookAccount,
+    className:
+      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
+  },
+  {
+    icon: <PiLinkedinLogoBold />,
+    name: "LinkedIn",
+    link: LinkedInAccount,
+    className:
+      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
+  },
+  {
+    icon: <FaGithub />,
+    name: "GitHub",
+    link: GitHubAccount,
+    className:
+      "rounded-full to-gray-800  p-[2px] text-4xl dark:text-slate-300 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white",
   },
 ];

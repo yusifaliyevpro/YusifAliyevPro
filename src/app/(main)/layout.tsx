@@ -14,7 +14,7 @@ import { ReactNode } from "react";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="az" suppressHydrationWarning>
+    <html lang="az">
       <body
         className={cn(
           "min-h-svh scroll-smooth bg-white font-poppins font-semibold",
@@ -66,26 +66,28 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    notranslate: true,
     googleBot: {
       index: true,
       follow: true,
     },
   },
   creator: "Yusif Aliyev",
-  publisher: "Yusif Aliyev",
+  publisher: "Vercel Hosting",
   applicationName: "YusifAliyevPro",
   generator: "Next.js",
-  authors: [{ name: "Yusif Aliyev", url: "https://yusifaliyevpro.com" }],
+  authors: [{ name: "Yusif Aliyev", url: BASE_URL }],
   keywords: [
     "Yusif Aliyev",
     "yusifaliyevpro",
+    "Yusif Aliyev Pro",
     "Full-Stack Developer",
     "Developer",
     "Web Developer",
     "NextJS Developer",
+    "Azerbaijan",
+    "Blogger",
   ],
-  other: {
-    "google-site-verification": "19T4aaaA0mlU3qd0sFEl3z8e_Y_Zb_am5Cfkr5wxRWM",
+  verification: {
+    google: "19T4aaaA0mlU3qd0sFEl3z8e_Y_Zb_am5Cfkr5wxRWM",
   },
 };

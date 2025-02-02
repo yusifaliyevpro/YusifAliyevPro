@@ -1,4 +1,3 @@
-"use client";
 import { Progress } from "@heroui/progress";
 import { Motion } from "./Motion";
 

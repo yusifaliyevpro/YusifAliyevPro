@@ -14,7 +14,7 @@ export async function getProjects() {
   const data = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
-    { next: { revalidate: 3600 } },
+    { next: { revalidate: 3600 }, cache: "force-cache" },
   );
   return data;
 }
@@ -28,7 +28,7 @@ export async function getBlogs({ isEnabled }: { isEnabled: boolean }) {
   const data = await client.fetch<BLOGS_QUERYResult>(
     BLOGS_QUERY,
     { isInDevelopment, isEnabled },
-    { next: { revalidate: 3600, tags: ["blogs"] } },
+    { next: { revalidate: 3600, tags: ["blogs"] }, cache: "force-cache" },
   );
   return data;
 }
