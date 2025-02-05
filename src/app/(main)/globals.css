@@ -6,17 +6,18 @@
   .text-balance {
     text-wrap: balance;
   }
-  html::-webkit-scrollbar {
-    @apply w-2;
-  }
+}
 
-  html::-webkit-scrollbar-thumb {
-    @apply bg-blue-light rounded-[5rem];
-  }
+html::-webkit-scrollbar {
+  @apply w-2;
+}
 
-  html::-webkit-scrollbar-thumb:hover {
-    @apply bg-[#0b4cd6];
-  }
+html::-webkit-scrollbar-thumb {
+  @apply rounded-[5rem] bg-blue-light;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  @apply bg-[#0b4cd6];
 }
 
 .custom-scroolbar::-webkit-scrollbar {
@@ -24,7 +25,7 @@
 }
 
 .custom-scroolbar::-webkit-scrollbar-thumb {
-  @apply bg-blue-light rounded-[5rem];
+  @apply rounded-[5rem] bg-blue-light;
 }
 
 .custom-scroolbar::-webkit-scrollbar-thumb:hover {

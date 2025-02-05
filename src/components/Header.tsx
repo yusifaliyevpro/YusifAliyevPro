@@ -44,7 +44,7 @@ export default function Header() {
       onMenuOpenChange={setIsMenuOpen}
       isBlurred
       classNames={{
-        base: `w-auto fixed z-[10000] dark:bg-foreground  xl:mx-40 md:rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg"}`,
+        base: `w-auto fixed z-[9998] dark:bg-foreground  xl:mx-40 md:rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg"}`,
       }}
     >
       <NavbarContent>
@@ -60,7 +60,7 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent justify="center" className="hidden gap-x-10 md:flex">
-        {navigationLinks.map((navbar, i) => (
+        {staticRoutes.map((navbar, i) => (
           <NavbarItem key={i}>
             <Link
               color="foreground"
@@ -93,7 +93,7 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu className="max-h-[30svh] items-center justify-center gap-y-3 overflow-hidden dark:bg-foreground/70">
-        {navigationLinks.map((navbar, i) => (
+        {staticRoutes.map((navbar, i) => (
           <NavbarMenuItem key={i}>
             <Link href={navbar.link} className="w-full text-xl font-semibold">
               {navbar.name}
@@ -109,7 +109,7 @@ export default function Header() {
   );
 }
 
-const navigationLinks: {
+const staticRoutes: {
   name: string;
   link: Route;
 }[] = [

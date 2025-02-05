@@ -6,6 +6,7 @@ import { getBlogs } from "@/lib/utils";
 import type { Metadata } from "next/types";
 import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
+import Subscribe from "@/src/components/Subscribe";
 
 export default async function BlogsPage() {
   const { isEnabled } = await draftMode();
@@ -32,7 +33,10 @@ export default async function BlogsPage() {
               />
             </span>
           </div>
-          <Search />
+          <div className="flex flex-row items-center justify-center">
+            <Subscribe />
+            <Search />
+          </div>
         </header>
       </section>
       <Blogs blogs={blogs} />

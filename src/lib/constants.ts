@@ -1,5 +1,5 @@
 export const BASE_URL =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV !== "production"
     ? "https://yusifaliyevpro.com"
     : "http://localhost:3000";
 export const PREVIEW_URL = process.env.NEXT_PUBLIC_PREVIEW_Account;
