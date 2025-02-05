@@ -54,17 +54,15 @@ export async function subscribe(
     });
 
     if (error) console.log(error);
-    const { contact, contactError } = await getContact(data.id);
-    if (contactError) console.log(contactError);
     const welcomeEmail = await resend.emails.send({
       from: "Yusif Aliyev <updates@blog.yusifaliyevpro.com>",
-      to: contact.email,
+      to: email,
       subject: "Abunə olduğunuz üçün Təşəkkürlər!",
       text: `Bülletenə abunə olduğunuz üçün Təşəkkürlər!\n\nPaylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün
             tez-tez emailinizi yoxlamağı unutmayın!`,
       react: WelcomeEmailTemplate({
-        firstName: contact.first_name,
-        lastName: contact.last_name,
+        firstName: firstName,
+        lastName: lastName,
       }),
       headers: {
         "List-Unsubscribe": "<https://yusifaliyevpro.com/unsubscribe>",

@@ -48,6 +48,7 @@ export default function Subscribe() {
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         backdrop="opaque"
+        placement="center"
         className="z-[10000]"
         classNames={{
           backdrop: "z-[9999]",
