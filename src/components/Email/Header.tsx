@@ -48,7 +48,7 @@ export const EmailHeader = () => (
               <Column key={i} className="px-[8px]">
                 <Link
                   className="flex-nowrap whitespace-nowrap text-base text-gray-600 [text-decoration:none]"
-                  href={`${BASE_URL}/${route.link}`}
+                  href={BASE_URL + route.link}
                 >
                   {route.name}
                 </Link>

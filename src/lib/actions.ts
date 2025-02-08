@@ -8,6 +8,7 @@ import { PostEmailTemplate } from "@/components/Email/PostEmailTemplate";
 import { Resend } from "resend";
 import { getBlog } from "./utils";
 import { WelcomeEmailTemplate } from "../components/Email/WelcomeEmailTemplate";
+import { z } from "zod";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(slug: string) {
@@ -16,9 +17,7 @@ export async function sendEmail(slug: string) {
     const { data: list } = await resend.contacts.list({
       audienceId: process.env.RESEND_AUDIENCE_KEY,
     });
-    const to = list.data
-      .filter((contact) => !contact.unsubscribed)
-      .map((contact) => contact.email);
+    const to = list.data.filter((contact) => !contact.unsubscribed).map((contact) => contact.email);
     const { data, error } = await resend.emails.send({
       from: "Yusif Aliyev <updates@blog.yusifaliyevpro.com>",
       to,
@@ -38,42 +37,51 @@ export async function sendEmail(slug: string) {
     return { error };
   }
 }
+const subscriberSchema = z.object({
+  firstName: z.string().trim().min(3, { message: "Adınız minimum 3 hərfdən ibarət olmalıdır" }),
+  lastName: z.string().trim().min(3, { message: "Soyadınız minimum 3 hərfdən ibarət olmalıdır" }),
+  email: z.string().email({ message: "Emaili düzgün daxil edin!" }),
+});
 
-export async function subscribe(
-  firstName: string,
-  lastName: string,
-  email: string,
-) {
+export type subscribeState = {
+  success: boolean;
+  errors?: { firstName?: string[]; lastName?: string[]; email?: string[] };
+};
+export async function subscribe(cState: subscribeState, formData: FormData): Promise<subscribeState> {
   try {
-    const { data, error } = await resend.contacts.create({
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
+    const subscriberFormData = Object.fromEntries(formData);
+    const validation = subscriberSchema.safeParse(subscriberFormData);
+    if (!validation.success) {
+      const formFieldErrors = validation.error.flatten().fieldErrors;
+      return { success: false, errors: formFieldErrors };
+    }
+
+    const { firstName, lastName, email } = validation.data;
+    const contact = await resend.contacts.create({
+      email,
+      firstName,
+      lastName,
       unsubscribed: false,
       audienceId: process.env.RESEND_AUDIENCE_KEY,
     });
-
-    if (error) console.log(error);
+    if (contact.error) console.log(contact.error);
     const welcomeEmail = await resend.emails.send({
       from: "Yusif Aliyev <updates@blog.yusifaliyevpro.com>",
       to: email,
       subject: "Abunə olduğunuz üçün Təşəkkürlər!",
       text: `Bülletenə abunə olduğunuz üçün Təşəkkürlər!\n\nPaylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün
             tez-tez emailinizi yoxlamağı unutmayın!`,
-      react: WelcomeEmailTemplate({
-        firstName: firstName,
-        lastName: lastName,
-      }),
+      react: WelcomeEmailTemplate({ firstName, lastName }),
       headers: {
         "List-Unsubscribe": "<https://yusifaliyevpro.com/unsubscribe>",
         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
       },
     });
     if (welcomeEmail.error) console.log(welcomeEmail.error);
-    console.log("Subscribed Succesfully!");
-    return { data };
+    return { success: true };
   } catch (error) {
-    return { error };
+    console.log(error);
+    return { success: false, errors: { email: ["Server error occurred"] } };
   }
 }
 
