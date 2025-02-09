@@ -6,13 +6,11 @@ import RichText from "@/components/RichText";
 import Link from "next/link";
 import { dateFormatter, getReadTime } from "@/lib/formatters";
 import { notFound } from "next/navigation";
-import { draftMode } from "next/headers";
-import { RefreshSpecificBlog } from "@/components/Refresh";
-import { isInDevelopment } from "@/lib/constants";
 import type { Metadata } from "next/types";
 import { cn } from "@/lib/cn";
 import Gallery from "@/components/Gallery";
 import SanityImage from "@/components/SanityImage";
+import { RefreshBlog } from "@/src/components/Refresh";
 
 export async function generateStaticParams() {
   const blogSlugs = await getBlogs({ isEnabled: false });
@@ -21,16 +19,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
   const blog = await getBlog(slug);
   if (!blog) notFound();
-  const { isEnabled } = await draftMode();
 
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
@@ -71,24 +64,17 @@ export default async function BlogPage({
           <div className="mt-4 flex flex-row items-center justify-center gap-x-5 font-semibold text-gray-500">
             <div className="flex flex-row items-center gap-x-1">
               <GoClock aria-hidden />
-              <time
-                dateTime={blog.publishedAt}
-                className="text-md tabular-nums"
-              >
+              <time dateTime={blog.publishedAt} className="text-md tabular-nums">
                 {dateFormatter(blog.publishedAt)}
               </time>
             </div>
             <div className="flex flex-row items-center gap-x-1">
               <FiWatch aria-hidden />
-              <p className="text-md tabular-nums">
-                {getReadTime(blog.plainText)} dəq oxuma
-              </p>
+              <p className="text-md tabular-nums">{getReadTime(blog.plainText)} dəq oxuma</p>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
-              {blog.title}
-            </h1>
+            <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">{blog.title}</h1>
             <p
               className={cn(
                 "text-pretty text-center text-lg font-normal leading-normal text-gray-500",
@@ -122,18 +108,12 @@ export default async function BlogPage({
           </article>
         </div>
       </div>
-      {(isEnabled || isInDevelopment) && (
-        <RefreshSpecificBlog title={blog.title} />
-      )}
+      <RefreshBlog />
     </main>
   );
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
 
   const blog = await getBlog(slug);

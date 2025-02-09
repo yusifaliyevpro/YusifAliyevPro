@@ -30,7 +30,7 @@ model Contact {
 
 model ShortenLink {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  slug      String
+  slug      String   @unique
   link      String
   createdAt DateTime @default(now())
 }

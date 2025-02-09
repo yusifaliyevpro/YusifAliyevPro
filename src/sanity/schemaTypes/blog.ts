@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import PreviewMode from "../lib/Preview";
+import SendEmailComponent from "../lib/SendEmail";
 
 const blog = defineType({
   name: "blogs",
@@ -10,11 +11,7 @@ const blog = defineType({
       name: "title",
       title: "Blog Title",
       type: "string",
-      validation: (rule) =>
-        rule
-          .max(50)
-          .warning("Shorter titles are usually better for SEO")
-          .required(),
+      validation: (rule) => rule.max(50).warning("Shorter titles are usually better for SEO").required(),
     }),
     defineField({
       name: "slug",
@@ -71,8 +68,7 @@ const blog = defineType({
       options: {
         layout: "tags",
       },
-      validation: (rule) =>
-        rule.min(1).warning("At least one tag is recommended").required(),
+      validation: (rule) => rule.min(1).warning("At least one tag is recommended").required(),
     }),
     defineField({
       title: "Gallery",
@@ -108,6 +104,14 @@ const blog = defineType({
           },
         }),
       ],
+    }),
+    defineField({
+      name: "sendEmail",
+      title: "Send Email",
+      type: "text",
+      components: {
+        field: SendEmailComponent,
+      },
     }),
   ],
 });

@@ -1,16 +1,12 @@
-import { getLinkSlugs } from "@/src/lib/actions";
+import { getLinkSlugs } from "@/src/lib/prisma/actions";
 import { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import Loading from "../../loading";
 
-export default async function ShortLink({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ShortLink({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const slugs = await getLinkSlugs(slug);
-  if (slugs.length !== 0) permanentRedirect(slugs[0].link);
+  const link = await getLinkSlugs(slug);
+  if (link) permanentRedirect(link.link);
   else notFound();
 
   return <Loading />;

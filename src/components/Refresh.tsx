@@ -1,59 +1,26 @@
 "use client";
 
-import { updateBlogs, updateSpecificBlog } from "@/lib/actions";
 import { Button } from "@heroui/button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { RxUpdate } from "react-icons/rx";
+import { updateBlog } from "../lib/actions";
 
-export function RefreshBlogs() {
+export function RefreshBlog() {
   const router = useRouter();
   const refresh = () => {
     try {
-      updateBlogs();
+      updateBlog();
       router.refresh();
-      toast.success("Blogs Updated!");
+      toast.success(`All blog are upto date!`);
     } catch (error) {
       console.log(error);
-      toast.error("Couldn't refresh blogs");
+      toast.error("Couldn't update blog");
     }
   };
 
   return (
-    <div
-      className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}
-    >
-      <Button
-        radius="full"
-        onPress={refresh}
-        color="primary"
-        size="lg"
-        isIconOnly
-        className="pointer-events-auto"
-      >
-        <RxUpdate />
-      </Button>
-    </div>
-  );
-}
-
-export function RefreshSpecificBlog({ title }: { title: string }) {
-  const router = useRouter();
-  const refresh = () => {
-    try {
-      updateSpecificBlog();
-      router.refresh();
-      toast.success(`Updated "${title}"`);
-    } catch (error) {
-      console.log(error);
-      toast.error("Couldn't refresh spicific blog");
-    }
-  };
-
-  return (
-    <div
-      className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}
-    >
+    <div className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}>
       <Button
         radius="full"
         onPress={refresh}

@@ -2,7 +2,7 @@
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { startTransition, useActionState } from "react";
-import { subscribe, subscribeState } from "../lib/actions";
+import { subscribe } from "@/lib/email/actions";
 import { AiOutlineLoading } from "react-icons/ai";
 
 export default function SubscribeComponent() {
@@ -72,7 +72,7 @@ export default function SubscribeComponent() {
   );
 }
 
-const initialState: subscribeState = {
+const initialState = {
   success: false,
   errors: {
     firstName: [],

@@ -40,20 +40,14 @@ export default function TerminalInput({
 
   return (
     <>
-      <p className={cn({ "sr-only": isEntered || !isPreviousEntered })}>
-        {title}
-      </p>
+      <p className={cn({ "sr-only": isEntered || !isPreviousEntered })}>{title}</p>
       <div
-        className={cn(
-          "flex flex-row items-center gap-x-3 text-base lg:text-lg",
-          {
-            "sr-only": !isPreviousEntered || isEntered,
-          },
-        )}
+        className={cn("flex flex-row items-center gap-x-3 text-base lg:text-lg", {
+          "sr-only": !isPreviousEntered || isEntered,
+        })}
       >
         <FaArrowRightLong className="text-lg text-green-600" />
-        <span className="text-blue-500">$</span>{" "}
-        <span className="text-nowrap text-slate-500">{placeholder}</span>
+        <span className="text-blue-500">$</span> <span className="text-nowrap text-slate-500">{placeholder}</span>
         {!isBoolean ? (
           <Input
             type="text"
@@ -74,18 +68,12 @@ export default function TerminalInput({
             classNames={{
               inputWrapper:
                 "bg-transparent hover:bg-transparent shadow-none group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
-              input:
-                "font-mono  after:bg-black text-base font-bold placeholder:text-slate-400",
+              input: "font-mono  after:bg-black text-base font-bold placeholder:text-slate-400",
             }}
           />
         ) : (
           <div className="flex flex-row gap-x-3">
-            <Button
-              onPress={() => setIsEntered(true)}
-              color="warning"
-              className="font-bold"
-              radius="sm"
-            >
+            <Button onPress={() => setIsEntered(true)} color="warning" className="font-bold" radius="sm">
               Xeyr
             </Button>
             <Button
@@ -103,12 +91,9 @@ export default function TerminalInput({
         )}
       </div>
       <p
-        className={cn(
-          "flex flex-row items-center justify-start gap-x-2 text-wrap text-green-600",
-          {
-            "sr-only": !isEntered,
-          },
-        )}
+        className={cn("flex flex-row items-center justify-start gap-x-2 text-wrap text-green-600", {
+          "sr-only": !isEntered,
+        })}
       >
         <SiTicktick className="w-6 text-lg" />
         {name}: {typeof value === "string" ? value : value ? "Bəli" : "Xeyr"}

@@ -43,7 +43,7 @@ export const PostEmailTemplate = ({ title, description, poster, slug }: PostEmai
           <Column align="center">
             <Img
               alt={title}
-              className="w-full rounded-[12px] object-cover filter-none lg:w-5/6"
+              className="w-full rounded-[12px] border-1 object-cover filter-none lg:w-5/6"
               style={{ filter: "none" }}
               height="320"
               src={poster}
@@ -51,7 +51,7 @@ export const PostEmailTemplate = ({ title, description, poster, slug }: PostEmai
           </Column>
         </Row>
         <Section className="mt-[32px] text-center">
-          <Text className="my-[16px] text-[18px] font-semibold leading-[28px] text-indigo-600">Yeni Bloq Post</Text>
+          <Text className="my-[16px] text-[18px] font-semibold leading-[28px] text-blue-600">Yeni Bloq Post</Text>
           <Heading as="h1" className="m-0 mt-[8px] text-[36px] font-semibold leading-[36px] text-gray-900">
             {title}
           </Heading>

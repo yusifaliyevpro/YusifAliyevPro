@@ -1,7 +1,6 @@
 import Blogs from "@/components/Blogs";
-import { RefreshBlogs } from "@/components/Refresh";
+import { RefreshBlog } from "@/components/Refresh";
 import Search from "@/components/Search";
-import { isInDevelopment } from "@/lib/constants";
 import { getBlogs } from "@/lib/utils";
 import type { Metadata } from "next/types";
 import { draftMode } from "next/headers";
@@ -33,7 +32,7 @@ export default async function BlogsPage() {
       </section>
       <Blogs blogs={blogs} />
       <Subscribe />
-      {(isEnabled || isInDevelopment) && <RefreshBlogs />}
+      <RefreshBlog />
     </main>
   );
 }

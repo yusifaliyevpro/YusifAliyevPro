@@ -2,7 +2,7 @@
 import { useState } from "react";
 import TerminalInput from "./TerminalInput";
 import { Button } from "@heroui/button";
-import { newContactInfo } from "@/lib/actions";
+import { createContact } from "../lib/prisma/actions";
 import { cn } from "@/lib/cn";
 import { AiOutlineLoading } from "react-icons/ai";
 
@@ -37,22 +37,14 @@ export default function FormTerminal() {
 
   const handleSubmit = async () => {
     setIsSending(true);
-    const { error } = await newContactInfo(
-      fullName,
-      email,
-      phone,
-      hasWhatsApp,
-      description,
-    );
+    const formData = { fullName, email, phone, hasWhatsApp, description };
+    const { error } = await createContact(formData);
 
     if (error) {
       setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
-      return;
     } else {
       setIsSending(false);
-      setMessage(
-        "Əlaqə qurduğunuz üçün təşəkkürlər✨. Ən qısa zamanda geri dönüş edəcəyəm! 🚀",
-      );
+      setMessage("Əlaqə qurduğunuz üçün təşəkkürlər✨. Ən qısa zamanda geri dönüş edəcəyəm! 🚀");
     }
   };
   return (
@@ -69,16 +61,14 @@ export default function FormTerminal() {
       <div className="flex min-h-[22rem] flex-col overflow-y-scroll p-3 scrollbar-hide">
         <p>Elə isə layihən mənə çox maraqlı gəlir✨</p>
         <span className="mr-2 overflow-hidden text-nowrap pb-3">
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         </span>
         <div className="flex flex-col gap-y-3 transition-all">
           <TerminalInput
             title={
               <>
-                Başlamaq üçün, <span className="text-blue-600">tam adını</span>{" "}
-                yaza bilərsən?
+                Başlamaq üçün, <span className="text-blue-600">tam adını</span> yaza bilərsən?
               </>
             }
             placeholder="Adın:"
@@ -93,8 +83,7 @@ export default function FormTerminal() {
           <TerminalInput
             title={
               <>
-                Əla! <span className="text-blue-600">Emailini</span> yaza
-                bilərsən?📧
+                Əla! <span className="text-blue-600">Emailini</span> yaza bilərsən?📧
               </>
             }
             placeholder="Email:"
@@ -109,8 +98,7 @@ export default function FormTerminal() {
           <TerminalInput
             title={
               <>
-                Möhtəşəm! <span className="text-blue-600">Nömrəni</span> daxil
-                et ki, əlaqə saxlayım📞
+                Möhtəşəm! <span className="text-blue-600">Nömrəni</span> daxil et ki, əlaqə saxlayım📞
               </>
             }
             placeholder="Nömrə:"
@@ -125,8 +113,7 @@ export default function FormTerminal() {
           <TerminalInput
             title={
               <>
-                Super! Bu nömrənin{" "}
-                <span className="text-blue-600">WhatsApp</span>-ı var?📲
+                Super! Bu nömrənin <span className="text-blue-600">WhatsApp</span>-ı var?📲
               </>
             }
             placeholder="Var?:"
@@ -161,25 +148,11 @@ export default function FormTerminal() {
               "sr-only": !isEnteredDescription || message,
             })}
           >
-            <Button
-              color="warning"
-              className="text-base font-bold text-slate-800"
-              onPress={clearAll}
-              radius="sm"
-            >
+            <Button color="warning" className="text-base font-bold text-slate-800" onPress={clearAll} radius="sm">
               Yenidən başlat
             </Button>
-            <Button
-              radius="sm"
-              color="primary"
-              className="text-base font-bold"
-              onPress={handleSubmit}
-            >
-              {isSending ? (
-                <AiOutlineLoading className="animate-spin text-2xl" />
-              ) : (
-                "Göndər!"
-              )}
+            <Button radius="sm" color="primary" className="text-base font-bold" onPress={handleSubmit}>
+              {isSending ? <AiOutlineLoading className="animate-spin text-2xl" /> : "Göndər!"}
             </Button>
           </div>
 

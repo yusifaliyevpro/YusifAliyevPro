@@ -2,11 +2,7 @@
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { isInDevelopment } from "./constants";
-import type {
-  BLOG_QUERYResult,
-  BLOGS_QUERYResult,
-  PROJECTS_QUERYResult,
-} from "@/sanity.types";
+import type { BLOG_QUERYResult, BLOGS_QUERYResult, PROJECTS_QUERYResult } from "@/sanity.types";
 
 export async function getProjects() {
   const PROJECTS_QUERY = groq`*[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,    

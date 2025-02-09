@@ -7,13 +7,38 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../../sanity.config'
+import { NextStudio } from "next-sanity/studio";
+import config from "../../../../sanity.config";
 
-export const dynamic = 'force-static'
+export const dynamic = "force-static";
 
-export { metadata, viewport } from 'next-sanity/studio'
+export { viewport } from "next-sanity/studio";
+import { metadata as studioMetadata } from "next-sanity/studio";
+import type { Metadata } from "next";
+import { BASE_URL } from "@/src/lib/constants";
+
+export const metadata: Metadata = {
+  ...studioMetadata,
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Yusif Aliyev",
+    template: "Yusif Aliyev | %s",
+  },
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+  creator: "Yusif Aliyev",
+  publisher: "Vercel Hosting",
+  applicationName: "YusifAliyevPro",
+  generator: "Next.js",
+  authors: [{ name: "Yusif Aliyev", url: BASE_URL }],
+};
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return <NextStudio config={config} />;
 }

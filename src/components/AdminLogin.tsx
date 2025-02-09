@@ -1,20 +1,10 @@
 "use client";
-import { Button } from "@heroui/button";
+
 import { Contact } from "@prisma/client";
-import { sendEmail } from "../lib/actions";
-import { BLOGS_QUERYResult } from "@/sanity.types";
 import { Input } from "@heroui/input";
 import { useState } from "react";
 
-export default function AdminLogin({
-  myPassowrd,
-  // contacts,
-  blogs,
-}: {
-  myPassowrd: string;
-  contacts: Contact[];
-  blogs: BLOGS_QUERYResult;
-}) {
+export default function AdminLogin({ myPassowrd, contacts }: { myPassowrd: string; contacts: Contact[] }) {
   const [value, setValue] = useState("");
   return myPassowrd !== value ? (
     <Input
@@ -29,12 +19,13 @@ export default function AdminLogin({
     />
   ) : (
     <section className="flex size-full min-h-72 flex-col items-center justify-center space-y-10 rounded-2xl shadow-medium">
-      {blogs.map((blog, i) => (
-        <div key={i} className="flex flex-row items-center gap-x-10">
-          <p>{blog.title}</p>
-          <Button color="primary" onPress={() => sendEmail(blog.slug)}>
-            Send Email
-          </Button>
+      {contacts.map((contact, i) => (
+        <div key={i} className="flex w-full flex-row items-center gap-x-10 px-12 *:w-72 *:text-nowrap">
+          <p>Name: {contact.fullName}</p>
+          <p>Email: {contact.email}</p>
+          <p>Phone: {contact.phone}</p>
+          <p>Whatsap?: {contact.hasWhatsApp ? "True" : "False"}</p>
+          <p>Description: {contact.description}</p>
         </div>
       ))}
     </section>
