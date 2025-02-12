@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
 import Gallery from "@/components/Gallery";
 import SanityImage from "@/components/SanityImage";
 import { RefreshBlog } from "@/src/components/Refresh";
+import { draftMode } from "next/headers";
 
 export async function generateStaticParams() {
   const blogSlugs = await getBlogs({ isEnabled: false });
@@ -21,7 +22,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-
+  const { isEnabled } = await draftMode();
   const blog = await getBlog(slug);
   if (!blog) notFound();
 
@@ -108,7 +109,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           </article>
         </div>
       </div>
-      <RefreshBlog />
+      <RefreshBlog isEnabled={isEnabled} />
     </main>
   );
 }
