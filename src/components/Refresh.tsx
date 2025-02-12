@@ -6,8 +6,9 @@ import toast from "react-hot-toast";
 import { RxUpdate } from "react-icons/rx";
 import { updateBlog } from "../lib/actions";
 
-export function RefreshBlog() {
+export function RefreshBlog({ isEnabled }: { isEnabled: boolean }) {
   const router = useRouter();
+  if (!isEnabled) return null;
   const refresh = () => {
     try {
       updateBlog();
@@ -18,7 +19,6 @@ export function RefreshBlog() {
       toast.error("Couldn't update blog");
     }
   };
-
   return (
     <div className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}>
       <Button

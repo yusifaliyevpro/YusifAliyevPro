@@ -32,7 +32,7 @@ export default async function BlogsPage() {
       </section>
       <Blogs blogs={blogs} />
       <Subscribe />
-      <RefreshBlog />
+      <RefreshBlog isEnabled={isEnabled} />
     </main>
   );
 }
