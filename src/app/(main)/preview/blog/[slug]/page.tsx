@@ -10,14 +10,10 @@ import type { Metadata } from "next/types";
 import { cn } from "@/lib/cn";
 import Gallery from "@/components/Gallery";
 import SanityImage from "@/src/components/SanityImage";
-import { isInDevelopment } from "@/src/lib/constants";
-import { draftMode } from "next/headers";
 import { RefreshBlog } from "@/src/components/Refresh";
 
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const { enable } = await draftMode();
-  if (!isInDevelopment) enable();
   const blogPost = await getBlogPostPreview(slug);
   if (typeof blogPost === "string") {
     alert(blogPost);
@@ -120,8 +116,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const { enable } = await draftMode();
-  if (!isInDevelopment) enable();
   const blogPost = await getBlogPostPreview(slug);
   if (typeof blogPost === "string") {
     alert(blogPost);

@@ -3,14 +3,10 @@ import { RefreshBlog } from "@/components/Refresh";
 import Search from "@/components/Search";
 import { getBlogPostsPreview } from "@/lib/utils";
 import type { Metadata } from "next/types";
-import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
 import Subscribe from "@/src/components/Subsciption";
-import { isInDevelopment } from "@/src/lib/constants";
 
 export default async function BlogsPage() {
-  const { enable } = await draftMode();
-  if (!isInDevelopment) enable();
   const blogPosts = await getBlogPostsPreview();
   if (typeof blogPosts === "string") {
     alert(blogPosts);
