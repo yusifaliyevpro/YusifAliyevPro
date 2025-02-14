@@ -7,17 +7,17 @@ import Fuse from "fuse.js";
 import useQuery from "@/lib/store";
 import { useEffect, useState } from "react";
 import { dateFormatter } from "@/lib/formatters";
-import type { BLOGS_QUERYResult } from "@/sanity.types";
+import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
 import { cn } from "@/lib/cn";
 import SanityImage from "./SanityImage";
 
-export default function Blogs({ blogs }: { blogs: BLOGS_QUERYResult }) {
+export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
   const [page, setPage] = useState(1);
   const search = useQuery((state) => state.search);
   const setResultCount = useQuery((state) => state.setResultCount);
   const resultCount = useQuery((state) => state.resultCount);
-  let renderedBlogs = blogs;
-  const fuse = new Fuse(blogs, {
+  let renderedBlogs = blogPosts;
+  const fuse = new Fuse(blogPosts, {
     keys: ["title", "description"],
     threshold: 0.4,
   });
@@ -53,7 +53,7 @@ export default function Blogs({ blogs }: { blogs: BLOGS_QUERYResult }) {
               "dark:bg-gray-800",
             )}
           >
-            <Link href={`/blog/${blog.slug}`}>
+            <Link href={`blog/${blog.slug}`}>
               <figure
                 className={cn(
                   "flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg",
@@ -72,9 +72,7 @@ export default function Blogs({ blogs }: { blogs: BLOGS_QUERYResult }) {
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
               <div className="pl-6 pr-4">
-                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">
-                  {blog.title}
-                </h3>
+                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">{blog.title}</h3>
                 <p
                   className={cn(
                     "line-clamp-2 w-fit text-wrap font-signika text-lg font-medium leading-relaxed text-gray-500",
@@ -99,10 +97,7 @@ export default function Blogs({ blogs }: { blogs: BLOGS_QUERYResult }) {
                 </div>
                 <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700 dark:text-slate-400">
                   <GoClock />
-                  <time
-                    dateTime={blog.publishedAt}
-                    className="text-sm font-normal tabular-nums"
-                  >
+                  <time dateTime={blog.publishedAt} className="text-sm font-normal tabular-nums">
                     {dateFormatter(blog.publishedAt)}
                   </time>
                 </div>
@@ -111,7 +106,7 @@ export default function Blogs({ blogs }: { blogs: BLOGS_QUERYResult }) {
           </article>
         ))}
       </section>
-      {blogs.length > resultCount && !search && (
+      {blogPosts.length > resultCount && !search && (
         <Button
           onPress={() => setPage(page + 1)}
           size="lg"

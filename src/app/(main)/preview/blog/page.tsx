@@ -1,14 +1,21 @@
 import Blogs from "@/components/Blogs";
+import { RefreshBlog } from "@/components/Refresh";
 import Search from "@/components/Search";
-import { getBlogPosts } from "@/lib/utils";
+import { getBlogPostsPreview } from "@/lib/utils";
 import type { Metadata } from "next/types";
+import { draftMode } from "next/headers";
 import { Typewriter } from "nextjs-simple-typewriter";
 import Subscribe from "@/src/components/Subsciption";
-
-export const revalidate = 3600;
+import { isInDevelopment } from "@/src/lib/constants";
 
 export default async function BlogsPage() {
-  const blogPosts = await getBlogPosts();
+  const { enable } = await draftMode();
+  if (!isInDevelopment) enable();
+  const blogPosts = await getBlogPostsPreview();
+  if (typeof blogPosts === "string") {
+    alert(blogPosts);
+    return null;
+  }
   return (
     <main className="flex min-h-[100svh] flex-col items-center gap-y-6 pt-20 font-signika">
       <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
@@ -31,6 +38,7 @@ export default async function BlogsPage() {
       </section>
       <Blogs blogPosts={blogPosts} />
       <Subscribe />
+      <RefreshBlog />
     </main>
   );
 }

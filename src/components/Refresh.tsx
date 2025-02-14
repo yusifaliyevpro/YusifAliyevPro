@@ -4,14 +4,11 @@ import { Button } from "@heroui/button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { RxUpdate } from "react-icons/rx";
-import { updateBlog } from "../lib/actions";
 
-export function RefreshBlog({ isEnabled }: { isEnabled: boolean }) {
+export function RefreshBlog() {
   const router = useRouter();
-  if (!isEnabled) return null;
   const refresh = () => {
     try {
-      updateBlog();
       router.refresh();
       toast.success(`All blog are upto date!`);
     } catch (error) {

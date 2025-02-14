@@ -7,7 +7,7 @@ export default function PreviewMode() {
   return (
     <div className="relative my-0 flex w-full flex-row justify-end">
       <a
-        href={`${PREVIEW_URL}/blog/${slug.current}?__vercel_draft=1`}
+        href={`${PREVIEW_URL}/blog/${slug.current}`}
         target="_blank"
         className="rounded-xl bg-blue-500 px-5 py-2 font-bold"
       >

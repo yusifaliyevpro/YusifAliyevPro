@@ -7,7 +7,7 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate"
+    "typegen": "sanity schema extract --enforce-required-fields  --path=./src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
     "@heroui/autocomplete": "2.3.11",
@@ -22,7 +22,7 @@
     "@react-email/components": "^0.0.32",
     "@react-email/tailwind": "1.0.4",
     "@sanity/asset-utils": "^2.2.1",
-    "@sanity/cli": "^3.72.1",
+    "@sanity/cli": "^3.75.0",
     "@sanity/client": "^6.24.1",
     "@sanity/code-input": "^5.1.2",
     "@sanity/image-url": "^1.1.0",
@@ -70,13 +70,5 @@
     "react-email": "3.0.6",
     "tailwindcss": "^3.4.17",
     "typescript": "5.7.3"
-  },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "@vercel/speed-insights"
-    ],
-    "onlyBuiltDependencies": [
-      "@vercel/speed-insights"
-    ]
   }
 }

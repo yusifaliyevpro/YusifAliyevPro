@@ -960,6 +960,13 @@
           }
         },
         "optional": false
+      },
+      "sendEmail": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
       }
     }
   },

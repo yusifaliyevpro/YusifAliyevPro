@@ -2,7 +2,7 @@
 
 import { PostEmailTemplate } from "@/components/Email/PostEmailTemplate";
 import { Resend } from "resend";
-import { getBlog } from "../utils";
+import { getBlogPost } from "../utils";
 import { WelcomeEmailTemplate } from "@/src/components/Email/WelcomeEmailTemplate";
 import { z } from "zod";
 
@@ -11,7 +11,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 type TsendEmail = { success: boolean; message: string };
 export async function sendEmail(_: TsendEmail, slug: string): Promise<TsendEmail> {
   try {
-    const blog = await getBlog(slug);
+    const blog = await getBlogPost(slug);
     if (!blog) return { success: false, message: "Couldn't find the blog!" };
     const { title, description, poster } = blog;
     const { data: list } = await resend.contacts.list({ audienceId: process.env.RESEND_AUDIENCE_KEY });
