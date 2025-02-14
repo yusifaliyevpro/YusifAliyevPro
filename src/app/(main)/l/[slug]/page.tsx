@@ -12,7 +12,7 @@ export default async function ShortLink({ params }: { params: Promise<{ slug: st
 
 export const metadata: Metadata = {
   title: "Short Link",
-  description: "Click to go the Link",
+  description: "Click to go to Link",
   robots: { index: false, follow: false },
   openGraph: {
     images: [
