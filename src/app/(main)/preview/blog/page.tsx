@@ -9,7 +9,7 @@ import Subscribe from "@/src/components/Subsciption";
 export default async function BlogsPage() {
   const blogPosts = await getBlogPostsPreview();
   if (typeof blogPosts === "string") {
-    alert(blogPosts);
+    console.log(blogPosts);
     return null;
   }
   return (

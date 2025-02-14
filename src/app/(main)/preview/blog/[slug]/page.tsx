@@ -16,7 +16,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const blogPost = await getBlogPostPreview(slug);
   if (typeof blogPost === "string") {
-    alert(blogPost);
+    console.log(blogPost);
     return null;
   }
   if (!blogPost) notFound();
@@ -118,7 +118,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const blogPost = await getBlogPostPreview(slug);
   if (typeof blogPost === "string") {
-    alert(blogPost);
+    console.log(blogPost);
     return null;
   }
   if (!blogPost) notFound();
