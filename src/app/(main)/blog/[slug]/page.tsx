@@ -10,6 +10,7 @@ import type { Metadata } from "next/types";
 import { cn } from "@/lib/cn";
 import Gallery from "@/components/Gallery";
 import SanityImage from "@/src/components/SanityImage";
+import React from "react";
 
 export async function generateStaticParams() {
   const blogSlugs = await getBlogPosts();

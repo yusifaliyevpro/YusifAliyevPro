@@ -33,13 +33,10 @@ export default async function Home() {
             "xl:text-[4.2rem]",
           )}
         >
-          <h1 className="sr-only">
-            Hi👋, I&apos;m Yusif Aliyev, a Full-Stack Developer
-          </h1>
+          <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev, a Full-Stack Developer</h1>
           <p className="sr-only">
-            Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha
-            çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını
-            tövsiyə edirəm
+            Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün
+            səhifələrə bir baxış atmağını tövsiyə edirəm
           </p>
           <Reveal
             first
@@ -109,14 +106,8 @@ export default async function Home() {
       </section>
 
       {/* My ProJects */}
-      <section
-        aria-label="Layihələrim"
-        className="flex min-h-svh flex-col items-center gap-y-16"
-      >
-        <Reveal
-          as="h2"
-          className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
-        >
+      <section aria-label="Layihələrim" className="flex min-h-svh flex-col items-center gap-y-16">
+        <Reveal as="h2" className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl">
           Layihələrim
         </Reveal>
         <Suspense>
@@ -125,10 +116,7 @@ export default async function Home() {
       </section>
 
       {/* My Code Skils */}
-      <section
-        aria-label="Kod Bacarıqları"
-        className="flex min-h-svh w-full flex-col items-center"
-      >
+      <section aria-label="Kod Bacarıqları" className="flex min-h-svh w-full flex-col items-center">
         <Reveal
           as="h2"
           className="px-5 text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
@@ -153,24 +141,15 @@ export default async function Home() {
       </section>
 
       {/* Technologies */}
-      <section
-        aria-label="Texnologiyalar"
-        className="flex min-h-svh w-full flex-col items-center px-5 md:px-52"
-      >
-        <Reveal
-          as="h2"
-          className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl"
-        >
+      <section aria-label="Texnologiyalar" className="flex min-h-svh w-full flex-col items-center px-5 md:px-52">
+        <Reveal as="h2" className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl">
           Texnologiyalar
         </Reveal>
         <Technologies />
       </section>
 
       {/* Təcrübələr */}
-      <section
-        aria-label="Təcrübələr"
-        className="flex w-full flex-col items-center justify-center"
-      >
+      <section aria-label="Təcrübələr" className="flex w-full flex-col items-center justify-center">
         <Reveal
           as="h2"
           className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"

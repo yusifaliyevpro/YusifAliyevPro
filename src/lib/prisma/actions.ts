@@ -15,6 +15,16 @@ export async function getAllContacts() {
   return await prisma.contact.findMany();
 }
 
+export async function deleteContact(id: string) {
+  try {
+    await prisma.contact.delete({ where: { id } });
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
+
 export async function redirectToLink(slug: string) {
   let link = "";
   try {
