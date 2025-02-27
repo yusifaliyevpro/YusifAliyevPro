@@ -1,7 +1,6 @@
-"use client";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "600" });
 type TKofeAlWidget = { username: string; isActiveOnMobile?: boolean; isHoverable?: boolean };
@@ -39,8 +38,8 @@ export default function KofeAlWidget({ username, isActiveOnMobile = false, isHov
           }
         >
           <Image
-            src="/kofeal.webp"
-            // src="https://kofe.al/assets/images/fav/apple-touch-icon.png"
+            // src="/kofeal.webp"
+            src="https://kofe.al/assets/images/fav/apple-touch-icon.png"
             width={40}
             height={40}
             alt="Kofe al"

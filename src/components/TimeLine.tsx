@@ -1,75 +1,59 @@
-import { Motion } from "./Motion";
-
 import type { JSX } from "react";
+import * as motion from "motion/react-client";
+import Reveal from "./Reveal";
+
+const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
+const dotVariants = {
+  hidden: { opacity: 0, scale: 0.4 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.4, type: "spring", stiffness: 80 } },
+};
+const textVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, type: "spring", stiffness: 80 } },
+};
 
 export default function Timeline() {
   return (
-    <div className="relative mt-16 flex min-h-[60svh] w-full flex-col items-start justify-start overflow-x-hidden md:w-7/12 xl:w-5/12">
-      <hr className="absolute ml-[47px] h-full w-1 rounded-xl bg-gray-300 dark:bg-gray-400 md:ml-[5.34rem]"></hr>
-      <ol>
-        {events.map((event, i) => (
-          <li key={i} className="relative mt-10 flex flex-row items-center">
-            {
-              <p
-                className="hidden w-[4.9rem] pr-10 text-xl md:flex"
-                aria-hidden={!event.year}
-              >
+    <section aria-label="Təcrübələr" className="flex w-full flex-col items-center justify-center">
+      <Reveal as="h2" className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl">
+        Təcrübələr
+      </Reveal>
+      <div className="relative mt-16 flex min-h-[60svh] w-full flex-col items-start justify-start overflow-x-hidden md:w-7/12 xl:w-5/12">
+        <hr className="absolute ml-[47px] h-full w-1 rounded-xl bg-gray-300 dark:bg-gray-400 md:ml-[5.34rem]"></hr>
+        <motion.ol initial="hidden" whileInView="visible" viewport={{ once: true }} variants={olVariants}>
+          {events.map((event, i) => (
+            <li key={i} className="relative mt-10 flex flex-row items-center">
+              <p className="hidden w-[4.9rem] pr-10 text-xl md:flex" aria-hidden={!event.year}>
                 {event.year}
               </p>
-            }
-            <Motion
-              type="span"
-              initial={{ opacity: 0, scale: 0.4 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.4,
-                type: "spring",
-                delay: ((i + 1) / events.length) * 2,
-                stiffness: 80,
-              }}
-              viewport={{ once: true }}
-              className="ml-10 items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[3px] md:ml-0"
-            >
-              <span className="block size-3 rounded-full bg-white dark:bg-gray-300"></span>
-            </Motion>
-            {event.year && (
-              <p className="flex pl-12 text-xl md:hidden">{event.year}</p>
-            )}
-            <Motion
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.4,
-                type: "spring",
-                delay: ((i + 1) / events.length) * 2 + 0.4,
-                stiffness: 80,
-              }}
-              viewport={{ once: true }}
-              className="flex flex-col pl-10 pr-2 max-sm:space-y-2"
-            >
-              {event.name && (
-                <h3 className="text-wrap text-2xl xl:max-w-[27rem]">
-                  {event.name}
-                </h3>
-              )}
-              {event.description && (
-                <p className="pr-5 text-sm text-gray-500 dark:text-slate-400 max-sm:text-base">
-                  {event.description}
-                </p>
-              )}
-            </Motion>
-          </li>
-        ))}
-      </ol>
-    </div>
+              <motion.span
+                variants={dotVariants}
+                className="ml-10 items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[3px] md:ml-0"
+              >
+                <span className="block size-3 rounded-full bg-white dark:bg-gray-300"></span>
+              </motion.span>
+              {event.year && <p className="flex pl-12 text-xl md:hidden">{event.year}</p>}
+              <motion.div variants={textVariants} className="flex flex-col pl-10 pr-2 max-sm:space-y-2">
+                {event.name && <h3 className="text-wrap text-2xl xl:max-w-[27rem]">{event.name}</h3>}
+                {event.description && (
+                  <p className="pr-5 text-sm text-gray-500 dark:text-slate-400 max-sm:text-base">{event.description}</p>
+                )}
+              </motion.div>
+            </li>
+          ))}
+        </motion.ol>
+      </div>{" "}
+    </section>
   );
 }
 
-const events: {
+type Event = {
   name?: string;
   description?: JSX.Element | string;
   year?: number;
-}[] = [
+};
+
+const events: Event[] = [
   {
     name: "Div Academy | Gələcəyi Yazanlar",
     description: "Full-Stack Programming | Təqaüd",
@@ -90,12 +74,7 @@ const events: {
     name: "Developer & Creator",
     description: (
       <>
-        <a
-          rel="noopener noreferrer"
-          href={"https://world-countriess.vercel.app/"}
-          className="text-blue-500"
-          target="_blank"
-        >
+        <a rel="noopener noreferrer" href={"https://world-countriess.vercel.app/"} className="text-blue-500" target="_blank">
           World-Countriess
         </a>{" "}
         | Websayt
@@ -116,12 +95,7 @@ const events: {
     name: "Developer & Creator",
     description: (
       <>
-        <a
-          href={"https://filmisbest.com/"}
-          className="text-blue-500"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={"https://filmisbest.com/"} className="text-blue-500" target="_blank" rel="noopener noreferrer">
           FilmIsBest
         </a>{" "}
         | Film Websaytı
@@ -132,12 +106,7 @@ const events: {
     name: "Text Editor & SEO & Debugger",
     description: (
       <>
-        <a
-          href={"https://kitabxanano2.vercel.app/"}
-          className="text-blue-500"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={"https://kitabxanano2.vercel.app/"} className="text-blue-500" target="_blank" rel="noopener noreferrer">
           Kitabxano2
         </a>{" "}
         | StartUp

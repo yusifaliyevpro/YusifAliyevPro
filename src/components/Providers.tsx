@@ -5,11 +5,8 @@ import { ToastProvider } from "@heroui/toast";
 import { MotionConfig } from "motion/react";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
-export function Providers({
-  children,
-}: {
-  children: ReactNode;
-} & any) {
+
+export function Providers({ children }: { children: ReactNode }) {
   const router = useRouter();
   return (
     <HeroUIProvider navigate={router.push}>

@@ -2,20 +2,17 @@ import type { Metadata } from "next/types";
 import Projects from "@/components/Projects";
 import Timeline from "@/components/TimeLine";
 import Image from "next/image";
-import { Motion } from "@/components/Motion";
+import * as motion from "motion/react-client";
 import { Typewriter } from "nextjs-simple-typewriter";
 import Reveal from "@/components/Reveal";
 import { BASE_URL } from "@/lib/constants";
-import MyCodeSkills from "@/components/MyCodeSkills";
 import MySoftSkills from "@/components/MySoftSkills";
 import Technologies from "@/components/Technologies";
 import { cn } from "@/lib/cn";
-import { Suspense } from "react";
 
 export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-y-56 pb-20 transition-all">
-      {/* CTA */}
       <section
         aria-label="CTA"
         className={cn(
@@ -35,8 +32,8 @@ export default async function Home() {
         >
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev, a Full-Stack Developer</h1>
           <p className="sr-only">
-            Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün
-            səhifələrə bir baxış atmağını tövsiyə edirəm
+            Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış
+            atmağını tövsiyə edirəm
           </p>
           <Reveal
             first
@@ -78,7 +75,7 @@ export default async function Home() {
             Developer
           </Reveal>
         </div>
-        <Motion
+        <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -102,62 +99,14 @@ export default async function Home() {
               "xl:min-h-[360px] xl:min-w-[360px]",
             )}
           />
-        </Motion>
+        </motion.div>
       </section>
 
-      {/* My ProJects */}
-      <section aria-label="Layihələrim" className="flex min-h-svh flex-col items-center gap-y-16">
-        <Reveal as="h2" className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl">
-          Layihələrim
-        </Reveal>
-        <Suspense>
-          <Projects />
-        </Suspense>
-      </section>
-
-      {/* My Code Skils */}
-      <section aria-label="Kod Bacarıqları" className="flex min-h-svh w-full flex-col items-center">
-        <Reveal
-          as="h2"
-          className="px-5 text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
-        >
-          Kod Bacarıqları
-        </Reveal>
-        <MyCodeSkills />
-      </section>
-
-      {/* Soft Skills */}
-      <section
-        aria-label="Soft Bacarıqlarım"
-        className="flex min-h-[70vh] w-full flex-col items-center md:px-40 xl:px-64"
-      >
-        <Reveal
-          as="h2"
-          className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
-        >
-          Soft Bacarıqlarım
-        </Reveal>
-        <MySoftSkills />
-      </section>
-
-      {/* Technologies */}
-      <section aria-label="Texnologiyalar" className="flex min-h-svh w-full flex-col items-center px-5 md:px-52">
-        <Reveal as="h2" className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl">
-          Texnologiyalar
-        </Reveal>
-        <Technologies />
-      </section>
-
-      {/* Təcrübələr */}
-      <section aria-label="Təcrübələr" className="flex w-full flex-col items-center justify-center">
-        <Reveal
-          as="h2"
-          className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
-        >
-          Təcrübələr
-        </Reveal>
-        <Timeline />
-      </section>
+      {/* <MyCodeSkills /> */}
+      <Technologies />
+      <Projects />
+      <MySoftSkills />
+      <Timeline />
     </main>
   );
 }

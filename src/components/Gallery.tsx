@@ -20,9 +20,7 @@ export default function Gallery({
 
   const handleBack = () => {
     setDirection(0);
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
-    );
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
     const currentRef = previewRefs.current[currentIndex];
     if (currentRef) {
       currentRef.scrollIntoView({
@@ -34,9 +32,7 @@ export default function Gallery({
   };
   const handleForward = () => {
     setDirection(1);
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
-    );
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
     const currentRef = previewRefs.current[currentIndex];
     if (currentRef) {
       currentRef.scrollIntoView({
@@ -76,10 +72,7 @@ export default function Gallery({
   return (
     <div className="my-2 md:my-10">
       <div className="mb-4 flex min-h-80 w-full flex-row items-center justify-between overflow-hidden">
-        <IoIosArrowBack
-          className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600"
-          onClick={handleBack}
-        />
+        <IoIosArrowBack className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600" onClick={handleBack} />
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentIndex}
@@ -91,19 +84,10 @@ export default function Gallery({
             transition={{ duration: 0.4 }}
             className="relative flex aspect-square w-fit md:aspect-[13/9]"
           >
-            <SanityImage
-              src={images[currentIndex].image}
-              width={700}
-              height={500}
-              alt="Images"
-              className="select-none object-contain"
-            />
+            <SanityImage src={images[currentIndex].image} width={700} height={500} alt="Images" className="select-none object-contain" />
           </motion.div>
         </AnimatePresence>
-        <IoIosArrowForward
-          className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600"
-          onClick={handleForward}
-        />
+        <IoIosArrowForward className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600" onClick={handleForward} />
       </div>
       <div
         ref={previewContainerRef}

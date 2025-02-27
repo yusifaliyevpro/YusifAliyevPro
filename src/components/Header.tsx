@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenu,
-  NavbarMenuItem,
-  NavbarMenuToggle,
-} from "@heroui/navbar";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@heroui/navbar";
 import Link from "next/link";
 import { useState, type JSX } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
@@ -16,14 +8,8 @@ import { FaGithub } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
-import type { Route } from "next";
-import { Motion } from "./Motion";
-import {
-  FacebookAccount,
-  GitHubAccount,
-  InstagramAccount,
-  LinkedInAccount,
-} from "../lib/constants";
+import * as motion from "motion/react-client";
+import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,8 +62,7 @@ export default function Header() {
       <NavbarContent justify="end">
         <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
           {socialAccounts.map((account, i) => (
-            <Motion
-              type="a"
+            <motion.a
               key={i}
               whileHover={{ scale: 1.1 }}
               href={account.link}
@@ -88,7 +73,7 @@ export default function Header() {
             >
               {account.icon}
               <span className="sr-only">My {account.name} Account</span>
-            </Motion>
+            </motion.a>
           ))}
         </NavbarItem>
       </NavbarContent>
@@ -101,17 +86,14 @@ export default function Header() {
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
-      <NavbarMenuToggle
-        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="md:hidden"
-      />
+      <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="md:hidden" />
     </Navbar>
   );
 }
 
 const staticRoutes: {
   name: string;
-  link: Route;
+  link: string;
 }[] = [
   {
     name: "Ana Səhifə",
@@ -130,7 +112,7 @@ const staticRoutes: {
 const socialAccounts: {
   icon: JSX.Element;
   name: string;
-  link: Route;
+  link: string;
   className: string;
 }[] = [
   {
@@ -144,15 +126,13 @@ const socialAccounts: {
     icon: <LiaFacebook strokeWidth={0.3} />,
     name: "FaceBook",
     link: FacebookAccount,
-    className:
-      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
+    className: "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
   },
   {
     icon: <PiLinkedinLogoBold />,
     name: "LinkedIn",
     link: LinkedInAccount,
-    className:
-      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
+    className: "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
   },
   {
     icon: <FaGithub />,

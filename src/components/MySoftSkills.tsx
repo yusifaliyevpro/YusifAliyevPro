@@ -1,36 +1,44 @@
-import { Motion } from "./Motion";
+import * as motion from "motion/react-client";
+import Reveal from "./Reveal";
+
+const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
+const itemVariants = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, type: "spring", stiffness: 70 } },
+};
 
 export default function MySoftSkills() {
   return (
-    <ol className="mt-10 flex flex-row flex-wrap items-center justify-center gap-x-2 gap-y-4 overflow-x-hidden px-3 text-xl md:ml-3 md:gap-x-5 md:px-5">
-      {addSkills.map((skill, i) => (
-        <Motion
-          type="li"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 0.4,
-            type: "spring",
-            delay: (i + 1) * 0.2,
-            stiffness: 70,
-          }}
-          viewport={{ once: true }}
-          key={i}
-          className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-3 text-center text-lg text-white dark:text-slate-300 md:px-4 lg:text-xl"
-        >
-          <h3>{skill}</h3>
-        </Motion>
-      ))}
-    </ol>
+    <section aria-label="Soft Bacarıqlarım" className="flex min-h-[70vh] w-full flex-col items-center md:px-40 xl:px-64">
+      <Reveal as="h2" className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl">
+        Soft Bacarıqlarım
+      </Reveal>
+      <motion.ol
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={olVariants}
+        className="mt-10 flex flex-row flex-wrap items-center justify-center gap-x-2 gap-y-4 overflow-x-hidden px-3 text-xl md:ml-3 md:gap-x-5 md:px-5"
+      >
+        {softs.map((skill, i) => (
+          <motion.li
+            key={i}
+            variants={itemVariants}
+            className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-3 text-center text-lg text-white dark:text-slate-300 md:px-4 lg:text-xl"
+          >
+            <h3>{skill}</h3>
+          </motion.li>
+        ))}
+      </motion.ol>
+    </section>
   );
 }
 
-const addSkills: string[] = [
-  "Layihə İdarə etməsi",
+const softs: string[] = [
+  "Layihələrin idarə edilməsi",
   "Komanda ilə işləmə",
   "Tez öyrənmə",
   "Analitik düşüncə",
+  "English B1-B2",
   "Vaxt idarə etməsi",
-  "English B1",
-  "Empatiya",
 ];

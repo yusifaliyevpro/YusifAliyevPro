@@ -1,50 +1,22 @@
-import "./globals.css";
-import { Providers } from "@/components/Providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import KofeAlWidget from "@/components/KofeAlWidget";
-import { Toaster } from "react-hot-toast";
-import { jua, poppins, source_sans_3 } from "@/lib/fonts";
 import { BASE_URL } from "@/lib/constants";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { cn } from "@/lib/cn";
 import { ReactNode } from "react";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="az">
-      <body
-        className={cn(
-          "min-h-svh scroll-smooth bg-white font-poppins font-semibold",
-          poppins.variable,
-          jua.variable,
-          source_sans_3.variable,
-          "dark:bg-foreground dark:text-slate-200",
-        )}
-      >
-        <Providers attribute="class" defaultTheme="light">
-          <Header />
-          {children}
-          <KofeAlWidget
-            username="yusifaliyevpro"
-            isActiveOnMobile
-            isHoverable
-          />
-          <Footer />
-        </Providers>
-        <Analytics />
-        <SpeedInsights />
-        <Toaster
-          toastOptions={{
-            className: "",
-          }}
-          position="bottom-right"
-          reverseOrder={false}
-        />
-      </body>
-    </html>
+    <>
+      <Header />
+      {children}
+      <KofeAlWidget username="yusifaliyevpro" isActiveOnMobile isHoverable />
+      <Footer />
+      <Analytics />
+      <SpeedInsights />
+    </>
   );
 }
 

@@ -2,27 +2,16 @@
 import { useAnimation, useInView } from "motion/react";
 import React, { useEffect, useRef, type JSX } from "react";
 import type { ReactNode } from "react";
-import { Motion } from "./Motion";
+import { motion } from "motion/react";
 import { cn } from "@/lib/cn";
 
-type RevealProps = {
-  children: ReactNode;
-  first?: boolean;
-  className?: string;
-  as?: keyof JSX.IntrinsicElements;
-};
+type RevealProps = { children: ReactNode; first?: boolean; className?: string; as?: keyof JSX.IntrinsicElements };
 
-export default function Reveal({
-  children,
-  first,
-  className,
-  as = "div",
-}: RevealProps) {
+export default function Reveal({ children, first, className }: RevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.7 });
   const mainControls = useAnimation();
   const slideControls = useAnimation();
-
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
@@ -32,8 +21,7 @@ export default function Reveal({
 
   return (
     <div ref={ref} className="relative w-fit overflow-hidden">
-      <Motion
-        type={as}
+      <motion.div
         variants={{
           hidden: { opacity: 0, y: first ? 60 : 0 },
           visible: { opacity: 1, y: 0 },
@@ -44,8 +32,8 @@ export default function Reveal({
         transition={{ duration: 0.3, delay: 0.3 }}
       >
         {children}
-      </Motion>
-      <Motion
+      </motion.div>
+      <motion.div
         variants={{
           hidden: { left: 0, opacity: first ? 0 : 1 },
           visible: { left: "100%", opacity: 1 },
