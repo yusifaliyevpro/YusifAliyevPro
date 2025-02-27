@@ -18,7 +18,7 @@ export async function sendEmail(_: TsendEmail, slug: string): Promise<TsendEmail
     const to = list.data.filter((contact) => !contact.unsubscribed).map((contact) => contact.email);
     const result = await resend.emails.send({
       from: "Yusif Aliyev <updates@blog.yusifaliyevpro.com>",
-      to: ["yusifaliyevpro@gmail.com"],
+      to,
       subject: title,
       text: `Yeni Bloq Post\n\n${title}\n\n${description}\n\nDaha çox oxu`,
       react: PostEmailTemplate({ title, description, poster, slug }),

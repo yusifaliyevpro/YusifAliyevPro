@@ -32,7 +32,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           "md:px-10",
           "lg:px-24",
           "xl:px-44",
-          "dark:from-blue-600 dark:to-blue-300",
           "bg-gradient-to-tr from-blue-500 to-blue-200",
         )}
       >

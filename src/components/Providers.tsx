@@ -10,7 +10,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const router = useRouter();
   return (
     <HeroUIProvider navigate={router.push}>
-      <ToastProvider />
+      <ToastProvider toastOffset={100} />
       <MotionConfig>{children}</MotionConfig>
     </HeroUIProvider>
   );

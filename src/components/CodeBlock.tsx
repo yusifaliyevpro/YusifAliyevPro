@@ -6,6 +6,7 @@ import { FaRegFile } from "react-icons/fa";
 import { AiOutlinePython } from "react-icons/ai";
 import CopyButton from "./CopyButton";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Snippet } from "@heroui/snippet";
 
 const High = SyntaxHighlighter as any;
 export function getFileIcon(language: string) {
@@ -23,9 +24,7 @@ export function getFileIcon(language: string) {
     case "tsx":
       return <FaReact className="text-2xl text-blue-700" />;
     case "python":
-      return (
-        <AiOutlinePython className="bg-clip-text text-2xl text-blue-500" />
-      );
+      return <AiOutlinePython className="bg-clip-text text-2xl text-blue-500" />;
     default:
       return <FaRegFile className="text-xl" />;
   }
@@ -37,11 +36,24 @@ type CodeBlockProps = {
   fileName: string;
 };
 
-export default function CodeBlock({
-  code,
-  language,
-  fileName,
-}: CodeBlockProps) {
+export default function CodeBlock({ code, language, fileName }: CodeBlockProps) {
+  if (language === "sh") {
+    const commands = code.split("\n");
+    return (
+      <div className="my-5 flex flex-col items-center justify-center space-y-3">
+        <Snippet variant="flat" color="primary" size="lg">
+          {commands[0]}
+        </Snippet>
+        <span className="text-slate-500">və ya</span>
+        {commands.length == 2 && (
+          <Snippet variant="flat" color="primary" size="lg">
+            {commands[1]}
+          </Snippet>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-lg border transition-none">
       <div className="flex items-center justify-between rounded-t-md border-b bg-gray-200/80 px-4 py-2 dark:border-0 dark:bg-gray-500">
