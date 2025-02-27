@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
-import { FormEventHandler, startTransition, useActionState, useEffect } from "react";
+import { startTransition, useActionState, useEffect } from "react";
 import { subscribe } from "@/lib/email/actions";
 import { AiOutlineLoading } from "react-icons/ai";
 import { addToast } from "@heroui/toast";
