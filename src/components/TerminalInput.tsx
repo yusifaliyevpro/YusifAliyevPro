@@ -1,4 +1,5 @@
 "use client";
+
 import { cn } from "@/lib/cn";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
@@ -50,40 +51,40 @@ export default function TerminalInput({
         <span className="text-blue-500">$</span> <span className="text-nowrap text-slate-500">{placeholder}</span>
         {!isBoolean ? (
           <Input
+            ref={ref}
+            autoFocus
+            classNames={{
+              inputWrapper:
+                "bg-transparent shadow-none hover:bg-transparent group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
+              input: "font-mono text-base font-bold placeholder:text-slate-400 after:bg-black",
+            }}
+            enterKeyHint="enter"
+            isDisabled={isEntered}
+            maxLength={150}
+            placeholder={inputPlaceholder}
             type="text"
             value={value as string}
-            placeholder={inputPlaceholder}
-            maxLength={150}
-            ref={ref}
-            isDisabled={isEntered}
-            autoFocus
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
               if (e.key === "Enter") {
                 e.preventDefault();
                 setIsEntered(true);
               }
             }}
-            enterKeyHint="enter"
             onValueChange={setValue}
-            classNames={{
-              inputWrapper:
-                "bg-transparent hover:bg-transparent shadow-none group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
-              input: "font-mono  after:bg-black text-base font-bold placeholder:text-slate-400",
-            }}
           />
         ) : (
           <div className="flex flex-row gap-x-3">
-            <Button onPress={() => setIsEntered(true)} color="warning" className="font-bold" radius="sm">
+            <Button className="font-bold" color="warning" radius="sm" onPress={() => setIsEntered(true)}>
               Xeyr
             </Button>
             <Button
+              className="font-bold"
+              color="primary"
+              radius="sm"
               onPress={() => {
                 setIsEntered(true);
                 setValue(true);
               }}
-              radius="sm"
-              color="primary"
-              className="font-bold"
             >
               Bəli
             </Button>

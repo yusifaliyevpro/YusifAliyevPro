@@ -1,19 +1,7 @@
-import {
-  Section,
-  Img,
-  Text,
-  Heading,
-  Button,
-  Tailwind,
-  Column,
-  Row,
-  Html,
-  Head,
-  Preview,
-} from "@react-email/components";
-import { BASE_URL } from "@/lib/constants";
 import { EmailFooter } from "./Footer";
 import { EmailHeader } from "./Header";
+import { BASE_URL } from "@/lib/constants";
+import { Section, Img, Text, Heading, Button, Tailwind, Column, Row, Html, Head, Preview } from "@react-email/components";
 
 type PostEmailTemplate = {
   title: string;
@@ -22,7 +10,7 @@ type PostEmailTemplate = {
   slug: string;
 };
 export const PostEmailTemplate = ({ title, description, poster, slug }: PostEmailTemplate) => (
-  <Html lang="az" dir="ltr">
+  <Html dir="ltr" lang="az">
     <Tailwind
       config={{
         theme: {
@@ -44,9 +32,9 @@ export const PostEmailTemplate = ({ title, description, poster, slug }: PostEmai
             <Img
               alt={title}
               className="w-full rounded-[12px] border-1 object-cover filter-none lg:w-5/6"
-              style={{ filter: "none" }}
               height="320"
               src={poster}
+              style={{ filter: "none" }}
             />
           </Column>
         </Row>

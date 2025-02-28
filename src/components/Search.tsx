@@ -19,7 +19,11 @@ export default function Search() {
 
   useEffect(() => {
     if (resultCount === 0) {
-      addToast({ title: "Axtarışınıza uyğun nəticə tapılmadı", color: "warning", icon: <BiSearch className="text-2xl font-bold" /> });
+      addToast({
+        title: "Axtarışınıza uyğun nəticə tapılmadı",
+        color: "warning",
+        icon: <BiSearch className="text-2xl font-bold" />,
+      });
     }
   }, [resultCount]);
 
@@ -27,18 +31,18 @@ export default function Search() {
     <search className="mt-5 w-full px-6 md:w-[22rem] lg:mt-0">
       <Input
         classNames={{
-          inputWrapper: "group-data-[focus=true]:border-blue-400  hover:!border-blue-300 border-blue-200 dark:border-slate-400",
-          input: "placeholder:text-gray-500 dark:placeholder:text-slate-400 text-lg font-normal",
+          inputWrapper: "border-blue-200 hover:!border-blue-300 group-data-[focus=true]:border-blue-400 dark:border-slate-400",
+          input: "text-lg font-normal placeholder:text-gray-500 dark:placeholder:text-slate-400",
         }}
+        endContent={<BiSearch className="text-[1.7rem] font-bold" />}
         placeholder={"Axtarış"}
-        variant="bordered"
+        radius="md"
         size="lg"
         value={text}
+        variant="bordered"
         onChange={(e) => {
           setText(e.target.value);
         }}
-        radius="md"
-        endContent={<BiSearch className="text-[1.7rem] font-bold" />}
       />
     </search>
   );

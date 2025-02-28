@@ -1,7 +1,7 @@
+import Header from "../components/Header";
 import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "../components/Header";
 
 export default function NotFound() {
   return (
@@ -12,13 +12,13 @@ export default function NotFound() {
           <p>4</p>
           <Link href={"/"}>
             <Image
-              src={"/Profile.png"}
-              width={250}
-              height={250}
               priority
               unoptimized
-              className="rounded-full border-2 shadow-small max-lg:h-36 max-lg:w-36 max-md:h-28 max-md:w-28"
               alt="Profile Picture"
+              className="rounded-full border-2 shadow-small max-lg:h-36 max-lg:w-36 max-md:h-28 max-md:w-28"
+              height={250}
+              src={"/Profile.png"}
+              width={250}
             />
           </Link>
           <p>4</p>

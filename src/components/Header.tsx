@@ -1,15 +1,15 @@
 "use client";
 
+import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@heroui/navbar";
+import { useMotionValueEvent, useScroll } from "motion/react";
+import * as motion from "motion/react-client";
 import Link from "next/link";
 import { useState, type JSX } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
 import { FaGithub } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
-import * as motion from "motion/react-client";
-import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,18 +26,18 @@ export default function Header() {
 
   return (
     <Navbar
-      className="select-none"
-      onMenuOpenChange={setIsMenuOpen}
       isBlurred
+      className="select-none"
       classNames={{
-        base: `w-auto fixed z-[9998] dark:bg-foreground  xl:mx-40 md:rounded-b-lg transition-all ${isScrolled && " lg:shadow-medium dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg"}`,
+        base: `fixed z-[9998] w-auto transition-all dark:bg-foreground md:rounded-b-lg xl:mx-40 ${isScrolled && "dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg lg:shadow-medium"}`,
       }}
+      onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
         <NavbarBrand as={"li"}>
           <Link
-            href={`/`}
             className="relative left-0 flex flex-row items-center gap-1.5 font-jua text-3xl font-normal text-black dark:text-white"
+            href={`/`}
           >
             <p>
               Yusif<span className="text-blue-500">Aliyev</span>Pro
@@ -45,14 +45,14 @@ export default function Header() {
           </Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent justify="center" className="hidden gap-x-10 md:flex">
+      <NavbarContent className="hidden gap-x-10 md:flex" justify="center">
         {staticRoutes.map((navbar, i) => (
           <NavbarItem key={i}>
             <Link
-              color="foreground"
-              className="hidden text-lg font-semibold text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-slate-400 sm:flex"
-              href={navbar.link}
               aria-current="page"
+              className="hidden text-lg font-semibold text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-slate-400 sm:flex"
+              color="foreground"
+              href={navbar.link}
             >
               {navbar.name}
             </Link>
@@ -64,12 +64,12 @@ export default function Header() {
           {socialAccounts.map((account, i) => (
             <motion.a
               key={i}
-              whileHover={{ scale: 1.1 }}
-              href={account.link}
               aria-label={`My ${account.name} Account`}
-              target="_blank"
               className={account.className}
+              href={account.link}
               rel="noopener noreferrer me"
+              target="_blank"
+              whileHover={{ scale: 1.1 }}
             >
               {account.icon}
               <span className="sr-only">My {account.name} Account</span>
@@ -80,7 +80,7 @@ export default function Header() {
       <NavbarMenu className="max-h-[30svh] items-center justify-center gap-y-3 overflow-hidden dark:bg-foreground/70">
         {staticRoutes.map((navbar, i) => (
           <NavbarMenuItem key={i}>
-            <Link href={navbar.link} className="w-full text-xl font-semibold">
+            <Link className="w-full text-xl font-semibold" href={navbar.link}>
               {navbar.name}
             </Link>
           </NavbarMenuItem>

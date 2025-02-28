@@ -10,6 +10,7 @@
     "typegen": "sanity schema extract --enforce-required-fields  --path=./src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
+    "@eslint/eslintrc": "^3.3.0",
     "@heroui/autocomplete": "2.3.14",
     "@heroui/button": "^2.2.13",
     "@heroui/input": "^2.4.13",
@@ -36,7 +37,7 @@
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "copy-to-clipboard": "^3.3.3",
-    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-prettier": "^5.2.3",
     "framer-motion": "^12.4.7",
     "fuse.js": "^7.1.0",
     "hast-util-to-jsx-runtime": "^2.3.5",
@@ -60,12 +61,16 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "22.13.5",
     "@types/react-syntax-highlighter": "^15.5.13",
     "depcheck": "^1.4.7",
     "eslint": "^9.21.0",
     "eslint-config-next": "15.2.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "postcss": "^8.5.3",
+    "prettier-plugin-organize-attributes": "^1.0.0",
     "prisma": "^6.4.1",
     "react-email": "3.0.7",
     "tailwindcss": "^3.4.17",

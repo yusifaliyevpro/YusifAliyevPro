@@ -1,9 +1,9 @@
 "use server";
 
-import { PostEmailTemplate } from "@/components/Email/PostEmailTemplate";
-import { Resend } from "resend";
 import { getBlogPost } from "../utils";
+import { PostEmailTemplate } from "@/components/Email/PostEmailTemplate";
 import { WelcomeEmailTemplate } from "@/src/components/Email/WelcomeEmailTemplate";
+import { Resend } from "resend";
 import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -35,16 +35,30 @@ export async function sendEmail(_: TsendEmail, slug: string): Promise<TsendEmail
   }
 }
 const subscriberSchema = z.object({
-  firstName: z.string().trim().min(3, { message: "Adınız minimum 3 hərfdən ibarət olmalıdır" }),
-  lastName: z.string().trim().min(3, { message: "Soyadınız minimum 3 hərfdən ibarət olmalıdır" }),
+  fullName: z
+    .string()
+    .trim()
+    .refine((name) => name.split(" ").filter(Boolean).length >= 2, {
+      message: "Tam Ad iki hissədən ibarət olmalıdır!",
+    })
+    .refine(
+      (name) =>
+        name
+          .split(" ")
+          .filter(Boolean)
+          .every((part) => part.length >= 3),
+      {
+        message: "Ad və soyad ayrılıqda minimum 3 hərfdən ibarət olmalıdır!",
+      },
+    ),
   email: z.string().email({ message: "Emaili düzgün daxil edin!" }),
 });
 
 export type TsubscribeState = {
   success: boolean;
-  errors?: { firstName?: string[]; lastName?: string[]; email?: string[] };
+  errors?: { fullName?: string[]; email?: string[] };
 };
-export async function subscribe(cState: TsubscribeState, formData: FormData): Promise<TsubscribeState> {
+export async function subscribe(_: TsubscribeState, formData: FormData): Promise<TsubscribeState> {
   try {
     const subscriberFormData = Object.fromEntries(formData);
     const validation = subscriberSchema.safeParse(subscriberFormData);
@@ -53,7 +67,10 @@ export async function subscribe(cState: TsubscribeState, formData: FormData): Pr
       return { success: false, errors: formFieldErrors };
     }
 
-    const { firstName, lastName, email } = validation.data;
+    const { fullName, email } = validation.data;
+    const fullNames = fullName.split(" ").filter(Boolean);
+    const firstName = fullNames[0];
+    const lastName = fullNames[1];
     const contact = await resend.contacts.create({
       email,
       firstName,

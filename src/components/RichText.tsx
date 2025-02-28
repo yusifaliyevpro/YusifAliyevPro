@@ -1,13 +1,13 @@
-import { PortableText, PortableTextComponents } from "next-sanity";
-import { getImageDimensions } from "@sanity/asset-utils";
-import CodeBlock from "@/components/CodeBlock";
-import { type ReactNode, Suspense } from "react";
-import { CodeInputValue } from "@sanity/code-input";
-import { SanityImageAsset } from "@/sanity/types";
 import SanityImage from "./SanityImage";
+import CodeBlock from "@/components/CodeBlock";
+import { SanityImageAsset } from "@/sanity/types";
+import { getImageDimensions } from "@sanity/asset-utils";
+import { CodeInputValue } from "@sanity/code-input";
+import { PortableText, PortableTextComponents } from "next-sanity";
+import { type ReactNode, Suspense } from "react";
 
 export default function RichText({ blogText }) {
-  return <PortableText value={blogText} components={components} />;
+  return <PortableText components={components} value={blogText} />;
 }
 
 const components: PortableTextComponents = {
@@ -17,14 +17,14 @@ const components: PortableTextComponents = {
       return (
         <figure className={`flex size-full flex-col py-7 aspect-[${aspectRatio}] items-center justify-center`}>
           <SanityImage
-            src={value.image}
-            width={width}
-            height={height}
             alt={value.alt || ""}
-            placeholder="blur"
-            loading="lazy"
             blurDataURL={value.lqip}
             className="rounded-md object-cover"
+            height={height}
+            loading="lazy"
+            placeholder="blur"
+            src={value.image}
+            width={width}
           />
           <figcaption className="sr-only">{value.alt}</figcaption>
         </figure>
@@ -66,7 +66,7 @@ const components: PortableTextComponents = {
   },
   marks: {
     link: ({ value, children }: { value?: { href: string }; children: ReactNode }) => (
-      <a href={value.href} rel="noopener noreferrer" target="_blank" className="text-blue-500 hover:text-blue-700">
+      <a className="text-blue-500 hover:text-blue-700" href={value.href} rel="noopener noreferrer" target="_blank">
         {children}
       </a>
     ),

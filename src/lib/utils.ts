@@ -1,5 +1,6 @@
 "use server";
-import { defineQuery } from "next-sanity";
+
+import { isInDevelopment } from "./constants";
 import { client } from "@/sanity/lib/client";
 import type {
   BLOG_POST_PREVIEW_QUERYResult,
@@ -8,17 +9,13 @@ import type {
   BLOGS_POSTS_QUERYResult,
   PROJECTS_QUERYResult,
 } from "@/sanity/types";
+import { defineQuery } from "next-sanity";
 import { draftMode } from "next/headers";
-import { isInDevelopment } from "./constants";
 
 export async function getProjects() {
   const PROJECTS_QUERY = defineQuery(`*[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,    
   "imageMetadata": { "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions }, description, link, repo}`);
-  const data = await client.fetch<PROJECTS_QUERYResult>(
-    PROJECTS_QUERY,
-    {},
-    { next: { revalidate: 3600 }, cache: "force-cache" },
-  );
+  const data = await client.fetch<PROJECTS_QUERYResult>(PROJECTS_QUERY, {}, { next: { revalidate: 3600 }, cache: "force-cache" });
   return data;
 }
 

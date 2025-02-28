@@ -1,15 +1,16 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { GoClock } from "react-icons/go";
+
+import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
+import SanityImage from "./SanityImage";
+import { cn } from "@/lib/cn";
+import { dateFormatter } from "@/lib/formatters";
+import useQuery from "@/lib/store";
 import { Button } from "@heroui/button";
 import Fuse from "fuse.js";
-import useQuery from "@/lib/store";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { dateFormatter } from "@/lib/formatters";
-import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
-import { cn } from "@/lib/cn";
-import SanityImage from "./SanityImage";
+import { GoClock } from "react-icons/go";
 
 export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
   const [page, setPage] = useState(1);
@@ -61,13 +62,13 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
                 )}
               >
                 <SanityImage
+                  alt={`${blog.title} Poster`}
+                  blurDataURL={blog.posterMetadata.lqip}
+                  className="size-full rounded-t-lg object-cover"
+                  height={blog.posterMetadata.dimensions.height}
+                  placeholder="blur"
                   src={blog.poster}
                   width={blog.posterMetadata.dimensions.width}
-                  height={blog.posterMetadata.dimensions.height}
-                  className="size-full rounded-t-lg object-cover"
-                  alt={`${blog.title} Poster`}
-                  placeholder="blur"
-                  blurDataURL={blog.posterMetadata.lqip}
                 />
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
@@ -86,18 +87,18 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
               <div className="flex w-full flex-row items-center justify-between px-7 py-5 pr-8">
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
-                    src="/Profile.png"
-                    width={45}
-                    height={45}
                     unoptimized
                     alt="Profile Picture"
                     className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-medium"
+                    height={45}
+                    src="/Profile.png"
+                    width={45}
                   />
                   <p className="font-medium">Yusif Aliyev</p>
                 </div>
                 <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700 dark:text-slate-400">
                   <GoClock />
-                  <time dateTime={blog.publishedAt} className="text-sm font-normal tabular-nums">
+                  <time className="text-sm font-normal tabular-nums" dateTime={blog.publishedAt}>
                     {dateFormatter(blog.publishedAt)}
                   </time>
                 </div>
@@ -108,12 +109,12 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
       </section>
       {blogPosts.length > resultCount && !search && (
         <Button
-          onPress={() => setPage(page + 1)}
-          size="lg"
           className={cn(
             "mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white",
             "dark:from-blue-600 dark:to-blue-500 dark:text-slate-200",
           )}
+          size="lg"
+          onPress={() => setPage(page + 1)}
         >
           Daha çox göstər
         </Button>

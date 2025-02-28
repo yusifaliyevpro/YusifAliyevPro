@@ -13,23 +13,15 @@ export function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return <Switch size="lg" isDisabled color="primary" />;
+  if (!mounted) return <Switch isDisabled color="primary" size="lg" />;
 
   return (
     <Switch
-      size="lg"
       color="primary"
       isSelected={resolvedTheme === "dark"}
-      onValueChange={() =>
-        setTheme(resolvedTheme === "dark" ? "light" : "dark")
-      }
-      thumbIcon={({ isSelected, className }) =>
-        isSelected ? (
-          <FiMoon className={className} />
-        ) : (
-          <FiSun className={className} />
-        )
-      }
+      size="lg"
+      thumbIcon={({ isSelected, className }) => (isSelected ? <FiMoon className={className} /> : <FiSun className={className} />)}
+      onValueChange={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     />
   );
 }

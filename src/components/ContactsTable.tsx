@@ -1,13 +1,13 @@
 "use client";
 
-import { Contact } from "@prisma/client";
+import { deleteContact } from "../lib/prisma/actions";
 import { Chip } from "@heroui/chip";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/table";
+import { addToast } from "@heroui/toast";
+import { Contact } from "@prisma/client";
+import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import { useRouter } from "next/navigation";
-import { deleteContact } from "../lib/prisma/actions";
-import { addToast } from "@heroui/toast";
 
 export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
   const router = useRouter();
@@ -45,10 +45,10 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
             <TableCell>{contact.phone}</TableCell>
             <TableCell>
               <Chip
-                startContent={contact.hasWhatsApp && <FaWhatsapp className="text-lg text-green-500" />}
                 color={contact.hasWhatsApp ? "success" : "danger"}
-                variant="flat"
                 isDisabled={calledIDs.includes(contact.id)}
+                startContent={contact.hasWhatsApp && <FaWhatsapp className="text-lg text-green-500" />}
+                variant="flat"
               >
                 {contact.hasWhatsApp ? "Yes" : "No"}
               </Chip>
@@ -57,7 +57,7 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
               <p className="truncate">{contact.description}</p>
             </TableCell>
             <TableCell>
-              <MdDeleteOutline onClick={() => handleDelete(contact.id)} className="cursor-pointer text-2xl text-danger" />
+              <MdDeleteOutline className="cursor-pointer text-2xl text-danger" onClick={() => handleDelete(contact.id)} />
             </TableCell>
           </TableRow>
         ))}

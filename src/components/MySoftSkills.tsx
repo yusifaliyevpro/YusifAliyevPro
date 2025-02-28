@@ -1,5 +1,5 @@
-import * as motion from "motion/react-client";
 import Reveal from "./Reveal";
+import * as motion from "motion/react-client";
 
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
 const itemVariants = {
@@ -14,17 +14,17 @@ export default function MySoftSkills() {
         Soft Bacarıqlarım
       </Reveal>
       <motion.ol
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={olVariants}
         className="mt-10 flex flex-row flex-wrap items-center justify-center gap-x-2 gap-y-4 overflow-x-hidden px-3 text-xl md:ml-3 md:gap-x-5 md:px-5"
+        initial="hidden"
+        variants={olVariants}
+        viewport={{ once: true }}
+        whileInView="visible"
       >
         {softs.map((skill, i) => (
           <motion.li
             key={i}
-            variants={itemVariants}
             className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-3 text-center text-lg text-white dark:text-slate-300 md:px-4 lg:text-xl"
+            variants={itemVariants}
           >
             <h3>{skill}</h3>
           </motion.li>

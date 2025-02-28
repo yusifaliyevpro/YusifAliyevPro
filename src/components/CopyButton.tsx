@@ -1,10 +1,11 @@
 "use client";
+
 import { Button } from "@heroui/button";
+import { Tooltip } from "@heroui/tooltip";
 import copy from "copy-to-clipboard";
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { TiTick } from "react-icons/ti";
-import { Tooltip } from "@heroui/tooltip";
 
 export default function CopyButton({ text }: { text: string }) {
   const [mouseLeaved, setMouseLeaved] = useState(true);
@@ -16,21 +17,17 @@ export default function CopyButton({ text }: { text: string }) {
   };
   return (
     <div className="transition-all delay-150 duration-300">
-      <Tooltip isOpen={isOpen} color="primary" content="Copied">
+      <Tooltip color="primary" content="Copied" isOpen={isOpen}>
         <Button
-          onPress={handle}
           isIconOnly
           variant="light"
           onMouseLeave={() => {
             setMouseLeaved(true);
             setIsOpen(false);
           }}
+          onPress={handle}
         >
-          {mouseLeaved ? (
-            <IoCopyOutline className="text-2xl" />
-          ) : (
-            <TiTick className="text-2xl" />
-          )}
+          {mouseLeaved ? <IoCopyOutline className="text-2xl" /> : <TiTick className="text-2xl" />}
           <span className="sr-only">Copy code</span>
         </Button>
       </Tooltip>

@@ -1,10 +1,12 @@
 "use client";
+
+import SanityImage from "./SanityImage";
+import { cn } from "@/lib/cn";
+import { AnimatePresence, motion } from "motion/react";
 import { useRef, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
-import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@/lib/cn";
-import SanityImage from "./SanityImage";
+
 export default function Gallery({
   images,
 }: {
@@ -73,18 +75,24 @@ export default function Gallery({
     <div className="my-2 md:my-10">
       <div className="mb-4 flex min-h-80 w-full flex-row items-center justify-between overflow-hidden">
         <IoIosArrowBack className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600" onClick={handleBack} />
-        <AnimatePresence mode="wait" custom={direction}>
+        <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
-            variants={animationVariants}
-            initial="initial"
             animate="animate"
-            exit="exit"
-            custom={direction}
-            transition={{ duration: 0.4 }}
             className="relative flex aspect-square w-fit md:aspect-[13/9]"
+            custom={direction}
+            exit="exit"
+            initial="initial"
+            transition={{ duration: 0.4 }}
+            variants={animationVariants}
           >
-            <SanityImage src={images[currentIndex].image} width={700} height={500} alt="Images" className="select-none object-contain" />
+            <SanityImage
+              alt="Images"
+              className="select-none object-contain"
+              height={500}
+              src={images[currentIndex].image}
+              width={700}
+            />
           </motion.div>
         </AnimatePresence>
         <IoIosArrowForward className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600" onClick={handleForward} />
@@ -103,15 +111,15 @@ export default function Gallery({
             onClick={() => handleScroolBar(i)}
           >
             <SanityImage
-              src={image.image}
-              width={200}
-              height={100}
-              placeholder="blur"
-              blurDataURL={image.lqip}
               alt="Images"
+              blurDataURL={image.lqip}
               className={cn("select-none rounded-xl border-2 object-contain", {
                 "border-blue-700": i == currentIndex,
               })}
+              height={100}
+              placeholder="blur"
+              src={image.image}
+              width={200}
             />
           </div>
         ))}

@@ -1,6 +1,7 @@
 "use server";
-import { Prisma } from "@prisma/client";
+
 import prisma from "./prisma";
+import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 
 export async function createContact(data: Prisma.ContactCreateInput) {

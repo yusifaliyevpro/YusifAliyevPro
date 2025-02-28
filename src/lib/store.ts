@@ -1,5 +1,6 @@
 // store.js
 import { create } from "zustand";
+
 type State = {
   search: string;
   resultCount: number;

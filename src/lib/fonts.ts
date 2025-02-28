@@ -1,9 +1,4 @@
-import {
-  Jua,
-  Poppins,
-  Signika_Negative,
-  Source_Sans_3,
-} from "next/font/google";
+import { Jua, Poppins, Signika_Negative, Source_Sans_3 } from "next/font/google";
 
 export const source_sans_3 = Source_Sans_3({
   subsets: ["latin"],

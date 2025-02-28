@@ -1,6 +1,6 @@
+import Reveal from "./Reveal";
 import { Progress } from "@heroui/progress";
 import * as motion from "motion/react-client";
-import Reveal from "./Reveal";
 
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
 const itemVariants = {
@@ -15,28 +15,28 @@ export default function MyCodeSkills() {
         Kod Bacarıqları
       </Reveal>
       <motion.ol
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={olVariants}
         className="mt-12 flex w-full flex-col gap-y-8 overflow-x-hidden px-10 sm:px-28 lg:px-56 xl:px-80"
+        initial="hidden"
+        variants={olVariants}
+        viewport={{ once: true }}
+        whileInView="visible"
       >
         {skills.map((skill, i) => (
-          <motion.li key={i} variants={itemVariants} className="flex w-full flex-col items-start justify-around gap-y-2">
+          <motion.li key={i} className="flex w-full flex-col items-start justify-around gap-y-2" variants={itemVariants}>
             <div className="flex w-full flex-row items-center justify-between">
               <h3 className="text-xl md:text-2xl">{skill.name}</h3>
-              <p className="text-lg font-semibold" aria-label={`${skill.value}%`}>
+              <p aria-label={`${skill.value}%`} className="text-lg font-semibold">
                 {skill.value}%
               </p>
             </div>
             <Progress
-              size="lg"
-              classNames={{
-                indicator: "to-[#0c8bea] from-[#0B66C2] bg-gradient-to-r",
-              }}
               aria-label={skill.name}
-              minValue={0}
+              classNames={{
+                indicator: "bg-gradient-to-r from-[#0B66C2] to-[#0c8bea]",
+              }}
               maxValue={100}
+              minValue={0}
+              size="lg"
               value={skill.value}
             />
           </motion.li>

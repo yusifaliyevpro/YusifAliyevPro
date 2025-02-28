@@ -1,9 +1,9 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import KofeAlWidget from "@/components/KofeAlWidget";
 import { BASE_URL } from "@/lib/constants";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 
@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <>
       <Header />
       {children}
-      <KofeAlWidget username="yusifaliyevpro" isActiveOnMobile isHoverable />
+      <KofeAlWidget isActiveOnMobile isHoverable username="yusifaliyevpro" />
       <Footer />
       <Analytics />
       <SpeedInsights />

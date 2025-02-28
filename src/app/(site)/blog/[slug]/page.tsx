@@ -1,16 +1,16 @@
-import { getBlogPost, getBlogPosts } from "@/lib/utils";
-import Image from "next/image";
-import { GoClock } from "react-icons/go";
-import { FiWatch } from "react-icons/fi";
+import Gallery from "@/components/Gallery";
 import RichText from "@/components/RichText";
-import Link from "next/link";
+import { cn } from "@/lib/cn";
 import { dateFormatter, getReadTime } from "@/lib/formatters";
+import { getBlogPost, getBlogPosts } from "@/lib/utils";
+import SanityImage from "@/src/components/SanityImage";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next/types";
-import { cn } from "@/lib/cn";
-import Gallery from "@/components/Gallery";
-import SanityImage from "@/src/components/SanityImage";
 import React from "react";
+import { FiWatch } from "react-icons/fi";
+import { GoClock } from "react-icons/go";
 
 export async function generateStaticParams() {
   const blogSlugs = await getBlogPosts();
@@ -46,15 +46,15 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
         >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
-              src={"/Profile.png"}
-              alt="Yusif Aliyev Picture"
-              width={50}
-              height={50}
               unoptimized
+              alt="Yusif Aliyev Picture"
               className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-large shadow-blue-500"
+              height={50}
+              src={"/Profile.png"}
+              width={50}
             />
             <address className="font-bold not-italic">
-              <Link href={"/"} rel="author" className="hover:text-blue-500">
+              <Link className="hover:text-blue-500" href={"/"} rel="author">
                 Yusif Aliyev
               </Link>
             </address>
@@ -62,7 +62,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           <div className="mt-4 flex flex-row items-center justify-center gap-x-5 font-semibold text-gray-500">
             <div className="flex flex-row items-center gap-x-1">
               <GoClock aria-hidden />
-              <time dateTime={blog.publishedAt} className="text-md tabular-nums">
+              <time className="text-md tabular-nums" dateTime={blog.publishedAt}>
                 {dateFormatter(blog.publishedAt)}
               </time>
             </div>
@@ -90,13 +90,13 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
         <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
           <figure className="relative aspect-[16/9] h-full border-solid dark:border-0 md:border-b-1">
             <SanityImage
-              src={blog.poster}
+              fill
               priority
               alt="Blog Poster"
-              fill
+              blurDataURL={blog.posterLqip}
               className="object-cover p-3 md:p-0"
               placeholder="blur"
-              blurDataURL={blog.posterLqip}
+              src={blog.poster}
             />
             <figcaption className="sr-only">{blog.title}</figcaption>
           </figure>

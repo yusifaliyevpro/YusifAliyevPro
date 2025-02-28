@@ -22,24 +22,24 @@ const staticRoutes: {
 export const EmailHeader = () => (
   <>
     <Font
-      fontFamily="Poppins"
       fallbackFontFamily="Verdana"
+      fontFamily="Poppins"
+      fontStyle="normal"
+      fontWeight={400}
       webFont={{
         url: `${BASE_URL}/Poppins-SemiBold.ttf`,
         format: "truetype",
       }}
-      fontWeight={400}
-      fontStyle="normal"
     />
     <Section className="my-[40px] px-[40px] py-[40px] lg:px-[85px]">
       <Row>
         <Column className="w-[70%]">
           <Img
             alt="Yusif Aliyev Logo"
-            height="60"
             className="filter-none"
-            style={{ filter: "none" }}
+            height="60"
             src={`${BASE_URL}/Notion Profile Rounded.png`}
+            style={{ filter: "none" }}
           />
         </Column>
         <Column align="center">

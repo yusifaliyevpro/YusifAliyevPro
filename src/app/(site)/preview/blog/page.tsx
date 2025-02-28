@@ -2,9 +2,9 @@ import Blogs from "@/components/Blogs";
 import { RefreshBlog } from "@/components/Refresh";
 import Search from "@/components/Search";
 import { getBlogPostsPreview } from "@/lib/utils";
+import Subscribe from "@/src/components/Subsciption";
 import type { Metadata } from "next/types";
 import { Typewriter } from "nextjs-simple-typewriter";
-import Subscribe from "@/src/components/Subsciption";
 
 export default async function BlogsPage() {
   const blogPosts = await getBlogPostsPreview();
@@ -21,9 +21,9 @@ export default async function BlogsPage() {
             <p className="sr-only">Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.</p>
             <span className="flex h-24 max-w-[25rem] text-wrap pl-3 text-lg font-normal text-slate-600 dark:text-slate-400 sm:h-12">
               <Typewriter
-                words={[" Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram."]}
-                typeSpeed={90}
                 loop={1}
+                typeSpeed={90}
+                words={[" Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram."]}
               />
             </span>
           </div>

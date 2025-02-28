@@ -1,7 +1,7 @@
-import { Tooltip } from "@heroui/tooltip";
-import Image from "next/image";
-import * as motion from "motion/react-client";
 import Reveal from "./Reveal";
+import { Tooltip } from "@heroui/tooltip";
+import * as motion from "motion/react-client";
+import Image from "next/image";
 
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
 const itemVariants = {
@@ -16,26 +16,26 @@ export default function Technologies() {
         Texnologiyalar
       </Reveal>
       <motion.ol
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={olVariants}
         className="mt-16 flex flex-row flex-wrap items-center justify-center gap-x-5 gap-y-5 transition-all lg:gap-x-7 lg:gap-y-7"
+        initial="hidden"
+        variants={olVariants}
+        viewport={{ once: true }}
+        whileInView="visible"
       >
         {techs.map((tech, i) => (
           <motion.li
             key={i}
-            variants={itemVariants}
             className="flex aspect-square rounded-lg bg-white p-3 shadow-medium dark:bg-slate-800 max-lg:items-center max-lg:justify-center lg:p-3"
+            variants={itemVariants}
           >
             <h3 className="sr-only">{tech.name}</h3>
-            <Tooltip shouldFlip showArrow size="lg" color="primary" offset={23} content={tech.name}>
+            <Tooltip shouldFlip showArrow color="primary" content={tech.name} offset={23} size="lg">
               <Image
-                className="select-none object-contain drop-shadow-2xl max-lg:size-16"
-                src={tech.icon}
                 alt={tech.name}
-                width={90}
+                className="select-none object-contain drop-shadow-2xl max-lg:size-16"
                 height={90}
+                src={tech.icon}
+                width={90}
               />
             </Tooltip>
           </motion.li>

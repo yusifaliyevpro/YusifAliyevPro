@@ -1,17 +1,25 @@
 "use client";
-import { useAnimation, useInView } from "motion/react";
-import React, { useEffect, useRef, type JSX } from "react";
-import type { ReactNode } from "react";
-import { motion } from "motion/react";
+
 import { cn } from "@/lib/cn";
+import { useAnimation, useInView } from "motion/react";
+import { motion } from "motion/react";
+import React, { useEffect, useRef, type ElementType } from "react";
+import type { ReactNode } from "react";
 
-type RevealProps = { children: ReactNode; first?: boolean; className?: string; as?: keyof JSX.IntrinsicElements };
+type RevealProps<T extends ElementType = "div"> = {
+  children: ReactNode;
+  first?: boolean;
+  className?: string;
+  as?: T;
+} & React.ComponentPropsWithoutRef<T>;
 
-export default function Reveal({ children, first, className }: RevealProps) {
-  const ref = useRef(null);
+export default function Reveal<T extends ElementType = "div">({ children, first, className, as, ...props }: RevealProps<T>) {
+  const Tag = as || "div";
+  const ref = useRef<null>(null);
   const isInView = useInView(ref, { once: true, amount: 0.7 });
   const mainControls = useAnimation();
   const slideControls = useAnimation();
+
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
@@ -20,29 +28,29 @@ export default function Reveal({ children, first, className }: RevealProps) {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="relative w-fit overflow-hidden">
-      <motion.div
+    <Tag ref={ref} className="relative w-fit overflow-hidden" {...props}>
+      <motion.span
+        animate={mainControls}
+        className={cn(className, { "py-2": !first })}
+        initial="hidden"
+        transition={{ duration: 0.3, delay: 0.3 }}
         variants={{
           hidden: { opacity: 0, y: first ? 60 : 0 },
           visible: { opacity: 1, y: 0 },
         }}
-        initial="hidden"
-        animate={mainControls}
-        className={cn(className, { "py-2": !first })}
-        transition={{ duration: 0.3, delay: 0.3 }}
       >
         {children}
-      </motion.div>
-      <motion.div
+      </motion.span>
+      <motion.span
+        animate={slideControls}
+        className="absolute bottom-0 left-0 right-0 top-0 z-[200] rounded-sm bg-blue-500"
+        initial="hidden"
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         variants={{
           hidden: { left: 0, opacity: first ? 0 : 1 },
           visible: { left: "100%", opacity: 1 },
         }}
-        initial="hidden"
-        animate={slideControls}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="absolute bottom-0 left-0 right-0 top-0 z-[200] rounded-sm bg-blue-500"
       />
-    </div>
+    </Tag>
   );
 }

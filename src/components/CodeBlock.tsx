@@ -1,14 +1,13 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import CopyButton from "./CopyButton";
+import { Snippet } from "@heroui/snippet";
+import { AiOutlinePython } from "react-icons/ai";
 import { BiLogoTypescript } from "react-icons/bi";
 import { FaCss3, FaHtml5, FaReact } from "react-icons/fa";
-import { RiJavascriptFill } from "react-icons/ri";
 import { FaRegFile } from "react-icons/fa";
-import { AiOutlinePython } from "react-icons/ai";
-import CopyButton from "./CopyButton";
+import { RiJavascriptFill } from "react-icons/ri";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Snippet } from "@heroui/snippet";
 
-const High = SyntaxHighlighter as any;
 export function getFileIcon(language: string) {
   switch (language) {
     case "html":
@@ -41,12 +40,12 @@ export default function CodeBlock({ code, language, fileName }: CodeBlockProps) 
     const commands = code.split("\n");
     return (
       <div className="my-5 flex flex-col items-center justify-center space-y-3">
-        <Snippet variant="flat" color="primary" size="lg">
+        <Snippet color="primary" size="lg" variant="flat">
           {commands[0]}
         </Snippet>
         <span className="text-slate-500">və ya</span>
         {commands.length == 2 && (
-          <Snippet variant="flat" color="primary" size="lg">
+          <Snippet color="primary" size="lg" variant="flat">
             {commands[1]}
           </Snippet>
         )}
@@ -66,10 +65,8 @@ export default function CodeBlock({ code, language, fileName }: CodeBlockProps) 
         </div>
       </div>
       <div className="transition-all scrollbar-hide">
-        <High
-          language={language}
+        <SyntaxHighlighter
           showLineNumbers
-          style={oneLight}
           customStyle={{
             margin: 0,
             height: "23.4rem",
@@ -79,9 +76,11 @@ export default function CodeBlock({ code, language, fileName }: CodeBlockProps) 
             overflow: "auto",
             paddingRight: 0,
           }}
+          language={language}
+          style={oneLight}
         >
           {code}
-        </High>
+        </SyntaxHighlighter>
       </div>
     </div>
   );
