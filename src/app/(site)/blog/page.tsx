@@ -1,16 +1,14 @@
 import Blogs from "@/components/Blogs";
 import Search from "@/components/Search";
 import { getBlogPosts } from "@/lib/utils";
-import Subscribe from "@/src/components/Subsciption";
+import Subscribe, { SubscribeButton } from "@/src/components/Subsciption";
 import type { Metadata } from "next/types";
 import { Typewriter } from "nextjs-simple-typewriter";
-
-export const revalidate = 3600;
 
 export default async function BlogsPage() {
   const blogPosts = await getBlogPosts();
   return (
-    <main className="flex min-h-[100svh] flex-col items-center gap-y-6 pt-20 font-signika">
+    <main className="flex min-h-svh flex-col items-center gap-y-6 scroll-smooth pt-20 font-signika">
       <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
         <header className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
           <div className="w-full space-y-5 font-poppins sm:w-fit">
@@ -24,7 +22,8 @@ export default async function BlogsPage() {
               />
             </span>
           </div>
-          <div className="flex flex-row items-center justify-center">
+          <div className="mt-5 flex flex-row items-center justify-center">
+            <SubscribeButton />
             <Search />
           </div>
         </header>

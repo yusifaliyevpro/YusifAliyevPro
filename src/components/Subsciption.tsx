@@ -7,6 +7,8 @@ import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
 import { FormEvent, startTransition, useActionState, useEffect } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
+import { FaRegBell } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
 
 const initialState = { success: false, errors: { fullName: [], email: [] } };
 
@@ -37,9 +39,10 @@ export default function SubscribeComponent() {
               <FiMail className="mr-2 text-white" size={24} />
               <span className="text-sm font-semibold uppercase tracking-wider text-white">Email Abunəliyi</span>
             </div> */}
-
-            <h3 className="mb-4 text-center text-3xl font-bold text-white md:text-4xl">Email Abunəliyi</h3>
-
+            <div className="mb-4 flex items-center justify-center space-x-3">
+              <FiMail className="size-9 text-white" size={24} />
+              <h3 className="text-center text-3xl font-bold text-white md:text-4xl">Email Abunəliyi</h3>
+            </div>
             <div className="space-y-5">
               <div>
                 <label className="mb-2 block text-sm font-medium text-white" htmlFor="fullName">
@@ -48,7 +51,8 @@ export default function SubscribeComponent() {
                 <Input
                   fullWidth
                   classNames={{
-                    input: "border-white/30 !bg-white/10 placeholder:!text-white/60 group-data-[has-value=true]:!text-white",
+                    input:
+                      "border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
                     errorMessage: "text-white",
                     inputWrapper:
                       "!bg-white/10 hover:!bg-white/10 group-data-[data-focus-within=true]:!bg-white/10 group-data-[data-invalid=true]:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
@@ -71,7 +75,8 @@ export default function SubscribeComponent() {
                   <Input
                     fullWidth
                     classNames={{
-                      input: "!border-white/30 !bg-white/10 placeholder:!text-white/60 group-data-[has-value=true]:!text-white",
+                      input:
+                        "!border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
                       errorMessage: "text-white",
                       inputWrapper:
                         "rounded-r-none !bg-white/10 hover:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
@@ -111,5 +116,15 @@ export default function SubscribeComponent() {
         </div>
       </form>
     </div>
+  );
+}
+
+export function SubscribeButton() {
+  return (
+    <a href="#subscription">
+      <Button isIconOnly color="primary">
+        <FaRegBell className="size-5" />
+      </Button>
+    </a>
   );
 }

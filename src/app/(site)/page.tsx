@@ -17,7 +17,7 @@ export default async function Home() {
         aria-label="CTA"
         className={cn(
           "mt-24 flex min-h-[70svh] w-full flex-col items-center justify-between px-8",
-          "md:mt-32 md:min-h-[88vh] md:pb-[10vh]",
+          "md:mt-32 md:min-h-[88svh] md:pb-[10svh]",
           "lg:px-[6.7rem]",
           "xl:mt-2 xl:min-h-svh xl:flex-row",
         )}

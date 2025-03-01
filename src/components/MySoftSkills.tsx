@@ -9,7 +9,7 @@ const itemVariants = {
 
 export default function MySoftSkills() {
   return (
-    <section aria-label="Soft Bacarıqlarım" className="flex min-h-[70vh] w-full flex-col items-center md:px-40 xl:px-64">
+    <section aria-label="Soft Bacarıqlarım" className="flex min-h-[70svh] w-full flex-col items-center md:px-40 xl:px-64">
       <Reveal as="h2" className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl">
         Soft Bacarıqlarım
       </Reveal>

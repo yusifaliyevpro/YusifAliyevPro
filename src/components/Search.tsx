@@ -28,7 +28,7 @@ export default function Search() {
   }, [resultCount]);
 
   return (
-    <search className="mt-5 w-full px-6 md:w-[22rem] lg:mt-0">
+    <search className="w-full px-6 md:w-[22rem] lg:mt-0">
       <Input
         classNames={{
           inputWrapper: "border-blue-200 hover:!border-blue-300 group-data-[focus=true]:border-blue-400 dark:border-slate-400",

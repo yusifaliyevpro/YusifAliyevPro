@@ -13,7 +13,7 @@ export default async function BlogsPage() {
     return null;
   }
   return (
-    <main className="flex min-h-[100svh] flex-col items-center gap-y-6 pt-20 font-signika">
+    <main className="flex min-h-svh flex-col items-center gap-y-6 pt-20 font-signika">
       <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
         <header className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
           <div className="w-full space-y-5 font-poppins sm:w-fit">
