@@ -2,11 +2,12 @@ import Blogs from "@/components/Blogs";
 import Search from "@/components/Search";
 import { getBlogPosts } from "@/lib/utils";
 import Subscribe, { SubscribeButton } from "@/src/components/Subsciption";
+import { countryName, creator, locale, profileImage } from "@/src/lib/shared-metadata";
+import { BLOGS_POSTS_QUERYResult } from "@/src/sanity/types";
 import type { Metadata } from "next/types";
 import { Typewriter } from "nextjs-simple-typewriter";
 
-export default async function BlogsPage() {
-  const blogPosts = await getBlogPosts();
+export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
   return (
     <main className="flex min-h-svh flex-col items-center gap-y-6 scroll-smooth pt-20 font-signika">
       <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
@@ -34,27 +35,22 @@ export default async function BlogsPage() {
   );
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
-    description: "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
-    alternates: {
-      canonical: `/blog`,
-    },
-    openGraph: {
-      url: `/blog`,
-      type: "website",
-      siteName: "Yusif Aliyev",
-      locale: "az_AZ",
-      countryName: "Azerbaijan",
-      images: [
-        {
-          url: "/Profile.png",
-          width: 1080,
-          height: 1080,
-          alt: "Yusif Aliyev Picture",
-        },
-      ],
-    },
-  };
+export default async function BlogPostsPage() {
+  const blogPosts = await getBlogPosts();
+  return <BlogPostsPageUI blogPosts={blogPosts} />;
 }
+
+export const metadata: Metadata = {
+  title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
+  description: "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
+  alternates: { canonical: `/blog` },
+  openGraph: {
+    url: `/blog`,
+    type: "website",
+    siteName: creator,
+    locale,
+    countryName,
+    images: [profileImage],
+  },
+};
+export const BlogPostsMetadata = metadata;

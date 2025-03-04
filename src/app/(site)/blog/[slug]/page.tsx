@@ -4,6 +4,8 @@ import { cn } from "@/lib/cn";
 import { dateFormatter, getReadTime } from "@/lib/formatters";
 import { getBlogPost, getBlogPosts } from "@/lib/utils";
 import SanityImage from "@/src/components/SanityImage";
+import { countryName, creator, keywords, locale } from "@/src/lib/shared-metadata";
+import { BLOG_POST_QUERYResult } from "@/src/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,18 +14,7 @@ import React from "react";
 import { FiWatch } from "react-icons/fi";
 import { GoClock } from "react-icons/go";
 
-export async function generateStaticParams() {
-  const blogSlugs = await getBlogPosts();
-  return blogSlugs.map((blogSlug) => ({
-    slug: blogSlug.slug,
-  }));
-}
-
-export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const blog = await getBlogPost(slug);
-  if (!blog) notFound();
-
+export function BlogPostPageUI({ blog }: { blog: BLOG_POST_QUERYResult }) {
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
       <article
@@ -110,47 +101,40 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   );
 }
 
+export async function generateStaticParams() {
+  const blogSlugs = await getBlogPosts();
+  return blogSlugs.map((blogSlug) => ({
+    slug: blogSlug.slug,
+  }));
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const blog = await getBlogPost(slug);
+  if (!blog) notFound();
+  return <BlogPostPageUI blog={blog} />;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-
   const blog = await getBlogPost(slug);
   if (!blog) notFound();
   return {
     title: blog.title,
     description: blog.description.slice(0, 152).concat("..."),
-    keywords: [
-      ...blog.tags,
-      "bloq",
-      "blog",
-      "Yusif Aliyev",
-      "YusifAliyevPro",
-      "YusifAliyevPro Blog",
-      "Full-Stack Developer",
-      "Developer",
-      "Web Developer",
-      "NextJS Developer",
-    ],
-    alternates: {
-      canonical: `/blog/${blog.slug}`,
-    },
+    keywords: [...blog.tags, ...keywords, "bloq", "blog"],
+    alternates: { canonical: `/blog/${blog.slug}` },
     openGraph: {
       url: `/blog/${blog.slug}`,
-      siteName: "Yusif Aliyev",
-      locale: "az_AZ",
-      countryName: "Azerbaijan",
+      siteName: creator,
+      locale,
+      countryName,
       type: "article",
       modifiedTime: blog._updatedAt,
       publishedTime: blog.publishedAt,
-      authors: ["Yusif Aliyev"],
+      authors: creator,
       tags: blog.tags,
-      images: [
-        {
-          url: blog.poster,
-          width: 1200,
-          height: 630,
-          alt: blog.title + " Poster",
-        },
-      ],
+      images: [{ url: blog.poster, width: 1200, height: 630, alt: blog.title + " Poster" }],
     },
   };
 }

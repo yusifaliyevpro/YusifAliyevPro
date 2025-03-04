@@ -5,6 +5,7 @@ import Technologies from "@/components/Technologies";
 import Timeline from "@/components/TimeLine";
 import { cn } from "@/lib/cn";
 import { BASE_URL } from "@/lib/constants";
+import { profileImage, countryName, locale, creator } from "@/src/lib/shared-metadata";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import type { Metadata } from "next/types";
@@ -113,22 +114,13 @@ export default async function Home() {
 
 export const metadata: Metadata = {
   title: "Yusif Aliyev | Hi👋, I'm a Full-Stack Developer",
-  alternates: {
-    canonical: `/`,
-  },
+  alternates: { canonical: `/` },
   openGraph: {
     type: "website",
-    siteName: "Yusif Aliyev",
-    locale: "az_AZ",
-    countryName: "Azerbaijan",
+    siteName: creator,
+    locale,
+    countryName,
     url: `${BASE_URL}/`,
-    images: [
-      {
-        url: "/Profile.png",
-        width: 500,
-        height: 500,
-        alt: "Yusif Aliyev Picture",
-      },
-    ],
+    images: [profileImage],
   },
 };

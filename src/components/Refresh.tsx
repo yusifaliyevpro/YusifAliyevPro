@@ -5,7 +5,7 @@ import { addToast } from "@heroui/toast";
 import { useRouter } from "next/navigation";
 import { RxUpdate } from "react-icons/rx";
 
-export function RefreshBlog() {
+export function BlogRefreshButton() {
   const router = useRouter();
   const refresh = () => {
     try {

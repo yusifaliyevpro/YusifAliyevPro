@@ -2,6 +2,18 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import KofeAlWidget from "@/components/KofeAlWidget";
 import { BASE_URL } from "@/lib/constants";
+import {
+  keywords,
+  creator,
+  publisher,
+  applicationName,
+  robots,
+  authors,
+  generator,
+  countryName,
+  locale,
+  description,
+} from "@/src/lib/shared-metadata";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -23,43 +35,22 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Yusif Aliyev",
+    default: creator,
     template: "Yusif Aliyev | %s",
   },
-  description:
-    "Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını tövsiyə edirəm",
+  description,
   openGraph: {
     type: "website",
-    siteName: "Yusif Aliyev",
-    locale: "az_AZ",
-    countryName: "Azerbaijan",
-    url: BASE_URL,
+    siteName: creator,
+    locale,
+    countryName,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
-  creator: "Yusif Aliyev",
-  publisher: "Vercel Hosting",
-  applicationName: "YusifAliyevPro",
-  generator: "Next.js",
-  authors: [{ name: "Yusif Aliyev", url: BASE_URL }],
-  keywords: [
-    "Yusif Aliyev",
-    "yusifaliyevpro",
-    "Yusif Aliyev Pro",
-    "Full-Stack Developer",
-    "Developer",
-    "Web Developer",
-    "NextJS Developer",
-    "Azerbaijan",
-    "Blogger",
-  ],
-  verification: {
-    google: "19T4aaaA0mlU3qd0sFEl3z8e_Y_Zb_am5Cfkr5wxRWM",
-  },
+  robots,
+  creator,
+  publisher,
+  applicationName,
+  generator,
+  authors,
+  keywords,
+  verification: { google: "19T4aaaA0mlU3qd0sFEl3z8e_Y_Zb_am5Cfkr5wxRWM" },
 };

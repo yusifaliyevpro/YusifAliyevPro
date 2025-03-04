@@ -22,10 +22,6 @@ export async function sendEmail(_: TsendEmail, slug: string): Promise<TsendEmail
       subject: title,
       text: `Yeni Bloq Post\n\n${title}\n\n${description}\n\nDaha çox oxu`,
       react: PostEmailTemplate({ title, description, poster, slug }),
-      headers: {
-        "List-Unsubscribe": "<https://yusifaliyevpro.com/unsubscribe>",
-        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-      },
     });
     if (result.error) return { success: false, message: "An error occured while sending email" };
     return { success: true, message: `Email sent successfully to ${to.length} people` };
@@ -71,27 +67,21 @@ export async function subscribe(_: TsubscribeState, formData: FormData): Promise
     const fullNames = fullName.split(" ").filter(Boolean);
     const firstName = fullNames[0];
     const lastName = fullNames[1];
-    const contact = await resend.contacts.create({
+    await resend.contacts.create({
       email,
       firstName,
       lastName,
       unsubscribed: false,
       audienceId: process.env.RESEND_AUDIENCE_KEY,
     });
-    if (contact.error) console.log(contact.error);
-    const welcomeEmail = await resend.emails.send({
+    await resend.emails.send({
       from: "Yusif Aliyev <updates@blog.yusifaliyevpro.com>",
       to: email,
       subject: "Abunə olduğunuz üçün Təşəkkürlər!",
       text: `Bülletenə abunə olduğunuz üçün Təşəkkürlər!\n\nPaylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün
             tez-tez emailinizi yoxlamağı unutmayın!`,
       react: WelcomeEmailTemplate({ firstName, lastName }),
-      headers: {
-        "List-Unsubscribe": "<https://yusifaliyevpro.com/unsubscribe>",
-        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-      },
     });
-    if (welcomeEmail.error) console.log(welcomeEmail.error);
     return { success: true };
   } catch (error) {
     console.log(error);
@@ -106,10 +96,8 @@ export async function getContact(id: string) {
       audienceId: process.env.RESEND_AUDIENCE_KEY,
     });
 
-    if (error) {
-      console.log(error);
-      throw new Error("Error happened while getting contact");
-    }
+    if (error) throw new Error("Error happened while getting contact");
+
     return { contact: data };
   } catch (error) {
     return { contactError: error };

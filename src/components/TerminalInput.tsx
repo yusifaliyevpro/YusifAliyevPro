@@ -63,7 +63,7 @@ export default function TerminalInput({
             maxLength={150}
             placeholder={inputPlaceholder}
             type="text"
-            value={value as string}
+            value={String(value)}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
               if (e.key === "Enter") {
                 e.preventDefault();

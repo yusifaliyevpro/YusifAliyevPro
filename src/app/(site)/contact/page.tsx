@@ -1,4 +1,5 @@
 import FormTerminal from "@/components/FormTerminal";
+import { profileImage } from "@/src/lib/shared-metadata";
 import Link from "next/link";
 import type { Metadata } from "next/types";
 
@@ -57,17 +58,6 @@ export default function About() {
 export const metadata: Metadata = {
   title: "Əlaqə",
   description: "Mənimlə birlikdə layihələr yaratmaq istəyirsənsə, elə indi əlaqə formunu doldur!",
-  alternates: {
-    canonical: "/contact",
-  },
-  openGraph: {
-    images: [
-      {
-        url: "/Profile.png",
-        width: 500,
-        height: 500,
-        alt: "Yusif Aliyev Picture",
-      },
-    ],
-  },
+  alternates: { canonical: "/contact" },
+  openGraph: { images: [profileImage] },
 };
