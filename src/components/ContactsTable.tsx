@@ -11,9 +11,7 @@ import { MdDeleteOutline } from "react-icons/md";
 
 export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
   const router = useRouter();
-  const calledIDs = contacts.map((c) => {
-    if (c.isCalled) return c.id;
-  });
+  const calledIDs = contacts.map((c) => c.isCalled && c.id);
 
   const handleDelete = (id: string) => {
     addToast({ title: "Deleting Contact...", timeout: 1000 });

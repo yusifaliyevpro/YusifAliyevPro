@@ -28,16 +28,13 @@ export default function Reveal<T extends ElementType = "div">({ children, first,
   }, [isInView]);
 
   return (
-    <Tag ref={ref} className="relative w-fit overflow-hidden" {...props}>
+    <Tag ref={ref} className={cn("relative w-fit overflow-hidden", { "py-2": !first })} {...props}>
       <motion.span
         animate={mainControls}
-        className={cn(className, { "py-2": !first })}
+        className={className}
         initial="hidden"
         transition={{ duration: 0.3, delay: 0.3 }}
-        variants={{
-          hidden: { opacity: 0, y: first ? 60 : 0 },
-          visible: { opacity: 1, y: 0 },
-        }}
+        variants={{ hidden: { opacity: 0, y: first ? 60 : 0 }, visible: { opacity: 1, y: 0 } }}
       >
         {children}
       </motion.span>
