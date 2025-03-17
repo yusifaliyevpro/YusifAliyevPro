@@ -21,11 +21,11 @@ export default function CopyButton({ text }: { text: string }) {
         <Button
           isIconOnly
           variant="light"
+          onPress={handle}
           onMouseLeave={() => {
             setMouseLeaved(true);
             setIsOpen(false);
           }}
-          onPress={handle}
         >
           {mouseLeaved ? <IoCopyOutline className="text-2xl" /> : <TiTick className="text-2xl" />}
           <span className="sr-only">Copy code</span>

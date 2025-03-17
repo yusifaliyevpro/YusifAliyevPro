@@ -30,7 +30,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
   }
   useEffect(() => {
     setResultCount(renderedBlogs.length);
-  }, [renderedBlogs]);
+  }, [renderedBlogs, setResultCount]);
 
   return (
     <>
@@ -109,11 +109,11 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
       </section>
       {blogPosts.length > resultCount && !search && (
         <Button
+          size="lg"
           className={cn(
             "mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white",
             "dark:from-blue-600 dark:to-blue-500 dark:text-slate-200",
           )}
-          size="lg"
           onPress={() => setPage(page + 1)}
         >
           Daha çox göstər

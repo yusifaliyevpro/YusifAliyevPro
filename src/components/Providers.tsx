@@ -2,7 +2,7 @@
 
 import { HeroUIProvider } from "@heroui/system";
 import { ToastProvider } from "@heroui/toast";
-import { MotionConfig } from "motion/react";
+import { domAnimation, LazyMotion, MotionConfig } from "motion/react";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 
@@ -11,7 +11,11 @@ export function Providers({ children }: { children: ReactNode }) {
   return (
     <HeroUIProvider navigate={router.push}>
       <ToastProvider toastOffset={100} />
-      <MotionConfig>{children}</MotionConfig>
+
+      <MotionConfig>
+        {" "}
+        <LazyMotion features={domAnimation}>{children}</LazyMotion>
+      </MotionConfig>
     </HeroUIProvider>
   );
 }

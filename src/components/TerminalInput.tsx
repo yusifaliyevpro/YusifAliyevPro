@@ -53,24 +53,24 @@ export default function TerminalInput({
           <Input
             ref={ref}
             autoFocus
-            classNames={{
-              inputWrapper:
-                "bg-transparent shadow-none hover:bg-transparent group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
-              input: "font-mono text-base font-bold placeholder:text-slate-400 after:bg-black",
-            }}
             enterKeyHint="enter"
             isDisabled={isEntered}
             maxLength={150}
             placeholder={inputPlaceholder}
             type="text"
             value={String(value)}
+            classNames={{
+              inputWrapper:
+                "bg-transparent shadow-none hover:bg-transparent group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
+              input: "font-mono text-base font-bold placeholder:text-slate-400 after:bg-black",
+            }}
+            onValueChange={setValue}
             onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
               if (e.key === "Enter") {
                 e.preventDefault();
                 setIsEntered(true);
               }
             }}
-            onValueChange={setValue}
           />
         ) : (
           <div className="flex flex-row gap-x-3">

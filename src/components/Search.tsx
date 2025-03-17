@@ -15,7 +15,7 @@ export default function Search() {
 
   useEffect(() => {
     setSearch(query);
-  }, [query]);
+  }, [query, setSearch]);
 
   useEffect(() => {
     if (resultCount === 0) {
@@ -30,16 +30,16 @@ export default function Search() {
   return (
     <search className="w-full px-6 md:w-[22rem] lg:mt-0">
       <Input
-        classNames={{
-          inputWrapper: "border-blue-200 hover:!border-blue-300 group-data-[focus=true]:border-blue-400 dark:border-slate-400",
-          input: "text-lg font-normal placeholder:text-gray-500 dark:placeholder:text-slate-400",
-        }}
         endContent={<BiSearch className="text-[1.7rem] font-bold" />}
         placeholder={"Axtarış"}
         radius="md"
         size="lg"
         value={text}
         variant="bordered"
+        classNames={{
+          inputWrapper: "border-blue-200 hover:!border-blue-300 group-data-[focus=true]:border-blue-400 dark:border-slate-400",
+          input: "text-lg font-normal placeholder:text-gray-500 dark:placeholder:text-slate-400",
+        }}
         onChange={(e) => {
           setText(e.target.value);
         }}

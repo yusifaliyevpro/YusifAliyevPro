@@ -3,7 +3,7 @@
 import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@heroui/navbar";
 import { useMotionValueEvent, useScroll } from "motion/react";
-import * as motion from "motion/react-client";
+import { m } from "motion/react";
 import Link from "next/link";
 import { useState, type JSX } from "react";
 import { FaGithub } from "react-icons/fa";
@@ -62,7 +62,7 @@ export default function Header() {
       <NavbarContent justify="end">
         <NavbarItem className="hidden flex-row items-center justify-center gap-x-4 transition-all md:flex">
           {socialAccounts.map((account, i) => (
-            <motion.a
+            <m.a
               key={i}
               aria-label={`My ${account.name} Account`}
               className={account.className}
@@ -73,7 +73,7 @@ export default function Header() {
             >
               {account.icon}
               <span className="sr-only">My {account.name} Account</span>
-            </motion.a>
+            </m.a>
           ))}
         </NavbarItem>
       </NavbarContent>

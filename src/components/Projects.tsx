@@ -1,7 +1,7 @@
 import { getProjects } from "../lib/utils";
 import Reveal from "./Reveal";
 import SanityImage from "./SanityImage";
-import * as motion from "motion/react-client";
+import * as m from "motion/react-m";
 import { TbExternalLink } from "react-icons/tb";
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
@@ -17,7 +17,7 @@ export default async function Projects() {
       <Reveal as="h2" className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl">
         Layihələrim
       </Reveal>
-      <motion.ul
+      <m.ul
         className="flex w-full flex-row flex-wrap items-stretch justify-center gap-x-16 gap-y-10 px-12 transition-all md:mx-52"
         initial="hidden"
         variants={containerVariants}
@@ -25,7 +25,7 @@ export default async function Projects() {
         whileInView="visible"
       >
         {projects.map((project, i) => (
-          <motion.li
+          <m.li
             key={i}
             className="items-center justify-center rounded-2xl shadow-neon-blue"
             variants={itemVariants}
@@ -60,9 +60,9 @@ export default async function Projects() {
                 className="pointer-events-none absolute hidden text-3xl text-slate-900 transition-all group-hover:flex"
               />
             </a>
-          </motion.li>
+          </m.li>
         ))}
-      </motion.ul>
+      </m.ul>
     </section>
   );
 }

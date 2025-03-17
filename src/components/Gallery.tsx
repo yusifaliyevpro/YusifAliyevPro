@@ -113,13 +113,13 @@ export default function Gallery({
             <SanityImage
               alt="Images"
               blurDataURL={image.lqip}
-              className={cn("select-none rounded-xl border-2 object-contain", {
-                "border-blue-700": i == currentIndex,
-              })}
               height={100}
               placeholder="blur"
               src={image.image}
               width={200}
+              className={cn("select-none rounded-xl border-2 object-contain", {
+                "border-blue-700": i == currentIndex,
+              })}
             />
           </div>
         ))}

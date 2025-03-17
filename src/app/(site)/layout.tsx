@@ -14,7 +14,7 @@ import {
   locale,
   description,
 } from "@/src/lib/shared-metadata";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { ReactNode } from "react";

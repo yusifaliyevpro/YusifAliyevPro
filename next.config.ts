@@ -6,15 +6,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
-  reactStrictMode: false,
-
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
-      },
-    ],
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
   },
 };
 

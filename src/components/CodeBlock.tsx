@@ -67,6 +67,8 @@ export default function CodeBlock({ code, language, fileName }: CodeBlockProps) 
       <div className="transition-all scrollbar-hide">
         <SyntaxHighlighter
           showLineNumbers
+          language={language}
+          style={oneLight}
           customStyle={{
             margin: 0,
             height: "23.4rem",
@@ -76,8 +78,6 @@ export default function CodeBlock({ code, language, fileName }: CodeBlockProps) 
             overflow: "auto",
             paddingRight: 0,
           }}
-          language={language}
-          style={oneLight}
         >
           {code}
         </SyntaxHighlighter>

@@ -50,13 +50,6 @@ export default function SubscribeComponent() {
                 </label>
                 <Input
                   fullWidth
-                  classNames={{
-                    input:
-                      "border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
-                    errorMessage: "text-white",
-                    inputWrapper:
-                      "!bg-white/10 hover:!bg-white/10 group-data-[data-focus-within=true]:!bg-white/10 group-data-[data-invalid=true]:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
-                  }}
                   errorMessage={<InputErrors errors={state.errors?.fullName} />}
                   id="fullName"
                   isInvalid={!!state.errors?.fullName?.length}
@@ -64,6 +57,13 @@ export default function SubscribeComponent() {
                   placeholder="Yusif Aliyev"
                   size="lg"
                   type="text"
+                  classNames={{
+                    input:
+                      "border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
+                    errorMessage: "text-white",
+                    inputWrapper:
+                      "!bg-white/10 hover:!bg-white/10 group-data-[data-focus-within=true]:!bg-white/10 group-data-[data-invalid=true]:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
+                  }}
                 />
               </div>
 
@@ -74,13 +74,6 @@ export default function SubscribeComponent() {
                 <div className="flex">
                   <Input
                     fullWidth
-                    classNames={{
-                      input:
-                        "!border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
-                      errorMessage: "text-white",
-                      inputWrapper:
-                        "rounded-r-none !bg-white/10 hover:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
-                    }}
                     errorMessage={<InputErrors errors={state.errors?.email} />}
                     id="email"
                     isInvalid={!!state.errors?.email?.length}
@@ -88,6 +81,13 @@ export default function SubscribeComponent() {
                     placeholder="example@gmail.com"
                     size="lg"
                     type="email"
+                    classNames={{
+                      input:
+                        "!border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
+                      errorMessage: "text-white",
+                      inputWrapper:
+                        "rounded-r-none !bg-white/10 hover:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
+                    }}
                   />
                   <Button
                     className="rounded-l-none bg-white font-bold text-blue-600 hover:bg-blue-50"

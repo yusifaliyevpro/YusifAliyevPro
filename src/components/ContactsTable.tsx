@@ -21,11 +21,11 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
   return (
     <Table
       aria-label="User management table"
+      color="primary"
+      disabledKeys={calledIDs}
       classNames={{
         wrapper: "min-h-[400px]",
       }}
-      color="primary"
-      disabledKeys={calledIDs}
     >
       <TableHeader>
         <TableColumn>FULL NAME</TableColumn>

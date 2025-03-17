@@ -12,7 +12,7 @@ const eslintConfig = [
     extends: ["next/core-web-vitals", "next/typescript"],
     plugins: ["prettier"],
     rules: {
-      "react-hooks/exhaustive-deps": "off",
+      // "react-hooks/exhaustive-deps": "off",
       "no-var": "off",
       "react/jsx-sort-props": [
         "error",
@@ -22,6 +22,7 @@ const eslintConfig = [
           shorthandFirst: true,
           noSortAlphabetically: false,
           reservedFirst: true,
+          multiline: "last",
         },
       ],
     },

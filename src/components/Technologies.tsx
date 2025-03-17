@@ -1,6 +1,6 @@
 import Reveal from "./Reveal";
 import { Tooltip } from "@heroui/tooltip";
-import * as motion from "motion/react-client";
+import * as m from "motion/react-m";
 import Image from "next/image";
 
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
@@ -15,7 +15,7 @@ export default function Technologies() {
       <Reveal as="h2" className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl">
         Texnologiyalar
       </Reveal>
-      <motion.ol
+      <m.ol
         className="mt-16 flex flex-row flex-wrap items-center justify-center gap-x-5 gap-y-5 transition-all lg:gap-x-7 lg:gap-y-7"
         initial="hidden"
         variants={olVariants}
@@ -23,7 +23,7 @@ export default function Technologies() {
         whileInView="visible"
       >
         {techs.map((tech, i) => (
-          <motion.li
+          <m.li
             key={i}
             className="flex aspect-square rounded-lg bg-white p-3 shadow-medium dark:bg-slate-800 max-lg:items-center max-lg:justify-center lg:p-3"
             variants={itemVariants}
@@ -38,9 +38,9 @@ export default function Technologies() {
                 width={90}
               />
             </Tooltip>
-          </motion.li>
+          </m.li>
         ))}
-      </motion.ol>
+      </m.ol>
     </section>
   );
 }

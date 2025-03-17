@@ -74,12 +74,12 @@ export default function FormTerminal() {
             placeholder="Adın:"
             setIsEntered={setIsEnteredFullName}
             setValue={setFullName}
+            value={fullName}
             title={
               <>
                 Başlamaq üçün, <span className="text-blue-600">tam adını</span> yaza bilərsən?
               </>
             }
-            value={fullName}
           />
           <TerminalInput
             inputPlaceholder="example@gmail.com"
@@ -89,12 +89,12 @@ export default function FormTerminal() {
             placeholder="Email:"
             setIsEntered={setIsEnteredEmail}
             setValue={setEmail}
+            value={email}
             title={
               <>
                 Əla! <span className="text-blue-600">Emailini</span> yaza bilərsən?📧
               </>
             }
-            value={email}
           />
           <TerminalInput
             inputPlaceholder="+994 00 000 00 00"
@@ -104,12 +104,12 @@ export default function FormTerminal() {
             placeholder="Nömrə:"
             setIsEntered={setIsEnteredPhone}
             setValue={setPhone}
+            value={phone}
             title={
               <>
                 Möhtəşəm! <span className="text-blue-600">Nömrəni</span> daxil et ki, əlaqə saxlayım📞
               </>
             }
-            value={phone}
           />
           <TerminalInput
             isBoolean
@@ -119,12 +119,12 @@ export default function FormTerminal() {
             placeholder="Var?:"
             setIsEntered={setIsEnteredHasWhatsApp}
             setValue={setHasWhatsApp}
+            value={hasWhatsApp}
             title={
               <>
                 Super! Bu nömrənin <span className="text-blue-600">WhatsApp</span>-ı var?📲
               </>
             }
-            value={hasWhatsApp}
           />
           <TerminalInput
             inputPlaceholder="Layihəm bu haqqdadır"

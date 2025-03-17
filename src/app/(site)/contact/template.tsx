@@ -1,8 +1,8 @@
-import * as motion from "motion/react-client";
+import * as m from "motion/react-m";
 
 export default function Template({ children }) {
   return (
-    <motion.div
+    <m.div
       animate={{ y: 0, opacity: 1 }}
       initial={{ y: -60, opacity: 0 }}
       transition={{
@@ -12,6 +12,6 @@ export default function Template({ children }) {
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
