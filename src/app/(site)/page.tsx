@@ -6,7 +6,7 @@ import Timeline from "@/components/TimeLine";
 import { cn } from "@/lib/cn";
 import { BASE_URL } from "@/lib/constants";
 import { profileImage, countryName, locale, creator } from "@/src/lib/shared-metadata";
-import * as m from "motion/react-m";
+import * as motion from "motion/react-client";
 import Image from "next/image";
 import type { Metadata } from "next/types";
 import { Typewriter } from "nextjs-simple-typewriter";
@@ -76,7 +76,7 @@ export default async function Home() {
             Developer
           </Reveal>
         </div>
-        <m.div
+        <motion.div
           animate={{ opacity: 1, scale: 1 }}
           className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-2xl shadow-blue-500"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -100,7 +100,7 @@ export default async function Home() {
               "xl:min-h-[360px] xl:min-w-[360px]",
             )}
           />
-        </m.div>
+        </motion.div>
       </section>
 
       {/* <MyCodeSkills /> */}

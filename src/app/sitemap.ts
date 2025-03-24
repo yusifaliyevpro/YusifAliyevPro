@@ -3,11 +3,12 @@ import { getBlogPosts, getProjects } from "@/lib/utils";
 import type { MetadataRoute, Route } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = await getBlogPosts();
+  const blogPosts = await getBlogPosts();
   const projects = await getProjects();
-  const projectImages = projects.map((project) => project.image);
-  const blogPosters = blogs.map((blog) => blog.poster);
-  const blogsSitemap: MetadataRoute.Sitemap = blogs.map((blog) => ({
+  const projectPosters = projects.map((project) => project.image);
+  const blogPosters = blogPosts.map((blog) => blog.poster);
+
+  const blogPostsRoutes: MetadataRoute.Sitemap = blogPosts.map((blog) => ({
     url: `${BASE_URL}/blog/${blog.slug}`,
     lastModified: blog._updatedAt,
     images: [blog.poster],
@@ -16,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const routes: Route[] = [`/`, `/blog`, `/contact`];
   const staticImages = [
-    [`${BASE_URL}/Linkedin-Profile.png`, `${BASE_URL}/Linkedin-Rounded.png`, ...projectImages],
+    [`${BASE_URL}/Linkedin-Profile.png`, `${BASE_URL}/Linkedin-Rounded.png`, ...projectPosters],
     [...blogPosters],
     [],
   ];
@@ -28,5 +29,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
   }));
 
-  return [...staticRoutes, ...blogsSitemap];
+  return [...staticRoutes, ...blogPostsRoutes];
 }

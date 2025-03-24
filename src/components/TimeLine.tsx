@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import * as m from "motion/react-m";
+import * as motion from "motion/react-client";
 import type { JSX } from "react";
 
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
@@ -20,28 +20,28 @@ export default function Timeline() {
       </Reveal>
       <div className="relative mt-16 flex min-h-[60svh] w-full flex-col items-start justify-start overflow-x-hidden md:w-7/12 xl:w-5/12">
         <hr className="absolute ml-[47px] h-full w-1 rounded-xl bg-gray-300 dark:bg-gray-400 md:ml-[5.34rem]"></hr>
-        <m.ol initial="hidden" variants={olVariants} viewport={{ once: true }} whileInView="visible">
+        <motion.ol initial="hidden" variants={olVariants} viewport={{ once: true }} whileInView="visible">
           {events.map((event, i) => (
             <li key={i} className="relative mt-10 flex flex-row items-center">
               <p aria-hidden={!event.year} className="hidden w-[4.9rem] pr-10 text-xl md:flex">
                 {event.year}
               </p>
-              <m.span
+              <motion.span
                 className="ml-10 items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[3px] md:ml-0"
                 variants={dotVariants}
               >
                 <span className="block size-3 rounded-full bg-white dark:bg-gray-300"></span>
-              </m.span>
+              </motion.span>
               {event.year && <p className="flex pl-12 text-xl md:hidden">{event.year}</p>}
-              <m.div className="flex flex-col pl-10 pr-2 max-sm:space-y-2" variants={textVariants}>
+              <motion.div className="flex flex-col pl-10 pr-2 max-sm:space-y-2" variants={textVariants}>
                 {event.name && <h3 className="text-wrap text-2xl xl:max-w-[27rem]">{event.name}</h3>}
                 {event.description && (
                   <p className="pr-5 text-sm text-gray-500 dark:text-slate-400 max-sm:text-base">{event.description}</p>
                 )}
-              </m.div>
+              </motion.div>
             </li>
           ))}
-        </m.ol>
+        </motion.ol>
       </div>
     </section>
   );
