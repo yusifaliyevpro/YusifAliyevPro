@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/cn";
 import { useAnimation, useInView } from "motion/react";
-import { m } from "motion/react";
+import { motion } from "motion/react";
 import React, { useEffect, useRef, type ElementType } from "react";
 import type { ReactNode } from "react";
 
@@ -29,7 +29,7 @@ export default function Reveal<T extends ElementType = "div">({ children, first,
 
   return (
     <Tag ref={ref} className={cn("relative w-fit overflow-hidden", { "py-2": !first })} {...props}>
-      <m.span
+      <motion.span
         animate={mainControls}
         className={className}
         initial="hidden"
@@ -37,8 +37,8 @@ export default function Reveal<T extends ElementType = "div">({ children, first,
         variants={{ hidden: { opacity: 0, y: first ? 60 : 0 }, visible: { opacity: 1, y: 0 } }}
       >
         {children}
-      </m.span>
-      <m.span
+      </motion.span>
+      <motion.span
         animate={slideControls}
         className="absolute bottom-0 left-0 right-0 top-0 z-[200] rounded-sm bg-blue-500"
         initial="hidden"

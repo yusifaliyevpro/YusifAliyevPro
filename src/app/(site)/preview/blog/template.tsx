@@ -1,10 +1,8 @@
-"use client";
-
-import { m } from "motion/react";
+import * as motion from "motion/react-client";
 
 export default function Template({ children }) {
   return (
-    <m.div
+    <motion.div
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       initial={{ opacity: 0 }}
@@ -16,6 +14,6 @@ export default function Template({ children }) {
       }}
     >
       {children}
-    </m.div>
+    </motion.div>
   );
 }

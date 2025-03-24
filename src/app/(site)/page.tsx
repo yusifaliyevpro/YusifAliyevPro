@@ -81,14 +81,14 @@ export default async function Home() {
           className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-2xl shadow-blue-500"
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{
-            duration: 0.4,
+            duration: 0.3,
             type: "spring",
             stiffness: 70,
           }}
         >
           <Image
             priority
-            unoptimized
+            quality={100}
             alt="Profile Picture"
             height={350}
             src={"/Profile.png"}

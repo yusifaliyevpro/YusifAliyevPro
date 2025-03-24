@@ -2,6 +2,7 @@ import { getProjects } from "../lib/utils";
 import Reveal from "./Reveal";
 import SanityImage from "./SanityImage";
 import * as motion from "motion/react-client";
+import Image from "next/image";
 import { TbExternalLink } from "react-icons/tb";
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
@@ -43,13 +44,13 @@ export default async function Projects() {
               title="Canlı baxış üçün linkə klikləyin"
             >
               <figure>
-                <SanityImage
-                  unoptimized
+                <Image
                   alt={`${project.name} logo`}
                   blurDataURL={project.imageMetadata.lqip}
                   className="aspect-[16/10] size-auto max-h-44 rounded-2xl object-cover shadow-medium transition-all hover:blur-md md:max-h-48"
                   height={200}
                   placeholder="blur"
+                  quality={100}
                   src={project.image}
                   width={350}
                 />

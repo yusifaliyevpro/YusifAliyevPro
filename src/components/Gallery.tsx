@@ -3,6 +3,7 @@
 import SanityImage from "./SanityImage";
 import { cn } from "@/lib/cn";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
@@ -86,7 +87,7 @@ export default function Gallery({
             transition={{ duration: 0.4 }}
             variants={animationVariants}
           >
-            <SanityImage
+            <Image
               alt="Images"
               className="select-none object-contain"
               height={500}
@@ -110,7 +111,7 @@ export default function Gallery({
             className="relative flex aspect-[13/9] h-24 cursor-pointer"
             onClick={() => handleScroolBar(i)}
           >
-            <SanityImage
+            <Image
               alt="Images"
               blurDataURL={image.lqip}
               height={100}
