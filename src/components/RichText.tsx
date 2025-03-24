@@ -1,9 +1,9 @@
-import SanityImage from "./SanityImage";
 import CodeBlock from "@/components/CodeBlock";
 import { SanityImageAsset } from "@/sanity/types";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { CodeInputValue } from "@sanity/code-input";
 import { PortableText, PortableTextComponents } from "next-sanity";
+import Image from "next/image";
 import { type ReactNode, Suspense } from "react";
 
 export default function RichText({ blogText }) {
@@ -16,7 +16,7 @@ const components: PortableTextComponents = {
       const { width, height, aspectRatio } = getImageDimensions(value);
       return (
         <figure className={`flex size-full flex-col py-7 aspect-[${aspectRatio}] items-center justify-center`}>
-          <SanityImage
+          <Image
             alt={value.alt || ""}
             blurDataURL={value.lqip}
             className="rounded-md object-cover"

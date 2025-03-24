@@ -1,4 +1,4 @@
-import Blogs from "@/components/Blogs";
+import BlogPosts from "@/components/BlogPosts";
 import Search from "@/components/Search";
 import { getBlogPosts } from "@/lib/utils";
 import Subscribe, { SubscribeButton } from "@/src/components/Subsciption";
@@ -29,7 +29,7 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYRes
           </div>
         </header>
       </section>
-      <Blogs blogPosts={blogPosts} />
+      <BlogPosts blogPosts={blogPosts} />
       <Subscribe />
     </main>
   );

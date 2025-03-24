@@ -38,13 +38,13 @@ export default function KofeAlWidget({ username, isActiveOnMobile = false, isHov
           }}
         >
           <Image
-            src="/kofeal.webp"
-            unoptimized
             alt="Kofe al"
             className="select-none rounded-full"
             height={40}
-            // srcccc="https://kofe.al/assets/images/fav/apple-touch-icon.png"
+            quality={100}
+            src="/kofeal.webp"
             width={40}
+            // srcccc="https://kofe.al/assets/images/fav/apple-touch-icon.png"
           />
         </motion.div>
       </motion.a>

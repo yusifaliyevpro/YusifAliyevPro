@@ -3,7 +3,6 @@ import RichText from "@/components/RichText";
 import { cn } from "@/lib/cn";
 import { dateFormatter, getReadTime } from "@/lib/formatters";
 import { getBlogPost, getBlogPosts } from "@/lib/utils";
-import SanityImage from "@/src/components/SanityImage";
 import { countryName, creator, keywords, locale } from "@/src/lib/shared-metadata";
 import { BLOG_POST_QUERYResult } from "@/src/sanity/types";
 import Image from "next/image";
@@ -37,10 +36,10 @@ export function BlogPostPageUI({ blog }: { blog: BLOG_POST_QUERYResult }) {
         >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
-              unoptimized
               alt="Yusif Aliyev Picture"
               className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-large shadow-blue-500"
               height={50}
+              quality={100}
               src={"/Profile.png"}
               width={50}
             />
@@ -80,7 +79,7 @@ export function BlogPostPageUI({ blog }: { blog: BLOG_POST_QUERYResult }) {
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
         <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
           <figure className="relative aspect-[16/9] h-full border-solid dark:border-0 md:border-b-1">
-            <SanityImage
+            <Image
               fill
               priority
               alt="Blog Poster"

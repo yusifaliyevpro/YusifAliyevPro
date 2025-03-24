@@ -1,7 +1,6 @@
 "use client";
 
 import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
-import SanityImage from "./SanityImage";
 import { cn } from "@/lib/cn";
 import { dateFormatter } from "@/lib/formatters";
 import useQuery from "@/lib/store";
@@ -61,7 +60,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
                   "border-b-1 border-t-0 border-solid dark:border-0",
                 )}
               >
-                <SanityImage
+                <Image
                   alt={`${blog.title} Poster`}
                   blurDataURL={blog.posterMetadata.lqip}
                   className="size-full rounded-t-lg object-cover"
@@ -87,10 +86,10 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
               <div className="flex w-full flex-row items-center justify-between px-7 py-5 pr-8">
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
-                    unoptimized
                     alt="Profile Picture"
                     className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-medium"
                     height={45}
+                    quality={100}
                     src="/Profile.png"
                     width={45}
                   />

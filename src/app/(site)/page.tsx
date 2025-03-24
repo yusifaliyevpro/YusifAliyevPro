@@ -88,9 +88,9 @@ export default async function Home() {
         >
           <Image
             priority
-            quality={100}
             alt="Profile Picture"
             height={350}
+            quality={100}
             src={"/Profile.png"}
             width={350}
             className={cn(

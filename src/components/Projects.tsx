@@ -1,6 +1,5 @@
 import { getProjects } from "../lib/utils";
 import Reveal from "./Reveal";
-import SanityImage from "./SanityImage";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { TbExternalLink } from "react-icons/tb";

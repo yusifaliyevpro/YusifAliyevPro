@@ -1,6 +1,5 @@
 "use client";
 
-import SanityImage from "./SanityImage";
 import { cn } from "@/lib/cn";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
