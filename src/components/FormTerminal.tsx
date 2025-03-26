@@ -1,5 +1,6 @@
 "use client";
 
+import { notifyAdmin } from "../lib/email/actions";
 import { createContact } from "../lib/prisma/actions";
 import TerminalInput from "./TerminalInput";
 import { cn } from "@/lib/cn";
@@ -39,8 +40,8 @@ export default function FormTerminal() {
   const handleSubmit = async () => {
     setIsSending(true);
     const formData = { fullName, email, phone, hasWhatsApp, description };
-    const { error } = await createContact(formData);
-
+    const { error, contact } = await createContact(formData);
+    if (!error) await notifyAdmin({ name: contact.fullName, description: contact.description });
     if (error) {
       setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
     } else {
@@ -49,9 +50,9 @@ export default function FormTerminal() {
     }
   };
   return (
-    <form className="z-10 w-full rounded-lg bg-slate-200/90 shadow-large backdrop-blur-3xl lg:font-mono">
-      <header className="flex w-full flex-row items-center justify-between rounded-t-lg bg-slate-300/90 px-4 py-3 backdrop-blur-3xl">
-        <div className="flex flex-row gap-x-2">
+    <form className="z-10 w-full rounded-3xl bg-slate-200/90 shadow-large backdrop-blur-3xl lg:font-mono">
+      <header className="flex w-full flex-row items-center justify-between rounded-t-3xl bg-slate-300/90 px-4 backdrop-blur-3xl">
+        <div className="flex flex-row gap-x-2 py-4">
           <span className="size-3 rounded-full bg-red-500"></span>
           <span className="size-3 rounded-full bg-yellow-500"></span>
           <span className="size-3 rounded-full bg-green-500"></span>

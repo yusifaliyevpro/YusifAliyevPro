@@ -1,15 +1,17 @@
 "use server";
 
 import { getBlogPost } from "../utils";
-import { PostEmailTemplate } from "@/components/Email/PostEmailTemplate";
-import { WelcomeEmailTemplate } from "@/src/components/Email/WelcomeEmailTemplate";
+import { PostEmailTemplate } from "@/src/components/Email/BlogPostEmail";
+import { NotificationEmailTemplate } from "@/src/components/Email/NotificationEmail";
+import { WelcomeEmailTemplate } from "@/src/components/Email/WelcomeEmail";
 import { Resend } from "resend";
 import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 type TsendEmail = { success: boolean; message: string };
-export async function sendEmail(_: TsendEmail, slug: string): Promise<TsendEmail> {
+
+export async function notifySubscribers(_: TsendEmail, slug: string): Promise<TsendEmail> {
   try {
     const blog = await getBlogPost(slug);
     if (!blog) return { success: false, message: "Couldn't find the blog!" };
@@ -50,10 +52,8 @@ const subscriberSchema = z.object({
   email: z.string().email({ message: "Emaili düzgün daxil edin!" }),
 });
 
-export type TsubscribeState = {
-  success: boolean;
-  errors?: { fullName?: string[]; email?: string[] };
-};
+export type TsubscribeState = { success: boolean; errors?: { fullName?: string[]; email?: string[] } };
+
 export async function subscribe(_: TsubscribeState, formData: FormData): Promise<TsubscribeState> {
   try {
     const subscriberFormData = Object.fromEntries(formData);
@@ -89,7 +89,7 @@ export async function subscribe(_: TsubscribeState, formData: FormData): Promise
   }
 }
 
-export async function getContact(id: string) {
+export async function getResendContact(id: string) {
   try {
     const { data, error } = await resend.contacts.get({
       id,
@@ -101,5 +101,19 @@ export async function getContact(id: string) {
     return { contact: data };
   } catch (error) {
     return { contactError: error };
+  }
+}
+
+export async function notifyAdmin({ name, description }: { name: string; description: string }) {
+  try {
+    return await resend.emails.send({
+      from: "Yusif Aliyev <admin@blog.yusifaliyevpro.com>",
+      to: ["yusifaliyevpro@gmail.com"],
+      subject: `New Contact - ${name}`,
+      text: `Yeni Kontakt\n\n${name}\n\n${description}\n\nAdmin Console`,
+      react: NotificationEmailTemplate({ name, description }),
+    });
+  } catch (error) {
+    console.log(error);
   }
 }

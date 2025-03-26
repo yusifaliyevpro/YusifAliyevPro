@@ -1,6 +1,6 @@
 "use client";
 
-import { sendEmail } from "@/src/lib/email/actions";
+import { notifySubscribers } from "@/src/lib/email/actions";
 import { Button } from "@heroui/button";
 import { addToast } from "@heroui/toast";
 import { startTransition, useActionState, useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import { useFormValue } from "sanity";
 export default function SendEmailComponent() {
   const slug = useFormValue(["slug"]) as { _type: "slug"; current: string };
   const isPublished = useFormValue(["isPublished"]) as boolean;
-  const [state, action, isPending] = useActionState(sendEmail, { success: false, message: "" });
+  const [state, action, isPending] = useActionState(notifySubscribers, { success: false, message: "" });
   const [oneClick, setOneClick] = useState(false);
   useEffect(() => {
     if (state.success) addToast({ title: state.message, color: "success" });

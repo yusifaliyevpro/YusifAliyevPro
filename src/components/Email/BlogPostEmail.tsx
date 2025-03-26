@@ -3,13 +3,13 @@ import { EmailHeader } from "./Header";
 import { BASE_URL } from "@/lib/constants";
 import { Section, Img, Text, Heading, Button, Tailwind, Column, Row, Html, Head, Preview } from "@react-email/components";
 
-type PostEmailTemplate = {
+type TPostEmailTemplate = {
   title: string;
   description: string;
   poster: string;
   slug: string;
 };
-export const PostEmailTemplate = ({ title, description, poster, slug }: PostEmailTemplate) => (
+export const PostEmailTemplate = ({ title, description, poster, slug }: TPostEmailTemplate) => (
   <Html dir="ltr" lang="az">
     <Tailwind
       config={{

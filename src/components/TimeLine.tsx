@@ -53,63 +53,42 @@ type Event = {
   year?: number;
 };
 
+function DescriptionComponent({ linkText, after, href }: { linkText: string; after: string; href: string }) {
+  return (
+    <>
+      <a className="text-blue-500" href={href} rel="noopener noreferrer" target="_blank">
+        {linkText}
+      </a>{" "}
+      | {after}
+    </>
+  );
+}
 const events: Event[] = [
   {
-    name: "Div Academy | Gələcəyi Yazanlar",
-    description: "Full-Stack Programming | Təqaüd | Rejected)",
+    name: "International Innovative Student",
+    description: "National Final | Gold Medal 🥇 | StartUp Category",
   },
-  {
-    name: "Holberton School | Pasha Bank",
-    description: "Full-Stack | Computer Science | Təqaüd | Rejected)",
-  },
+  { year: 2025 },
   {
     name: "AzTU | Kompüter Elmləri",
     description: "İngiliscə tədrislə | 2024-2028 | Dövlət Sifarişli",
   },
   {
-    name: "Technest Təqaüd Proqramı",
-    description: "CodeNext | MERN Stack | 100% təqaüd | Rejected)",
-  },
-  {
     name: "Developer & Creator",
-    description: (
-      <>
-        <a className="text-blue-500" href={"https://world-countriess.vercel.app/"} rel="noopener noreferrer" target="_blank">
-          World-Countriess
-        </a>{" "}
-        | Websayt
-      </>
-    ),
+    description: <DescriptionComponent after="Websayt" href="https://world-countriess.vercel.app/" linkText="World-Countriess" />,
   },
   { year: 2024 },
   { name: "Xəmsə | 🥇 Birincilik" },
   { name: "Cyber Summer School 2023", description: "Beynəxlaq Yay Məktəbi" },
   {
     name: "Developer & Creator",
-    description: (
-      <>
-        <a className="text-blue-500" href={"https://filmisbest.com/"} rel="noopener noreferrer" target="_blank">
-          FilmIsBest
-        </a>{" "}
-        | Film Websaytı
-      </>
-    ),
+    description: <DescriptionComponent after="Film Websaytı" href="https://filmisbest.com/" linkText="FilmIsBest" />,
   },
   {
     name: "Text Editor & SEO & Debugger",
-    description: (
-      <>
-        <a className="text-blue-500" href={"https://kitabxanano2.vercel.app/"} rel="noopener noreferrer" target="_blank">
-          Kitabxano2
-        </a>{" "}
-        | StartUp
-      </>
-    ),
+    description: <DescriptionComponent after="StartUp" href="https://kitabxanano2.vercel.app/" linkText="Kitabxano2" />,
   },
   { name: "I Şəxsi İnkişaf Məktəbi" },
   { year: 2023, name: "" },
   { name: "Gənc Könüllü | Abşeron GİKM", description: "3 + 1 ay | Ayın Gənci" },
-  // { name: "Google Digital Garage", description: "The Fundamentals of Marketing" },
-  // { name: "IIENSITU | Marketing Course", description: "Istanbul İşletme Enstitüsü" },
-  { year: 2022 },
 ];

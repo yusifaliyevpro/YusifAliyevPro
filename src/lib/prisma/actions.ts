@@ -1,24 +1,26 @@
 "use server";
 
 import prisma from "./prisma";
-import { Prisma } from "@prisma/client";
+import { Contact, Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 
-export async function createContact(data: Prisma.ContactCreateInput) {
+export async function createContact(data: Prisma.ContactCreateInput): Promise<{ contact: Contact; error: Error | null }> {
   try {
-    return { data: await prisma.contact.create({ data }) };
+    const contact = await prisma.contact.create({ data });
+    return { contact, error: null };
   } catch (error) {
-    return { error };
+    if (error instanceof Error) return { contact: null, error };
   }
 }
 
 export async function getAllContacts() {
-  return await prisma.contact.findMany();
+  const contacts = await prisma.contact.findMany();
+  return contacts.sort((a, b) => Number(a.isCalled) - Number(b.isCalled));
 }
 
-export async function deleteContact(id: string) {
+export async function setIsCalled(id: string, isCalled: boolean) {
   try {
-    await prisma.contact.delete({ where: { id } });
+    await prisma.contact.update({ where: { id }, data: { isCalled: !isCalled } });
     return true;
   } catch (error) {
     console.log(error);

@@ -1,21 +1,33 @@
 "use client";
 
-import useQuery from "@/lib/store";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
-import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useDebounce } from "use-debounce";
 
 export default function Search() {
-  const [text, setText] = useState("");
-  const [query] = useDebounce(text.trim(), 600);
-  const setSearch = useQuery((state) => state.setSearch);
-  const resultCount = useQuery((state) => state.resultCount);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const searchQuery = searchParams.get("search")?.trim() || "";
+  const [text, setText] = useState(searchQuery);
+  const [query] = useDebounce(text.trim(), 500);
+  const resultCount: number = 1;
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (value.trim()) params.set(name, value);
+      else params.delete(name);
+
+      return params.toString();
+    },
+    [searchParams],
+  );
 
   useEffect(() => {
-    setSearch(query);
-  }, [query, setSearch]);
+    router.replace("?" + createQueryString("search", query));
+  }, [query, createQueryString, router]);
 
   useEffect(() => {
     if (resultCount === 0) {

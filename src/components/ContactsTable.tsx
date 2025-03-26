@@ -1,21 +1,24 @@
 "use client";
 
-import { deleteContact } from "../lib/prisma/actions";
+import { setIsCalled } from "../lib/prisma/actions";
 import { Chip } from "@heroui/chip";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/table";
-import { addToast } from "@heroui/toast";
+import { addToast, closeAll } from "@heroui/toast";
 import { Contact } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
-import { MdDeleteOutline } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
 
 export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
   const router = useRouter();
   const calledIDs = contacts.map((c) => c.isCalled && c.id);
 
-  const handleDelete = (id: string) => {
-    addToast({ title: "Deleting Contact...", timeout: 1000 });
-    deleteContact(id).then(() => addToast({ title: "Contact deleted successfully!", color: "success" }));
+  const handleUpdate = (contact: Contact) => {
+    addToast({ title: "Updating Contact...", timeout: Infinity });
+    setIsCalled(contact.id, contact.isCalled).then(() => {
+      closeAll();
+      addToast({ title: "Contact updated successfully!", color: "success" });
+    });
     router.refresh();
   };
   return (
@@ -29,6 +32,7 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
     >
       <TableHeader>
         <TableColumn>FULL NAME</TableColumn>
+        <TableColumn>DATE</TableColumn>
         <TableColumn>EMAIL</TableColumn>
         <TableColumn>PHONE NUMBER</TableColumn>
         <TableColumn>WHATSAPP</TableColumn>
@@ -39,6 +43,7 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
         {contacts.map((contact) => (
           <TableRow key={contact.id}>
             <TableCell>{contact.fullName}</TableCell>
+            <TableCell>{contact.createdAt.toLocaleDateString("az-AZ")}</TableCell>
             <TableCell>{contact.email}</TableCell>
             <TableCell>{contact.phone}</TableCell>
             <TableCell>
@@ -55,7 +60,10 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
               <p className="truncate">{contact.description}</p>
             </TableCell>
             <TableCell>
-              <MdDeleteOutline className="cursor-pointer text-2xl text-danger" onClick={() => handleDelete(contact.id)} />
+              <TiTick
+                className={`cursor-pointer text-2xl ${contact.isCalled ? "text-danger" : "text-success"}`}
+                onClick={() => handleUpdate(contact)}
+              />
             </TableCell>
           </TableRow>
         ))}

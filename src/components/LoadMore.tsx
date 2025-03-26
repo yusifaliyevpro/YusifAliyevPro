@@ -1,0 +1,37 @@
+"use client";
+
+import { cn } from "../lib/cn";
+import { Button } from "@heroui/button";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useCallback } from "react";
+
+export function LoadMoreButton() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const searchQuery = searchParams.get("search")?.trim() || "";
+  const pageQuery = Number(searchParams.get("page")) || 1;
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (value.trim()) params.set(name, value);
+      else params.delete(name);
+
+      return params.toString();
+    },
+    [searchParams],
+  );
+  return (
+    !searchQuery && (
+      <Button
+        size="lg"
+        className={cn(
+          "mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white",
+          "dark:from-blue-600 dark:to-blue-500 dark:text-slate-200",
+        )}
+        onPress={() => router.push("?" + createQueryString("page", String(pageQuery + 1)), { scroll: false })}
+      >
+        Daha çox göstər
+      </Button>
+    )
+  );
+}

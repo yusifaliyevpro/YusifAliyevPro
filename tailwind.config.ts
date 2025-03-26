@@ -14,6 +14,9 @@ const config: Config = {
         foreground: "#1a202c",
         "blue-light": "#007bff",
         "next-blue": "#016FEE",
+        blue: {
+          500: "#007bff",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)"],

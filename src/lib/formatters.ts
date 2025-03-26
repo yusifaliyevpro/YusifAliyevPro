@@ -1,4 +1,4 @@
-export function dateFormatter(date: string) {
+export function dateFormatter(date: string | Date) {
   const fullDate = new Date(date);
   const day = fullDate.getDate();
   const month = fullDate.getMonth() + 1;

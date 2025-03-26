@@ -7,6 +7,11 @@ import { BLOGS_POSTS_QUERYResult } from "@/src/sanity/types";
 import type { Metadata } from "next/types";
 import { Typewriter } from "nextjs-simple-typewriter";
 
+export default async function BlogPostsPage() {
+  const blogPosts = await getBlogPosts();
+  return <BlogPostsPageUI blogPosts={blogPosts} />;
+}
+
 export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
   return (
     <main className="flex min-h-svh flex-col items-center gap-y-6 scroll-smooth pt-20 font-signika">
@@ -33,11 +38,6 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYRes
       <Subscribe />
     </main>
   );
-}
-
-export default async function BlogPostsPage() {
-  const blogPosts = await getBlogPosts();
-  return <BlogPostsPageUI blogPosts={blogPosts} />;
 }
 
 export const metadata: Metadata = {

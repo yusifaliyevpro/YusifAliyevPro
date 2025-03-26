@@ -1,35 +1,28 @@
 "use client";
 
 import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
+import { LoadMoreButton } from "./LoadMore";
 import { cn } from "@/lib/cn";
 import { dateFormatter } from "@/lib/formatters";
-import useQuery from "@/lib/store";
-import { Button } from "@heroui/button";
 import Fuse from "fuse.js";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { GoClock } from "react-icons/go";
 
 export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
-  const [page, setPage] = useState(1);
-  const search = useQuery((state) => state.search);
-  const setResultCount = useQuery((state) => state.setResultCount);
-  const resultCount = useQuery((state) => state.resultCount);
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search");
+  const page = Number(searchParams.get("page")) || 1;
+
   let renderedBlogs = blogPosts;
-  const fuse = new Fuse(blogPosts, {
-    keys: ["title", "description"],
-    threshold: 0.4,
-  });
+  const fuse = new Fuse(blogPosts, { keys: ["title", "description"], threshold: 0.4 });
   if (search) {
     const result = fuse.search(search);
     renderedBlogs = result.map(({ item }) => item);
   } else {
     renderedBlogs = renderedBlogs.slice(0, page * 12);
   }
-  useEffect(() => {
-    setResultCount(renderedBlogs.length);
-  }, [renderedBlogs, setResultCount]);
 
   return (
     <>
@@ -106,18 +99,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
           </article>
         ))}
       </section>
-      {blogPosts.length > resultCount && !search && (
-        <Button
-          size="lg"
-          className={cn(
-            "mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white",
-            "dark:from-blue-600 dark:to-blue-500 dark:text-slate-200",
-          )}
-          onPress={() => setPage(page + 1)}
-        >
-          Daha çox göstər
-        </Button>
-      )}
+      {renderedBlogs.length !== blogPosts.length && <LoadMoreButton />}
     </>
   );
 }

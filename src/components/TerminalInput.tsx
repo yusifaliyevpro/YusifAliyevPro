@@ -32,12 +32,19 @@ export default function TerminalInput({
   inputPlaceholder,
   isBoolean,
 }: TerminalInputProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (isPreviousEntered && ref.current) {
       ref.current.focus();
     }
   }, [isPreviousEntered]);
+
+  const handleEnterDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      setIsEntered(true);
+    }
+  };
 
   return (
     <>
@@ -64,13 +71,8 @@ export default function TerminalInput({
                 "bg-transparent shadow-none hover:bg-transparent group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
               input: "font-mono text-base font-bold placeholder:text-slate-400 after:bg-black",
             }}
+            onKeyDown={handleEnterDown}
             onValueChange={setValue}
-            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                setIsEntered(true);
-              }
-            }}
           />
         ) : (
           <div className="flex flex-row gap-x-3">
