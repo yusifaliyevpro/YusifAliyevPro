@@ -25,7 +25,11 @@ export async function getBlogPosts() {
   "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions }, 
   publishedAt, "slug": slug.current, description}`);
 
-  const data = await client.fetch<BLOGS_POSTS_QUERYResult>(BLOGS_POSTS_QUERY, {}, { cache: "no-cache" });
+  const data = await client.fetch<BLOGS_POSTS_QUERYResult>(
+    BLOGS_POSTS_QUERY,
+    {},
+    { next: { revalidate: 3600 }, cache: "force-cache" },
+  );
   return data;
 }
 
