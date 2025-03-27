@@ -28,7 +28,7 @@ export async function subscribe(_: TState, formData: FormData): Promise<TState> 
     const { email, fullName } = parsedSubscriber.data;
     const [firstName, lastName] = fullName.split(" ").filter(Boolean);
 
-    const data = await resend.contacts.create({
+    await resend.contacts.create({
       audienceId: process.env.RESEND_AUDIENCE_KEY,
       email,
       firstName,
