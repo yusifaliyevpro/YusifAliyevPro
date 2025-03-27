@@ -1,7 +1,8 @@
-import { EmailFooter } from "./Footer";
-import { EmailHeader } from "./Header";
 import { BASE_URL } from "@/src/lib/constants";
 import { Column, Head, Heading, Html, Img, Preview, Row, Section, Tailwind, Text } from "@react-email/components";
+
+import { EmailFooter } from "./Footer";
+import { EmailHeader } from "./Header";
 
 type WelcomeEmailTemplate = {
   firstName: string;

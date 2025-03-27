@@ -1,6 +1,7 @@
-import { BlogPostsMetadata, BlogPostsPageUI } from "../../blog/page";
 import { getBlogPostsPreview } from "@/lib/utils";
 import { BlogRefreshButton } from "@/src/components/Refresh";
+
+import { BlogPostsMetadata, BlogPostsPageUI } from "../../blog/page";
 
 export default async function BlogPostsPreviewPage() {
   const blogPosts = await getBlogPostsPreview();

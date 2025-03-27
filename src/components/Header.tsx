@@ -1,15 +1,16 @@
 "use client";
 
-import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@heroui/navbar";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useState, type JSX } from "react";
+import { type JSX, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
+
+import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,53 +93,53 @@ export default function Header() {
 }
 
 const staticRoutes: {
-  name: string;
   link: string;
+  name: string;
 }[] = [
   {
-    name: "Ana Səhifə",
     link: "/",
+    name: "Ana Səhifə",
   },
   {
-    name: "Bloq",
     link: "/blog",
+    name: "Bloq",
   },
   {
-    name: "Əlaqə",
     link: "/contact",
+    name: "Əlaqə",
   },
 ];
 
 const socialAccounts: {
-  icon: JSX.Element;
-  name: string;
-  link: string;
   className: string;
+  icon: JSX.Element;
+  link: string;
+  name: string;
 }[] = [
   {
-    icon: <GrInstagram />,
-    name: "Instagram",
-    link: InstagramAccount,
     className:
       "rounded-md from-[#833ab4] via-[#fd1d1d] dark:text-slate-300 to-[#fcb045] p-[3px] text-3xl hover:bg-gradient-to-r hover:text-white",
+    icon: <GrInstagram />,
+    link: InstagramAccount,
+    name: "Instagram",
   },
   {
-    icon: <LiaFacebook strokeWidth={0.3} />,
-    name: "FaceBook",
-    link: FacebookAccount,
     className: "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
+    icon: <LiaFacebook strokeWidth={0.3} />,
+    link: FacebookAccount,
+    name: "FaceBook",
   },
   {
-    icon: <PiLinkedinLogoBold />,
-    name: "LinkedIn",
-    link: LinkedInAccount,
     className: "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
+    icon: <PiLinkedinLogoBold />,
+    link: LinkedInAccount,
+    name: "LinkedIn",
   },
   {
-    icon: <FaGithub />,
-    name: "GitHub",
-    link: GitHubAccount,
     className:
       "rounded-full to-gray-800  p-[2px] text-4xl dark:text-slate-300 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white",
+    icon: <FaGithub />,
+    link: GitHubAccount,
+    name: "GitHub",
   },
 ];

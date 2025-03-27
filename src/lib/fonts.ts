@@ -1,27 +1,27 @@
 import { Jua, Poppins, Signika_Negative, Source_Sans_3 } from "next/font/google";
 
 export const source_sans_3 = Source_Sans_3({
-  subsets: ["latin"],
   display: "swap",
+  subsets: ["latin"],
   variable: "--font-sans",
 });
 
 export const signika_negative = Signika_Negative({
-  subsets: ["latin"],
   display: "swap",
+  subsets: ["latin"],
   variable: "--font-signika",
 });
 
 export const poppins = Poppins({
-  subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
   variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const jua = Jua({
-  subsets: ["latin"],
   display: "swap",
-  weight: "400",
+  subsets: ["latin"],
   variable: "--font-jua",
+  weight: "400",
 });

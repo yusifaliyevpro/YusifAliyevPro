@@ -1,13 +1,14 @@
+import { BASE_URL } from "@/lib/constants";
+import { Button, Head, Heading, Html, Preview, Section, Tailwind, Text } from "@react-email/components";
+
 import { EmailFooter } from "./Footer";
 import { EmailHeader } from "./Header";
-import { BASE_URL } from "@/lib/constants";
-import { Section, Text, Heading, Button, Tailwind, Html, Head, Preview } from "@react-email/components";
 
 type TNotificationEmailTemplate = {
-  name: string;
   description: string;
+  name: string;
 };
-export const NotificationEmailTemplate = ({ name, description }: TNotificationEmailTemplate) => (
+export const NotificationEmailTemplate = ({ description, name }: TNotificationEmailTemplate) => (
   <Html dir="ltr" lang="az">
     <Tailwind
       config={{

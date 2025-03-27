@@ -1,10 +1,11 @@
-import Reveal from "./Reveal";
 import * as motion from "motion/react-client";
+
+import Reveal from "./Reveal";
 
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
 const itemVariants = {
   hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4, type: "spring", stiffness: 70 } },
+  visible: { opacity: 1, transition: { duration: 0.4, stiffness: 70, type: "spring" }, x: 0 },
 };
 
 export default function MySoftSkills() {

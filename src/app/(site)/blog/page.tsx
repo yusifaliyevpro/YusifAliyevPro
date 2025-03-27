@@ -1,11 +1,15 @@
+import type { Metadata } from "next/types";
+
 import BlogPosts from "@/components/BlogPosts";
 import Search from "@/components/Search";
 import { getBlogPosts } from "@/lib/utils";
-import Subscribe, { SubscribeButton } from "@/src/components/Subsciption";
+import Subscribe from "@/src/components/Subsciption";
 import { countryName, creator, locale, profileImage } from "@/src/lib/shared-metadata";
 import { BLOGS_POSTS_QUERYResult } from "@/src/sanity/types";
-import type { Metadata } from "next/types";
+import { Button } from "@heroui/button";
+import Link from "next/link";
 import { Typewriter } from "nextjs-simple-typewriter";
+import { FaRegBell } from "react-icons/fa6";
 
 export default async function BlogPostsPage() {
   const blogPosts = await getBlogPosts();
@@ -29,7 +33,11 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYRes
             </span>
           </div>
           <div className="mt-5 flex flex-row items-center justify-center">
-            <SubscribeButton />
+            <Link href="#subscription">
+              <Button isIconOnly color="primary">
+                <FaRegBell className="size-5" />
+              </Button>
+            </Link>
             <Search />
           </div>
         </header>
@@ -41,16 +49,16 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYRes
 }
 
 export const metadata: Metadata = {
-  title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
-  description: "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
   alternates: { canonical: `/blog` },
+  description: "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
   openGraph: {
-    url: `/blog`,
-    type: "website",
-    siteName: creator,
-    locale,
     countryName,
     images: [profileImage],
+    locale,
+    siteName: creator,
+    type: "website",
+    url: `/blog`,
   },
+  title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
 };
 export const BlogPostsMetadata = metadata;

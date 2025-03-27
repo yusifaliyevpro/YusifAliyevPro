@@ -1,7 +1,8 @@
+import type { Metadata } from "next";
+
 import ContactsTable from "@/src/components/ContactsTable";
 import { isInDevelopment } from "@/src/lib/constants";
 import { getAllContacts } from "@/src/lib/prisma/actions";
-import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -14,7 +15,7 @@ export default async function Admin() {
       {(isEnabled || isInDevelopment) && (
         <div className="overflow-x-scroll p-6">
           <h1 className="mb-4 text-2xl font-bold">Contacts Management</h1>
-          <ContactsTable contacts={contacts} />
+          <ContactsTable contacts={contacts || []} />
         </div>
       )}
     </main>
@@ -26,11 +27,11 @@ export const metadata: Metadata = {
     canonical: `/about`,
   },
   robots: {
-    index: false,
     follow: false,
     googleBot: {
-      index: false,
       follow: false,
+      index: false,
     },
+    index: false,
   },
 };

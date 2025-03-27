@@ -1,9 +1,10 @@
 "use client";
 
-import { cn } from "../lib/cn";
 import { Button } from "@heroui/button";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
+
+import { cn } from "../lib/cn";
 
 export function LoadMoreButton() {
   const searchParams = useSearchParams();

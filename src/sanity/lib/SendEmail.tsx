@@ -1,6 +1,6 @@
 "use client";
 
-import { notifySubscribers } from "@/src/lib/email/actions";
+import { notifySubscribers } from "@/src/lib/email/notifySubscribers";
 import { Button } from "@heroui/button";
 import { addToast } from "@heroui/toast";
 import { startTransition, useActionState, useEffect, useState } from "react";
@@ -10,11 +10,11 @@ import { useFormValue } from "sanity";
 export default function SendEmailComponent() {
   const slug = useFormValue(["slug"]) as { _type: "slug"; current: string };
   const isPublished = useFormValue(["isPublished"]) as boolean;
-  const [state, action, isPending] = useActionState(notifySubscribers, { success: false, message: "" });
+  const [state, action, isPending] = useActionState(notifySubscribers, { message: "", success: false });
   const [oneClick, setOneClick] = useState(false);
   useEffect(() => {
-    if (state.success) addToast({ title: state.message, color: "success" });
-    else if (state.message) addToast({ title: state.message, color: "danger" });
+    if (state.success) addToast({ color: "success", title: state.message });
+    else if (state.message) addToast({ color: "danger", title: state.message });
   }, [state]);
   function handleConfirm() {
     startTransition(() => action(slug.current));

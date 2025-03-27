@@ -1,3 +1,5 @@
+import type { Metadata } from "next/types";
+
 import MySoftSkills from "@/components/MySoftSkills";
 import Projects from "@/components/Projects";
 import Reveal from "@/components/Reveal";
@@ -5,10 +7,9 @@ import Technologies from "@/components/Technologies";
 import Timeline from "@/components/TimeLine";
 import { cn } from "@/lib/cn";
 import { BASE_URL } from "@/lib/constants";
-import { profileImage, countryName, locale, creator } from "@/src/lib/shared-metadata";
+import { countryName, creator, locale, profileImage } from "@/src/lib/shared-metadata";
 import * as motion from "motion/react-client";
 import Image from "next/image";
-import type { Metadata } from "next/types";
 import { Typewriter } from "nextjs-simple-typewriter";
 
 export default async function Home() {
@@ -82,8 +83,8 @@ export default async function Home() {
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{
             duration: 0.3,
-            type: "spring",
             stiffness: 70,
+            type: "spring",
           }}
         >
           <Image
@@ -113,14 +114,14 @@ export default async function Home() {
 }
 
 export const metadata: Metadata = {
-  title: "Yusif Aliyev | Hi👋, I'm a Full-Stack Developer",
   alternates: { canonical: `/` },
   openGraph: {
-    type: "website",
-    siteName: creator,
-    locale,
     countryName,
-    url: `${BASE_URL}/`,
     images: [profileImage],
+    locale,
+    siteName: creator,
+    type: "website",
+    url: `${BASE_URL}/`,
   },
+  title: "Yusif Aliyev | Hi👋, I'm a Full-Stack Developer",
 };

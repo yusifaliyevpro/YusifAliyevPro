@@ -1,8 +1,9 @@
 "use server";
 
-import { isInDevelopment } from "./constants";
 import { revalidateTag } from "next/cache";
 import { draftMode } from "next/headers";
+
+import { isInDevelopment } from "./constants";
 
 export async function updateBlog() {
   const { isEnabled } = await draftMode();

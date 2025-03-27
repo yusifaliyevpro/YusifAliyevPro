@@ -1,15 +1,17 @@
-import Reveal from "./Reveal";
-import * as motion from "motion/react-client";
 import type { JSX } from "react";
+
+import * as motion from "motion/react-client";
+
+import Reveal from "./Reveal";
 
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
 const dotVariants = {
   hidden: { opacity: 0, scale: 0.4 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.4, type: "spring", stiffness: 80 } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.4, stiffness: 80, type: "spring" } },
 };
 const textVariants = {
   hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4, type: "spring", stiffness: 80 } },
+  visible: { opacity: 1, transition: { duration: 0.4, stiffness: 80, type: "spring" }, x: 0 },
 };
 
 export default function Timeline() {
@@ -48,12 +50,12 @@ export default function Timeline() {
 }
 
 type Event = {
-  name?: string;
   description?: JSX.Element | string;
+  name?: string;
   year?: number;
 };
 
-function DescriptionComponent({ linkText, after, href }: { linkText: string; after: string; href: string }) {
+function DescriptionComponent({ after, href, linkText }: { after: string; href: string; linkText: string; }) {
   return (
     <>
       <a className="text-blue-500" href={href} rel="noopener noreferrer" target="_blank">
@@ -65,30 +67,30 @@ function DescriptionComponent({ linkText, after, href }: { linkText: string; aft
 }
 const events: Event[] = [
   {
-    name: "International Innovative Student",
     description: "National Final | Gold Medal 🥇 | StartUp Category",
+    name: "International Innovative Student",
   },
   { year: 2025 },
   {
-    name: "AzTU | Kompüter Elmləri",
     description: "İngiliscə tədrislə | 2024-2028 | Dövlət Sifarişli",
+    name: "AzTU | Kompüter Elmləri",
   },
   {
-    name: "Developer & Creator",
     description: <DescriptionComponent after="Websayt" href="https://world-countriess.vercel.app/" linkText="World-Countriess" />,
+    name: "Developer & Creator",
   },
   { year: 2024 },
   { name: "Xəmsə | 🥇 Birincilik" },
-  { name: "Cyber Summer School 2023", description: "Beynəxlaq Yay Məktəbi" },
+  { description: "Beynəxlaq Yay Məktəbi", name: "Cyber Summer School 2023" },
   {
-    name: "Developer & Creator",
     description: <DescriptionComponent after="Film Websaytı" href="https://filmisbest.com/" linkText="FilmIsBest" />,
+    name: "Developer & Creator",
   },
   {
-    name: "Text Editor & SEO & Debugger",
     description: <DescriptionComponent after="StartUp" href="https://kitabxanano2.vercel.app/" linkText="Kitabxano2" />,
+    name: "Text Editor & SEO & Debugger",
   },
   { name: "I Şəxsi İnkişaf Məktəbi" },
-  { year: 2023, name: "" },
-  { name: "Gənc Könüllü | Abşeron GİKM", description: "3 + 1 ay | Ayın Gənci" },
+  { name: "", year: 2023 },
+  { description: "3 + 1 ay | Ayın Gənci", name: "Gənc Könüllü | Abşeron GİKM" },
 ];

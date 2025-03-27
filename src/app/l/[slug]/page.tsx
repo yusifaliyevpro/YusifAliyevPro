@@ -9,17 +9,17 @@ export default async function ShortLink({ params }: { params: Promise<{ slug: st
 }
 
 export const metadata: Metadata = {
-  title: "Short Link",
   description: "Click to go to Link",
-  robots: { index: false, follow: false },
   openGraph: {
     images: [
       {
+        alt: "Yusif Aliyev Picture",
+        height: 1080,
         url: "/Profile.png",
         width: 1080,
-        height: 1080,
-        alt: "Yusif Aliyev Picture",
       },
     ],
   },
+  robots: { follow: false, index: false },
+  title: "Short Link",
 };

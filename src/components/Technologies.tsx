@@ -1,12 +1,13 @@
-import Reveal from "./Reveal";
 import { Tooltip } from "@heroui/tooltip";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 
+import Reveal from "./Reveal";
+
 const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
 const itemVariants = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { duration: 0.5, type: "spring", stiffness: 100 } },
+  hidden: { opacity: 0, scale: 0 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, stiffness: 100, type: "spring" } },
 };
 
 export default function Technologies() {
@@ -45,20 +46,20 @@ export default function Technologies() {
   );
 }
 
-type Tech = { name: string; link: string; icon: string };
+type Tech = { icon: string; link: string; name: string; };
 
 const techs: Tech[] = [
-  { name: "NextJS 15", link: "https://nextjs.org/", icon: "/techs/next.svg" },
-  { name: "TypeScript", link: "https://nextjs.org/", icon: "/techs/ts.png" },
-  { name: "Tailwind CSS", link: "https://tailwindcss.com/", icon: "/techs/tailwind.svg" },
-  { name: "Vercel Hosting", link: "https://vercel.com/", icon: "/techs/vercel.svg" },
-  { name: "NestJS", link: "https://nestjs.com/", icon: "/techs/nestjs.svg" },
-  { name: "Prisma", link: "https://nextjs.org/", icon: "/techs/prisma.svg" },
-  { name: "NodeJS", link: "https://nextjs.org/", icon: "/techs/nodejs.png" },
-  { name: "Sanity CMS", link: "https://www.sanity.io/", icon: "/techs/sanity.png" },
-  { name: "NextUI", link: "https://nextui.org/", icon: "/techs/nextui.png" },
-  { name: "React Icons", link: "https://react-icons.github.io/react-icons/", icon: "/techs/react-icons.svg" },
-  { name: "motion", link: "https://motion.dev/", icon: "/techs/motion.png" },
-  { name: "NextAuth", link: "https://nextjs.org/", icon: "/techs/nextauth.png" },
-  { name: "MongoDB", link: "https://www.mongodb.com/", icon: "/techs/mongodb.svg" },
+  { icon: "/techs/next.svg", link: "https://nextjs.org/", name: "NextJS 15" },
+  { icon: "/techs/ts.png", link: "https://nextjs.org/", name: "TypeScript" },
+  { icon: "/techs/tailwind.svg", link: "https://tailwindcss.com/", name: "Tailwind CSS" },
+  { icon: "/techs/vercel.svg", link: "https://vercel.com/", name: "Vercel Hosting" },
+  { icon: "/techs/nestjs.svg", link: "https://nestjs.com/", name: "NestJS" },
+  { icon: "/techs/prisma.svg", link: "https://nextjs.org/", name: "Prisma" },
+  { icon: "/techs/nodejs.png", link: "https://nextjs.org/", name: "NodeJS" },
+  { icon: "/techs/sanity.png", link: "https://www.sanity.io/", name: "Sanity CMS" },
+  { icon: "/techs/nextui.png", link: "https://nextui.org/", name: "NextUI" },
+  { icon: "/techs/react-icons.svg", link: "https://react-icons.github.io/react-icons/", name: "React Icons" },
+  { icon: "/techs/motion.png", link: "https://motion.dev/", name: "motion" },
+  { icon: "/techs/nextauth.png", link: "https://nextjs.org/", name: "NextAuth" },
+  { icon: "/techs/mongodb.svg", link: "https://www.mongodb.com/", name: "MongoDB" },
 ];

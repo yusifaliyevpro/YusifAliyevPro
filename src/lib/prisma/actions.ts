@@ -1,26 +1,34 @@
 "use server";
 
-import prisma from "./prisma";
 import { Contact, Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 
-export async function createContact(data: Prisma.ContactCreateInput): Promise<{ contact: Contact; error: Error | null }> {
+import prisma from "./prisma";
+
+export async function createContact(
+  data: Prisma.ContactCreateInput,
+): Promise<{ contact: Contact; error?: never } | { contact?: never; error?: Error; }> {
   try {
     const contact = await prisma.contact.create({ data });
-    return { contact, error: null };
+    return { contact };
   } catch (error) {
-    if (error instanceof Error) return { contact: null, error };
+    if (error instanceof Error) return { error };
+    return { error: new Error("An error occured while executing createContact action") };
   }
 }
 
 export async function getAllContacts() {
-  const contacts = await prisma.contact.findMany();
-  return contacts.sort((a, b) => Number(a.isCalled) - Number(b.isCalled));
+  try {
+    const contacts = await prisma.contact.findMany();
+    return contacts.sort((a, b) => Number(a.isCalled) - Number(b.isCalled));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export async function setIsCalled(id: string, isCalled: boolean) {
+export async function updateIsCaledInfo(id: string, isCalled: boolean) {
   try {
-    await prisma.contact.update({ where: { id }, data: { isCalled: !isCalled } });
+    await prisma.contact.update({ data: { isCalled: !isCalled }, where: { id } });
     return true;
   } catch (error) {
     console.log(error);
@@ -28,6 +36,15 @@ export async function setIsCalled(id: string, isCalled: boolean) {
   }
 }
 
+export async function deleteContact(id: string) {
+  try {
+    await prisma.contact.delete({ where: { id } });
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
 export async function redirectToLink(slug: string) {
   let link = "";
   try {

@@ -1,11 +1,9 @@
-import PreviewMode from "../lib/Preview";
-import SendEmailComponent from "../lib/SendEmail";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+import PreviewMode from "../lib/Preview";
+import SendEmailComponent from "../lib/SendEmail";
+
 const blog = defineType({
-  name: "blogs",
-  title: "Blog",
-  type: "document",
   fields: [
     defineField({
       name: "title",
@@ -15,44 +13,44 @@ const blog = defineType({
     }),
     defineField({
       name: "slug",
+      options: {
+        maxLength: 50,
+        source: "title",
+      },
       title: "Slug",
       type: "slug",
-      options: {
-        source: "title",
-        maxLength: 50,
-      },
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "preview",
-      title: "Preview",
-      type: "string",
       components: {
         field: PreviewMode,
       },
+      name: "preview",
+      title: "Preview",
+      type: "string",
     }),
     defineField({
+      initialValue: false,
       name: "isPublished",
       title: "Is published?",
       type: "boolean",
       validation: (rule) => rule.required(),
-      initialValue: false,
     }),
     defineField({
+      initialValue: new Date().toISOString(),
       name: "publishedAt",
       title: "Publication Date",
       type: "datetime",
       validation: (rule) => rule.required(),
-      initialValue: new Date().toISOString(),
     }),
     defineField({
       name: "poster",
-      title: "Blog Poster",
-      type: "image",
-      validation: (rule) => rule.required(),
       options: {
         hotspot: true,
       },
+      title: "Blog Poster",
+      type: "image",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "description",
@@ -61,34 +59,29 @@ const blog = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      title: "Tags",
       name: "tags",
-      type: "array",
       of: [defineArrayMember({ type: "string" })],
       options: {
         layout: "tags",
       },
+      title: "Tags",
+      type: "array",
       validation: (rule) => rule.min(1).warning("At least one tag is recommended").required(),
     }),
     defineField({
-      title: "Gallery",
       name: "gallery",
-      type: "array",
       of: [defineArrayMember({ type: "image" })],
       options: {
         layout: "grid",
       },
+      title: "Gallery",
+      type: "array",
     }),
     defineField({
       name: "text",
-      title: "Blog Text",
-      type: "array",
-      validation: (rule) => rule.required(),
       of: [
         defineArrayMember({ type: "block" }),
         defineArrayMember({
-          type: "image",
-          options: { hotspot: true },
           fields: [
             defineField({
               name: "alt",
@@ -96,24 +89,32 @@ const blog = defineType({
               type: "string",
             }),
           ],
+          options: { hotspot: true },
+          type: "image",
         }),
         defineArrayMember({
-          type: "code",
           options: {
             withFilename: true,
           },
+          type: "code",
         }),
       ],
+      title: "Blog Text",
+      type: "array",
+      validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "sendEmail",
-      title: "Send Email",
-      type: "text",
       components: {
         field: SendEmailComponent,
       },
+      name: "sendEmail",
+      title: "Send Email",
+      type: "text",
     }),
   ],
+  name: "blogs",
+  title: "Blog",
+  type: "document",
 });
 
 export default blog;

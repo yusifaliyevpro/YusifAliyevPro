@@ -10,10 +10,17 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 const eslintConfig = [
   ...compat.config({
     extends: ["next/core-web-vitals", "next/typescript"],
-    plugins: ["prettier"],
+    plugins: ["prettier", "perfectionist"],
     rules: {
-      // "react-hooks/exhaustive-deps": "off",
       "no-var": "off",
+      "perfectionist/sort-imports": "error",
+      "perfectionist/sort-named-imports": "error",
+      "perfectionist/sort-object-types": "error",
+      "perfectionist/sort-objects": "error",
+      "perfectionist/sort-intersection-types": "error",
+      "perfectionist/sort-jsx-props": "off",
+      "@typescript-eslint/no-namespace": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
       "react/jsx-sort-props": [
         "error",
         {

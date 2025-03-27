@@ -1,12 +1,14 @@
 "use client";
 
-import { notifyAdmin } from "../lib/email/actions";
-import { createContact } from "../lib/prisma/actions";
-import TerminalInput from "./TerminalInput";
+import { Input } from "@/components/Terminal/Input";
 import { cn } from "@/lib/cn";
+import { createContact } from "@/lib/prisma/actions";
 import { Button } from "@heroui/button";
 import { useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
+
+import { notifyAdmin } from "../lib/email/notifyAdmin.action";
+import { BooleanInput } from "./Terminal/BooleanInput";
 
 export default function FormTerminal() {
   const [fullName, setFullName] = useState("");
@@ -39,9 +41,10 @@ export default function FormTerminal() {
 
   const handleSubmit = async () => {
     setIsSending(true);
-    const formData = { fullName, email, phone, hasWhatsApp, description };
-    const { error, contact } = await createContact(formData);
-    if (!error) await notifyAdmin({ name: contact.fullName, description: contact.description });
+    const formData = { description, email, fullName, hasWhatsApp, phone };
+    const { contact, error } = await createContact(formData);
+    if (error) console.log(error);
+    if (contact) await notifyAdmin({ description: contact.description, name: contact.fullName });
     if (error) {
       setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
     } else {
@@ -67,7 +70,7 @@ export default function FormTerminal() {
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         </span>
         <div className="flex flex-col gap-y-3 transition-all">
-          <TerminalInput
+          <Input
             inputPlaceholder="Yusif Aliyev"
             isEntered={isEnteredFullName}
             isPreviousEntered={true}
@@ -82,7 +85,7 @@ export default function FormTerminal() {
               </>
             }
           />
-          <TerminalInput
+          <Input
             inputPlaceholder="example@gmail.com"
             isEntered={isEnteredEmail}
             isPreviousEntered={isEnteredFullName}
@@ -97,7 +100,7 @@ export default function FormTerminal() {
               </>
             }
           />
-          <TerminalInput
+          <Input
             inputPlaceholder="+994 00 000 00 00"
             isEntered={isEnteredPhone}
             isPreviousEntered={isEnteredEmail}
@@ -112,8 +115,7 @@ export default function FormTerminal() {
               </>
             }
           />
-          <TerminalInput
-            isBoolean
+          <BooleanInput
             isEntered={isEnteredHasWhatsApp}
             isPreviousEntered={isEnteredPhone}
             name="Whatsapp?"
@@ -127,7 +129,7 @@ export default function FormTerminal() {
               </>
             }
           />
-          <TerminalInput
+          <Input
             inputPlaceholder="Layihəm bu haqqdadır"
             isEntered={isEnteredDescription}
             isPreviousEntered={isEnteredHasWhatsApp}

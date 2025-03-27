@@ -1,7 +1,3 @@
-"use server";
-
-import { isInDevelopment } from "./constants";
-import { client } from "@/sanity/lib/client";
 import type {
   BLOG_POST_PREVIEW_QUERYResult,
   BLOG_POST_QUERYResult,
@@ -9,13 +5,17 @@ import type {
   BLOGS_POSTS_QUERYResult,
   PROJECTS_QUERYResult,
 } from "@/sanity/types";
+
+import { client } from "@/sanity/lib/client";
 import { defineQuery } from "next-sanity";
 import { draftMode } from "next/headers";
+
+import { isInDevelopment } from "./constants";
 
 export async function getProjects() {
   const PROJECTS_QUERY = defineQuery(`*[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,    
   "imageMetadata": { "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions }, description, link, repo}`);
-  const data = await client.fetch<PROJECTS_QUERYResult>(PROJECTS_QUERY, {}, { next: { revalidate: 3600 }, cache: "force-cache" });
+  const data = await client.fetch<PROJECTS_QUERYResult>(PROJECTS_QUERY, {}, { cache: "force-cache", next: { revalidate: 3600 } });
   return data;
 }
 
@@ -28,7 +28,7 @@ export async function getBlogPosts() {
   const data = await client.fetch<BLOGS_POSTS_QUERYResult>(
     BLOGS_POSTS_QUERY,
     {},
-    { next: { revalidate: 3600 }, cache: "force-cache" },
+    { cache: "force-cache", next: { revalidate: 3600 } },
   );
   return data;
 }
@@ -43,7 +43,7 @@ export async function getBlogPost(slug: string) {
   const data = await client.fetch<BLOG_POST_QUERYResult>(
     BLOG_POST_QUERY,
     { slug },
-    { next: { revalidate: 3600 }, cache: "force-cache" },
+    { cache: "force-cache", next: { revalidate: 3600 } },
   );
   return data;
 }
@@ -59,7 +59,7 @@ export async function getBlogPostsPreview() {
     const data = await client.fetch<BLOG_POSTS_PREVIEW_QUERYResult>(
       BLOG_POSTS_PREVIEW_QUERY,
       {},
-      { next: {}, cache: "no-cache" },
+      { cache: "no-cache", next: {} },
     );
     return data;
   } else return "You are not allowed to run getBlogPostsPreview() function";
@@ -77,7 +77,7 @@ export async function getBlogPostPreview(slug: string) {
     const data = await client.fetch<BLOG_POST_PREVIEW_QUERYResult>(
       BLOG_POST_PREVIEW_QUERY,
       { slug },
-      { next: {}, cache: "no-cache" },
+      { cache: "no-cache", next: {} },
     );
     return data;
   } else return "You are not allowed to run getBlogPostPreview() function";

@@ -1,12 +1,12 @@
-import CopyButton from "./CopyButton";
 import { Snippet } from "@heroui/snippet";
 import { AiOutlinePython } from "react-icons/ai";
 import { BiLogoTypescript } from "react-icons/bi";
-import { FaCss3, FaHtml5, FaReact } from "react-icons/fa";
-import { FaRegFile } from "react-icons/fa";
+import { FaCss3, FaHtml5, FaReact, FaRegFile } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+import CopyButton from "./CopyButton";
 
 export function getFileIcon(language: string) {
   switch (language) {
@@ -31,11 +31,11 @@ export function getFileIcon(language: string) {
 
 type CodeBlockProps = {
   code: string;
-  language: string;
   fileName: string;
+  language: string;
 };
 
-export default function CodeBlock({ code, language, fileName }: CodeBlockProps) {
+export default function CodeBlock({ code, fileName, language }: CodeBlockProps) {
   if (language === "sh") {
     const commands = code.split("\n");
     return (
@@ -70,13 +70,13 @@ export default function CodeBlock({ code, language, fileName }: CodeBlockProps) 
           language={language}
           style={oneLight}
           customStyle={{
-            margin: 0,
             height: "23.4rem",
-            paddingLeft: 0,
+            margin: 0,
             msOverflowStyle: "none",
-            scrollbarWidth: "none",
             overflow: "auto",
+            paddingLeft: 0,
             paddingRight: 0,
+            scrollbarWidth: "none",
           }}
         >
           {code}

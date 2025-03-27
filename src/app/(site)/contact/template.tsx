@@ -1,14 +1,16 @@
+import type { ReactNode } from "react";
+
 import * as motion from "motion/react-client";
 
-export default function Template({ children }) {
+export default function Template({ children }: { children: Readonly<ReactNode> }) {
   return (
     <motion.div
-      animate={{ y: 0, opacity: 1 }}
-      initial={{ y: -60, opacity: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: -60 }}
       transition={{
         duration: 0.2,
-        type: "spring",
         stiffness: 80,
+        type: "spring",
       }}
     >
       {children}

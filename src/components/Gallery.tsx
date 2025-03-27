@@ -32,6 +32,7 @@ export default function Gallery({
       });
     }
   };
+
   const handleForward = () => {
     setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
@@ -57,17 +58,17 @@ export default function Gallery({
     }
   };
   const animationVariants = {
-    initial: (custom: number) => ({
-      x: custom == 1 ? 300 : -300,
-      opacity: 0,
-    }),
     animate: {
-      x: 0,
       opacity: 1,
+      x: 0,
     },
     exit: (custom: number) => ({
-      x: custom == 1 ? -300 : 300,
       opacity: 0,
+      x: custom == 1 ? -300 : 300,
+    }),
+    initial: (custom: number) => ({
+      opacity: 0,
+      x: custom == 1 ? 300 : -300,
     }),
   };
 
@@ -88,9 +89,11 @@ export default function Gallery({
           >
             <Image
               alt="Images"
+              blurDataURL={images[currentIndex].lqip as string}
               className="select-none object-contain"
               height={500}
-              src={images[currentIndex].image}
+              placeholder="blur"
+              src={images[currentIndex].image as string}
               width={700}
             />
           </motion.div>
@@ -111,11 +114,11 @@ export default function Gallery({
             onClick={() => handleScroolBar(i)}
           >
             <Image
-              alt="Images"
-              blurDataURL={image.lqip}
+              alt="Gallery Images"
+              blurDataURL={image.lqip || ""}
               height={100}
               placeholder="blur"
-              src={image.image}
+              src={image.image as string}
               width={200}
               className={cn("select-none rounded-xl border-2 object-contain", {
                 "border-blue-700": i == currentIndex,

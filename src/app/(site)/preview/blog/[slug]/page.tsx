@@ -1,6 +1,7 @@
-import { BlogPostPageUI } from "../../../blog/[slug]/page";
 import { getBlogPostPreview } from "@/lib/utils";
 import { notFound } from "next/navigation";
+
+import { BlogPostPageUI } from "../../../blog/[slug]/page";
 
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

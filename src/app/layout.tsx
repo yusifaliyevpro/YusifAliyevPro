@@ -1,7 +1,7 @@
+import "./globals.css";
 import { Providers } from "../components/Providers";
 import { cn } from "../lib/cn";
-import { poppins, jua, source_sans_3 } from "../lib/fonts";
-import "./globals.css";
+import { jua, poppins, source_sans_3 } from "../lib/fonts";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

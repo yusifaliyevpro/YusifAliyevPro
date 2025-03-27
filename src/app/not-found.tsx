@@ -1,7 +1,8 @@
-import Header from "../components/Header";
 import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import Header from "../components/Header";
 
 export default function NotFound() {
   return (
@@ -30,16 +31,16 @@ export default function NotFound() {
 }
 
 export const metadata: Metadata = {
-  title: "404 Not Found",
   description: "The Page you are looking for was not found!",
   openGraph: {
     images: [
       {
+        alt: "Not Found 404",
+        height: 630,
         url: "/Not-Found.png",
         width: 1200,
-        height: 630,
-        alt: "Not Found 404",
       },
     ],
   },
+  title: "404 Not Found",
 };

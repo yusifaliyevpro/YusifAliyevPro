@@ -1,16 +1,14 @@
 "use client";
 
-import InputErrors from "./InputErrors";
-import { subscribe } from "@/lib/email/actions";
+import { subscribe } from "@/lib/email/subscribe.action";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
 import { FormEvent, startTransition, useActionState, useEffect } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
-import { FaRegBell } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 
-const initialState = { success: false, errors: { fullName: [], email: [] } };
+const initialState = { errors: { email: [], fullName: [] }, success: false };
 
 export default function SubscribeComponent() {
   const [state, formAction, isPending] = useActionState(subscribe, initialState);
@@ -23,7 +21,7 @@ export default function SubscribeComponent() {
 
   useEffect(() => {
     if (state.success)
-      addToast({ title: "Müvəffəqiyətlə abunə oldunuz!", description: "Emailinizi yoxlayın!", color: "success" });
+      addToast({ color: "success", description: "Emailinizi yoxlayın!", title: "Müvəffəqiyətlə abunə oldunuz!" });
   }, [state]);
 
   return (
@@ -35,10 +33,6 @@ export default function SubscribeComponent() {
       >
         <div className="flex flex-col lg:flex-row">
           <div className="flex-1 p-8 lg:p-10">
-            {/* <div className="mb-2 flex items-center">
-              <FiMail className="mr-2 text-white" size={24} />
-              <span className="text-sm font-semibold uppercase tracking-wider text-white">Email Abunəliyi</span>
-            </div> */}
             <div className="mb-4 flex items-center justify-center space-x-3">
               <FiMail className="size-9 text-white" size={24} />
               <h3 className="text-center text-3xl font-bold text-white md:text-4xl">Email Abunəliyi</h3>
@@ -58,9 +52,9 @@ export default function SubscribeComponent() {
                   size="lg"
                   type="text"
                   classNames={{
+                    errorMessage: "text-white",
                     input:
                       "border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
-                    errorMessage: "text-white",
                     inputWrapper:
                       "!bg-white/10 hover:!bg-white/10 group-data-[data-focus-within=true]:!bg-white/10 group-data-[data-invalid=true]:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
                   }}
@@ -82,9 +76,9 @@ export default function SubscribeComponent() {
                     size="lg"
                     type="email"
                     classNames={{
+                      errorMessage: "text-white",
                       input:
                         "!border-white/30 !bg-white/10 placeholder:!text-white/60 autofill:!text-white group-data-[has-value=true]:!text-white",
-                      errorMessage: "text-white",
                       inputWrapper:
                         "rounded-r-none !bg-white/10 hover:!bg-white/10 group-data-[focus=true]:!bg-white/10 group-data-[hover=true]:!bg-white/10",
                     }}
@@ -107,24 +101,12 @@ export default function SubscribeComponent() {
               </div>
             </div>
           </div>
-
-          {/* <div className="hidden bg-gradient-to-br from-indigo-500/20 to-blue-700/40 backdrop-blur-sm lg:block lg:w-2/5">
-            <div className="h-full w-full overflow-hidden opacity-20">
-              <div className="h-full w-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRIMjV2MTBIMzZ6TTE5LjUtOC41aDEwdjEwaC0xMHoiLz48L2c+PC9nPjwvc3ZnPg==')]"></div>
-            </div>
-          </div> */}
         </div>
       </form>
     </div>
   );
 }
 
-export function SubscribeButton() {
-  return (
-    <a href="#subscription">
-      <Button isIconOnly color="primary">
-        <FaRegBell className="size-5" />
-      </Button>
-    </a>
-  );
+function InputErrors({ errors }: { errors?: string[] }) {
+  return <ul className="mt-1 space-y-1">{errors?.map((error, i) => <li key={i}>{error}</li>)}</ul>;
 }

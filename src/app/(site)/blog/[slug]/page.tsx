@@ -1,3 +1,5 @@
+import type { Metadata } from "next/types";
+
 import Gallery from "@/components/Gallery";
 import RichText from "@/components/RichText";
 import { cn } from "@/lib/cn";
@@ -5,15 +7,15 @@ import { dateFormatter, getReadTime } from "@/lib/formatters";
 import { getBlogPost, getBlogPosts } from "@/lib/utils";
 import { countryName, creator, keywords, locale } from "@/src/lib/shared-metadata";
 import { BLOG_POST_QUERYResult } from "@/src/sanity/types";
+import { PortableTextBlock } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next/types";
 import React from "react";
 import { FiWatch } from "react-icons/fi";
 import { GoClock } from "react-icons/go";
 
-export function BlogPostPageUI({ blog }: { blog: BLOG_POST_QUERYResult }) {
+export function BlogPostPageUI({ blog }: { blog: NonNullable<BLOG_POST_QUERYResult> }) {
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
       <article
@@ -83,15 +85,15 @@ export function BlogPostPageUI({ blog }: { blog: BLOG_POST_QUERYResult }) {
               fill
               priority
               alt="Blog Poster"
-              blurDataURL={blog.posterLqip}
+              blurDataURL={blog.posterLqip as string}
               className="object-cover p-3 md:p-0"
               placeholder="blur"
-              src={blog.poster}
+              src={blog.poster as string}
             />
             <figcaption className="sr-only">{blog.title}</figcaption>
           </figure>
           <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-20">
-            <RichText blogText={blog.text} />
+            <RichText blogText={blog.text as PortableTextBlock[]} />
             {blog.gallery && <Gallery images={blog.gallery} />}
           </article>
         </div>
@@ -119,21 +121,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const blog = await getBlogPost(slug);
   if (!blog) notFound();
   return {
-    title: blog.title,
+    alternates: { canonical: `/blog/${blog.slug}` },
     description: blog.description.slice(0, 152).concat("..."),
     keywords: [...blog.tags, ...keywords, "bloq", "blog"],
-    alternates: { canonical: `/blog/${blog.slug}` },
     openGraph: {
-      url: `/blog/${blog.slug}`,
-      siteName: creator,
-      locale,
+      authors: creator,
       countryName,
-      type: "article",
+      images: [{ alt: blog.title + " Poster", height: 630, url: blog.poster as string, width: 1200 }],
+      locale,
       modifiedTime: blog._updatedAt,
       publishedTime: blog.publishedAt,
-      authors: creator,
+      siteName: creator,
       tags: blog.tags,
-      images: [{ url: blog.poster, width: 1200, height: 630, alt: blog.title + " Poster" }],
+      type: "article",
+      url: `/blog/${blog.slug}`,
     },
+    title: blog.title,
   };
 }

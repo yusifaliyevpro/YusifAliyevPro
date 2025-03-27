@@ -1,13 +1,14 @@
-import { getProjects } from "../lib/utils";
-import Reveal from "./Reveal";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { TbExternalLink } from "react-icons/tb";
 
+import { getProjects } from "../lib/utils";
+import Reveal from "./Reveal";
+
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
 const itemVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.2, type: "spring", stiffness: 60 } },
+  visible: { opacity: 1, transition: { duration: 0.2, stiffness: 60, type: "spring" } },
 };
 
 export default async function Projects() {
@@ -45,12 +46,12 @@ export default async function Projects() {
               <figure>
                 <Image
                   alt={`${project.name} logo`}
-                  blurDataURL={project.imageMetadata.lqip}
+                  blurDataURL={project.imageMetadata.lqip || ""}
                   className="aspect-[16/10] size-auto max-h-44 rounded-2xl object-cover shadow-medium transition-all hover:blur-md md:max-h-48"
                   height={200}
                   placeholder="blur"
                   quality={100}
-                  src={project.image}
+                  src={project.image as string}
                   width={350}
                 />
                 <figcaption className="sr-only">alt={`${project.name} logo`}</figcaption>

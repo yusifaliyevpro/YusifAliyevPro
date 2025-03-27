@@ -1,7 +1,5 @@
 "use client";
 
-import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
-import { LoadMoreButton } from "./LoadMore";
 import { cn } from "@/lib/cn";
 import { dateFormatter } from "@/lib/formatters";
 import Fuse from "fuse.js";
@@ -9,6 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { GoClock } from "react-icons/go";
+
+import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
+
+import { LoadMoreButton } from "./LoadMore";
 
 export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
   const searchParams = useSearchParams();
@@ -55,12 +57,12 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
               >
                 <Image
                   alt={`${blog.title} Poster`}
-                  blurDataURL={blog.posterMetadata.lqip}
+                  blurDataURL={blog.posterMetadata.lqip as string}
                   className="size-full rounded-t-lg object-cover"
-                  height={blog.posterMetadata.dimensions.height}
+                  height={blog.posterMetadata.dimensions?.height}
                   placeholder="blur"
-                  src={blog.poster}
-                  width={blog.posterMetadata.dimensions.width}
+                  src={blog.poster as string}
+                  width={blog.posterMetadata.dimensions?.width}
                 />
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>

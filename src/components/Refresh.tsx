@@ -10,10 +10,10 @@ export function BlogRefreshButton() {
   const refresh = () => {
     try {
       router.refresh();
-      addToast({ title: "All blog are upto date!", color: "success", timeout: 1500, shouldShowTimeoutProgress: true });
+      addToast({ color: "success", shouldShowTimeoutProgress: true, timeout: 1500, title: "All blog are upto date!" });
     } catch (error) {
       console.log(error);
-      addToast({ title: "Couldn't update blog", color: "danger" });
+      addToast({ color: "danger", title: "Couldn't update blog" });
     }
   };
   return (

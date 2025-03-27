@@ -1,21 +1,21 @@
 import { BASE_URL } from "@/src/lib/constants";
-import { Column, Img, Row, Section, Link, Font } from "@react-email/components";
+import { Column, Font, Img, Link, Row, Section } from "@react-email/components";
 
 const staticRoutes: {
-  name: string;
   link: string;
+  name: string;
 }[] = [
   {
-    name: "Ana Səhifə",
     link: "/",
+    name: "Ana Səhifə",
   },
   {
-    name: "Bloq",
     link: "/blog",
+    name: "Bloq",
   },
   {
-    name: "Əlaqə",
     link: "/contact",
+    name: "Əlaqə",
   },
 ];
 
@@ -27,8 +27,8 @@ export const EmailHeader = () => (
       fontStyle="normal"
       fontWeight={400}
       webFont={{
-        url: `${BASE_URL}/Poppins-SemiBold.ttf`,
         format: "truetype",
+        url: `${BASE_URL}/Poppins-SemiBold.ttf`,
       }}
     />
     <Section className="my-[40px] px-[40px] py-[40px] lg:px-[85px]">

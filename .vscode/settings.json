@@ -2,8 +2,5 @@
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
-  },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
   }
 }

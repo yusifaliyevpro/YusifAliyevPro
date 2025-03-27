@@ -1,7 +1,8 @@
+import type { Metadata } from "next/types";
+
 import FormTerminal from "@/components/FormTerminal";
 import { profileImage } from "@/src/lib/shared-metadata";
 import Link from "next/link";
-import type { Metadata } from "next/types";
 
 export default function About() {
   return (
@@ -56,8 +57,8 @@ export default function About() {
 }
 
 export const metadata: Metadata = {
-  title: "Əlaqə",
-  description: "Mənimlə birlikdə layihələr yaratmaq istəyirsənsə, elə indi əlaqə formunu doldur!",
   alternates: { canonical: "/contact" },
+  description: "Mənimlə birlikdə layihələr yaratmaq istəyirsənsə, elə indi əlaqə formunu doldur!",
   openGraph: { images: [profileImage] },
+  title: "Əlaqə",
 };

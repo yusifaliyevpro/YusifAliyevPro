@@ -1,22 +1,23 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import { cn } from "@/lib/cn";
 import { useAnimation, useInView } from "motion/react";
 import { motion } from "motion/react";
-import React, { useEffect, useRef, type ElementType } from "react";
-import type { ReactNode } from "react";
+import React, { type ElementType, useEffect, useRef } from "react";
 
 type RevealProps<T extends ElementType = "div"> = {
-  children: ReactNode;
-  first?: boolean;
-  className?: string;
   as?: T;
+  children: ReactNode;
+  className?: string;
+  first?: boolean;
 } & React.ComponentPropsWithoutRef<T>;
 
-export default function Reveal<T extends ElementType = "div">({ children, first, className, as, ...props }: RevealProps<T>) {
+export default function Reveal<T extends ElementType = "div">({ as, children, className, first, ...props }: RevealProps<T>) {
   const Tag = as || "div";
   const ref = useRef<null>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.7 });
+  const isInView = useInView(ref, { amount: 0.7, once: true });
   const mainControls = useAnimation();
   const slideControls = useAnimation();
 
@@ -33,7 +34,7 @@ export default function Reveal<T extends ElementType = "div">({ children, first,
         animate={mainControls}
         className={className}
         initial="hidden"
-        transition={{ duration: 0.3, delay: 0.3 }}
+        transition={{ delay: 0.3, duration: 0.3 }}
         variants={{ hidden: { opacity: 0, y: first ? 60 : 0 }, visible: { opacity: 1, y: 0 } }}
       >
         {children}
