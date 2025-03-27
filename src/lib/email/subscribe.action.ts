@@ -15,7 +15,7 @@ const SubscriberSchema = z.object({
     .regex(/^(?:\S{3,}\s+){1}\S{3,}$/, "Tam Ad iki hissədən ibarət olmalı və hər hissə minimum 3 hərfdən ibarət olmalıdır!"),
 });
 
-export type TState = { errors?: { email?: string[]; fullName?: string[]; }; success: boolean; };
+export type TState = { errors?: { email?: string[]; fullName?: string[] }; success: boolean };
 export async function subscribe(_: TState, formData: FormData): Promise<TState> {
   try {
     const subscriberFormData = Object.fromEntries(formData);
@@ -36,25 +36,19 @@ export async function subscribe(_: TState, formData: FormData): Promise<TState> 
       unsubscribed: false,
     });
 
-    if (!data.error) {
-      await sendWelcomeEmail(firstName, lastName, email);
-    }
+    const text = await render(WelcomeEmailTemplate({ firstName, lastName }), {
+      plainText: true,
+    });
+    await resend.emails.send({
+      from: "Yusif Aliyev <updates@blog.yusifaliyevpro.com>",
+      react: WelcomeEmailTemplate({ firstName, lastName }),
+      subject: "Abunə olduğunuz üçün Təşəkkürlər!",
+      text,
+      to: email,
+    });
     return { success: true };
   } catch (error) {
     console.log(error);
     return { errors: { email: ["Server error occurred"] }, success: false };
   }
-}
-
-async function sendWelcomeEmail(firstName: string, lastName: string, email: string) {
-  const text = await render(WelcomeEmailTemplate({ firstName, lastName }), {
-    plainText: true,
-  });
-  resend.emails.send({
-    from: "Yusif Aliyev <updates@blog.yusifaliyevpro.com>",
-    react: WelcomeEmailTemplate({ firstName, lastName }),
-    subject: "Abunə olduğunuz üçün Təşəkkürlər!",
-    text,
-    to: email,
-  });
 }

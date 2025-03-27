@@ -147,9 +147,6 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
     devDependencies:
-      '@trivago/prettier-plugin-sort-imports':
-        specifier: ^5.2.2
-        version: 5.2.2(@vue/compiler-sfc@3.5.13)(prettier@3.5.3)
       '@types/node':
         specifier: 22.13.13
         version: 22.13.13
@@ -11882,6 +11879,7 @@ snapshots:
       '@vue/compiler-sfc': 3.5.13
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   '@tybys/wasm-util@0.9.0':
     dependencies:
@@ -14392,7 +14390,8 @@ snapshots:
       filelist: 1.0.4
       minimatch: 3.1.2
 
-  javascript-natural-sort@0.7.1: {}
+  javascript-natural-sort@0.7.1:
+    optional: true
 
   jiti@1.21.7: {}
 
