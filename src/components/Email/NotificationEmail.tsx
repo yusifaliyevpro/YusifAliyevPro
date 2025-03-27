@@ -8,7 +8,7 @@ type TNotificationEmailTemplate = {
   description: string;
   name: string;
 };
-export const NotificationEmailTemplate = ({ description, name }: TNotificationEmailTemplate) => (
+export const AdminNotificationEmail = ({ description, name }: TNotificationEmailTemplate) => (
   <Html dir="ltr" lang="az">
     <Tailwind
       config={{

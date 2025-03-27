@@ -10,7 +10,7 @@ type TPostEmailTemplate = {
   slug: string;
   title: string;
 };
-export const PostEmailTemplate = ({ description, poster, slug, title }: TPostEmailTemplate) => (
+export const BlogPostEmail = ({ description, poster, slug, title }: TPostEmailTemplate) => (
   <Html dir="ltr" lang="az">
     <Tailwind
       config={{
@@ -27,13 +27,16 @@ export const PostEmailTemplate = ({ description, poster, slug, title }: TPostEma
       <Preview>{description.slice(0, 90)}</Preview>
       <EmailHeader />
       {/* Body */}
+      <Section className="mb-[32px] text-center text-[36px] font-semibold leading-[36px]">
+        Salam 👋<span className="text-[#007bff]">{" {{{FIRST_NAME}}} {{{LAST_NAME}}}"}</span>
+      </Section>
       <Section className="my-[16px]">
         {poster && (
           <Row>
             <Column align="center">
               <Img
                 alt={title}
-                className="w-full rounded-[12px] border-1 object-cover filter-none lg:w-5/6"
+                className="w-full rounded-[12px] object-cover filter-none lg:w-5/6"
                 height="320"
                 src={poster}
                 style={{ filter: "none" }}

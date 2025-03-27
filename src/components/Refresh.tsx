@@ -8,13 +8,8 @@ import { RxUpdate } from "react-icons/rx";
 export function BlogRefreshButton() {
   const router = useRouter();
   const refresh = () => {
-    try {
-      router.refresh();
-      addToast({ color: "success", shouldShowTimeoutProgress: true, timeout: 1500, title: "All blog are upto date!" });
-    } catch (error) {
-      console.log(error);
-      addToast({ color: "danger", title: "Couldn't update blog" });
-    }
+    router.refresh();
+    addToast({ color: "success", shouldShowTimeoutProgress: true, timeout: 1500, title: "All blog are upto date!" });
   };
   return (
     <div className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}>

@@ -19,6 +19,7 @@ export default function SendEmailComponent() {
   function handleConfirm() {
     startTransition(() => action(slug.current));
   }
+
   if (!isPublished)
     return <div className="flex flex-row items-center justify-center gap-x-10 font-bold">Publish before sending</div>;
   return (

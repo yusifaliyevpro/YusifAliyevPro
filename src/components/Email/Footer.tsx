@@ -73,6 +73,13 @@ export const EmailFooter = () => (
             <Text className="my-[8px] text-[16px] font-semibold leading-[24px] text-gray-500">Bakı, Azərbaycan</Text>
           </td>
         </tr>
+        <tr>
+          <td align="center">
+            <a className="my-[8px] text-[13px] font-semibold leading-[24px] text-gray-500" href="{{{RESEND_UNSUBSCRIBE_URL}}}">
+              Unsubscribe newsletter
+            </a>
+          </td>
+        </tr>
       </table>
     </Section>
   </>
