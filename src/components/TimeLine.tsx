@@ -71,8 +71,8 @@ const events: Event[] = [
     name: "International Innovative Student",
   },
   {
-    name: "SABAH.HUB StartUp Academy",
     description: "AzTU | Entrepreneurship | Succesfully Finished ✅",
+    name: "SABAH.HUB StartUp Academy",
   },
   { year: 2025 },
   {
