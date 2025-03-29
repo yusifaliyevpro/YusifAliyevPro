@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/cn";
 import { Input as HeroInput } from "@heroui/input";
-import { ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SiTicktick } from "react-icons/si";
 

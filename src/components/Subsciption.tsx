@@ -4,7 +4,7 @@ import { subscribe } from "@/lib/email/subscribe.action";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
-import { FormEvent, startTransition, useActionState, useEffect } from "react";
+import { type FormEvent, startTransition, useActionState, useEffect } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
 

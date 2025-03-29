@@ -55,7 +55,7 @@ type Event = {
   year?: number;
 };
 
-function DescriptionComponent({ after, href, linkText }: { after: string; href: string; linkText: string; }) {
+function DescriptionComponent({ after, href, linkText }: { after: string; href: string; linkText: string }) {
   return (
     <>
       <a className="text-blue-500" href={href} rel="noopener noreferrer" target="_blank">
@@ -69,6 +69,10 @@ const events: Event[] = [
   {
     description: "National Final | Gold Medal 🥇 | StartUp Category",
     name: "International Innovative Student",
+  },
+  {
+    name: "SABAH.HUB StartUp Academy",
+    description: "AzTU | Entrepreneurship | Succesfully Finished ✅",
   },
   { year: 2025 },
   {

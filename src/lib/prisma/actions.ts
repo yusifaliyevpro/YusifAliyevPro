@@ -1,13 +1,13 @@
 "use server";
 
-import { Contact, Prisma } from "@prisma/client";
+import { type Contact, Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 
 import prisma from "./prisma";
 
 export async function createContact(
   data: Prisma.ContactCreateInput,
-): Promise<{ contact: Contact; error?: never } | { contact?: never; error?: Error; }> {
+): Promise<{ contact: Contact; error?: never } | { contact?: never; error?: Error }> {
   try {
     const contact = await prisma.contact.create({ data });
     return { contact };

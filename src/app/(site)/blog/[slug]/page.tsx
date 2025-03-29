@@ -1,3 +1,5 @@
+import type { BLOG_POST_QUERYResult } from "@/src/sanity/types";
+import type { PortableTextBlock } from "next-sanity";
 import type { Metadata } from "next/types";
 
 import Gallery from "@/components/Gallery";
@@ -6,8 +8,6 @@ import { cn } from "@/lib/cn";
 import { dateFormatter, getReadTime } from "@/lib/formatters";
 import { getBlogPost, getBlogPosts } from "@/lib/utils";
 import { countryName, creator, keywords, locale } from "@/src/lib/shared-metadata";
-import { BLOG_POST_QUERYResult } from "@/src/sanity/types";
-import { PortableTextBlock } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";

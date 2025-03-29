@@ -1,9 +1,10 @@
 "use client";
 
+import type { Contact } from "@prisma/client";
+
 import { Chip } from "@heroui/chip";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/table";
 import { addToast, closeAll } from "@heroui/toast";
-import { Contact } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";

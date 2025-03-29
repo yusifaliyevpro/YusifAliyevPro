@@ -1,17 +1,15 @@
 "use client";
 
-import { notifySubscribers } from "@/src/lib/email/notifySubscribers";
+import { broadcastBlogPostEmail } from "@/src/lib/email/broadcastBlogPost.action";
 import { Button } from "@heroui/button";
 import { addToast } from "@heroui/toast";
-import { startTransition, useActionState, useEffect, useState } from "react";
-import { AiOutlineLoading } from "react-icons/ai";
+import { startTransition, useActionState, useEffect } from "react";
 import { useFormValue } from "sanity";
 
 export default function SendEmailComponent() {
   const slug = useFormValue(["slug"]) as { _type: "slug"; current: string };
   const isPublished = useFormValue(["isPublished"]) as boolean;
-  const [state, action, isPending] = useActionState(notifySubscribers, { message: "", success: false });
-  const [oneClick, setOneClick] = useState(false);
+  const [state, action] = useActionState(broadcastBlogPostEmail, { message: "", success: false });
   useEffect(() => {
     if (state.success) addToast({ color: "success", title: state.message });
     else if (state.message) addToast({ color: "danger", title: state.message });
@@ -24,14 +22,9 @@ export default function SendEmailComponent() {
     return <div className="flex flex-row items-center justify-center gap-x-10 font-bold">Publish before sending</div>;
   return (
     <div className="flex flex-row items-center justify-center gap-x-10">
-      <Button className="font-bold" color="primary" onPress={() => setOneClick(true)}>
-        Send Email
+      <Button className="font-bold" color="primary" onPress={handleConfirm}>
+        Create Broadcast
       </Button>
-      {oneClick && (
-        <Button className="font-bold" color="success" isDisabled={isPending || state.success} onPress={handleConfirm}>
-          {isPending ? <AiOutlineLoading className="size-4 animate-spin" /> : state.success ? "Sent!" : "Confirm"}
-        </Button>
-      )}
     </div>
   );
 }

@@ -1,10 +1,11 @@
+import type { SanityImageAsset } from "@/sanity/types";
+import type { CodeInputValue } from "@sanity/code-input";
+import type { ReactNode } from "react";
+
 import CodeBlock from "@/components/CodeBlock";
-import { SanityImageAsset } from "@/sanity/types";
 import { getImageDimensions } from "@sanity/asset-utils";
-import { CodeInputValue } from "@sanity/code-input";
-import { PortableText, PortableTextBlock, PortableTextComponents } from "next-sanity";
+import { PortableText, type PortableTextBlock, type PortableTextComponents } from "next-sanity";
 import Image from "next/image";
-import { type ReactNode } from "react";
 
 export default function RichText({ blogText }: { blogText: PortableTextBlock[] }) {
   return <PortableText components={components} value={blogText} />;

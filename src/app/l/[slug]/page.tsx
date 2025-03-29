@@ -1,5 +1,6 @@
+import type { Metadata } from "next";
+
 import { redirectToLink } from "@/src/lib/prisma/actions";
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 export default async function ShortLink({ params }: { params: Promise<{ slug: string }> }) {

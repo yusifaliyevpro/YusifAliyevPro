@@ -1,3 +1,4 @@
+import type { BLOGS_POSTS_QUERYResult } from "@/src/sanity/types";
 import type { Metadata } from "next/types";
 
 import BlogPosts from "@/components/BlogPosts";
@@ -5,7 +6,6 @@ import Search from "@/components/Search";
 import { getBlogPosts } from "@/lib/utils";
 import Subscribe from "@/src/components/Subsciption";
 import { countryName, creator, locale, profileImage } from "@/src/lib/shared-metadata";
-import { BLOGS_POSTS_QUERYResult } from "@/src/sanity/types";
 import { Button } from "@heroui/button";
 import Link from "next/link";
 import { Typewriter } from "nextjs-simple-typewriter";

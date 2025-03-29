@@ -1,6 +1,6 @@
 "use server";
 
-import { BlogPostEmail } from "@/src/components/Email/BlogPostEmail";
+import BlogPostEmail from "@/emails/BlogPostEmail";
 import { render } from "@react-email/render";
 import { Resend } from "resend";
 
@@ -9,7 +9,7 @@ import { getBlogPost } from "../utils";
 const resend = new Resend(process.env.RESEND_API_KEY);
 type TsendEmail = { message: string; success: boolean };
 
-export async function notifySubscribers(_: TsendEmail, slug: string): Promise<TsendEmail> {
+export async function broadcastBlogPostEmail(_: TsendEmail, slug: string): Promise<TsendEmail> {
   const blog = await getBlogPost(slug);
   if (!blog) return { message: "Couldn't find the blog!", success: false };
   const { description, poster, title } = blog;

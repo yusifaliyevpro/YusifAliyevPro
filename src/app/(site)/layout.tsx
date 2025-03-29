@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import KofeAlWidget from "@/components/KofeAlWidget";
 import "@/lib/env";
+import KofeAlWidget from "@/components/KofeAlWidget";
 import { BASE_URL } from "@/lib/constants";
 import {
   applicationName,
@@ -19,7 +20,6 @@ import {
 } from "@/src/lib/shared-metadata";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ReactNode } from "react";
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
