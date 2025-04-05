@@ -1,10 +1,7 @@
 {
+  "eslint.useFlatConfig": true,
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
-  },
-  "eslint.codeActionsOnSave.mode": "all",
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "eslint.useFlatConfig": true,
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": "always" }
+  }
 }

@@ -23,15 +23,9 @@ export default async function Admin() {
 }
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: `/about`,
-  },
+  title: "Admin Console",
   robots: {
     follow: false,
-    googleBot: {
-      follow: false,
-      index: false,
-    },
     index: false,
   },
 };

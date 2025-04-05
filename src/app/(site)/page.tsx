@@ -7,7 +7,7 @@ import Technologies from "@/components/Technologies";
 import Timeline from "@/components/TimeLine";
 import { cn } from "@/lib/cn";
 import { BASE_URL } from "@/lib/constants";
-import { countryName, creator, locale, profileImage } from "@/src/lib/shared-metadata";
+import { countryName, creator, locale, profileOGImage } from "@/src/lib/shared-metadata";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { Typewriter } from "nextjs-simple-typewriter";
@@ -117,7 +117,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `/` },
   openGraph: {
     countryName,
-    images: [profileImage],
+    images: [profileOGImage],
     locale,
     siteName: creator,
     type: "website",

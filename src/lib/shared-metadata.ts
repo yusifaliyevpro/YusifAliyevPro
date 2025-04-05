@@ -10,7 +10,7 @@ export const countryName = "Azerbaijan";
 export const locale = "az_AZ";
 export const description =
   "Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını tövsiyə edirəm";
-export const profileImage = { alt: "Yusif Aliyev Picture", height: 500, url: "/Profile.png", width: 500 };
+export const profileOGImage = { alt: "Yusif Aliyev Picture", height: 500, url: "/Profile.png", width: 500 };
 export const keywords = [
   "Yusif Aliyev",
   "yusifaliyevpro",

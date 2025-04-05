@@ -15,6 +15,9 @@ import React from "react";
 import { FiWatch } from "react-icons/fi";
 import { GoClock } from "react-icons/go";
 
+export const revalidate = 3600;
+export const dynamic = "force-static";
+
 export function BlogPostPageUI({ blog }: { blog: NonNullable<BLOG_POST_QUERYResult> }) {
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">

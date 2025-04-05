@@ -5,11 +5,14 @@ import BlogPosts from "@/components/BlogPosts";
 import Search from "@/components/Search";
 import { getBlogPosts } from "@/lib/utils";
 import Subscribe from "@/src/components/Subsciption";
-import { countryName, creator, locale, profileImage } from "@/src/lib/shared-metadata";
+import { countryName, creator, locale, profileOGImage } from "@/src/lib/shared-metadata";
 import { Button } from "@heroui/button";
 import Link from "next/link";
 import { Typewriter } from "nextjs-simple-typewriter";
 import { FaRegBell } from "react-icons/fa6";
+
+export const revalidate = 3600;
+export const dynamic = "force-static";
 
 export default async function BlogPostsPage() {
   const blogPosts = await getBlogPosts();
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
   description: "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
   openGraph: {
     countryName,
-    images: [profileImage],
+    images: [profileOGImage],
     locale,
     siteName: creator,
     type: "website",

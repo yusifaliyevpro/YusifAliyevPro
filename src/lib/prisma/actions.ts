@@ -46,14 +46,12 @@ export async function deleteContact(id: string) {
   }
 }
 export async function redirectToLink(slug: string) {
-  let link = "";
   try {
     const shortenLink = await prisma.shortenLink.findUnique({ where: { slug } });
-    if (shortenLink) link = shortenLink.link;
-    else throw new Error("Short Link not found");
+    if (shortenLink) redirect(shortenLink.link);
+    throw new Error("Short Link not found");
   } catch (error) {
     console.log(error);
     return { success: false };
   }
-  redirect(link);
 }
