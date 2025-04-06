@@ -15,6 +15,7 @@ export default function CopyButton({ text }: { text: string }) {
     setMouseLeaved(false);
     setIsOpen(true);
   };
+
   return (
     <div className="transition-all delay-150 duration-300">
       <Tooltip color="primary" content="Copied" isOpen={isOpen}>
