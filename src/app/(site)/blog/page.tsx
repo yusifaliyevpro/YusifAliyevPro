@@ -11,9 +11,6 @@ import Link from "next/link";
 import { Typewriter } from "nextjs-simple-typewriter";
 import { FaRegBell } from "react-icons/fa6";
 
-export const revalidate = 3600;
-export const dynamic = "force-static";
-
 export default async function BlogPostsPage() {
   const blogPosts = await getBlogPosts();
   return <BlogPostsPageUI blogPosts={blogPosts} />;
