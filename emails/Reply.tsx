@@ -1,5 +1,4 @@
-import { BASE_URL } from "@/lib/constants";
-import { Column, Font, Head, Html, Img, Preview, Row, Section, Tailwind, Text } from "@react-email/components";
+import { Column, Head, Html, Img, Preview, Row, Section, Tailwind, Text } from "@react-email/components";
 
 import { EmailFooter } from "./EmailFooter";
 import { EmailHeader } from "./EmailHeader";
