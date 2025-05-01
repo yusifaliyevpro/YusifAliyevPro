@@ -38,5 +38,4 @@ next-env.d.ts
 
 .vercel
 
-# Million Lint
-.million
+/src/prisma
