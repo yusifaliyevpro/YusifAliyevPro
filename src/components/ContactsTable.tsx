@@ -1,6 +1,6 @@
 "use client";
 
-import type { Contact } from "@prisma/client";
+import type { Contact } from "../prisma/client";
 
 import { Chip } from "@heroui/chip";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/table";
