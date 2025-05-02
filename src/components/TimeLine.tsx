@@ -67,34 +67,38 @@ function DescriptionComponent({ after, href, linkText }: { after: string; href: 
 }
 const events: Event[] = [
   {
-    description: "National Final | Gold Medal 🥇 | StartUp Category",
-    name: "International Innovative Student",
+    name: "eComX Təlim Proqramı",
+    description: "E-Ticarət | ecomx.az | 3 ay",
   },
   {
-    description: "AzTU | Entrepreneurship | Succesfully Finished ✅",
+    name: "International Innovative Student",
+    description: "National Final | Gold Medal 🥇 | StartUp Category",
+  },
+  {
     name: "SABAH.HUB StartUp Academy",
+    description: "AzTU | Entrepreneurship | Succesfully Finished ✅",
   },
   { year: 2025 },
   {
-    description: "İngiliscə tədrislə | 2024-2028 | Dövlət Sifarişli",
     name: "AzTU | Kompüter Elmləri",
+    description: "İngiliscə tədrislə | 2024-2028 | Dövlət Sifarişli",
   },
   {
-    description: <DescriptionComponent after="Websayt" href="https://world-countriess.vercel.app/" linkText="World-Countriess" />,
     name: "Developer & Creator",
+    description: <DescriptionComponent after="Websayt" href="https://world-countriess.vercel.app/" linkText="World-Countriess" />,
   },
   { year: 2024 },
   { name: "Xəmsə | 🥇 Birincilik" },
-  { description: "Beynəxlaq Yay Məktəbi", name: "Cyber Summer School 2023" },
+  { name: "Cyber Summer School 2023", description: "Beynəxlaq Yay Məktəbi" },
   {
-    description: <DescriptionComponent after="Film Websaytı" href="https://filmisbest.com/" linkText="FilmIsBest" />,
     name: "Developer & Creator",
+    description: <DescriptionComponent after="Film Websaytı" href="https://filmisbest.com/" linkText="FilmIsBest" />,
   },
   {
-    description: <DescriptionComponent after="StartUp" href="https://kitabxanano2.vercel.app/" linkText="Kitabxano2" />,
     name: "Text Editor & SEO & Debugger",
+    description: <DescriptionComponent after="StartUp" href="https://kitabxanano2.vercel.app/" linkText="Kitabxano2" />,
   },
   { name: "I Şəxsi İnkişaf Məktəbi" },
   { name: "", year: 2023 },
-  { description: "3 + 1 ay | Ayın Gənci", name: "Gənc Könüllü | Abşeron GİKM" },
+  { name: "Gənc Könüllü | Abşeron GİKM", description: "3 + 1 ay | Ayın Gənci" },
 ];
