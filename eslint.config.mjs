@@ -9,17 +9,6 @@ const eslintConfig = [
       "no-var": "off",
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-namespace": "off",
-      "react/jsx-sort-props": [
-        "error",
-        {
-          ignoreCase: true,
-          callbacksLast: true,
-          shorthandFirst: true,
-          noSortAlphabetically: false,
-          reservedFirst: true,
-          multiline: "last",
-        },
-      ],
     },
   }),
 ];
