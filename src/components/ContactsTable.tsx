@@ -11,8 +11,10 @@ import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 
 import { deleteContact, updateIsCaledInfo } from "../lib/prisma/actions";
+import { use } from "react";
 
-export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
+export default function ContactsTable({ contactsPromise }: { contactsPromise: Promise<Contact[]> }) {
+  const contacts = use(contactsPromise);
   const router = useRouter();
   const calledIDs = contacts.filter((c) => c.isCalled).map((c) => c.id);
 
@@ -47,11 +49,11 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
       aria-label="User management table"
       color="primary"
       disabledKeys={calledIDs}
-      classNames={{
-        wrapper: "min-h-[400px]",
-      }}
+      classNames={{ wrapper: "min-h-[400px]" }}
     >
-      <TableHeader columns={columns}>{(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}</TableHeader>
+      <TableHeader columns={columns}>
+        {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
+      </TableHeader>
       <TableBody items={contacts}>
         {(contact) => (
           <TableRow key={contact.id}>
@@ -77,7 +79,10 @@ export default function ContactsTable({ contacts }: { contacts: Contact[] }) {
                 className={`cursor-pointer text-2xl ${contact.isCalled ? "text-danger" : "text-success"}`}
                 onClick={() => handleUpdate(contact)}
               />
-              <MdDeleteOutline className={`cursor-pointer text-2xl text-danger`} onClick={() => handleDelete(contact)} />
+              <MdDeleteOutline
+                className={`cursor-pointer text-2xl text-danger`}
+                onClick={() => handleDelete(contact)}
+              />
             </TableCell>
           </TableRow>
         )}

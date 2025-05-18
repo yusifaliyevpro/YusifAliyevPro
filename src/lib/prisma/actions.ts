@@ -23,6 +23,7 @@ export async function getAllContacts() {
     return contacts.sort((a, b) => Number(a.isCalled) - Number(b.isCalled));
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
 
