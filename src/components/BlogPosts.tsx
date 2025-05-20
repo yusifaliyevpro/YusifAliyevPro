@@ -2,29 +2,35 @@
 
 import { cn } from "@/lib/cn";
 import { dateFormatter } from "@/lib/formatters";
-import Fuse from "fuse.js";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { GoClock } from "react-icons/go";
-
 import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import Fuse from "fuse.js";
 
-import { LoadMoreButton } from "./LoadMore";
+const LoadMore = dynamic(() => import("./LoadMore"), { loading: () => <p>Loading...</p> });
 
 export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
+  const [results, setResults] = useState(blogPosts);
   const searchParams = useSearchParams();
-  const search = searchParams.get("search");
+  const search = searchParams.get("search")?.trim();
   const page = Number(searchParams.get("page")) || 1;
-
-  let renderedBlogs = blogPosts;
   const fuse = new Fuse(blogPosts, { keys: ["title", "description"], threshold: 0.4 });
-  if (search) {
-    const result = fuse.search(search);
-    renderedBlogs = result.map(({ item }) => item);
-  } else {
-    renderedBlogs = renderedBlogs.slice(0, page * 12);
-  }
+
+  useEffect(() => {
+    const runSearch = async () => {
+      if (search) {
+        const result = fuse.search(search);
+        setResults(result.map(({ item }) => item));
+      } else {
+        setResults(blogPosts.slice(0, page * 12));
+      }
+    };
+    runSearch();
+  }, [search, page]);
 
   return (
     <>
@@ -38,9 +44,9 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
           "xl:grid-cols-3",
         )}
       >
-        {renderedBlogs.map((blog, i) => (
+        {results.map((blog) => (
           <article
-            key={i}
+            key={blog.slug}
             className={cn(
               "cursor-pointer rounded-lg border-solid bg-white pb-5 shadow-medium transition-all",
               "col-span-1 flex flex-col items-center justify-start",
@@ -67,7 +73,9 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
               <div className="pl-6 pr-4">
-                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">{blog.title}</h3>
+                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">
+                  {blog.title}
+                </h3>
                 <p
                   className={cn(
                     "line-clamp-2 w-fit text-wrap font-signika text-lg font-medium leading-relaxed text-gray-500",
@@ -101,7 +109,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
           </article>
         ))}
       </section>
-      {renderedBlogs.length !== blogPosts.length && <LoadMoreButton />}
+      {!search && blogPosts.length !== results.length && <LoadMore />}
     </>
   );
 }

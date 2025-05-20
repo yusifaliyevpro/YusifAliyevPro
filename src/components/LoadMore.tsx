@@ -3,10 +3,9 @@
 import { Button } from "@heroui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-
 import { cn } from "../lib/cn";
 
-export function LoadMoreButton() {
+export default function LoadMore() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const searchQuery = searchParams.get("search")?.trim() || "";
