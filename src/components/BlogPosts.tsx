@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { GoClock } from "react-icons/go";
 import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Fuse from "fuse.js";
 
@@ -18,7 +18,10 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
   const searchParams = useSearchParams();
   const search = searchParams.get("search")?.trim();
   const page = Number(searchParams.get("page")) || 1;
-  const fuse = new Fuse(blogPosts, { keys: ["title", "description"], threshold: 0.4 });
+  const fuse = useMemo(
+    () => new Fuse(blogPosts, { keys: ["title", "description"], threshold: 0.4 }),
+    [blogPosts],
+  );
 
   useEffect(() => {
     const runSearch = async () => {
@@ -30,7 +33,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
       }
     };
     runSearch();
-  }, [search, page]);
+  }, [blogPosts, fuse, search, page]);
 
   return (
     <>
