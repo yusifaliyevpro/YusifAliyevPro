@@ -4,9 +4,10 @@ import { TbExternalLink } from "react-icons/tb";
 
 import { getProjects } from "../lib/utils";
 import Reveal from "./Reveal";
+import type { Variants } from "motion/dist/react";
 
-const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
-const itemVariants = {
+const containerVariants: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
+const itemVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.2, stiffness: 60, type: "spring" } },
 };
@@ -15,7 +16,10 @@ export default async function Projects() {
   const projects = await getProjects();
   return (
     <section aria-label="Layihələrim" className="flex min-h-svh flex-col items-center gap-y-16">
-      <Reveal as="h2" className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl">
+      <Reveal
+        as="h2"
+        className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
+      >
         Layihələrim
       </Reveal>
       <motion.ul
@@ -28,7 +32,7 @@ export default async function Projects() {
         {projects.map((project, i) => (
           <motion.li
             key={i}
-            className="items-center justify-center rounded-2xl shadow-neon-blue"
+            className="shadow-neon-blue items-center justify-center rounded-2xl"
             variants={itemVariants}
             viewport={{ once: true }}
           >
@@ -47,7 +51,7 @@ export default async function Projects() {
                 <Image
                   alt={`${project.name} logo`}
                   blurDataURL={project.imageMetadata.lqip || ""}
-                  className="aspect-[16/10] size-auto max-h-44 rounded-2xl object-cover shadow-medium transition-all hover:blur-md md:max-h-48"
+                  className="shadow-medium aspect-[16/10] size-auto max-h-44 rounded-2xl object-cover transition-all hover:blur-md md:max-h-48"
                   height={200}
                   placeholder="blur"
                   quality={100}

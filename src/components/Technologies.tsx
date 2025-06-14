@@ -3,17 +3,24 @@ import * as motion from "motion/react-client";
 import Image from "next/image";
 
 import Reveal from "./Reveal";
+import type { Variants } from "motion/dist/react";
 
-const olVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
-const itemVariants = {
+const olVariants: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
+const itemVariants: Variants = {
   hidden: { opacity: 0, scale: 0 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5, stiffness: 100, type: "spring" } },
 };
 
 export default function Technologies() {
   return (
-    <section aria-label="Texnologiyalar" className="flex min-h-svh w-full flex-col items-center px-5 md:px-52">
-      <Reveal as="h2" className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl">
+    <section
+      aria-label="Texnologiyalar"
+      className="flex min-h-svh w-full flex-col items-center px-5 md:px-52"
+    >
+      <Reveal
+        as="h2"
+        className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl"
+      >
         Texnologiyalar
       </Reveal>
       <motion.ol
@@ -26,14 +33,14 @@ export default function Technologies() {
         {techs.map((tech, i) => (
           <motion.li
             key={i}
-            className="flex aspect-square rounded-lg bg-white p-3 shadow-medium dark:bg-slate-800 max-lg:items-center max-lg:justify-center lg:p-3"
+            className="shadow-medium flex aspect-square rounded-lg bg-white p-3 max-lg:items-center max-lg:justify-center lg:p-3 dark:bg-slate-800"
             variants={itemVariants}
           >
             <h3 className="sr-only">{tech.name}</h3>
             <Tooltip shouldFlip showArrow color="primary" content={tech.name} offset={23} size="lg">
               <Image
                 alt={tech.name}
-                className="select-none object-contain drop-shadow-2xl max-lg:size-16"
+                className="object-contain drop-shadow-2xl select-none max-lg:size-16"
                 height={90}
                 src={tech.icon}
                 width={90}
@@ -46,7 +53,7 @@ export default function Technologies() {
   );
 }
 
-type Tech = { icon: string; link: string; name: string; };
+type Tech = { icon: string; link: string; name: string };
 
 const techs: Tech[] = [
   { icon: "/techs/next.svg", link: "https://nextjs.org/", name: "NextJS 15" },
