@@ -1,6 +1,14 @@
 "use client";
 
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@heroui/navbar";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+} from "@heroui/navbar";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import Link from "next/link";
@@ -124,13 +132,15 @@ const socialAccounts: {
     name: "Instagram",
   },
   {
-    className: "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
+    className:
+      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
     icon: <LiaFacebook strokeWidth={0.3} />,
     link: FacebookAccount,
     name: "FaceBook",
   },
   {
-    className: "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
+    className:
+      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
     icon: <PiLinkedinLogoBold />,
     link: LinkedInAccount,
     name: "LinkedIn",

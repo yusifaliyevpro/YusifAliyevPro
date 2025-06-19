@@ -51,7 +51,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
           <article
             key={blog.slug}
             className={cn(
-              "shadow-medium cursor-pointer rounded-lg border-solid bg-white pb-5 transition-all",
+              "cursor-pointer rounded-lg border-solid bg-white pb-5 shadow-medium transition-all",
               "col-span-1 flex flex-col items-center justify-start",
               "hover:scale-105",
               "dark:bg-gray-800",
@@ -61,7 +61,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
               <figure
                 className={cn(
                   "flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg",
-                  "border-t-0 border-b-1 border-solid dark:border-0",
+                  "border-b-1 border-t-0 border-solid dark:border-0",
                 )}
               >
                 <Image
@@ -75,13 +75,13 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
                 />
                 <figcaption className="sr-only">{blog.title} Poster</figcaption>
               </figure>
-              <div className="pr-4 pl-6">
+              <div className="pl-6 pr-4">
                 <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">
                   {blog.title}
                 </h3>
                 <p
                   className={cn(
-                    "font-signika line-clamp-2 w-fit text-lg leading-relaxed font-medium text-wrap text-gray-500",
+                    "line-clamp-2 w-fit text-wrap font-signika text-lg font-medium leading-relaxed text-gray-500",
                     "md:line-clamp-6",
                     "dark:text-slate-400/80",
                   )}
@@ -93,7 +93,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResul
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
                     alt="Profile Picture"
-                    className="shadow-medium rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px]"
+                    className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-medium"
                     height={45}
                     quality={100}
                     src="/Profile.png"

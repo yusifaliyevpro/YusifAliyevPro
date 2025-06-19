@@ -34,8 +34,8 @@ export default async function Home() {
         >
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev, a Full-Stack Developer</h1>
           <p className="sr-only">
-            Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir
-            baxış atmağını tövsiyə edirəm
+            Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə
+            bütün səhifələrə bir baxış atmağını tövsiyə edirəm
           </p>
           <Reveal
             first

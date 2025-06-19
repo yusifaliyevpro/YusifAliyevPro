@@ -14,7 +14,13 @@ type RevealProps<T extends ElementType = "div"> = {
   first?: boolean;
 } & React.ComponentPropsWithoutRef<T>;
 
-export default function Reveal<T extends ElementType = "div">({ as, children, className, first, ...props }: RevealProps<T>) {
+export default function Reveal<T extends ElementType = "div">({
+  as,
+  children,
+  className,
+  first,
+  ...props
+}: RevealProps<T>) {
   const Tag = as || "div";
   const ref = useRef<null>(null);
   const isInView = useInView(ref, { amount: 0.7, once: true });

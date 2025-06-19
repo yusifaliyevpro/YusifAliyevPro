@@ -1,5 +1,16 @@
 import { BASE_URL } from "@/src/lib/constants";
-import { Column, Head, Heading, Html, Img, Preview, Row, Section, Tailwind, Text } from "@react-email/components";
+import {
+  Column,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Preview,
+  Row,
+  Section,
+  Tailwind,
+  Text,
+} from "@react-email/components";
 
 import { EmailFooter } from "./EmailFooter";
 import { EmailHeader } from "./EmailHeader";
@@ -25,7 +36,8 @@ export default function WelcomeEmail({ firstName, lastName }: TWelcomeEmail) {
       >
         <Head />
         <Preview>
-          Paylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün tez-tez emailinizi yoxlamağı unutmayın!
+          Paylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün tez-tez emailinizi yoxlamağı
+          unutmayın!
         </Preview>
         <EmailHeader />
         <Section className="my-4">
@@ -48,7 +60,8 @@ export default function WelcomeEmail({ firstName, lastName }: TWelcomeEmail) {
               Abunə olduğunuz üçün Təşəkkürlər!
             </Heading>
             <Text className="my-5 text-xl leading-6 text-gray-500 lg:px-20">
-              Paylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün tez-tez emailinizi yoxlamağı unutmayın!
+              Paylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün tez-tez emailinizi yoxlamağı
+              unutmayın!
             </Text>
           </Section>
         </Section>

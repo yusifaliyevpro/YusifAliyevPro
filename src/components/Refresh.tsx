@@ -9,11 +9,25 @@ export function BlogRefreshButton() {
   const router = useRouter();
   const refresh = () => {
     router.refresh();
-    addToast({ color: "success", shouldShowTimeoutProgress: true, timeout: 1500, title: "All blog are upto date!" });
+    addToast({
+      color: "success",
+      shouldShowTimeoutProgress: true,
+      timeout: 1500,
+      title: "All blog are upto date!",
+    });
   };
   return (
-    <div className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}>
-      <Button isIconOnly className="pointer-events-auto" color="primary" radius="full" size="lg" onPress={refresh}>
+    <div
+      className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}
+    >
+      <Button
+        isIconOnly
+        className="pointer-events-auto"
+        color="primary"
+        radius="full"
+        size="lg"
+        onPress={refresh}
+      >
         <RxUpdate />
       </Button>
     </div>

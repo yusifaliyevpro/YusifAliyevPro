@@ -1,6 +1,6 @@
 "use server";
 
-import type { Prisma, Contact } from "@/prisma/client";
+import type { Contact, Prisma } from "@/generated/prisma/client";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 

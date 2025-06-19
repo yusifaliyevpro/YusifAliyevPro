@@ -1,5 +1,17 @@
 import { BASE_URL } from "@/lib/constants";
-import { Button, Column, Head, Heading, Html, Img, Preview, Row, Section, Tailwind, Text } from "@react-email/components";
+import {
+  Button,
+  Column,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Preview,
+  Row,
+  Section,
+  Tailwind,
+  Text,
+} from "@react-email/components";
 
 import { EmailFooter } from "./EmailFooter";
 import { EmailHeader } from "./EmailHeader";
@@ -57,7 +69,10 @@ export default function BlogPostEmail({
               {title}
             </Heading>
             <Text className="text-base leading-6 text-gray-500 lg:px-20">{description}</Text>
-            <Button className="mt-4 rounded-lg bg-blue-600 px-10 py-3 font-semibold text-white" href={`${BASE_URL}/blog/${slug}`}>
+            <Button
+              className="mt-4 rounded-lg bg-blue-600 px-10 py-3 font-semibold text-white"
+              href={`${BASE_URL}/blog/${slug}`}
+            >
               Daha çox oxu
             </Button>
           </Section>

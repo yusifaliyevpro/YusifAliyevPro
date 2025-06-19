@@ -23,7 +23,9 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYRes
         <header className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
           <div className="w-full space-y-5 font-poppins sm:w-fit">
             <h1 className="w-full text-left text-4xl font-semibold">✍️ Bloq yazılarım</h1>
-            <p className="sr-only">Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.</p>
+            <p className="sr-only">
+              Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.
+            </p>
             <span className="flex h-24 max-w-[25rem] text-wrap pl-3 text-lg font-normal text-slate-600 dark:text-slate-400 sm:h-12">
               <Typewriter
                 loop={1}

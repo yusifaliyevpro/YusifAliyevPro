@@ -21,7 +21,11 @@ export default function SubscribeComponent() {
 
   useEffect(() => {
     if (state.success)
-      addToast({ color: "success", description: "Emailinizi yoxlayın!", title: "Müvəffəqiyətlə abunə oldunuz!" });
+      addToast({
+        color: "success",
+        description: "Emailinizi yoxlayın!",
+        title: "Müvəffəqiyətlə abunə oldunuz!",
+      });
   }, [state]);
 
   return (

@@ -8,6 +8,7 @@
     "paths": {
       "@/*": ["./*"],
       "@/src/*": ["./src/*"],
+      "@/generated/*": ["./src/generated/*"],
       "@/emails/*": ["./emails/*"],
       "@/components/*": ["./src/components/*"],
       "@/lib/*": ["./src/lib/*"],

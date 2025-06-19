@@ -12,7 +12,10 @@ const SubscriberSchema = z.object({
   fullName: z
     .string()
     .trim()
-    .regex(/^(?:\S{3,}\s+){1}\S{3,}$/, "Tam Ad iki hissədən ibarət olmalı və hər hissə minimum 3 hərfdən ibarət olmalıdır!"),
+    .regex(
+      /^(?:\S{3,}\s+){1}\S{3,}$/,
+      "Tam Ad iki hissədən ibarət olmalı və hər hissə minimum 3 hərfdən ibarət olmalıdır!",
+    ),
 });
 
 export type TState = { errors?: { email?: string[]; fullName?: string[] }; success: boolean };

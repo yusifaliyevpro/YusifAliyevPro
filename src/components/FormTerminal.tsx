@@ -66,8 +66,8 @@ export default function FormTerminal() {
       <div className="flex min-h-[22rem] flex-col overflow-y-scroll p-3 scrollbar-hide">
         <p>Elə isə layihən mənə çox maraqlı gəlir✨</p>
         <span className="mr-2 overflow-hidden text-nowrap pb-3">
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         </span>
         <div className="flex flex-col gap-y-3 transition-all">
           <Input
@@ -152,7 +152,12 @@ export default function FormTerminal() {
               "sr-only": !isEnteredDescription || message,
             })}
           >
-            <Button className="text-base font-bold text-slate-800" color="warning" radius="sm" onPress={clearAll}>
+            <Button
+              className="text-base font-bold text-slate-800"
+              color="warning"
+              radius="sm"
+              onPress={clearAll}
+            >
               Yenidən başlat
             </Button>
             <Button className="text-base font-bold" color="primary" radius="sm" onPress={handleSubmit}>

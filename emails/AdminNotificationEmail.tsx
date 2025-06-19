@@ -36,7 +36,10 @@ export default function AdminNotificationEmail({
               {name}
             </Heading>
             <Text className="text-base leading-6 text-gray-500 lg:px-20">{description}</Text>
-            <Button className="mt-4 rounded-lg bg-blue-600 px-10 py-3 font-semibold text-white" href={`${BASE_URL}/admin`}>
+            <Button
+              className="mt-4 rounded-lg bg-blue-600 px-10 py-3 font-semibold text-white"
+              href={`${BASE_URL}/admin`}
+            >
               Admin Console
             </Button>
           </Section>

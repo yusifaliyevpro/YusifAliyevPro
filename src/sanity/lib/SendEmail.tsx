@@ -19,7 +19,11 @@ export default function SendEmailComponent() {
   }
 
   if (!isPublished)
-    return <div className="flex flex-row items-center justify-center gap-x-10 font-bold">Publish before sending</div>;
+    return (
+      <div className="flex flex-row items-center justify-center gap-x-10 font-bold">
+        Publish before sending
+      </div>
+    );
   return (
     <div className="flex flex-row items-center justify-center gap-x-10">
       <Button className="font-bold" color="primary" onPress={handleConfirm}>
