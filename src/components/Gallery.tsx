@@ -75,7 +75,10 @@ export default function Gallery({
   return (
     <div className="my-2 md:my-10">
       <div className="mb-4 flex min-h-80 w-full flex-row items-center justify-between overflow-hidden">
-        <IoIosArrowBack className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600" onClick={handleBack} />
+        <IoIosArrowBack
+          className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600"
+          onClick={handleBack}
+        />
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
@@ -98,7 +101,10 @@ export default function Gallery({
             />
           </motion.div>
         </AnimatePresence>
-        <IoIosArrowForward className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600" onClick={handleForward} />
+        <IoIosArrowForward
+          className="cursor-pointer text-5xl text-slate-600 hover:text-blue-600"
+          onClick={handleForward}
+        />
       </div>
       <div
         ref={previewContainerRef}

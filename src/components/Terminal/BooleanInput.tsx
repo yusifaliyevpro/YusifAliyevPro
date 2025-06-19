@@ -44,7 +44,8 @@ export function BooleanInput({
         })}
       >
         <FaArrowRightLong className="text-lg text-green-600" />
-        <span className="text-blue-500">$</span> <span className="text-nowrap text-slate-500">{placeholder}</span>
+        <span className="text-blue-500">$</span>{" "}
+        <span className="text-nowrap text-slate-500">{placeholder}</span>
         <div className="flex flex-row gap-x-3">
           <Button className="font-bold" color="warning" radius="sm" onPress={() => setIsEntered(true)}>
             Xeyr

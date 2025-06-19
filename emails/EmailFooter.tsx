@@ -21,7 +21,9 @@ export function EmailFooter() {
                   />
                 </Column>
                 <Column align="center">
-                  <Text className="my-[2px] text-[16px] font-semibold leading-[12px] text-gray-900">Yusif Aliyev</Text>
+                  <Text className="my-[2px] text-[16px] font-semibold leading-[12px] text-gray-900">
+                    Yusif Aliyev
+                  </Text>
                   <Text className="leading-[12px]] mb-0 text-[16px] text-gray-500">Think different</Text>
                 </Column>
               </Row>
@@ -71,7 +73,9 @@ export function EmailFooter() {
           </tr>
           <tr>
             <td align="center">
-              <Text className="my-[8px] text-[16px] font-semibold leading-[24px] text-gray-500">Bakı, Azərbaycan</Text>
+              <Text className="my-[8px] text-[16px] font-semibold leading-[24px] text-gray-500">
+                Bakı, Azərbaycan
+              </Text>
             </td>
           </tr>
           <tr>

@@ -3,9 +3,13 @@ import { Poppins } from "next/font/google";
 import Image from "next/image";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "600" });
-type TKofeAlWidget = { isActiveOnMobile?: boolean; isHoverable?: boolean; username: string; };
+type TKofeAlWidget = { isActiveOnMobile?: boolean; isHoverable?: boolean; username: string };
 
-export default function KofeAlWidget({ isActiveOnMobile = false, isHoverable = false, username }: TKofeAlWidget) {
+export default function KofeAlWidget({
+  isActiveOnMobile = false,
+  isHoverable = false,
+  username,
+}: TKofeAlWidget) {
   return (
     <div
       className={`group ${poppins.className} ${isActiveOnMobile ? "flex" : "hidden md:flex"} pointer-events-none sticky bottom-0 right-0 z-0 w-full cursor-auto flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7`}
@@ -23,7 +27,9 @@ export default function KofeAlWidget({ isActiveOnMobile = false, isHoverable = f
           className={`transition-all duration-200 ${isHoverable && "group-hover:lg:w-auto group-hover:lg:px-4 group-hover:lg:py-2 group-hover:lg:pl-6"}`}
         >
           <p className={`hidden text-lg dark:text-black ${isHoverable && "group-hover:lg:flex"}`}>
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">kofe.al</span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              kofe.al
+            </span>
             /@{username}
           </p>
         </div>

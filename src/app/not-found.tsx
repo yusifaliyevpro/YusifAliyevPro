@@ -24,7 +24,9 @@ export default function NotFound() {
           </Link>
           <p>4</p>
         </div>
-        <h1 className="px-10 text-center text-2xl lg:px-72 lg:text-3xl">The Page you are looking for was not found!</h1>
+        <h1 className="px-10 text-center text-2xl lg:px-72 lg:text-3xl">
+          The Page you are looking for was not found!
+        </h1>
       </main>
     </>
   );

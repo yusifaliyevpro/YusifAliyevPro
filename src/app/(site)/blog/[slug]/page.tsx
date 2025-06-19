@@ -32,14 +32,14 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BLOG_POST_QUERYResu
             "mt-24 flex min-h-[50svh] w-full flex-col items-center bg-white p-8 py-12",
             "md:rounded-t-md md:border-b-[0.8px]",
             "lg:shadow-ltr-small",
-            "dark:bg-foreground dark:border-0",
+            "dark:border-0 dark:bg-foreground",
             "border-b-[0px] border-solid border-gray-300",
           )}
         >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               alt="Yusif Aliyev Picture"
-              className="shadow-large rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-blue-500"
+              className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-large shadow-blue-500"
               height={50}
               quality={100}
               src={"/Profile.png"}
@@ -64,12 +64,12 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BLOG_POST_QUERYResu
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h1 className="flex px-5 py-5 text-center text-4xl leading-snug font-bold lg:text-5xl">
+            <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
               {blog.title}
             </h1>
             <p
               className={cn(
-                "text-center text-lg leading-normal font-normal text-pretty text-gray-500",
+                "text-pretty text-center text-lg font-normal leading-normal text-gray-500",
                 "md:px-12",
                 "lg:px-20 lg:text-xl",
                 "dark:text-slate-300/80",
@@ -81,8 +81,8 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BLOG_POST_QUERYResu
         </header>
       </article>
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
-        <div className="lg:shadow-small flex min-h-svh w-full flex-col md:rounded-b-md">
-          <figure className="relative aspect-[16/9] h-full border-solid md:border-b-1 dark:border-0">
+        <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
+          <figure className="relative aspect-[16/9] h-full border-solid dark:border-0 md:border-b-1">
             <Image
               fill
               priority
@@ -94,7 +94,7 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BLOG_POST_QUERYResu
             />
             <figcaption className="sr-only">{blog.title}</figcaption>
           </figure>
-          <article className="flex flex-col px-6 pt-6 pb-10 transition-all md:px-12 lg:px-20">
+          <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-20">
             <RichText blogText={blog.text as PortableTextBlock[]} />
             {blog.gallery && <Gallery images={blog.gallery} />}
           </article>

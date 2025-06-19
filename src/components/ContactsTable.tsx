@@ -1,6 +1,6 @@
 "use client";
 
-import type { Contact } from "@/prisma/client";
+import type { Contact } from "@/generated/prisma/client";
 
 import { Chip } from "@heroui/chip";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/table";
@@ -80,7 +80,7 @@ export default function ContactsTable({ contactsPromise }: { contactsPromise: Pr
                 onClick={() => handleUpdate(contact)}
               />
               <MdDeleteOutline
-                className={`text-danger cursor-pointer text-2xl`}
+                className={`cursor-pointer text-2xl text-danger`}
                 onClick={() => handleDelete(contact)}
               />
             </TableCell>

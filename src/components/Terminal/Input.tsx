@@ -52,7 +52,8 @@ export function Input({
         })}
       >
         <FaArrowRightLong className="text-lg text-green-600" />
-        <span className="text-blue-500">$</span> <span className="text-nowrap text-slate-500">{placeholder}</span>
+        <span className="text-blue-500">$</span>{" "}
+        <span className="text-nowrap text-slate-500">{placeholder}</span>
         <HeroInput
           ref={ref}
           autoFocus

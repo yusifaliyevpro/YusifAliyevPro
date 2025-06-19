@@ -1,6 +1,6 @@
 "use server";
 
-import type { Prisma, Contact } from "@/prisma/client";
+import type { Contact, Prisma } from "@/generated/prisma/client";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
@@ -11,6 +11,7 @@ export async function createContact(
     const contact = await prisma.contact.create({ data });
     return { contact };
   } catch (error) {
+    console.log(error);
     if (error instanceof Error) return { error };
     return { error: new Error("An error occured while executing createContact action") };
   }

@@ -18,7 +18,10 @@ export default function About() {
         </div>
       </section>
 
-      <section className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40" id="2">
+      <section
+        className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40"
+        id="2"
+      >
         <h2 className="text-5xl leading-normal text-slate-900 lg:text-7xl">Layihən üçün websayt lazımdır?</h2>
         <div className="flex flex-row gap-x-7">
           <Link href="#3">
@@ -32,8 +35,13 @@ export default function About() {
         </div>
       </section>
 
-      <section className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40" id="3">
-        <h2 className="w-fit text-5xl leading-normal text-slate-900 lg:text-7xl">Mənlə birlikdə etmək istəyirsən?</h2>
+      <section
+        className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40"
+        id="3"
+      >
+        <h2 className="w-fit text-5xl leading-normal text-slate-900 lg:text-7xl">
+          Mənlə birlikdə etmək istəyirsən?
+        </h2>
         <div className="flex flex-row gap-x-7">
           <Link href="#4">
             <button
