@@ -11,6 +11,7 @@ export async function createContact(
     const contact = await prisma.contact.create({ data });
     return { contact };
   } catch (error) {
+    console.log(error);
     if (error instanceof Error) return { error };
     return { error: new Error("An error occured while executing createContact action") };
   }

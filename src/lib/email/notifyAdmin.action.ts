@@ -1,4 +1,5 @@
 "use server";
+
 import AdminNotificationEmail from "@/emails/AdminNotificationEmail";
 import { Resend } from "resend";
 

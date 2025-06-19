@@ -43,7 +43,6 @@ export default function FormTerminal() {
     setIsSending(true);
     const formData = { description, email, fullName, hasWhatsApp, phone };
     const { contact, error } = await createContact(formData);
-    if (error) console.log(error);
     if (contact) await notifyAdmin({ description: contact.description, name: contact.fullName });
     if (error) {
       setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
