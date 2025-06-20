@@ -10,42 +10,26 @@ export async function createContact(
   try {
     const contact = await prisma.contact.create({ data });
     return { contact };
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error);
-    if (error instanceof Error) return { error };
     return { error: new Error("An error occured while executing createContact action") };
   }
 }
 
 export async function getAllContacts() {
-  try {
-    const contacts = await prisma.contact.findMany();
-    return contacts.sort((a, b) => Number(a.isCalled) - Number(b.isCalled));
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
+  return await prisma.contact.findMany({ orderBy: { isCalled: "asc" } });
 }
 
 export async function updateIsCaledInfo(id: string, isCalled: boolean) {
-  try {
-    await prisma.contact.update({ data: { isCalled: !isCalled }, where: { id } });
-    return true;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
+  await prisma.contact.update({ data: { isCalled: !isCalled }, where: { id } });
+  return true;
 }
 
 export async function deleteContact(id: string) {
-  try {
-    await prisma.contact.delete({ where: { id } });
-    return true;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
+  await prisma.contact.delete({ where: { id } });
+  return true;
 }
+
 export async function redirectToLink(slug: string) {
   const shortenLink = await prisma.shortenLink.findUnique({ where: { slug } });
   if (!shortenLink) return { success: false };

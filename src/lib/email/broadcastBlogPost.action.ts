@@ -24,8 +24,8 @@ export async function broadcastBlogPostEmail(_: TsendEmail, slug: string): Promi
     subject: title,
     text,
   });
+
   if (!broadcast.data) return { message: "An error occured while creating broadcast", success: false };
 
-  // await resend.broadcasts.send(broadcast.data.id);
   return { message: `Broadcast created successfully`, success: true };
 }

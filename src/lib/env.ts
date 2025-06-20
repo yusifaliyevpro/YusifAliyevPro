@@ -1,15 +1,13 @@
 import { z } from "zod";
 
-const EnvSchema = z
-  .object({
-    DATABASE_URL: z.string().trim().min(3),
-    NEXT_PUBLIC_PREVIEW_URL: z.string().trim().min(3).url(),
-    NEXT_PUBLIC_SANITY_DATASET: z.string().trim().min(3),
-    NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().trim().min(3),
-    RESEND_API_KEY: z.string().trim().min(3),
-    RESEND_AUDIENCE_KEY: z.string().trim().min(3),
-  })
-  .required();
+const EnvSchema = z.object({
+  DATABASE_URL: z.string().trim().min(3),
+  NEXT_PUBLIC_PREVIEW_URL: z.string().trim().min(3),
+  NEXT_PUBLIC_SANITY_DATASET: z.string().trim().min(3),
+  NEXT_PUBLIC_SANITY_PROJECT_ID: z.string().trim().min(3),
+  RESEND_API_KEY: z.string().trim().min(3),
+  RESEND_AUDIENCE_KEY: z.string().trim().min(3),
+});
 
 type EnvSchemaType = z.infer<typeof EnvSchema>;
 
