@@ -1,3 +1,4 @@
+"use server";
 import type {
   BLOG_POST_PREVIEW_QUERYResult,
   BLOG_POST_QUERYResult,
