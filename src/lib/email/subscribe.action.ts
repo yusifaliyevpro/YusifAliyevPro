@@ -3,31 +3,34 @@
 import WelcomeEmail from "@/emails/WelcomeEmail";
 import { render } from "@react-email/render";
 import { Resend } from "resend";
-import { z } from "zod";
+import { SubscriberSchema, type SubscriberFormData } from "./validation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const SubscriberSchema = z.object({
-  email: z.string().email("Emaili düzgün daxil edin!"),
-  fullName: z
-    .string()
-    .trim()
-    .regex(
-      /^(?:\S{3,}\s+){1}\S{3,}$/,
-      "Tam Ad iki hissədən ibarət olmalı və hər hissə minimum 3 hərfdən ibarət olmalıdır!",
-    ),
-});
+type AddSubscriberActionState = {
+  success: boolean;
+  data: Partial<SubscriberFormData>;
+  errors?: Partial<Record<keyof SubscriberFormData, string>>;
+};
 
-export type TState = { errors?: { email?: string[]; fullName?: string[] }; success: boolean };
-export async function subscribe(_: TState, formData: FormData): Promise<TState> {
+export async function addSubscriber(
+  _: AddSubscriberActionState,
+  formData: FormData,
+): Promise<AddSubscriberActionState> {
   const subscriberFormData = Object.fromEntries(formData);
-  const parsedSubscriber = SubscriberSchema.safeParse(subscriberFormData);
-  if (!parsedSubscriber.success) {
-    const formFieldErrors = parsedSubscriber.error.flatten().fieldErrors;
-    return { errors: formFieldErrors, success: false };
+  const result = SubscriberSchema.safeParse(subscriberFormData);
+
+  if (!result.success) {
+    const errors: AddSubscriberActionState["errors"] = {};
+    for (const issue of result.error.issues) {
+      const field = issue.path[0] as keyof SubscriberFormData;
+      errors[field] = issue.message;
+    }
+
+    return { success: false, data: subscriberFormData, errors };
   }
 
-  const { email, fullName } = parsedSubscriber.data;
+  const { email, fullName } = result.data;
   const [firstName, lastName] = fullName.split(" ").filter(Boolean);
 
   await resend.contacts.create({
@@ -38,9 +41,8 @@ export async function subscribe(_: TState, formData: FormData): Promise<TState> 
     unsubscribed: false,
   });
 
-  const text = await render(WelcomeEmail({ firstName, lastName }), {
-    plainText: true,
-  });
+  const text = await render(WelcomeEmail({ firstName, lastName }), { plainText: true });
+
   await resend.emails.send({
     from: "Yusif Aliyev <subscription@blog.yusifaliyevpro.com>",
     react: WelcomeEmail({ firstName, lastName }),
@@ -48,5 +50,5 @@ export async function subscribe(_: TState, formData: FormData): Promise<TState> 
     text,
     to: email,
   });
-  return { success: true };
+  return { success: true, data: {} };
 }

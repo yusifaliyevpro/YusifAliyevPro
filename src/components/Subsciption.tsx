@@ -1,36 +1,44 @@
 "use client";
 
-import { subscribe } from "@/lib/email/subscribe.action";
+import { addSubscriber } from "@/lib/email/subscribe.action";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
-import { type FormEvent, startTransition, useActionState, useEffect } from "react";
+import { type FormEvent, startTransition, useActionState, useEffect, useRef } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
 
-const initialState = { errors: { email: [], fullName: [] }, success: false };
+const initialState = {
+  success: false,
+  data: { fullName: "", email: "" },
+  errors: {},
+};
 
 export default function SubscribeComponent() {
-  const [state, formAction, isPending] = useActionState(subscribe, initialState);
+  const [state, formAction, isPending] = useActionState(addSubscriber, initialState);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.target as HTMLFormElement);
+    const formData = new FormData(event.currentTarget);
     startTransition(() => formAction(formData));
   };
 
   useEffect(() => {
-    if (state.success)
+    if (state.success) {
+      formRef.current?.reset();
       addToast({
         color: "success",
         description: "Emailinizi yoxlayın!",
         title: "Müvəffəqiyətlə abunə oldunuz!",
       });
+    }
   }, [state]);
 
   return (
     <div className="w-full px-5 lg:w-2/5" id="subscription">
       <form
+        ref={formRef}
         noValidate
         className="my-10 overflow-hidden rounded-2xl bg-gradient-to-tr from-blue-600 to-blue-300 shadow-xl"
         onSubmit={handleSubmit}
@@ -48,13 +56,14 @@ export default function SubscribeComponent() {
                 </label>
                 <Input
                   fullWidth
-                  errorMessage={<InputErrors errors={state.errors?.fullName} />}
+                  errorMessage={state.errors?.fullName}
                   id="fullName"
-                  isInvalid={!!state.errors?.fullName?.length}
+                  isInvalid={!!state.errors?.fullName}
                   name="fullName"
                   placeholder="Yusif Aliyev"
                   size="lg"
                   type="text"
+                  defaultValue={state.data.fullName}
                   classNames={{
                     errorMessage: "text-white",
                     input:
@@ -72,13 +81,14 @@ export default function SubscribeComponent() {
                 <div className="flex">
                   <Input
                     fullWidth
-                    errorMessage={<InputErrors errors={state.errors?.email} />}
+                    errorMessage={state.errors?.email}
                     id="email"
-                    isInvalid={!!state.errors?.email?.length}
+                    isInvalid={!!state.errors?.email}
                     name="email"
                     placeholder="example@gmail.com"
                     size="lg"
                     type="email"
+                    defaultValue={state.data.email}
                     classNames={{
                       errorMessage: "text-white",
                       input:
@@ -109,8 +119,4 @@ export default function SubscribeComponent() {
       </form>
     </div>
   );
-}
-
-function InputErrors({ errors }: { errors?: string[] }) {
-  return <ul className="mt-1 space-y-1">{errors?.map((error, i) => <li key={i}>{error}</li>)}</ul>;
 }
