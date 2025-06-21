@@ -58,11 +58,6 @@ export default function About() {
         className="flex min-h-svh flex-col items-center justify-center px-6 text-slate-900 sm:mx-10 md:px-20 lg:px-32 xl:px-64"
         id="4"
       >
-        <p className="my-5">
-          There is an issue with the form. The ORM currently has some environment-related problems that I
-          cannot resolve directly. A new version of the ORM is needed to fix this. Form will not work until
-          this message disappears (problem solved).
-        </p>
         <FormTerminal />
       </section>
     </main>
