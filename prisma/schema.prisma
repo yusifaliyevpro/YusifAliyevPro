@@ -11,6 +11,7 @@
 generator client {
   provider            = "prisma-client"
   output              = "../src/generated/prisma"
+  binaryTargets       = ["native", "rhel-openssl-1.0.x"]
   importFileExtension = "ts"
 }
 
