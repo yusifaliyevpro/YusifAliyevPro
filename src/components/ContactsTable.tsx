@@ -1,7 +1,6 @@
 "use client";
 
 import type { Contact } from "@/generated/prisma/client";
-
 import { Chip } from "@heroui/chip";
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@heroui/table";
 import { addToast, closeAll } from "@heroui/toast";
@@ -9,8 +8,7 @@ import { useRouter } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-
-import { deleteContact, updateIsCaledInfo } from "../lib/prisma/actions";
+import { deleteContact, updateIsCaledInfo } from "@/data-access/contact/actions";
 import { use } from "react";
 
 export default function ContactsTable({ contactsPromise }: { contactsPromise: Promise<Contact[]> }) {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import ContactsTable from "@/src/components/ContactsTable";
 import { isInDevelopment } from "@/src/lib/constants";
-import { getAllContacts } from "@/src/lib/prisma/actions";
+import { getContacts } from "@/src/data-access/contact/get";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default async function Admin() {
   const { isEnabled } = await draftMode();
   if (!isEnabled && !isInDevelopment) redirect("/admin?__vercel_draft=1");
-  const contactsPromise = getAllContacts();
+  const contactsPromise = getContacts();
   return (
     <main className="mt-24 flex min-h-svh flex-col lg:px-20">
       <div className="overflow-x-scroll p-6">

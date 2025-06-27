@@ -2,12 +2,12 @@
 
 import { Input } from "@/components/Terminal/Input";
 import { cn } from "@/lib/cn";
-import { createContact } from "@/lib/prisma/actions";
+import { createContact } from "../data-access/contact/actions";
 import { Button } from "@heroui/button";
 import { useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 
-import { notifyAdmin } from "../lib/email/notifyAdmin.action";
+import { notifyAdmin } from "../data-access/resend/notifyAdmin";
 import { BooleanInput } from "./Terminal/BooleanInput";
 
 export default function FormTerminal() {
@@ -42,15 +42,16 @@ export default function FormTerminal() {
   const handleSubmit = async () => {
     setIsSending(true);
     const formData = { description, email, fullName, hasWhatsApp, phone };
-    const { contact, error } = await createContact(formData);
-    if (contact) await notifyAdmin({ description: contact.description, name: contact.fullName });
-    if (error) {
-      setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
-    } else {
+    const contact = await createContact(formData);
+    if (contact) {
+      await notifyAdmin({ description: contact.description, name: contact.fullName });
       setIsSending(false);
       setMessage("Əlaqə qurduğunuz üçün təşəkkürlər✨. Ən qısa zamanda geri dönüş edəcəyəm! 🚀");
+    } else {
+      setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
     }
   };
+
   return (
     <form className="z-10 w-full rounded-3xl bg-slate-200/90 shadow-large backdrop-blur-3xl lg:font-mono">
       <header className="flex w-full flex-row items-center justify-between rounded-t-3xl bg-slate-300/90 px-4 backdrop-blur-3xl">

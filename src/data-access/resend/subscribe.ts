@@ -3,7 +3,7 @@
 import WelcomeEmail from "@/emails/WelcomeEmail";
 import { render } from "@react-email/render";
 import { Resend } from "resend";
-import { SubscriberSchema, type SubscriberFormData } from "./validation";
+import { SubscriberSchema, type SubscriberFormData } from "@/lib/email/subscribe.validation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

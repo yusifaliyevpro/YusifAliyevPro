@@ -1,6 +1,6 @@
 "use client";
 
-import { broadcastBlogPostEmail } from "@/src/lib/email/broadcastBlogPost.action";
+import { broadcastBlogPostEmail } from "@/src/data-access/resend/broadcastBlogPost";
 import { Button } from "@heroui/button";
 import { addToast } from "@heroui/toast";
 import { startTransition, useActionState, useEffect } from "react";
