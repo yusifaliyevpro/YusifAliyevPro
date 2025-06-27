@@ -1,6 +1,6 @@
 "use client";
 
-import { addSubscriber } from "@/lib/email/subscribe.action";
+import { addSubscriber } from "../data-access/resend/subscribe";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";

@@ -3,8 +3,7 @@
 import BlogPostEmail from "@/emails/BlogPostEmail";
 import { render } from "@react-email/render";
 import { Resend } from "resend";
-
-import { getBlogPost } from "../utils";
+import { getBlogPost } from "@/src/lib/utils";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 type TsendEmail = { message: string; success: boolean };
