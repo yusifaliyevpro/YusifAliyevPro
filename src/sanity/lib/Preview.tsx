@@ -1,4 +1,4 @@
-import { PREVIEW_URL } from "@/lib/constants";
+import { BASE_URL } from "@/src/lib/constants";
 import { useFormValue } from "sanity";
 
 export default function PreviewMode() {
@@ -8,7 +8,7 @@ export default function PreviewMode() {
     <div className="relative my-0 flex w-full flex-row justify-end">
       <a
         className="rounded-xl bg-blue-500 px-5 py-2 font-bold"
-        href={`${PREVIEW_URL}/blog/${slug.current}?__vercel_draft=1`}
+        href={`${BASE_URL}/preview/blog/${slug.current}`}
         target="_blank"
       >
         Preview Mode

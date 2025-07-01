@@ -1,22 +1,21 @@
-import type { BLOGS_POSTS_QUERYResult } from "@/src/sanity/types";
+import type { BlogPostsQueryResult } from "@/src/sanity/types";
 import type { Metadata } from "next/types";
-
 import BlogPosts from "@/components/BlogPosts";
 import Search from "@/components/Search";
-import { getBlogPosts } from "@/lib/utils";
-import Subscribe from "@/src/components/Subsciption";
+import Subscribe from "@/components/Subsciption";
 import { countryName, creator, locale, profileOGImage } from "@/src/lib/shared-metadata";
 import { Button } from "@heroui/button";
 import Link from "next/link";
 import { Typewriter } from "nextjs-simple-typewriter";
 import { FaRegBell } from "react-icons/fa6";
+import { getBlogPosts } from "@/data-access/blog/get";
 
 export default async function BlogPostsPage() {
   const blogPosts = await getBlogPosts();
   return <BlogPostsPageUI blogPosts={blogPosts} />;
 }
 
-export function BlogPostsPageUI({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
+export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult }) {
   return (
     <main className="flex min-h-svh flex-col items-center gap-y-6 scroll-smooth pt-20 font-signika">
       <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">

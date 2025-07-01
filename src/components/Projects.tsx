@@ -1,10 +1,9 @@
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { TbExternalLink } from "react-icons/tb";
-
-import { getProjects } from "../lib/utils";
 import Reveal from "./Reveal";
 import type { Variants } from "motion/dist/react";
+import { getProjects } from "@/data-access/projects/get";
 
 const containerVariants: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
 const itemVariants: Variants = {

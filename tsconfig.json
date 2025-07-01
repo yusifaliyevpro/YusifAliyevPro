@@ -6,14 +6,13 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
-      "@/*": ["./*"],
-      "@/src/*": ["./src/*"],
       "@/generated/*": ["./src/generated/*"],
       "@/data-access/*": ["./src/data-access/*"],
       "@/emails/*": ["./emails/*"],
       "@/components/*": ["./src/components/*"],
       "@/lib/*": ["./src/lib/*"],
-      "@/sanity/*": ["./src/sanity/*"]
+      "@/sanity/*": ["./src/sanity/*"],
+      "@/src/*": ["./src/*"]
     },
     "noEmit": true,
     "incremental": true,
