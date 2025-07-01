@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
-import ContactsTable from "@/src/components/ContactsTable";
-import { isInDevelopment } from "@/src/lib/constants";
-import { getContacts } from "@/src/data-access/contact/get";
-import { draftMode } from "next/headers";
-import { redirect } from "next/navigation";
+import ContactsTable from "@/components/ContactsTable";
+import { getContacts } from "@/data-access/contact/get";
 import { Suspense } from "react";
+import { auth } from "@/lib/auth";
+import { AdminSignIn } from "@/components/AdminSignIn";
+import { AdminEmail } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Admin Console",
@@ -13,9 +13,18 @@ export const metadata: Metadata = {
 };
 
 export default async function Admin() {
-  const { isEnabled } = await draftMode();
-  if (!isEnabled && !isInDevelopment) redirect("/admin?__vercel_draft=1");
+  const session = await auth();
+  if (!session) return <AdminSignIn />;
+
+  if (session.user?.email !== AdminEmail)
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <p>You are not authorized to see Contacts!</p>
+      </div>
+    );
+
   const contactsPromise = getContacts();
+
   return (
     <main className="mt-24 flex min-h-svh flex-col lg:px-20">
       <div className="overflow-x-scroll p-6">

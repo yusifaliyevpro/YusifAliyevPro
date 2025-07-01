@@ -10,10 +10,13 @@ import { MdDeleteOutline } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { deleteContact, updateIsCaledInfo } from "@/data-access/contact/actions";
 import { use } from "react";
+import type { GetContacts } from "@/data-access/contact/get";
 
-export default function ContactsTable({ contactsPromise }: { contactsPromise: Promise<Contact[]> }) {
-  const contacts = use(contactsPromise);
+export default function ContactsTable({ contactsPromise }: { contactsPromise: GetContacts }) {
+  const { contacts, error } = use(contactsPromise);
   const router = useRouter();
+  if (error) console.log(error);
+  if (!contacts) return;
   const calledIDs = contacts.filter((c) => c.isCalled).map((c) => c.id);
 
   const handleUpdate = (contact: Contact) => {

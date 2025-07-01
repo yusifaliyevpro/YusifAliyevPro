@@ -1,11 +1,15 @@
-import { getBlogPostPreview } from "@/lib/utils";
+import { getDraftBlogPost } from "@/data-access/blog/draft/get";
 import { notFound } from "next/navigation";
 
 import { BlogPostPageUI } from "../../../blog/[slug]/page";
+import { auth } from "@/lib/auth";
+import { AdminSignIn } from "@/components/AdminSignIn";
 
-export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function DraftBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const blogPost = await getBlogPostPreview(slug);
-  if (typeof blogPost === "string" || !blogPost) notFound();
-  return <BlogPostPageUI blog={blogPost} />;
+  const session = await auth();
+  if (!session) return <AdminSignIn />;
+  const blogPost = await getDraftBlogPost(slug);
+  if (blogPost.error || !blogPost.data) notFound();
+  return <BlogPostPageUI blog={blogPost.data} />;
 }

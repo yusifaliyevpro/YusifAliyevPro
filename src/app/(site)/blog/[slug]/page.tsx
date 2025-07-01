@@ -1,4 +1,3 @@
-import type { BLOG_POST_QUERYResult } from "@/src/sanity/types";
 import type { PortableTextBlock } from "next-sanity";
 import type { Metadata } from "next/types";
 
@@ -6,7 +5,7 @@ import Gallery from "@/components/Gallery";
 import RichText from "@/components/RichText";
 import { cn } from "@/lib/cn";
 import { dateFormatter, getReadTime } from "@/lib/format";
-import { getBlogPost, getBlogPosts } from "@/lib/utils";
+import { getBlogPost, getBlogPosts } from "@/data-access/blog/get";
 import { countryName, creator, keywords, locale } from "@/src/lib/shared-metadata";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,8 +13,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { FiWatch } from "react-icons/fi";
 import { GoClock } from "react-icons/go";
+import type { BlogPostQueryResult } from "@/sanity/types";
 
-export function BlogPostPageUI({ blog }: { blog: NonNullable<BLOG_POST_QUERYResult> }) {
+export function BlogPostPageUI({ blog }: { blog: NonNullable<BlogPostQueryResult> }) {
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
       <article

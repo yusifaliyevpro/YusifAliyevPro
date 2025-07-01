@@ -6,14 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { GoClock } from "react-icons/go";
-import type { BLOGS_POSTS_QUERYResult } from "../sanity/types";
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Fuse from "fuse.js";
+import type { BlogPostsQueryResult } from "@/sanity/types";
 
 const LoadMore = dynamic(() => import("./LoadMore"), { loading: () => <p>Loading...</p> });
 
-export default function Blogs({ blogPosts }: { blogPosts: BLOGS_POSTS_QUERYResult }) {
+export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }) {
   const [results, setResults] = useState(blogPosts);
   const searchParams = useSearchParams();
   const search = searchParams.get("search")?.trim();
