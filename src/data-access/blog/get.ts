@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client";
+import type { BlogPostQueryResult, BlogPostsQueryResult } from "@/sanity/types";
 import { defineQuery } from "next-sanity";
 
 export async function getBlogPosts() {
@@ -19,7 +20,7 @@ export async function getBlogPosts() {
     }
 `);
 
-  const data = await client.fetch(BlogPostsQuery, {}, { next: { revalidate: 3600 } });
+  const data = await client.fetch<BlogPostsQueryResult>(BlogPostsQuery, {}, { next: { revalidate: 3600 } });
   return data;
 }
 
@@ -53,6 +54,10 @@ export async function getBlogPost(slug: string) {
   }
 `);
 
-  const data = await client.fetch(BlogPostQuery, { slug }, { next: { revalidate: 3600 } });
+  const data = await client.fetch<BlogPostQueryResult>(
+    BlogPostQuery,
+    { slug },
+    { next: { revalidate: 3600 } },
+  );
   return data;
 }

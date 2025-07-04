@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import { AdminEmail } from "@/lib/constants";
 import { client } from "@/sanity/lib/client";
+import type { DraftBlogPostQueryResult, DraftBlogPostsQueryResult } from "@/sanity/types";
 import { defineQuery } from "next-sanity";
 
 export async function getDraftBlogPosts() {
@@ -25,7 +26,7 @@ export async function getDraftBlogPosts() {
       }
   `);
 
-  const data = await client.fetch(DraftBlogPostsQuery, {});
+  const data = await client.fetch<DraftBlogPostsQueryResult>(DraftBlogPostsQuery, {});
   return { data };
 }
 
@@ -63,6 +64,6 @@ export async function getDraftBlogPost(slug: string) {
     }
   `);
 
-  const data = await client.fetch(DraftBlogPostQuery, { slug });
+  const data = await client.fetch<DraftBlogPostQueryResult>(DraftBlogPostQuery, { slug });
   return { data };
 }
