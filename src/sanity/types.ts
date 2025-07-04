@@ -260,7 +260,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/data-access/blog/draft/get.ts
 // Variable: DraftBlogPostsQuery
-// Query: *[_type=='blogs' && !isPublished]|order(publishedAt desc)  {title,  _createdAt, _updatedAt, "poster": poster.asset->url,  "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions },   publishedAt, "slug": slug.current, description}
+// Query: *[_type == 'blogs' && !isPublished]       | order(publishedAt desc) {        title,        _createdAt,        _updatedAt,        "poster": poster.asset->url,        "posterMetadata": {          "lqip": poster.asset->metadata.lqip,          "dimensions": poster.asset->metadata.dimensions        },        publishedAt,        "slug": slug.current,        description      }
 export type DraftBlogPostsQueryResult = Array<{
   title: string;
   _createdAt: string;
@@ -275,7 +275,7 @@ export type DraftBlogPostsQueryResult = Array<{
   description: string;
 }>;
 // Variable: DraftBlogPostQuery
-// Query: *[_type=='blogs' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description,     "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished,     "gallery": gallery[]{ "image": asset->url, "lqip": asset->metadata.lqip }, tags, _updatedAt, "text": text[]     {..., ...select( _type == "image" => { "image": asset->url, "lqip": (asset->metadata).lqip } ) },    "slug": slug.current,_createdAt, description}[0]
+// Query: *[_type == 'blogs' && slug.current == $slug][0] {      title,      "plainText": title + pt::text(text) + description,      "poster": poster.asset->url,      "posterLqip": poster.asset->metadata.lqip,      publishedAt,      isPublished,      "gallery": gallery[] {        "image": asset->url,        "lqip": asset->metadata.lqip      },      tags,      _updatedAt,      "text": text[] {        ...,        ...select(          _type == "image" => {            "image": asset->url,            "lqip": asset->metadata.lqip          }        )      },      "slug": slug.current,      _createdAt,      description    }
 export type DraftBlogPostQueryResult = {
   title: string;
   plainText: string;
@@ -340,7 +340,7 @@ export type DraftBlogPostQueryResult = {
 
 // Source: ./src/data-access/blog/get.ts
 // Variable: BlogPostsQuery
-// Query: *[_type=='blogs' && isPublished]|order(publishedAt desc)  {title,  _createdAt, _updatedAt, "poster": poster.asset->url,  "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions },   publishedAt, "slug": slug.current, description}
+// Query: *[_type == 'blogs' && isPublished]     | order(publishedAt desc) {      title,      _createdAt,      _updatedAt,      "poster": poster.asset->url,      "posterMetadata": {        "lqip": poster.asset->metadata.lqip,        "dimensions": poster.asset->metadata.dimensions      },      publishedAt,      "slug": slug.current,      description    }
 export type BlogPostsQueryResult = Array<{
   title: string;
   _createdAt: string;
@@ -355,7 +355,7 @@ export type BlogPostsQueryResult = Array<{
   description: string;
 }>;
 // Variable: BlogPostQuery
-// Query: *[_type=='blogs' && slug.current==$slug && isPublished]{title, "plainText": title + pt::text(text) + description,   "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished,   "gallery": gallery[]{ "image": asset->url, "lqip": asset->metadata.lqip }, tags, _updatedAt, "text": text[]   {..., ...select( _type == "image" => { "image": asset->url, "lqip": (asset->metadata).lqip } ) },   "slug": slug.current,_createdAt, description}[0]
+// Query: *[_type == 'blogs' && slug.current == $slug && isPublished][0] {    title,    "plainText": title + pt::text(text) + description,    "poster": poster.asset->url,    "posterLqip": poster.asset->metadata.lqip,    publishedAt,    isPublished,    "gallery": gallery[] {      "image": asset->url,      "lqip": asset->metadata.lqip    },    tags,    _updatedAt,    "text": text[] {      ...,      ...select(        _type == "image" => {          "image": asset->url,          "lqip": asset->metadata.lqip        }      )    },    "slug": slug.current,    _createdAt,    description  }
 export type BlogPostQueryResult = {
   title: string;
   plainText: string;
@@ -420,7 +420,7 @@ export type BlogPostQueryResult = {
 
 // Source: ./src/data-access/projects/get.ts
 // Variable: ProjectsQuery
-// Query: *[_type=='projects']|order(_createdAt desc){name,  "image": image.asset->url,      "imageMetadata": { "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions }, description, link, repo}
+// Query: *[_type == 'projects']       | order(_createdAt desc) {        name,        "image": image.asset->url,        "imageMetadata": {          "lqip": image.asset->metadata.lqip,          "dimensions": image.asset->metadata.dimensions        },        description,        link,        repo      }
 export type ProjectsQueryResult = Array<{
   name: string;
   image: string | null;
@@ -437,10 +437,10 @@ export type ProjectsQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type==\'blogs\' && !isPublished]|order(publishedAt desc)\n  {title,  _createdAt, _updatedAt, "poster": poster.asset->url,\n  "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions }, \n  publishedAt, "slug": slug.current, description}': DraftBlogPostsQueryResult;
-    '*[_type==\'blogs\' && slug.current==$slug]{title, "plainText": title + pt::text(text) + description, \n    "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished, \n    "gallery": gallery[]{ "image": asset->url, "lqip": asset->metadata.lqip }, tags, _updatedAt, "text": text[] \n    {..., ...select( _type == "image" => { "image": asset->url, "lqip": (asset->metadata).lqip } ) },\n    "slug": slug.current,_createdAt, description}[0]': DraftBlogPostQueryResult;
-    '*[_type==\'blogs\' && isPublished]|order(publishedAt desc)\n  {title,  _createdAt, _updatedAt, "poster": poster.asset->url,\n  "posterMetadata": { "lqip": (poster.asset->metadata).lqip, "dimensions": (poster.asset->metadata).dimensions }, \n  publishedAt, "slug": slug.current, description}': BlogPostsQueryResult;
-    '*[_type==\'blogs\' && slug.current==$slug && isPublished]{title, "plainText": title + pt::text(text) + description, \n  "poster": poster.asset->url, "posterLqip": (poster.asset->metadata).lqip, publishedAt, isPublished, \n  "gallery": gallery[]{ "image": asset->url, "lqip": asset->metadata.lqip }, tags, _updatedAt, "text": text[] \n  {..., ...select( _type == "image" => { "image": asset->url, "lqip": (asset->metadata).lqip } ) },\n   "slug": slug.current,_createdAt, description}[0]': BlogPostQueryResult;
-    '*[_type==\'projects\']|order(_createdAt desc){name,  "image": image.asset->url,    \n  "imageMetadata": { "lqip": (image.asset->metadata).lqip, "dimensions": (image.asset->metadata).dimensions }, description, link, repo}': ProjectsQueryResult;
+    '\n    *[_type == \'blogs\' && !isPublished] \n      | order(publishedAt desc) {\n        title,\n        _createdAt,\n        _updatedAt,\n        "poster": poster.asset->url,\n        "posterMetadata": {\n          "lqip": poster.asset->metadata.lqip,\n          "dimensions": poster.asset->metadata.dimensions\n        },\n        publishedAt,\n        "slug": slug.current,\n        description\n      }\n  ': DraftBlogPostsQueryResult;
+    '\n    *[_type == \'blogs\' && slug.current == $slug][0] {\n      title,\n      "plainText": title + pt::text(text) + description,\n      "poster": poster.asset->url,\n      "posterLqip": poster.asset->metadata.lqip,\n      publishedAt,\n      isPublished,\n      "gallery": gallery[] {\n        "image": asset->url,\n        "lqip": asset->metadata.lqip\n      },\n      tags,\n      _updatedAt,\n      "text": text[] {\n        ...,\n        ...select(\n          _type == "image" => {\n            "image": asset->url,\n            "lqip": asset->metadata.lqip\n          }\n        )\n      },\n      "slug": slug.current,\n      _createdAt,\n      description\n    }\n  ': DraftBlogPostQueryResult;
+    '\n  *[_type == \'blogs\' && isPublished] \n    | order(publishedAt desc) {\n      title,\n      _createdAt,\n      _updatedAt,\n      "poster": poster.asset->url,\n      "posterMetadata": {\n        "lqip": poster.asset->metadata.lqip,\n        "dimensions": poster.asset->metadata.dimensions\n      },\n      publishedAt,\n      "slug": slug.current,\n      description\n    }\n': BlogPostsQueryResult;
+    '\n  *[_type == \'blogs\' && slug.current == $slug && isPublished][0] {\n    title,\n    "plainText": title + pt::text(text) + description,\n    "poster": poster.asset->url,\n    "posterLqip": poster.asset->metadata.lqip,\n    publishedAt,\n    isPublished,\n    "gallery": gallery[] {\n      "image": asset->url,\n      "lqip": asset->metadata.lqip\n    },\n    tags,\n    _updatedAt,\n    "text": text[] {\n      ...,\n      ...select(\n        _type == "image" => {\n          "image": asset->url,\n          "lqip": asset->metadata.lqip\n        }\n      )\n    },\n    "slug": slug.current,\n    _createdAt,\n    description\n  }\n': BlogPostQueryResult;
+    '\n    *[_type == \'projects\'] \n      | order(_createdAt desc) {\n        name,\n        "image": image.asset->url,\n        "imageMetadata": {\n          "lqip": image.asset->metadata.lqip,\n          "dimensions": image.asset->metadata.dimensions\n        },\n        description,\n        link,\n        repo\n      }\n  ': ProjectsQueryResult;
   }
 }
