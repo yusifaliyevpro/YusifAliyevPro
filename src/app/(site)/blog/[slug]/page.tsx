@@ -60,7 +60,7 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BlogPostQueryResult
             </div>
             <div className="flex flex-row items-center gap-x-1">
               <FiWatch aria-hidden />
-              <p className="text-md tabular-nums">{getReadTime(blog.plainText)} dəq oxuma</p>
+              <p className="text-md tabular-nums">{getReadTime(blog.plainText)} min read</p>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">

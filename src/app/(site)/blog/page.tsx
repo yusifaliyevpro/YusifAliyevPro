@@ -21,15 +21,13 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult
       <section className="bg-gradiesnt-to-b flex w-full flex-col items-center justify-center from-blue-50/100 to-blue-50 py-5 lg:py-10">
         <header className="flex w-full flex-col items-center justify-between px-5 md:flex-row md:px-16 lg:px-32">
           <div className="w-full space-y-5 font-poppins sm:w-fit">
-            <h1 className="w-full text-left text-4xl font-semibold">✍️ Bloq yazılarım</h1>
-            <p className="sr-only">
-              Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.
-            </p>
+            <h1 className="w-full text-left text-4xl font-semibold">✍️ My Blog Posts</h1>
+            <p className="sr-only">I share my thoughts, experiences, and stories on various topics.</p>
             <span className="flex h-24 max-w-[25rem] text-wrap pl-3 text-lg font-normal text-slate-600 dark:text-slate-400 sm:h-12">
               <Typewriter
                 loop={1}
                 typeSpeed={90}
-                words={[" Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram."]}
+                words={["I share my thoughts, experiences, and stories on various topics."]}
               />
             </span>
           </div>
@@ -42,6 +40,11 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult
             <Search />
           </div>
         </header>
+      </section>
+      <section className="mb-4 flex w-full items-center justify-center rounded-xl">
+        <p className="bg-gradient-to-t from-blue-300 to-blue-500 bg-clip-text text-2xl font-semibold text-transparent drop-shadow-sm">
+          🌐 Multilingual posts coming soon. Stay tuned!
+        </p>
       </section>
       <BlogPosts blogPosts={blogPosts} />
       <Subscribe />

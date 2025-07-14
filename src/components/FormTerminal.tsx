@@ -46,9 +46,9 @@ export default function FormTerminal() {
     if (contact) {
       await notifyAdmin({ description: contact.description, name: contact.fullName });
       setIsSending(false);
-      setMessage("Əlaqə qurduğunuz üçün təşəkkürlər✨. Ən qısa zamanda geri dönüş edəcəyəm! 🚀");
+      setMessage("Thank you for reaching out✨. I will get back to you as soon as possible! 🚀");
     } else {
-      setMessage("Xəta baş verdi! Zəhmət olmasa yenidən cəhd edin.");
+      setMessage("An error occurred! Please try again.");
     }
   };
 
@@ -60,11 +60,11 @@ export default function FormTerminal() {
           <span className="size-3 rounded-full bg-yellow-500"></span>
           <span className="size-3 rounded-full bg-green-500"></span>
         </div>
-        <p>Əlaqə</p>
+        <p>Contact</p>
         <p className="w-12"></p>
       </header>
       <div className="flex min-h-[22rem] flex-col overflow-y-scroll p-3 scrollbar-hide">
-        <p>Elə isə layihən mənə çox maraqlı gəlir✨</p>
+        <p>Well then, your project sounds very interesting to me✨</p>
         <span className="mr-2 overflow-hidden text-nowrap pb-3">
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
@@ -74,14 +74,14 @@ export default function FormTerminal() {
             inputPlaceholder="Yusif Aliyev"
             isEntered={isEnteredFullName}
             isPreviousEntered={true}
-            name="Ad"
-            placeholder="Adın:"
+            name="Full Name"
+            placeholder="Full Name:"
             setIsEntered={setIsEnteredFullName}
             setValue={setFullName}
             value={fullName}
             title={
               <>
-                Başlamaq üçün, <span className="text-blue-600">tam adını</span> yaza bilərsən?
+                To get started, could you write your <span className="text-blue-600">full name</span>?
               </>
             }
           />
@@ -96,7 +96,7 @@ export default function FormTerminal() {
             value={email}
             title={
               <>
-                Əla! <span className="text-blue-600">Emailini</span> yaza bilərsən?📧
+                Great! Could you write your <span className="text-blue-600">email</span>?📧
               </>
             }
           />
@@ -104,40 +104,41 @@ export default function FormTerminal() {
             inputPlaceholder="+994 00 000 00 00"
             isEntered={isEnteredPhone}
             isPreviousEntered={isEnteredEmail}
-            name="Nömrə"
-            placeholder="Nömrə:"
+            name="Phone Number"
+            placeholder="Phone Number:"
             setIsEntered={setIsEnteredPhone}
             setValue={setPhone}
             value={phone}
             title={
               <>
-                Möhtəşəm! <span className="text-blue-600">Nömrəni</span> daxil et ki, əlaqə saxlayım📞
+                Awesome! Please enter your <span className="text-blue-600">phone number</span> so I can
+                contact you📞
               </>
             }
           />
           <BooleanInput
             isEntered={isEnteredHasWhatsApp}
             isPreviousEntered={isEnteredPhone}
-            name="Whatsapp?"
-            placeholder="Var?:"
+            name="WhatsApp?"
+            placeholder="Available?:"
             setIsEntered={setIsEnteredHasWhatsApp}
             setValue={setHasWhatsApp}
             value={hasWhatsApp}
             title={
               <>
-                Super! Bu nömrənin <span className="text-blue-600">WhatsApp</span>-ı var?📲
+                Great! Does this number have <span className="text-blue-600">WhatsApp</span>?📲
               </>
             }
           />
           <Input
-            inputPlaceholder="Layihəm bu haqqdadır"
+            inputPlaceholder="My project is about..."
             isEntered={isEnteredDescription}
             isPreviousEntered={isEnteredHasWhatsApp}
-            name="Açıqlama"
-            placeholder="Kiçik bir açıqlama:"
+            name="Description"
+            placeholder="A short description:"
             setIsEntered={setIsEnteredDescription}
             setValue={setDescription}
-            title={"Son bir sual! Layihən nə haqqdadır?🤔"}
+            title={"One last question! What is your project about?🤔"}
             value={description}
           />
           <p
@@ -145,7 +146,7 @@ export default function FormTerminal() {
               "sr-only": !isEnteredDescription,
             })}
           >
-            Hər şey düzdür?✅
+            Is everything correct?✅
           </p>
           <div
             className={cn("flex flex-row gap-x-3", {
@@ -158,10 +159,10 @@ export default function FormTerminal() {
               radius="sm"
               onPress={clearAll}
             >
-              Yenidən başlat
+              Restart Form
             </Button>
             <Button className="text-base font-bold" color="primary" radius="sm" onPress={handleSubmit}>
-              {isSending ? <AiOutlineLoading className="animate-spin text-2xl" /> : "Göndər!"}
+              {isSending ? <AiOutlineLoading className="animate-spin text-2xl" /> : "Send!"}
             </Button>
           </div>
 

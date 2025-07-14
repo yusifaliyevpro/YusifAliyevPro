@@ -1,9 +1,9 @@
 import type { JSX } from "react";
-
 import * as motion from "motion/react-client";
-
 import Reveal from "./Reveal";
 import type { Variants } from "motion/dist/react";
+import { FaGraduationCap } from "react-icons/fa6";
+import { BiAward, BiCode, BiTrophy } from "react-icons/bi";
 
 const olVariants: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.2 } } };
 const dotVariants: Variants = {
@@ -12,35 +12,41 @@ const dotVariants: Variants = {
 };
 const textVariants: Variants = {
   hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, transition: { duration: 0.4, stiffness: 80, type: "spring" }, x: 0 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, stiffness: 80, type: "spring" } },
+};
+
+const getIcon = (name: string) => {
+  if (name?.includes("Developer") || name?.includes("Creator")) return <BiCode className="size-8" />;
+  if (name?.includes("Medal") || name?.includes("First Place")) return <BiTrophy className="size-8" />;
+  if (name?.includes("Academy") || name?.includes("School") || name?.includes("AzTU"))
+    return <FaGraduationCap className="size-8" />;
+  return <BiAward className="size-8" />;
 };
 
 export default function Timeline() {
   return (
-    <section aria-label="Təcrübələr" className="flex w-full flex-col items-center justify-center">
+    <section aria-label="My Journey" className="flex w-full flex-col items-center justify-center">
       <Reveal
         as="h2"
         className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
       >
-        Təcrübələr
+        My Journey
       </Reveal>
-      <div className="relative mt-16 flex min-h-[60svh] w-full flex-col items-start justify-start overflow-x-hidden md:w-7/12 xl:w-5/12">
-        <hr className="absolute ml-[47px] h-full w-1 rounded-xl bg-gray-300 dark:bg-gray-400 md:ml-[5.34rem]"></hr>
+      <div className="relative mt-16 flex min-h-[60svh] w-fit flex-col items-center justify-start overflow-x-hidden px-2 lg:px-5">
+        {/* Line */}
+        <hr className="absolute left-0 ml-7 h-full w-1 rounded-xl bg-gradient-to-b from-blue-500 to-blue-100 lg:ml-10"></hr>
         <motion.ol initial="hidden" variants={olVariants} viewport={{ once: true }} whileInView="visible">
           {events.map((event, i) => (
             <li key={i} className="relative mt-10 flex flex-row items-center">
-              <p aria-hidden={!event.year} className="hidden w-[4.9rem] pr-10 text-xl md:flex">
-                {event.year}
-              </p>
-              <motion.span
-                className="ml-10 items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[3px] md:ml-0"
+              {/* Icons */}
+              <motion.div
+                className={`flex size-11 flex-col items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-2 text-white`}
                 variants={dotVariants}
               >
-                <span className="block size-3 rounded-full bg-white dark:bg-gray-300"></span>
-              </motion.span>
-              {event.year && <p className="flex pl-12 text-xl md:hidden">{event.year}</p>}
+                {event.year ? <p>{event.year}</p> : getIcon(event.name!)}
+              </motion.div>
               <motion.div className="flex flex-col pl-10 pr-2 max-sm:space-y-2" variants={textVariants}>
-                {event.name && <h3 className="text-wrap text-2xl xl:max-w-[27rem]">{event.name}</h3>}
+                {event.name && <h3 className="text-wrap text-2xl">{event.name}</h3>}
                 {event.description && (
                   <p className="pr-5 text-sm text-gray-500 dark:text-slate-400 max-sm:text-base">
                     {event.description}
@@ -73,8 +79,8 @@ function DescriptionComponent({ after, href, linkText }: { after: string; href: 
 }
 const events: Event[] = [
   {
-    name: "eComX Təlim Proqramı",
-    description: "E-Ticarət | ecomx.az | 3 ay",
+    name: "eComX Traning Program",
+    description: "E-Commerce | ecomx.az | 3 months",
   },
   {
     name: "International Innovative Student",
@@ -86,26 +92,26 @@ const events: Event[] = [
   },
   { year: 2025 },
   {
-    name: "AzTU | Kompüter Elmləri",
-    description: "İngiliscə tədrislə | 2024-2028 | Dövlət Sifarişli",
+    name: "AzTU | Computer Science",
+    description: "English Sector | 2024-2028 | Scholarship",
   },
   {
     name: "Developer & Creator",
     description: (
       <DescriptionComponent
-        after="Websayt"
+        after="Website"
         href="https://world-countriess.vercel.app/"
         linkText="World-Countriess"
       />
     ),
   },
   { year: 2024 },
-  { name: "Xəmsə | 🥇 Birincilik" },
-  { name: "Cyber Summer School 2023", description: "Beynəxlaq Yay Məktəbi" },
+  { name: "Xəmsə | 🥇 First Place" },
+  { name: "Cyber Summer School 2023", description: "International Summer School" },
   {
     name: "Developer & Creator",
     description: (
-      <DescriptionComponent after="Film Websaytı" href="https://filmisbest.com/" linkText="FilmIsBest" />
+      <DescriptionComponent after="Movie Website" href="https://filmisbest.com/" linkText="FilmIsBest" />
     ),
   },
   {
@@ -114,7 +120,7 @@ const events: Event[] = [
       <DescriptionComponent after="StartUp" href="https://kitabxanano2.vercel.app/" linkText="Kitabxano2" />
     ),
   },
-  { name: "I Şəxsi İnkişaf Məktəbi" },
+  { name: "I Personal Development School" },
   { name: "", year: 2023 },
-  { name: "Gənc Könüllü | Abşeron GİKM", description: "3 + 1 ay | Ayın Gənci" },
+  { name: "Young Volunteer | Absheron GIKM", description: "3 + 1 months | Youth of the Month" },
 ];

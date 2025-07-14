@@ -13,15 +13,12 @@ const itemVariants: Variants = {
 
 export default function Technologies() {
   return (
-    <section
-      aria-label="Texnologiyalar"
-      className="flex min-h-svh w-full flex-col items-center px-5 md:px-52"
-    >
+    <section aria-label="Tech Stack" className="flex min-h-svh w-full flex-col items-center px-5 md:px-52">
       <Reveal
         as="h2"
         className="text-4xl font-bold after:text-blue-500 after:content-['.'] md:text-5xl lg:text-6xl"
       >
-        Texnologiyalar
+        Tech Stack
       </Reveal>
       <motion.ol
         className="mt-16 flex flex-row flex-wrap items-center justify-center gap-x-5 gap-y-5 transition-all lg:gap-x-7 lg:gap-y-7"
@@ -59,14 +56,14 @@ const techs: Tech[] = [
   { icon: "/techs/next.svg", link: "https://nextjs.org/", name: "NextJS 15" },
   { icon: "/techs/ts.png", link: "https://nextjs.org/", name: "TypeScript" },
   { icon: "/techs/tailwind.svg", link: "https://tailwindcss.com/", name: "Tailwind CSS" },
-  { icon: "/techs/vercel.svg", link: "https://vercel.com/", name: "Vercel Hosting" },
-  { icon: "/techs/nestjs.svg", link: "https://nestjs.com/", name: "NestJS" },
+  { icon: "/techs/nextauth.png", link: "https://nextjs.org/", name: "NextAuth" },
   { icon: "/techs/prisma.svg", link: "https://nextjs.org/", name: "Prisma" },
+  { icon: "/techs/nestjs.svg", link: "https://nestjs.com/", name: "NestJS" },
   { icon: "/techs/nodejs.png", link: "https://nextjs.org/", name: "NodeJS" },
+  { icon: "/techs/vercel.svg", link: "https://vercel.com/", name: "Vercel Hosting" },
   { icon: "/techs/sanity.png", link: "https://www.sanity.io/", name: "Sanity CMS" },
+  { icon: "/techs/mongodb.svg", link: "https://www.mongodb.com/", name: "MongoDB" },
   { icon: "/techs/nextui.png", link: "https://nextui.org/", name: "NextUI" },
   { icon: "/techs/react-icons.svg", link: "https://react-icons.github.io/react-icons/", name: "React Icons" },
   { icon: "/techs/motion.png", link: "https://motion.dev/", name: "motion" },
-  { icon: "/techs/nextauth.png", link: "https://nextjs.org/", name: "NextAuth" },
-  { icon: "/techs/mongodb.svg", link: "https://www.mongodb.com/", name: "MongoDB" },
 ];

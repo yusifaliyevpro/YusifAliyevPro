@@ -15,7 +15,7 @@ type TerminalInputProps = {
   setIsEntered: React.Dispatch<React.SetStateAction<boolean>>;
   setValue: React.Dispatch<React.SetStateAction<boolean>>;
   title: ReactNode | string;
-  value: string | boolean;
+  value: boolean;
 };
 
 export function BooleanInput({
@@ -48,7 +48,7 @@ export function BooleanInput({
         <span className="text-nowrap text-slate-500">{placeholder}</span>
         <div className="flex flex-row gap-x-3">
           <Button className="font-bold" color="warning" radius="sm" onPress={() => setIsEntered(true)}>
-            Xeyr
+            No
           </Button>
           <Button
             className="font-bold"
@@ -59,7 +59,7 @@ export function BooleanInput({
               setValue(true);
             }}
           >
-            Bəli
+            Yes
           </Button>
         </div>
       </div>
@@ -69,7 +69,7 @@ export function BooleanInput({
         })}
       >
         <SiTicktick className="w-6 text-lg" />
-        {name}: {value ? "Bəli" : "Xeyr"}
+        {name}: {value ? "Yes" : "No"}
       </p>
     </>
   );

@@ -12,14 +12,14 @@ const itemVariants: Variants = {
 export default function MySoftSkills() {
   return (
     <section
-      aria-label="Soft Bacarıqlarım"
+      aria-label="Soft Skills"
       className="flex min-h-[70svh] w-full flex-col items-center md:px-40 xl:px-64"
     >
       <Reveal
         as="h2"
         className="w-full text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
       >
-        Soft Bacarıqlarım
+        Soft Skills
       </Reveal>
       <motion.ol
         className="mt-10 flex flex-row flex-wrap items-center justify-center gap-x-2 gap-y-4 overflow-x-hidden px-3 text-xl md:ml-3 md:gap-x-5 md:px-5"
@@ -28,10 +28,10 @@ export default function MySoftSkills() {
         viewport={{ once: true }}
         whileInView="visible"
       >
-        {softs.map((skill, i) => (
+        {softSkills.map((skill, i) => (
           <motion.li
             key={i}
-            className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-3 text-center text-lg text-white dark:text-slate-300 md:px-4 lg:text-xl"
+            className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-2 text-center text-base text-white dark:text-slate-300 md:px-4 md:text-lg lg:text-xl"
             variants={itemVariants}
           >
             <h3>{skill}</h3>
@@ -42,11 +42,21 @@ export default function MySoftSkills() {
   );
 }
 
-const softs: string[] = [
-  "Layihələrin idarə edilməsi",
-  "Komanda ilə işləmə",
-  "Tez öyrənmə",
-  "Analitik düşüncə",
-  "English B1-B2",
-  "Vaxt idarə etməsi",
+const softSkills = [
+  "Problem solving",
+  "Analytical thinking",
+  "Critical thinking",
+  "Creativity",
+  "Collaboration",
+  "Time management",
+  "English B2",
+  "Project management",
+  "Attention to detail",
+  "Empathy",
+  "Responsibility",
+  "Continuous learning",
+  "Decision making",
+  "Azerbaijani Native",
+  "Self-motivation",
+  "Fast learner",
 ];

@@ -14,12 +14,12 @@ const itemVariants: Variants = {
 export default async function Projects() {
   const projects = await getProjects();
   return (
-    <section aria-label="Layihələrim" className="flex min-h-svh flex-col items-center gap-y-16">
+    <section aria-label="My Projects" className="flex min-h-svh flex-col items-center gap-y-16">
       <Reveal
         as="h2"
         className="text-center text-5xl font-bold after:text-blue-500 after:content-['.'] lg:text-6xl"
       >
-        Layihələrim
+        My Projects
       </Reveal>
       <motion.ul
         className="flex w-full flex-row flex-wrap items-stretch justify-center gap-x-16 gap-y-10 px-12 transition-all md:mx-52"
@@ -44,7 +44,7 @@ export default async function Projects() {
               href={project.link}
               rel="noopener noreferrer"
               target="_blank"
-              title="Canlı baxış üçün linkə klikləyin"
+              title="Click the link for live preview"
             >
               <figure>
                 <Image
@@ -54,7 +54,7 @@ export default async function Projects() {
                   height={200}
                   placeholder="blur"
                   quality={100}
-                  src={project.image as string}
+                  src={project.image!}
                   width={350}
                 />
                 <figcaption className="sr-only">alt={`${project.name} logo`}</figcaption>

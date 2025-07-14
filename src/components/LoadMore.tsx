@@ -30,7 +30,7 @@ export default function LoadMore() {
         )}
         onPress={() => router.push("?" + createQueryString("page", String(pageQuery + 1)), { scroll: false })}
       >
-        Daha çox göstər
+        Load More...
       </Button>
     )
   );

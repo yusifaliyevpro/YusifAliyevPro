@@ -106,15 +106,15 @@ const staticRoutes: {
 }[] = [
   {
     link: "/",
-    name: "Ana Səhifə",
+    name: "Home",
   },
   {
     link: "/blog",
-    name: "Bloq",
+    name: "Blog",
   },
   {
     link: "/contact",
-    name: "Əlaqə",
+    name: "Contact",
   },
 ];
 

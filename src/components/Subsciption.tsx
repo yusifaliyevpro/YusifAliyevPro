@@ -1,11 +1,10 @@
 "use client";
 
-import { addSubscriber } from "../data-access/resend/subscribe";
+import { addSubscriber } from "@/data-access/resend/subscribe";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
 import { type FormEvent, startTransition, useActionState, useEffect, useRef } from "react";
-import { AiOutlineLoading } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
 
 const initialState = {
@@ -29,8 +28,8 @@ export default function SubscribeComponent() {
       formRef.current?.reset();
       addToast({
         color: "success",
-        description: "Emailinizi yoxlayın!",
-        title: "Müvəffəqiyətlə abunə oldunuz!",
+        description: "Check your email!",
+        title: "Successfully subscribed!",
       });
     }
   }, [state]);
@@ -47,12 +46,12 @@ export default function SubscribeComponent() {
           <div className="flex-1 p-8 lg:p-10">
             <div className="mb-4 flex items-center justify-center space-x-3">
               <FiMail className="size-9 text-white" size={24} />
-              <h3 className="text-center text-3xl font-bold text-white md:text-4xl">Email Abunəliyi</h3>
+              <h3 className="text-center text-3xl font-bold text-white md:text-4xl">Email Subscription</h3>
             </div>
             <div className="space-y-5">
               <div>
                 <label className="mb-2 block text-sm font-medium text-white" htmlFor="fullName">
-                  Adınız
+                  Full Name
                 </label>
                 <Input
                   fullWidth
@@ -76,7 +75,7 @@ export default function SubscribeComponent() {
 
               <div>
                 <label className="mb-2 block text-sm font-medium text-white" htmlFor="email">
-                  Email ünvanınız
+                  Email
                 </label>
                 <div className="flex">
                   <Input
@@ -100,16 +99,11 @@ export default function SubscribeComponent() {
                   <Button
                     className="rounded-l-none bg-white font-bold text-blue-600 hover:bg-blue-50"
                     isDisabled={isPending || state.success}
+                    isLoading={isPending}
                     size="lg"
                     type="submit"
                   >
-                    {isPending ? (
-                      <AiOutlineLoading className="size-4 animate-spin" />
-                    ) : state.success ? (
-                      "Göndərildi!"
-                    ) : (
-                      "Abunə ol"
-                    )}
+                    {!isPending && (state.success ? "Sent!" : "Subscribe")}
                   </Button>
                 </div>
               </div>
