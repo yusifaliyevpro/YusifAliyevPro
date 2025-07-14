@@ -47,9 +47,9 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
           "xl:grid-cols-3",
         )}
       >
-        {results.map((blog) => (
+        {results.map((blogPost) => (
           <article
-            key={blog.slug}
+            key={blogPost.slug}
             className={cn(
               "cursor-pointer rounded-lg border-solid bg-white pb-5 shadow-medium transition-all",
               "col-span-1 flex flex-col items-center justify-start",
@@ -57,7 +57,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
               "dark:bg-gray-800",
             )}
           >
-            <Link href={`blog/${blog.slug}`}>
+            <Link href={`blog/${blogPost.slug}`}>
               <figure
                 className={cn(
                   "flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg",
@@ -65,19 +65,19 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                 )}
               >
                 <Image
-                  alt={`${blog.title} Poster`}
-                  blurDataURL={blog.posterMetadata.lqip as string}
+                  alt={`${blogPost.title} Poster`}
+                  blurDataURL={blogPost.posterMetadata.lqip as string}
                   className="size-full rounded-t-lg object-cover"
-                  height={blog.posterMetadata.dimensions?.height}
+                  height={blogPost.posterMetadata.dimensions?.height}
                   placeholder="blur"
-                  src={blog.poster as string}
-                  width={blog.posterMetadata.dimensions?.width}
+                  src={blogPost.poster as string}
+                  width={blogPost.posterMetadata.dimensions?.width}
                 />
-                <figcaption className="sr-only">{blog.title} Poster</figcaption>
+                <figcaption className="sr-only">{blogPost.title} Poster</figcaption>
               </figure>
               <div className="pl-6 pr-4">
                 <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">
-                  {blog.title}
+                  {blogPost.title}
                 </h3>
                 <p
                   className={cn(
@@ -86,7 +86,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                     "dark:text-slate-400/80",
                   )}
                 >
-                  {blog.description}
+                  {blogPost.description}
                 </p>
               </div>
               <div className="flex w-full flex-row items-center justify-between px-7 py-5 pr-8">
@@ -103,8 +103,8 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                 </div>
                 <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700 dark:text-slate-400">
                   <GoClock />
-                  <time className="text-sm font-normal tabular-nums" dateTime={blog.publishedAt}>
-                    {dateFormatter(blog.publishedAt)}
+                  <time className="text-sm font-normal tabular-nums" dateTime={blogPost.publishedAt}>
+                    {dateFormatter(blogPost.publishedAt)}
                   </time>
                 </div>
               </div>

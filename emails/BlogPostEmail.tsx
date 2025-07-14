@@ -24,10 +24,10 @@ type TPostEmail = {
 };
 
 export default function BlogPostEmail({
-  description = "Bugün sizlərlə yeni hazırladığım Kofe.al Widget-ni paylaşmaq istəyirəm. NextJS üçün hazırlanmış bu widget həmdə TypeScript ilə yazıldığına görə type-safe-dir. Bu widgeti istədiyiniz kimi istifadə edə bilərsiz. Əslində bir neçə gündür üzərində işlədiyim öz portofolio web-səhifəm üçün hazırlamışdım. Lakin istərəm ki sizlərdə bu komponent-dən istifadə edə biləsiz",
+  description = "test for email integration",
   poster = "https://cdn.sanity.io/images/jl0ycvey/production/3a950399975a0ce4c791409decc1e2229a11b071-1920x1080.png",
-  slug = "nextjs-ucun-kofe-al-widgeti",
-  title = "NextJS Haqqında hər Şey",
+  slug = "test",
+  title = "Test",
 }: TPostEmail) {
   return (
     <Html dir="ltr" lang="az">
@@ -73,7 +73,7 @@ export default function BlogPostEmail({
               className="mt-4 rounded-lg bg-blue-600 px-10 py-3 font-semibold text-white"
               href={`${BASE_URL}/blog/${slug}`}
             >
-              Daha çox oxu
+              Read more
             </Button>
           </Section>
         </Section>

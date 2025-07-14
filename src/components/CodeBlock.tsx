@@ -43,7 +43,7 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
         <Snippet color="primary" size="lg" variant="flat">
           {commands[0]}
         </Snippet>
-        <span className="text-slate-500">və ya</span>
+        <span className="text-slate-500">or</span>
         {commands.length == 2 && (
           <Snippet color="primary" size="lg" variant="flat">
             {commands[1]}

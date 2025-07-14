@@ -106,7 +106,7 @@ const events: Event[] = [
     ),
   },
   { year: 2024 },
-  { name: "Xəmsə | 🥇 First Place" },
+  { name: "Khamsa | 🥇 First Place" },
   { name: "Cyber Summer School 2023", description: "International Summer School" },
   {
     name: "Developer & Creator",

@@ -1,15 +1,14 @@
+import { sharedMetadata } from "@/lib/shared-metadata";
 import type { MetadataRoute } from "next";
-
-import { creator, description } from "../lib/shared-metadata";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     background_color: "#fff",
-    description,
+    description: sharedMetadata.description,
     display: "standalone",
     icons: [{ sizes: "any", src: "/src/app/favicon.png", type: "image/x-icon" }],
-    name: creator,
-    short_name: creator,
+    name: sharedMetadata.creator,
+    short_name: sharedMetadata.creator,
     start_url: "/",
     theme_color: "#007bff",
   };

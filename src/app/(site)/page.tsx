@@ -6,10 +6,22 @@ import Technologies from "@/components/Technologies";
 import Timeline from "@/components/TimeLine";
 import { cn } from "@/lib/cn";
 import { BASE_URL } from "@/lib/constants";
-import { countryName, creator, locale, profileOGImage } from "@/src/lib/shared-metadata";
+import { profileOGImage, sharedMetadata, sharedOpenGraph } from "@/src/lib/shared-metadata";
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { Typewriter } from "nextjs-simple-typewriter";
+
+export const metadata: Metadata = {
+  title: "Hi👋, I'm a Full-Stack Developer",
+  alternates: { canonical: `/` },
+  ...sharedMetadata,
+  openGraph: {
+    type: "website",
+    url: `${BASE_URL}/`,
+    images: [profileOGImage],
+    ...sharedOpenGraph,
+  },
+};
 
 export default async function Home() {
   return (
@@ -111,16 +123,3 @@ export default async function Home() {
     </main>
   );
 }
-
-export const metadata: Metadata = {
-  alternates: { canonical: `/` },
-  openGraph: {
-    countryName,
-    images: [profileOGImage],
-    locale,
-    siteName: creator,
-    type: "website",
-    url: `${BASE_URL}/`,
-  },
-  title: "Yusif Aliyev | Hi👋, I'm a Full-Stack Developer",
-};

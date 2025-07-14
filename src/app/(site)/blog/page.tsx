@@ -3,14 +3,27 @@ import type { Metadata } from "next/types";
 import BlogPosts from "@/components/BlogPosts";
 import Search from "@/components/Search";
 import Subscribe from "@/components/Subsciption";
-import { countryName, creator, locale, profileOGImage } from "@/src/lib/shared-metadata";
+import { profileOGImage, sharedMetadata, sharedOpenGraph } from "@/src/lib/shared-metadata";
 import { Button } from "@heroui/button";
 import Link from "next/link";
 import { Typewriter } from "nextjs-simple-typewriter";
 import { FaRegBell } from "react-icons/fa6";
 import { getBlogPosts } from "@/data-access/blog/get";
 
-export default async function BlogPostsPage() {
+export const metadata: Metadata = {
+  ...sharedMetadata,
+  title: "Blog ✍️✨🌍🎨",
+  alternates: { canonical: `/blog` },
+  description: "I share my thoughts, experiences, and stories on various topics.",
+  openGraph: {
+    type: "article",
+    url: `/blog`,
+    images: profileOGImage,
+    ...sharedOpenGraph,
+  },
+};
+
+export default async function Page() {
   const blogPosts = await getBlogPosts();
   return <BlogPostsPageUI blogPosts={blogPosts} />;
 }
@@ -51,18 +64,3 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult
     </main>
   );
 }
-
-export const metadata: Metadata = {
-  alternates: { canonical: `/blog` },
-  description: "Müxtəlif mövzularda düşüncələrimi, təcrübələrimi və hekayələrimi paylaşıram.",
-  openGraph: {
-    countryName,
-    images: [profileOGImage],
-    locale,
-    siteName: creator,
-    type: "website",
-    url: `/blog`,
-  },
-  title: "✍️ Bloq yazılarım: ✨🧑‍💻🌍🎨",
-};
-export const BlogPostsMetadata = metadata;

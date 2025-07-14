@@ -1,24 +1,49 @@
+import type { Metadata } from "next";
 import { BASE_URL } from "./constants";
 
-export const creator = "Yusif Aliyev";
-export const publisher = "Vercel Hosting";
-export const generator = "Next.js";
-export const applicationName = "YusifAliyevPro";
-export const robots = { follow: true, googleBot: { follow: true, index: true }, index: true };
-export const authors = [{ name: creator, url: BASE_URL }];
-export const countryName = "Azerbaijan";
-export const locale = "az_AZ";
-export const description =
-  "Şəxsi Websaytıma xoş gəlmişsiniz. Mənim kim olduğum haqqında daha çox məlumat almaq istəyirsənsə bütün səhifələrə bir baxış atmağını tövsiyə edirəm";
-export const profileOGImage = { alt: "Yusif Aliyev Picture", height: 500, url: "/Profile.png", width: 500 };
-export const keywords = [
-  "Yusif Aliyev",
-  "yusifaliyevpro",
-  "Yusif Aliyev Pro",
-  "Full-Stack Developer",
-  "Developer",
-  "Web Developer",
-  "NextJS Developer",
-  "Azerbaijan",
-  "Blogger",
-];
+export const profileOGImage = { alt: "Yusif Aliyev Logo", height: 500, url: "/Profile.png", width: 500 };
+
+export const sharedMetadata = {
+  metadataBase: new URL(BASE_URL),
+  description:
+    "Welcome to my personal website. If you want to learn more about who I am, I recommend taking a look at all the pages.",
+  creator: "Yusif Aliyev",
+  publisher: "Vercel Hosting",
+  generator: "Next.js",
+  applicationName: "Yusif Aliyev",
+  authors: [{ name: "Yusif Aliyev", url: BASE_URL }],
+  robots: { follow: true, googleBot: { follow: true, index: true }, index: true },
+  keywords: [
+    "Yusif Aliyev",
+    "Yusif Aliyev Pro",
+    "yusifaliyevpro",
+    "Full-Stack Developer",
+    "Next.js Developer",
+    "TypeScript Developer",
+    "Web Developer",
+    "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer",
+    "React Developer",
+    "JavaScript Developer",
+    "TailwindCSS",
+    "Personal Website",
+    "Portfolio",
+    "Azerbaijan",
+    "Blogger",
+    "Tech Enthusiast",
+    "Open Source",
+    "UI/UX",
+    "Vercel",
+    "Programming",
+    "Coding",
+    "Modern Web",
+    "Developer Blog",
+  ],
+} as const satisfies Omit<Metadata, "openGraph">;
+
+export const sharedOpenGraph = {
+  locale: "az_AZ",
+  countryName: "Azerbaijan",
+  siteName: "Yusif Aliyev",
+} as const satisfies Metadata["openGraph"];

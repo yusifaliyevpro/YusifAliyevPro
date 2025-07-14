@@ -2,8 +2,17 @@ import "./globals.css";
 import { Providers } from "../components/Providers";
 import { cn } from "../lib/cn";
 import { jua, poppins, source_sans_3 } from "../lib/fonts";
+import type { Metadata } from "next";
+import { sharedMetadata } from "@/lib/shared-metadata";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: {
+    default: sharedMetadata.creator,
+    template: `${sharedMetadata.creator} | %s`,
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="az">
       <body
