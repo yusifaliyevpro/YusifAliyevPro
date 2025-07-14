@@ -9,7 +9,7 @@ type TNotificationEmailTemplate = {
   name: string;
 };
 export default function AdminNotificationEmail({
-  description = "Layihə Haqqında Məlumat",
+  description = "Test Admin",
   name = "John Doe",
 }: TNotificationEmailTemplate) {
   return (

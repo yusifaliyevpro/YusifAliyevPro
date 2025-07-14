@@ -39,7 +39,7 @@ export default async function Projects() {
               {project.name} Project
             </h3>
             <a
-              aria-label={`${project.name} websaytına baxın`}
+              aria-label={project.name}
               className="group z-10 flex flex-col items-center justify-center"
               href={project.link}
               rel="noopener noreferrer"

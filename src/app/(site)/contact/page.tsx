@@ -1,10 +1,18 @@
 import type { Metadata } from "next/types";
 
 import FormTerminal from "@/components/FormTerminal";
-import { profileOGImage } from "@/src/lib/shared-metadata";
+import { profileOGImage, sharedMetadata, sharedOpenGraph } from "@/src/lib/shared-metadata";
 import Link from "next/link";
 
-export default function About() {
+export const metadata: Metadata = {
+  ...sharedMetadata,
+  title: "Contact",
+  description: "If you want to create projects together with me, fill out the contact form now!",
+  alternates: { canonical: "/contact" },
+  openGraph: { ...sharedOpenGraph, images: [profileOGImage] },
+};
+
+export default function ContactPage() {
   return (
     <main className="flex min-h-svh w-full flex-col scroll-smooth">
       <section className="flex min-h-svh flex-col items-center justify-center gap-y-10 px-5 text-center lg:px-40">
@@ -67,10 +75,3 @@ export default function About() {
     </main>
   );
 }
-
-export const metadata: Metadata = {
-  alternates: { canonical: "/contact" },
-  description: "Mənimlə birlikdə layihələr yaratmaq istəyirsənsə, elə indi əlaqə formunu doldur!",
-  openGraph: { images: [profileOGImage] },
-  title: "Əlaqə",
-};

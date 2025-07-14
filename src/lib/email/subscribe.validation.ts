@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 export const SubscriberSchema = z.object({
-  email: z.string().email("Emaili düzgün daxil edin!"),
+  email: z.email("Please enter a valid email!"),
   fullName: z
     .string()
     .trim()
     .regex(
       /^(?:\S{3,}\s+){1}\S{3,}$/,
-      "Tam Ad iki hissədən ibarət olmalı və hər hissə minimum 3 hərfdən ibarət olmalıdır!",
+      "Full name must consist of two parts and each part must be at least 3 letters!",
     ),
 });
 

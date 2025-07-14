@@ -6,7 +6,6 @@ import RichText from "@/components/RichText";
 import { cn } from "@/lib/cn";
 import { dateFormatter, getReadTime } from "@/lib/format";
 import { getBlogPost, getBlogPosts } from "@/data-access/blog/get";
-import { countryName, creator, keywords, locale } from "@/src/lib/shared-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,8 +13,42 @@ import React from "react";
 import { FiWatch } from "react-icons/fi";
 import { GoClock } from "react-icons/go";
 import type { BlogPostQueryResult } from "@/sanity/types";
+import { sharedMetadata, sharedOpenGraph } from "@/lib/shared-metadata";
 
-export function BlogPostPageUI({ blog }: { blog: NonNullable<BlogPostQueryResult> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const blogPost = await getBlogPost(slug);
+  if (!blogPost) notFound();
+  return {
+    ...sharedMetadata,
+    title: blogPost.title,
+    alternates: { canonical: `/blog/${blogPost.slug}` },
+    description: blogPost.description.slice(0, 152).concat("..."),
+    openGraph: {
+      ...sharedOpenGraph,
+      images: [{ alt: blogPost.title + " Poster", height: 630, url: blogPost.poster as string, width: 1200 }],
+      modifiedTime: blogPost._updatedAt,
+      publishedTime: blogPost.publishedAt,
+      tags: blogPost.tags,
+      type: "article",
+      url: `/blog/${blogPost.slug}`,
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const blogPosts = await getBlogPosts();
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const blogPost = await getBlogPost(slug);
+  if (!blogPost) notFound();
+  return <BlogPostPageUI blogPost={blogPost} />;
+}
+
+export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQueryResult> }) {
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
       <article
@@ -54,18 +87,18 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BlogPostQueryResult
           <div className="mt-4 flex flex-row items-center justify-center gap-x-5 font-semibold text-gray-500">
             <div className="flex flex-row items-center gap-x-1">
               <GoClock aria-hidden />
-              <time className="text-md tabular-nums" dateTime={blog.publishedAt}>
-                {dateFormatter(blog.publishedAt)}
+              <time className="text-md tabular-nums" dateTime={blogPost.publishedAt}>
+                {dateFormatter(blogPost.publishedAt)}
               </time>
             </div>
             <div className="flex flex-row items-center gap-x-1">
               <FiWatch aria-hidden />
-              <p className="text-md tabular-nums">{getReadTime(blog.plainText)} min read</p>
+              <p className="text-md tabular-nums">{getReadTime(blogPost.plainText)} min read</p>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
             <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
-              {blog.title}
+              {blogPost.title}
             </h1>
             <p
               className={cn(
@@ -75,7 +108,7 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BlogPostQueryResult
                 "dark:text-slate-300/80",
               )}
             >
-              {blog.description}
+              {blogPost.description}
             </p>
           </div>
         </header>
@@ -87,57 +120,19 @@ export function BlogPostPageUI({ blog }: { blog: NonNullable<BlogPostQueryResult
               fill
               priority
               alt="Blog Poster"
-              blurDataURL={blog.posterLqip as string}
+              blurDataURL={blogPost.posterLqip as string}
               className="object-cover p-3 md:p-0"
               placeholder="blur"
-              src={blog.poster as string}
+              src={blogPost.poster as string}
             />
-            <figcaption className="sr-only">{blog.title}</figcaption>
+            <figcaption className="sr-only">{blogPost.title}</figcaption>
           </figure>
           <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-20">
-            <RichText blogText={blog.text as PortableTextBlock[]} />
-            {blog.gallery && <Gallery images={blog.gallery} />}
+            <RichText blogText={blogPost.text as PortableTextBlock[]} />
+            {blogPost.gallery && <Gallery images={blogPost.gallery} />}
           </article>
         </div>
       </div>
     </main>
   );
-}
-
-export async function generateStaticParams() {
-  const blogSlugs = await getBlogPosts();
-  return blogSlugs.map((blogSlug) => ({
-    slug: blogSlug.slug,
-  }));
-}
-
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const blog = await getBlogPost(slug);
-  if (!blog) notFound();
-  return <BlogPostPageUI blog={blog} />;
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const blog = await getBlogPost(slug);
-  if (!blog) notFound();
-  return {
-    alternates: { canonical: `/blog/${blog.slug}` },
-    description: blog.description.slice(0, 152).concat("..."),
-    keywords: [...blog.tags, ...keywords, "bloq", "blog"],
-    openGraph: {
-      authors: creator,
-      countryName,
-      images: [{ alt: blog.title + " Poster", height: 630, url: blog.poster as string, width: 1200 }],
-      locale,
-      modifiedTime: blog._updatedAt,
-      publishedTime: blog.publishedAt,
-      siteName: creator,
-      tags: blog.tags,
-      type: "article",
-      url: `/blog/${blog.slug}`,
-    },
-    title: blog.title,
-  };
 }

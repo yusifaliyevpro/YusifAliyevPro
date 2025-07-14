@@ -24,6 +24,7 @@ export default function FormTerminal() {
   const [isSending, setIsSending] = useState(false);
 
   const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const clearAll = () => {
     setFullName("");
@@ -37,6 +38,7 @@ export default function FormTerminal() {
     setDescription("");
     setIsEnteredDescription(false);
     setMessage("");
+    setIsError(false);
   };
 
   const handleSubmit = async () => {
@@ -47,8 +49,10 @@ export default function FormTerminal() {
       await notifyAdmin({ description: contact.description, name: contact.fullName });
       setIsSending(false);
       setMessage("Thank you for reaching out✨. I will get back to you as soon as possible! 🚀");
+      setIsError(false);
     } else {
       setMessage("An error occurred! Please try again.");
+      setIsError(true);
     }
   };
 
@@ -166,16 +170,7 @@ export default function FormTerminal() {
             </Button>
           </div>
 
-          {message && (
-            <p
-              className={cn({
-                "text-blue-600": message.startsWith("Ə"),
-                "text-red-600": message.startsWith("X"),
-              })}
-            >
-              {message}
-            </p>
-          )}
+          {message && <p className={cn("text-blue-600", { "text-red-600": isError })}>{message}</p>}
         </div>
       </div>
     </form>

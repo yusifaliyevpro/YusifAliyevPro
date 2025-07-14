@@ -74,7 +74,7 @@ export function EmailFooter() {
           <tr>
             <td align="center">
               <Text className="my-[8px] text-[16px] font-semibold leading-[24px] text-gray-500">
-                Bakı, Azərbaycan
+                Baku, Azerbaijan
               </Text>
             </td>
           </tr>

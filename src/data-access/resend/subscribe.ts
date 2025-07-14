@@ -46,7 +46,7 @@ export async function addSubscriber(
   await resend.emails.send({
     from: "Yusif Aliyev <subscription@blog.yusifaliyevpro.com>",
     react: WelcomeEmail({ firstName, lastName }),
-    subject: "Abunə olduğunuz üçün Təşəkkürlər!",
+    subject: "Thank you for subscribing!",
     text,
     to: email,
   });

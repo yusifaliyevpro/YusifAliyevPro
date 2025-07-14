@@ -1,12 +1,13 @@
 import { getDraftBlogPosts } from "@/data-access/blog/draft/get";
 import { BlogRefreshButton } from "@/components/Refresh";
-
-import { BlogPostsMetadata, BlogPostsPageUI } from "../../blog/page";
+import { BlogPostsPageUI } from "../../blog/page";
 import { AdminSignIn } from "@/components/AdminSignIn";
 import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 
-export default async function DraftBlogPostsPreview() {
+export { metadata } from "@/src/app/(site)/blog/page";
+
+export default async function DraftBlogPostsPage() {
   const session = await auth();
   if (!session) return <AdminSignIn />;
   const blogPosts = await getDraftBlogPosts();
@@ -19,5 +20,3 @@ export default async function DraftBlogPostsPreview() {
     </>
   );
 }
-
-export const metadata = BlogPostsMetadata;

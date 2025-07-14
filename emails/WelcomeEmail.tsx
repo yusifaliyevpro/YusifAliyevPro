@@ -36,8 +36,7 @@ export default function WelcomeEmail({ firstName, lastName }: TWelcomeEmail) {
       >
         <Head />
         <Preview>
-          Paylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün tez-tez emailinizi yoxlamağı
-          unutmayın!
+          Don&apos;t forget to check your email frequently to stay updated about my posts and new projects!
         </Preview>
         <EmailHeader />
         <Section className="my-4">
@@ -57,11 +56,11 @@ export default function WelcomeEmail({ firstName, lastName }: TWelcomeEmail) {
               {firstName} {lastName}
             </Heading>
             <Heading as="h1" className="m-0 mt-2 text-3xl font-semibold leading-9 text-gray-900">
-              Abunə olduğunuz üçün Təşəkkürlər!
+              Thank you for subscribing!
             </Heading>
             <Text className="my-5 text-xl leading-6 text-gray-500 lg:px-20">
-              Paylaşdığım postlar və yeni layihələr haqqda xəbərdar olmaq üçün tez-tez emailinizi yoxlamağı
-              unutmayın!
+              Don&apos;t forget to check your email frequently to stay updated about my posts and new
+              projects!
             </Text>
           </Section>
         </Section>
