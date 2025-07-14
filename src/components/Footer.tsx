@@ -17,7 +17,7 @@ export default function Footer() {
           </span>
         </div>
         <div>
-          <p className="text-lg text-slate-600">Bütün Hüquqlar Qorunur</p>
+          <p className="text-lg text-slate-600">All Rights Reserved</p>
         </div>
       </div>
     </footer>

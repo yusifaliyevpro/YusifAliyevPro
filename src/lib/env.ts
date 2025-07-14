@@ -18,7 +18,7 @@ type EnvSchemaType = z.infer<typeof EnvSchema>;
 const parsedEnv = EnvSchema.safeParse(process.env);
 
 if (!parsedEnv.success) {
-  console.log(parsedEnv.error.flatten().fieldErrors);
+  console.log(z.treeifyError(parsedEnv.error));
   throw new Error("An error happened because of Environment Variables from @/lib/env.ts");
 }
 

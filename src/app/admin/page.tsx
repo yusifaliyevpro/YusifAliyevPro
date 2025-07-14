@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import ContactsTable from "@/components/ContactsTable";
 import { getContacts } from "@/data-access/contact/get";
 import { Suspense } from "react";

@@ -14,6 +14,7 @@ export default function Search() {
   const [text, setText] = useState(searchQuery);
   const [query] = useDebounce(text.trim(), 500);
   const resultCount: number = 1;
+
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -34,7 +35,7 @@ export default function Search() {
       addToast({
         color: "warning",
         icon: <BiSearch className="text-2xl font-bold" />,
-        title: "Axtarışınıza uyğun nəticə tapılmadı",
+        title: "No results found for your search",
       });
     }
   }, [resultCount]);
@@ -43,7 +44,7 @@ export default function Search() {
     <search className="w-full px-6 md:w-[22rem] lg:mt-0">
       <Input
         endContent={<BiSearch className="text-[1.7rem] font-bold" />}
-        placeholder={"Axtarış"}
+        placeholder={"Search"}
         radius="md"
         size="lg"
         value={text}
