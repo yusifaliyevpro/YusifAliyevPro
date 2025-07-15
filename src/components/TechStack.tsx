@@ -11,7 +11,7 @@ const itemVariants: Variants = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5, stiffness: 100, type: "spring" } },
 };
 
-export default function Technologies() {
+export function TechStack() {
   return (
     <section aria-label="Tech Stack" className="flex min-h-svh w-full flex-col items-center px-5 md:px-52">
       <Reveal
@@ -30,14 +30,14 @@ export default function Technologies() {
         {techs.map((tech, i) => (
           <motion.li
             key={i}
-            className="shadow-medium flex aspect-square rounded-lg bg-white p-3 max-lg:items-center max-lg:justify-center lg:p-3"
+            className="shadow-medium flex aspect-square items-center justify-center rounded-lg bg-white p-3 lg:p-3"
             variants={itemVariants}
           >
             <h3 className="sr-only">{tech.name}</h3>
             <Tooltip shouldFlip showArrow color="primary" content={tech.name} offset={23} size="lg">
               <Image
                 alt={tech.name}
-                className="object-contain drop-shadow-2xl select-none max-lg:size-16"
+                className="aspect-square object-contain drop-shadow-2xl select-none max-lg:size-16"
                 height={90}
                 src={tech.icon}
                 width={90}
