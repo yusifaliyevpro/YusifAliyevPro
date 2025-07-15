@@ -31,7 +31,7 @@ export default function MySoftSkills() {
         {softSkills.map((skill, i) => (
           <motion.li
             key={i}
-            className="rounded-lg bg-gradient-to-r from-blue-600/90 to-blue-500 p-1 px-2 text-center text-base text-white dark:text-slate-300 md:px-4 md:text-lg lg:text-xl"
+            className="rounded-lg bg-linear-to-r from-blue-600/90 to-blue-500 p-1 px-2 text-center text-base text-white dark:text-slate-300 md:px-4 md:text-lg lg:text-xl"
             variants={itemVariants}
           >
             <h3>{skill}</h3>

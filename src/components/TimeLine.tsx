@@ -34,13 +34,13 @@ export default function Timeline() {
       </Reveal>
       <div className="relative mt-16 flex min-h-[60svh] w-fit flex-col items-center justify-start overflow-x-hidden px-2 lg:px-5">
         {/* Line */}
-        <hr className="absolute left-0 ml-7 h-full w-1 rounded-xl bg-gradient-to-b from-blue-500 to-blue-100 lg:ml-10"></hr>
+        <hr className="absolute left-0 ml-7 h-full w-1 rounded-xl bg-linear-to-b from-blue-500 to-blue-100 lg:ml-10"></hr>
         <motion.ol initial="hidden" variants={olVariants} viewport={{ once: true }} whileInView="visible">
           {events.map((event, i) => (
             <li key={i} className="relative mt-10 flex flex-row items-center">
               {/* Icons */}
               <motion.div
-                className={`flex size-11 flex-col items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-2 text-white`}
+                className={`flex size-11 flex-col items-center justify-center rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-2 text-white`}
                 variants={dotVariants}
               >
                 {event.year ? <p>{event.year}</p> : getIcon(event.name!)}

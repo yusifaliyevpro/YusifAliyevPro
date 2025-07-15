@@ -59,7 +59,7 @@ export default async function Home() {
             <span
               className={cn(
                 "inline-block min-w-72 flex-row text-center",
-                "bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] bg-clip-text text-transparent",
+                "bg-linear-to-r from-[#0c8bea] to-[#0B66C2] bg-clip-text text-transparent",
                 "md:flex md:items-start md:text-center",
                 "lg:text-left",
                 "xl:min-w-[22.7rem]",
@@ -82,7 +82,7 @@ export default async function Home() {
             className={cn(
               "mt-2 flex flex-row items-center justify-center text-nowrap",
               "after:text-blue-500 after:content-['.']",
-              "md:w-[39rem]",
+              "md:w-156",
             )}
           >
             Developer
@@ -90,7 +90,7 @@ export default async function Home() {
         </div>
         <motion.div
           animate={{ opacity: 1, scale: 1 }}
-          className="select-none rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-2xl shadow-blue-500"
+          className="select-none rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-2xl shadow-blue-500"
           initial={{ opacity: 0, scale: 0.5 }}
           transition={{
             duration: 0.3,

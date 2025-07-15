@@ -57,7 +57,7 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
           "md:px-10",
           "lg:px-24",
           "xl:px-44",
-          "bg-gradient-to-tr from-blue-500 to-blue-200",
+          "bg-linear-to-tr from-blue-500 to-blue-200",
         )}
       >
         <header
@@ -66,13 +66,13 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
             "md:rounded-t-md md:border-b-[0.8px]",
             "lg:shadow-ltr-small",
             "dark:border-0 dark:bg-foreground",
-            "border-b-[0px] border-solid border-gray-300",
+            "border-b-0 border-solid border-gray-300",
           )}
         >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               alt="Yusif Aliyev Picture"
-              className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-large shadow-blue-500"
+              className="rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-large shadow-blue-500"
               height={50}
               quality={100}
               src={"/Profile.png"}
@@ -115,7 +115,7 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
       </article>
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
         <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
-          <figure className="relative aspect-[16/9] h-full border-solid dark:border-0 md:border-b-1">
+          <figure className="relative aspect-video h-full border-solid dark:border-0 md:border-b">
             <Image
               fill
               priority

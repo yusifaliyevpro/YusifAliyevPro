@@ -27,7 +27,7 @@ export default function KofeAlWidget({
           className={`transition-all duration-200 ${isHoverable && "group-hover:lg:w-auto group-hover:lg:px-4 group-hover:lg:py-2 group-hover:lg:pl-6"}`}
         >
           <p className={`hidden text-lg dark:text-black ${isHoverable && "group-hover:lg:flex"}`}>
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               kofe.al
             </span>
             /@{username}

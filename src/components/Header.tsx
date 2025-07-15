@@ -38,7 +38,7 @@ export default function Header() {
       isBlurred
       className="select-none"
       classNames={{
-        base: `fixed z-[9998] w-auto transition-all dark:bg-foreground md:rounded-b-lg xl:mx-40 ${isScrolled && "dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg lg:shadow-medium"}`,
+        base: `fixed z-9998 w-auto transition-all dark:bg-foreground md:rounded-b-lg xl:mx-40 ${isScrolled && "dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg lg:shadow-medium"}`,
       }}
       onMenuOpenChange={setIsMenuOpen}
     >
@@ -126,21 +126,21 @@ const socialAccounts: {
 }[] = [
   {
     className:
-      "rounded-md from-[#833ab4] via-[#fd1d1d] dark:text-slate-300 to-[#fcb045] p-[3px] text-3xl hover:bg-gradient-to-r hover:text-white",
+      "rounded-md from-[#833ab4] via-[#fd1d1d] dark:text-slate-300 to-[#fcb045] p-[3px] text-3xl hover:bg-linear-to-r hover:text-white",
     icon: <GrInstagram />,
     link: InstagramAccount,
     name: "Instagram",
   },
   {
     className:
-      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
+      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-linear-to-r hover:text-white",
     icon: <LiaFacebook strokeWidth={0.3} />,
     link: FacebookAccount,
     name: "FaceBook",
   },
   {
     className:
-      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
+      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-linear-to-r hover:text-white",
     icon: <PiLinkedinLogoBold />,
     link: LinkedInAccount,
     name: "LinkedIn",

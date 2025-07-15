@@ -83,7 +83,7 @@ export default function Gallery({
           <motion.div
             key={currentIndex}
             animate="animate"
-            className="relative flex aspect-square w-fit md:aspect-[13/9]"
+            className="relative flex aspect-square w-fit md:aspect-13/9"
             custom={direction}
             exit="exit"
             initial="initial"
@@ -116,7 +116,7 @@ export default function Gallery({
             ref={(el) => {
               previewRefs.current[i] = el;
             }}
-            className="relative flex aspect-[13/9] h-24 cursor-pointer"
+            className="relative flex aspect-13/9 h-24 cursor-pointer"
             onClick={() => handleScroolBar(i)}
           >
             <Image

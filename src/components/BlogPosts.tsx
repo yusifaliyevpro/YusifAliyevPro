@@ -60,8 +60,8 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
             <Link href={`blog/${blogPost.slug}`}>
               <figure
                 className={cn(
-                  "flex aspect-[16/9] max-h-[17rem] w-full rounded-t-lg",
-                  "border-b-1 border-t-0 border-solid dark:border-0",
+                  "flex aspect-video max-h-68 w-full rounded-t-lg",
+                  "border-b border-t-0 border-solid dark:border-0",
                 )}
               >
                 <Image
@@ -93,7 +93,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
                     alt="Profile Picture"
-                    className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-medium"
+                    className="rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-medium"
                     height={45}
                     quality={100}
                     src="/Profile.png"

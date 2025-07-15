@@ -25,7 +25,7 @@ export default function LoadMore() {
       <Button
         size="lg"
         className={cn(
-          "mt-10 bg-gradient-to-r from-blue-500 to-blue-400 text-lg text-white",
+          "mt-10 bg-linear-to-r from-blue-500 to-blue-400 text-lg text-white",
           "dark:from-blue-600 dark:to-blue-500 dark:text-slate-200",
         )}
         onPress={() => router.push("?" + createQueryString("page", String(pageQuery + 1)), { scroll: false })}
