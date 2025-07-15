@@ -1,3 +1,4 @@
+import { cn } from "@/lib/cn";
 import * as motion from "motion/react-client";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
@@ -12,7 +13,7 @@ export default function KofeAlWidget({
 }: TKofeAlWidget) {
   return (
     <div
-      className={`group ${poppins.className} ${isActiveOnMobile ? "flex" : "hidden md:flex"} pointer-events-none sticky bottom-0 right-0 z-0 w-full cursor-auto flex-row justify-end pb-5 pr-5 md:pb-7 md:pr-7`}
+      className={`group ${poppins.className} ${isActiveOnMobile ? "flex" : "hidden md:flex"} pointer-events-none sticky right-0 bottom-0 z-0 w-full cursor-auto flex-row justify-end pr-5 pb-5 md:pr-7 md:pb-7`}
     >
       <motion.a
         animate={{ opacity: 1, scale: 1 }}
@@ -26,7 +27,7 @@ export default function KofeAlWidget({
         <div
           className={`transition-all duration-200 ${isHoverable && "group-hover:lg:w-auto group-hover:lg:px-4 group-hover:lg:py-2 group-hover:lg:pl-6"}`}
         >
-          <p className={`hidden text-lg dark:text-black ${isHoverable && "group-hover:lg:flex"}`}>
+          <p className={cn("hidden text-lg", { "group-hover:lg:flex": isHoverable })}>
             <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               kofe.al
             </span>
@@ -45,7 +46,7 @@ export default function KofeAlWidget({
         >
           <Image
             alt="Kofe al"
-            className="select-none rounded-full"
+            className="rounded-full select-none"
             height={40}
             quality={100}
             src="/kofeal.webp"

@@ -21,7 +21,7 @@ export function EmailFooter() {
                   />
                 </Column>
                 <Column align="center">
-                  <Text className="my-[2px] text-[16px] font-semibold leading-[12px] text-gray-900">
+                  <Text className="my-[2px] text-[16px] leading-[12px] font-semibold text-gray-900">
                     Yusif Aliyev
                   </Text>
                   <Text className="leading-[12px]] mb-0 text-[16px] text-gray-500">Think different</Text>
@@ -73,7 +73,7 @@ export function EmailFooter() {
           </tr>
           <tr>
             <td align="center">
-              <Text className="my-[8px] text-[16px] font-semibold leading-[24px] text-gray-500">
+              <Text className="my-[8px] text-[16px] leading-[24px] font-semibold text-gray-500">
                 Baku, Azerbaijan
               </Text>
             </td>
@@ -81,7 +81,7 @@ export function EmailFooter() {
           <tr>
             <td align="center">
               <Link
-                className="my-[8px] text-[13px] font-semibold leading-[24px] text-gray-500"
+                className="my-[8px] text-[13px] leading-[24px] font-semibold text-gray-500"
                 href="{{{RESEND_UNSUBSCRIBE_URL}}}"
               >
                 Unsubscribe newsletter

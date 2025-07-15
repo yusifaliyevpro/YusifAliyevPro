@@ -51,19 +51,13 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
           <article
             key={blogPost.slug}
             className={cn(
-              "cursor-pointer rounded-lg border-solid bg-white pb-5 shadow-medium transition-all",
+              "shadow-medium cursor-pointer rounded-lg border-solid bg-white pb-5 transition-all",
               "col-span-1 flex flex-col items-center justify-start",
               "hover:scale-105",
-              "dark:bg-gray-800",
             )}
           >
             <Link href={`blog/${blogPost.slug}`}>
-              <figure
-                className={cn(
-                  "flex aspect-video max-h-68 w-full rounded-t-lg",
-                  "border-b border-t-0 border-solid dark:border-0",
-                )}
-              >
+              <figure className="flex aspect-video max-h-68 w-full rounded-t-lg border-t-0 border-b border-solid border-gray-200">
                 <Image
                   alt={`${blogPost.title} Poster`}
                   blurDataURL={blogPost.posterMetadata.lqip as string}
@@ -75,17 +69,9 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                 />
                 <figcaption className="sr-only">{blogPost.title} Poster</figcaption>
               </figure>
-              <div className="pl-6 pr-4">
-                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold dark:text-slate-300">
-                  {blogPost.title}
-                </h3>
-                <p
-                  className={cn(
-                    "line-clamp-2 w-fit text-wrap font-signika text-lg font-medium leading-relaxed text-gray-500",
-                    "md:line-clamp-6",
-                    "dark:text-slate-400/80",
-                  )}
-                >
+              <div className="pr-4 pl-6">
+                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold">{blogPost.title}</h3>
+                <p className="font-signika line-clamp-2 w-fit text-lg leading-relaxed font-medium text-wrap text-gray-500 md:line-clamp-6">
                   {blogPost.description}
                 </p>
               </div>
@@ -93,7 +79,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
                     alt="Profile Picture"
-                    className="rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-medium"
+                    className="shadow-medium rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-[2px]"
                     height={45}
                     quality={100}
                     src="/Profile.png"
@@ -101,7 +87,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                   />
                   <p className="font-medium">Yusif Aliyev</p>
                 </div>
-                <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700 dark:text-slate-400">
+                <div className="flex flex-row items-center justify-center gap-x-1 text-gray-700">
                   <GoClock />
                   <time className="text-sm font-normal tabular-nums" dateTime={blogPost.publishedAt}>
                     {dateFormatter(blogPost.publishedAt)}

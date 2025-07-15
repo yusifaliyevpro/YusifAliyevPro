@@ -3,7 +3,6 @@
 import { Button } from "@heroui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { cn } from "../lib/cn";
 
 export default function LoadMore() {
   const searchParams = useSearchParams();
@@ -24,10 +23,7 @@ export default function LoadMore() {
     !searchQuery && (
       <Button
         size="lg"
-        className={cn(
-          "mt-10 bg-linear-to-r from-blue-500 to-blue-400 text-lg text-white",
-          "dark:from-blue-600 dark:to-blue-500 dark:text-slate-200",
-        )}
+        className="mt-10 bg-linear-to-r from-blue-500 to-blue-400 text-lg text-white"
         onPress={() => router.push("?" + createQueryString("page", String(pageQuery + 1)), { scroll: false })}
       >
         Load More...

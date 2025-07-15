@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="az">
       <body
         className={cn(
-          "min-h-svh scroll-smooth bg-white font-poppins font-semibold",
+          "font-poppins min-h-svh scroll-smooth bg-white font-semibold",
           poppins.variable,
           jua.variable,
           source_sans_3.variable,

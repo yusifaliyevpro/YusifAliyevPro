@@ -30,14 +30,14 @@ export default function Technologies() {
         {techs.map((tech, i) => (
           <motion.li
             key={i}
-            className="flex aspect-square rounded-lg bg-white p-3 shadow-medium dark:bg-slate-800 max-lg:items-center max-lg:justify-center lg:p-3"
+            className="shadow-medium flex aspect-square rounded-lg bg-white p-3 max-lg:items-center max-lg:justify-center lg:p-3"
             variants={itemVariants}
           >
             <h3 className="sr-only">{tech.name}</h3>
             <Tooltip shouldFlip showArrow color="primary" content={tech.name} offset={23} size="lg">
               <Image
                 alt={tech.name}
-                className="select-none object-contain drop-shadow-2xl max-lg:size-16"
+                className="object-contain drop-shadow-2xl select-none max-lg:size-16"
                 height={90}
                 src={tech.icon}
                 width={90}

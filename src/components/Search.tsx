@@ -50,9 +50,8 @@ export default function Search() {
         value={text}
         variant="bordered"
         classNames={{
-          input: "text-lg font-normal placeholder:text-gray-500 dark:placeholder:text-slate-400",
-          inputWrapper:
-            "border-blue-200 hover:border-blue-300! group-data-[focus=true]:border-blue-400 dark:border-slate-400",
+          input: "text-lg font-normal placeholder:text-gray-500",
+          inputWrapper: "border-blue-200 group-data-[focus=true]:border-blue-400 hover:border-blue-300!",
         }}
         onChange={(e) => {
           setText(e.target.value);

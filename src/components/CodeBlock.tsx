@@ -55,7 +55,7 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
 
   return (
     <div className="rounded-lg border transition-none">
-      <div className="flex items-center justify-between rounded-t-md border-b bg-gray-200/80 px-4 py-2 dark:border-0 dark:bg-gray-500">
+      <div className="flex items-center justify-between rounded-t-md border-b bg-gray-200/80 px-4 py-2">
         <div className="text-md flex flex-row items-center justify-center gap-2 py-2 font-semibold">
           {getFileIcon(language)}
           <span className="text-lg">{fileName}</span>
@@ -64,7 +64,7 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
           <CopyButton text={code} />
         </div>
       </div>
-      <div className="transition-all scrollbar-hide">
+      <div className="scrollbar-hide transition-all">
         <SyntaxHighlighter
           showLineNumbers
           language={language}

@@ -5,7 +5,6 @@ import Search from "@/components/Search";
 import Subscribe from "@/components/Subsciption";
 import { profileOGImage, sharedMetadata, sharedOpenGraph } from "@/src/lib/shared-metadata";
 import { Button } from "@heroui/button";
-import Link from "next/link";
 import { Typewriter } from "nextjs-simple-typewriter";
 import { FaRegBell } from "react-icons/fa6";
 import { getBlogPosts } from "@/data-access/blog/get";
@@ -36,7 +35,7 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult
           <div className="font-poppins w-full space-y-5 sm:w-fit">
             <h1 className="w-full text-left text-4xl font-semibold">✍️ My Blog Posts</h1>
             <p className="sr-only">I share my thoughts, experiences, and stories on various topics.</p>
-            <span className="flex h-24 max-w-100 pl-3 text-lg font-normal text-wrap text-slate-600 sm:h-12 dark:text-slate-400">
+            <span className="flex h-24 max-w-100 pl-3 text-lg font-normal text-wrap text-slate-600 sm:h-12">
               <Typewriter
                 loop={1}
                 typeSpeed={90}
@@ -45,11 +44,11 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult
             </span>
           </div>
           <div className="mt-5 flex flex-row items-center justify-center">
-            <Link href="#subscription">
+            <a href="#subscription">
               <Button isIconOnly color="primary">
                 <FaRegBell className="size-5" />
               </Button>
-            </Link>
+            </a>
             <Search />
           </div>
         </header>

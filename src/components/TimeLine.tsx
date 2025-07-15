@@ -45,12 +45,10 @@ export default function Timeline() {
               >
                 {event.year ? <p>{event.year}</p> : getIcon(event.name!)}
               </motion.div>
-              <motion.div className="flex flex-col pl-10 pr-2 max-sm:space-y-2" variants={textVariants}>
-                {event.name && <h3 className="text-wrap text-2xl">{event.name}</h3>}
+              <motion.div className="flex flex-col pr-2 pl-10 max-sm:space-y-2" variants={textVariants}>
+                {event.name && <h3 className="text-2xl text-wrap">{event.name}</h3>}
                 {event.description && (
-                  <p className="pr-5 text-sm text-gray-500 dark:text-slate-400 max-sm:text-base">
-                    {event.description}
-                  </p>
+                  <p className="pr-5 text-sm text-gray-500 max-sm:text-base">{event.description}</p>
                 )}
               </motion.div>
             </li>
