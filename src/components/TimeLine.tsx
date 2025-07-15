@@ -34,23 +34,21 @@ export default function Timeline() {
       </Reveal>
       <div className="relative mt-16 flex min-h-[60svh] w-fit flex-col items-center justify-start overflow-x-hidden px-2 lg:px-5">
         {/* Line */}
-        <hr className="absolute left-0 ml-7 h-full w-1 rounded-xl bg-gradient-to-b from-blue-500 to-blue-100 lg:ml-10"></hr>
+        <hr className="absolute left-0 ml-7 h-full w-1 rounded-xl bg-linear-to-b from-blue-500 to-blue-100 lg:ml-10"></hr>
         <motion.ol initial="hidden" variants={olVariants} viewport={{ once: true }} whileInView="visible">
           {events.map((event, i) => (
             <li key={i} className="relative mt-10 flex flex-row items-center">
               {/* Icons */}
               <motion.div
-                className={`flex size-11 flex-col items-center justify-center rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-2 text-white`}
+                className={`flex size-11 flex-col items-center justify-center rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-2 text-white`}
                 variants={dotVariants}
               >
                 {event.year ? <p>{event.year}</p> : getIcon(event.name!)}
               </motion.div>
-              <motion.div className="flex flex-col pl-10 pr-2 max-sm:space-y-2" variants={textVariants}>
-                {event.name && <h3 className="text-wrap text-2xl">{event.name}</h3>}
+              <motion.div className="flex flex-col pr-2 pl-10 max-sm:space-y-2" variants={textVariants}>
+                {event.name && <h3 className="text-2xl text-wrap">{event.name}</h3>}
                 {event.description && (
-                  <p className="pr-5 text-sm text-gray-500 dark:text-slate-400 max-sm:text-base">
-                    {event.description}
-                  </p>
+                  <p className="pr-5 text-sm text-gray-500 max-sm:text-base">{event.description}</p>
                 )}
               </motion.div>
             </li>

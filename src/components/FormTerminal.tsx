@@ -67,7 +67,7 @@ export default function FormTerminal() {
         <p>Contact</p>
         <p className="w-12"></p>
       </header>
-      <div className="flex min-h-[22rem] flex-col overflow-y-scroll p-3 scrollbar-hide">
+      <div className="flex min-h-88 flex-col overflow-y-scroll p-3 scrollbar-hide">
         <p>Well then, your project sounds very interesting to me✨</p>
         <span className="mr-2 overflow-hidden text-nowrap pb-3">
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _

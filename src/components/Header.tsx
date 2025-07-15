@@ -19,6 +19,7 @@ import { LiaFacebook } from "react-icons/lia";
 import { PiLinkedinLogoBold } from "react-icons/pi";
 
 import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
+import { cn } from "@/lib/cn";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,14 +39,16 @@ export default function Header() {
       isBlurred
       className="select-none"
       classNames={{
-        base: `fixed z-[9998] w-auto transition-all dark:bg-foreground md:rounded-b-lg xl:mx-40 ${isScrolled && "dark:bg-foreground/70 lg:translate-y-3 lg:rounded-lg lg:shadow-medium"}`,
+        base: cn("fixed z-9998 w-auto transition-all md:rounded-b-lg xl:mx-40", {
+          "lg:shadow-medium lg:translate-y-3 lg:rounded-lg": isScrolled,
+        }),
       }}
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
         <NavbarBrand as={"li"}>
           <Link
-            className="relative left-0 flex flex-row items-center gap-1.5 font-jua text-3xl font-normal text-black dark:text-white"
+            className="font-jua relative left-0 flex flex-row items-center gap-1.5 text-3xl font-normal text-black"
             href={`/`}
           >
             <p>
@@ -59,7 +62,7 @@ export default function Header() {
           <NavbarItem key={i}>
             <Link
               aria-current="page"
-              className="hidden text-lg font-semibold text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-slate-400 sm:flex"
+              className="hidden text-lg font-semibold text-slate-700 hover:text-black sm:flex"
               color="foreground"
               href={navbar.link}
             >
@@ -86,7 +89,7 @@ export default function Header() {
           ))}
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="max-h-[30svh] items-center justify-center gap-y-3 overflow-hidden dark:bg-foreground/70">
+      <NavbarMenu className="max-h-[30svh] items-center justify-center gap-y-3 overflow-hidden">
         {staticRoutes.map((navbar, i) => (
           <NavbarMenuItem key={i}>
             <Link className="w-full text-xl font-semibold" href={navbar.link}>
@@ -126,28 +129,25 @@ const socialAccounts: {
 }[] = [
   {
     className:
-      "rounded-md from-[#833ab4] via-[#fd1d1d] dark:text-slate-300 to-[#fcb045] p-[3px] text-3xl hover:bg-gradient-to-r hover:text-white",
+      "rounded-md from-[#833ab4] via-[#fd1d1d]  to-[#fcb045] p-[3px] text-3xl hover:bg-linear-to-r hover:text-white",
     icon: <GrInstagram />,
     link: InstagramAccount,
     name: "Instagram",
   },
   {
-    className:
-      "rounded-full from-[#00c6ff] to-[#0072ff] dark:text-slate-300 text-[42px] hover:bg-gradient-to-r hover:text-white",
+    className: "rounded-full from-[#00c6ff] to-[#0072ff]  text-[42px] hover:bg-linear-to-r hover:text-white",
     icon: <LiaFacebook strokeWidth={0.3} />,
     link: FacebookAccount,
     name: "FaceBook",
   },
   {
-    className:
-      "rounded-md from-[#0c8bea] to-[#0B66C2] dark:text-slate-300 text-4xl hover:bg-gradient-to-r hover:text-white",
+    className: "rounded-md from-[#0c8bea] to-[#0B66C2]  text-4xl hover:bg-linear-to-r hover:text-white",
     icon: <PiLinkedinLogoBold />,
     link: LinkedInAccount,
     name: "LinkedIn",
   },
   {
-    className:
-      "rounded-full to-gray-800  p-[2px] text-4xl dark:text-slate-300 dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white",
+    className: "rounded-full to-gray-800  p-[2px] text-4xl  hover:bg-black hover:text-white",
     icon: <FaGithub />,
     link: GitHubAccount,
     name: "GitHub",

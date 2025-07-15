@@ -57,7 +57,7 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
           "md:px-10",
           "lg:px-24",
           "xl:px-44",
-          "bg-gradient-to-tr from-blue-500 to-blue-200",
+          "bg-linear-to-tr from-blue-500 to-blue-200",
         )}
       >
         <header
@@ -65,14 +65,13 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
             "mt-24 flex min-h-[50svh] w-full flex-col items-center bg-white p-8 py-12",
             "md:rounded-t-md md:border-b-[0.8px]",
             "lg:shadow-ltr-small",
-            "dark:border-0 dark:bg-foreground",
-            "border-b-[0px] border-solid border-gray-300",
+            "border-b-0 border-solid border-gray-300",
           )}
         >
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               alt="Yusif Aliyev Picture"
-              className="rounded-full bg-gradient-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-large shadow-blue-500"
+              className="shadow-large rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-[2px] shadow-blue-500"
               height={50}
               quality={100}
               src={"/Profile.png"}
@@ -97,15 +96,14 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
             </div>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h1 className="flex px-5 py-5 text-center text-4xl font-bold leading-snug lg:text-5xl">
+            <h1 className="flex px-5 py-5 text-center text-4xl leading-snug font-bold lg:text-5xl">
               {blogPost.title}
             </h1>
             <p
               className={cn(
-                "text-pretty text-center text-lg font-normal leading-normal text-gray-500",
+                "text-center text-lg leading-normal font-normal text-pretty text-gray-500",
                 "md:px-12",
                 "lg:px-20 lg:text-xl",
-                "dark:text-slate-300/80",
               )}
             >
               {blogPost.description}
@@ -114,20 +112,20 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
         </header>
       </article>
       <div className="flex w-full flex-col items-start justify-center md:px-10 lg:px-24 xl:px-44">
-        <div className="flex min-h-svh w-full flex-col md:rounded-b-md lg:shadow-small">
-          <figure className="relative aspect-[16/9] h-full border-solid dark:border-0 md:border-b-1">
+        <div className="lg:shadow-small flex min-h-svh w-full flex-col md:rounded-b-md">
+          <figure className="relative aspect-video h-full border-solid border-gray-200 md:border-b">
             <Image
               fill
               priority
               alt="Blog Poster"
-              blurDataURL={blogPost.posterLqip as string}
+              blurDataURL={blogPost.posterLqip!}
               className="object-cover p-3 md:p-0"
               placeholder="blur"
-              src={blogPost.poster as string}
+              src={blogPost.poster!}
             />
             <figcaption className="sr-only">{blogPost.title}</figcaption>
           </figure>
-          <article className="flex flex-col px-6 pb-10 pt-6 transition-all md:px-12 lg:px-20">
+          <article className="flex flex-col px-6 pt-6 pb-10 transition-all md:px-12 lg:px-20">
             <RichText blogText={blogPost.text as PortableTextBlock[]} />
             {blogPost.gallery && <Gallery images={blogPost.gallery} />}
           </article>

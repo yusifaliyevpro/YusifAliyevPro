@@ -50,7 +50,7 @@ export default async function Projects() {
                 <Image
                   alt={`${project.name} logo`}
                   blurDataURL={project.imageMetadata.lqip || ""}
-                  className="aspect-[16/10] size-auto max-h-44 rounded-2xl object-cover shadow-medium transition-all hover:blur-md md:max-h-48"
+                  className="aspect-16/10 size-auto max-h-44 rounded-2xl object-cover shadow-medium transition-all hover:blur-md md:max-h-48"
                   height={200}
                   placeholder="blur"
                   quality={100}
