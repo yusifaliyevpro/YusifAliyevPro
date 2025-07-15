@@ -7,7 +7,7 @@
     text-wrap: balance;
   }
 }
-
+/* 
 html::-webkit-scrollbar {
   @apply w-2;
 }
@@ -34,4 +34,4 @@ html::-webkit-scrollbar-thumb:hover {
 
 .syntax {
   @apply mx-0;
-}
+} */
