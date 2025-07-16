@@ -1,5 +1,5 @@
 // No need to be server action
-import type { Contact } from "@/generated/prisma";
+import type { Contact } from "@/generated/prisma/client";
 import { auth } from "@/lib/auth";
 import { AdminEmail } from "@/lib/constants";
 import { prisma } from "@/src/lib/prisma";
