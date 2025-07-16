@@ -5,8 +5,7 @@ import { getBlogPosts } from "@/data-access/blog/get";
 import { getProjects } from "@/data-access/projects/get";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPosts = await getBlogPosts();
-  const projects = await getProjects();
+  const [blogPosts, projects] = await Promise.all([getBlogPosts(), getProjects()]);
   const projectPosters = projects.map((project) => project.image).filter((p) => p !== null);
   const blogPosters = blogPosts.map((blog) => blog.poster).filter((p) => p !== null);
 
