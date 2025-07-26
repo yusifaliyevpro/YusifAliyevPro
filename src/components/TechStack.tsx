@@ -1,5 +1,6 @@
+"use client";
 import { Tooltip } from "@heroui/tooltip";
-import * as motion from "motion/react-client";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 import Reveal from "./Reveal";
