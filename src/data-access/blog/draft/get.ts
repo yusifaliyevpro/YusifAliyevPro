@@ -64,6 +64,6 @@ export async function getDraftBlogPost(slug: string) {
     }
   `);
 
-  const data = await client.fetch<DraftBlogPostQueryResult>(DraftBlogPostQuery, { slug });
-  return { data };
+  const blogPost = await client.fetch<DraftBlogPostQueryResult>(DraftBlogPostQuery, { slug });
+  return { blogPost };
 }
