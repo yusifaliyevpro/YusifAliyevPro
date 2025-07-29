@@ -55,7 +55,7 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
 
   return (
     <div className="mb-4 rounded-lg border border-gray-500 transition-none">
-      <div className="flex items-center justify-between rounded-t-lg border-b border-gray-500 bg-gray-200/80 px-4 py-2">
+      <div className="flex items-center justify-between rounded-t-lg border-b border-gray-500 bg-gray-200/80 px-4 py-1">
         <div className="text-md flex flex-row items-center justify-center gap-2 py-2 font-semibold">
           {getFileIcon(language)}
           <span className="text-lg">{fileName}</span>
@@ -69,8 +69,10 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
           showLineNumbers
           language={language}
           style={oneLight}
+          lineNumberStyle={
+            code.trim().split("\n").length < 15 ? { marginLeft: "calc(var(--spacing) * 3)" } : {}
+          }
           customStyle={{
-            height: "23.4rem",
             margin: 0,
             msOverflowStyle: "none",
             overflow: "auto",
@@ -80,7 +82,7 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
             scrollbarWidth: "none",
           }}
         >
-          {code}
+          {code.trim()}
         </SyntaxHighlighter>
       </div>
     </div>

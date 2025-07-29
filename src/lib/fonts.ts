@@ -4,6 +4,7 @@ export const source_sans_3 = Source_Sans_3({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: "variable",
 });
 
 export const signika_negative = Signika_Negative({

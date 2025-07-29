@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/cn";
 import { dateFormatter } from "@/lib/format";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,24 +38,14 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
     <>
       <section
         aria-label="Blog Posts"
-        className={cn(
-          "relative grid w-full grid-cols-1 place-items-center items-center justify-center gap-x-7 gap-y-9 px-6",
-          "sm:grid-cols-2",
-          "md:grid-cols-2 md:px-20",
-          "lg:grid-cols-2 lg:px-36",
-          "xl:grid-cols-3",
-        )}
+        className="relative grid w-full grid-cols-1 place-items-stretch items-center justify-center gap-x-7 gap-y-9 px-6 sm:grid-cols-2 md:grid-cols-2 md:px-20 lg:grid-cols-2 lg:px-36 xl:grid-cols-3"
       >
         {results.map((blogPost) => (
           <article
             key={blogPost.slug}
-            className={cn(
-              "shadow-medium cursor-pointer rounded-lg border-solid bg-white pb-5 transition-all",
-              "col-span-1 flex flex-col items-center justify-start",
-              "hover:scale-105",
-            )}
+            className="shadow-medium col-span-1 flex h-full cursor-pointer flex-col items-center justify-start rounded-lg border-solid bg-white pb-5 transition-all hover:scale-105"
           >
-            <Link href={`blog/${blogPost.slug}`}>
+            <Link href={`blog/${blogPost.slug}`} className="flex flex-col items-center justify-between">
               <figure className="flex aspect-video max-h-68 w-full rounded-t-lg border-t-0 border-b border-solid border-gray-200">
                 <Image
                   alt={`${blogPost.title} Poster`}
@@ -64,18 +53,18 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                   className="size-full rounded-t-lg object-cover"
                   height={blogPost.posterMetadata.dimensions?.height}
                   placeholder="blur"
-                  src={blogPost.poster as string}
+                  src={blogPost.poster!}
                   width={blogPost.posterMetadata.dimensions?.width}
                 />
                 <figcaption className="sr-only">{blogPost.title} Poster</figcaption>
               </figure>
               <div className="pr-4 pl-6">
-                <h3 className="my-5 line-clamp-1 text-left text-2xl font-bold">{blogPost.title}</h3>
+                <h3 className="my-5 line-clamp-2 min-h-14 text-left text-2xl font-bold">{blogPost.title}</h3>
                 <p className="font-signika line-clamp-2 w-fit text-lg leading-relaxed font-medium text-wrap text-gray-500 md:line-clamp-6">
                   {blogPost.description}
                 </p>
               </div>
-              <div className="flex w-full flex-row items-center justify-between px-7 py-5 pr-8">
+              <div className="my-7 flex w-full flex-row items-center justify-between px-7 pr-8">
                 <div className="flex flex-row items-center gap-x-4">
                   <Image
                     alt="Profile Picture"

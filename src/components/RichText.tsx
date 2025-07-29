@@ -57,6 +57,7 @@ const components: PortableTextComponents = {
         {children}
       </a>
     ),
+    code: ({ children }) => <span className="bg-gray-200 px-1 font-medium text-gray-600">{children}</span>,
   },
   types: {
     code: ({ value }: { value: Required<CodeInputValue> }) => (

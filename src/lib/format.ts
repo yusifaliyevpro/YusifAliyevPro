@@ -1,10 +1,5 @@
 export function dateFormatter(date: string | Date) {
-  const fullDate = new Date(date);
-  const day = fullDate.getDate();
-  const month = fullDate.getMonth() + 1;
-  const year = fullDate.getFullYear();
-
-  return `${day < 10 ? "0" : ""}${day}/ ${month < 10 ? "0" : ""}${month}/ ${year}`;
+  return new Date(date).toLocaleDateString("en-GB", { timeZone: "UTC" });
 }
 
 export function getReadTime(text: string): number {
