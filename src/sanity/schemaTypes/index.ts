@@ -1,5 +1,4 @@
 import { type SchemaTypeDefinition } from "sanity";
-
 import blog from "./blog";
 import project from "./project";
 
