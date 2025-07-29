@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-import PreviewMode from "../lib/Preview";
-import SendEmailComponent from "../lib/SendEmail";
+import PreviewMode from "../components/Preview";
+import SendEmailComponent from "../components/SendEmail";
 
 const blog = defineType({
   fields: [
