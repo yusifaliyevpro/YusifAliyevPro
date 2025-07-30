@@ -2,9 +2,8 @@ import { client } from "@/sanity/lib/client";
 import type { BlogPostQueryResult, BlogPostsQueryResult } from "@/sanity/types";
 import { defineQuery } from "next-sanity";
 
-export async function getBlogPosts() {
-  const BlogPostsQuery = defineQuery(`
-  *[_type == 'blogs' && isPublished] 
+export const BlogPostsQuery = defineQuery(`
+  *[_type == 'blogs'] 
     | order(publishedAt desc) {
       title,
       _createdAt,
@@ -20,19 +19,18 @@ export async function getBlogPosts() {
     }
 `);
 
+export async function getBlogPosts() {
   const data = await client.fetch<BlogPostsQueryResult>(BlogPostsQuery, {}, { next: { revalidate: 3600 } });
   return data;
 }
 
-export async function getBlogPost(slug: string) {
-  const BlogPostQuery = defineQuery(`
-  *[_type == 'blogs' && slug.current == $slug && isPublished][0] {
+export const BlogPostQuery = defineQuery(`
+  *[_type == 'blogs' && slug.current == $slug][0] {
     title,
     "plainText": title + pt::text(text) + description,
     "poster": poster.asset->url,
     "posterLqip": poster.asset->metadata.lqip,
     publishedAt,
-    isPublished,
     "gallery": gallery[] {
       "image": asset->url,
       "lqip": asset->metadata.lqip
@@ -54,6 +52,7 @@ export async function getBlogPost(slug: string) {
   }
 `);
 
+export async function getBlogPost(slug: string) {
   const data = await client.fetch<BlogPostQueryResult>(
     BlogPostQuery,
     { slug },

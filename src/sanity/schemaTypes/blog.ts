@@ -30,13 +30,6 @@ const blog = defineType({
       type: "string",
     }),
     defineField({
-      initialValue: false,
-      name: "isPublished",
-      title: "Is published?",
-      type: "boolean",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       initialValue: new Date().toISOString(),
       name: "publishedAt",
       title: "Publication Date",

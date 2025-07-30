@@ -1,22 +1,23 @@
-import { getDraftBlogPosts } from "@/data-access/blog/draft/get";
-import { RefreshRouterButton } from "@/components/Refresh";
 import { BlogPostsPageUI } from "../../blog/page";
 import { AdminSignIn } from "@/components/AdminSignIn";
 import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { BlogPostsQuery } from "@/data-access/blog/get";
 
 export { metadata } from "@/src/app/(site)/blog/page";
 
 export default async function DraftBlogPostsPage() {
   const session = await auth();
   if (!session) return <AdminSignIn />;
-  const blogPosts = await getDraftBlogPosts();
-  if (blogPosts.error || !blogPosts.data) notFound();
+  const { data: blogPosts } = await sanityFetch({ query: BlogPostsQuery, perspective: "drafts" });
+
+  if (!blogPosts) notFound();
 
   return (
     <>
-      <BlogPostsPageUI blogPosts={blogPosts.data} />
-      <RefreshRouterButton />
+      <BlogPostsPageUI blogPosts={blogPosts} />
+      <SanityLive />
     </>
   );
 }
