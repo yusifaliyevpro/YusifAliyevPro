@@ -46,7 +46,7 @@ export default function BlogPostEmail({
         <Preview>{description.slice(0, 90)}</Preview>
         <EmailHeader />
         {/* Body */}
-        <Section className="mb-8 text-center text-4xl font-semibold leading-9">
+        <Section className="mb-8 text-center text-4xl leading-9 font-semibold">
           Salam 👋<span className="text-[#007bff]">{" {{{FIRST_NAME}}} {{{LAST_NAME}}}"}</span>
         </Section>
         <Section className="my-4">
@@ -64,8 +64,8 @@ export default function BlogPostEmail({
             </Row>
           )}
           <Section className="mt-8 text-center">
-            <Text className="my-4 text-lg font-semibold leading-7 text-blue-600">Yeni Bloq Post</Text>
-            <Heading as="h1" className="m-0 mt-2 text-4xl font-semibold leading-9 text-gray-900">
+            <Text className="my-4 text-lg leading-7 font-semibold text-blue-600">Yeni Bloq Post</Text>
+            <Heading as="h1" className="m-0 mt-2 text-4xl leading-9 font-semibold text-gray-900">
               {title}
             </Heading>
             <Text className="text-base leading-6 text-gray-500 lg:px-20">{description}</Text>

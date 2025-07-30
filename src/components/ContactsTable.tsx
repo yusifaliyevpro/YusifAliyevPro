@@ -81,7 +81,7 @@ export default function ContactsTable({ contactsPromise }: { contactsPromise: Ge
                 onClick={() => handleUpdate(contact)}
               />
               <MdDeleteOutline
-                className={`cursor-pointer text-2xl text-danger`}
+                className={`text-danger cursor-pointer text-2xl`}
                 onClick={() => handleDelete(contact)}
               />
             </TableCell>

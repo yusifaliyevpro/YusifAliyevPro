@@ -57,7 +57,7 @@ export default function FormTerminal() {
   };
 
   return (
-    <form className="z-10 w-full rounded-3xl bg-slate-200/90 shadow-large backdrop-blur-3xl lg:font-mono">
+    <form className="shadow-large z-10 w-full rounded-3xl bg-slate-200/90 backdrop-blur-3xl lg:font-mono">
       <header className="flex w-full flex-row items-center justify-between rounded-t-3xl bg-slate-300/90 px-4 backdrop-blur-3xl">
         <div className="flex flex-row gap-x-2 py-4">
           <span className="size-3 rounded-full bg-red-500"></span>
@@ -67,9 +67,9 @@ export default function FormTerminal() {
         <p>Contact</p>
         <p className="w-12"></p>
       </header>
-      <div className="flex min-h-88 flex-col overflow-y-scroll p-3 scrollbar-hide">
+      <div className="scrollbar-hide flex min-h-88 flex-col overflow-y-scroll p-3">
         <p>Well then, your project sounds very interesting to me✨</p>
-        <span className="mr-2 overflow-hidden text-nowrap pb-3">
+        <span className="mr-2 overflow-hidden pb-3 text-nowrap">
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
         </span>

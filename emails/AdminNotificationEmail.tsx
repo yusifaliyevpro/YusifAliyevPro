@@ -31,8 +31,8 @@ export default function AdminNotificationEmail({
         {/* Body */}
         <Section>
           <Section className="text-center">
-            <Text className="my-4 text-lg font-semibold leading-7 text-blue-600">Yeni Kontakt</Text>
-            <Heading as="h1" className="m-0 mt-2 text-4xl font-semibold leading-9 text-gray-900">
+            <Text className="my-4 text-lg leading-7 font-semibold text-blue-600">Yeni Kontakt</Text>
+            <Heading as="h1" className="m-0 mt-2 text-4xl leading-9 font-semibold text-gray-900">
               {name}
             </Heading>
             <Text className="text-base leading-6 text-gray-500 lg:px-20">{description}</Text>

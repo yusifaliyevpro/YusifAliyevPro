@@ -66,7 +66,7 @@ export function Input({
           classNames={{
             input: "font-mono text-base font-bold placeholder:text-slate-400 after:bg-black",
             inputWrapper:
-              "bg-transparent shadow-none hover:bg-transparent group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent",
+              "bg-transparent shadow-none group-data-[focus=true]:bg-transparent group-data-[hover=true]:bg-transparent hover:bg-transparent",
           }}
           onKeyDown={handleEnterDown}
           onValueChange={setValue}

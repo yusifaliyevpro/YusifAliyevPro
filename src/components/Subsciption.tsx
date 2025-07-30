@@ -66,9 +66,9 @@ export default function SubscribeComponent() {
                   classNames={{
                     errorMessage: "text-white",
                     input:
-                      "border-white/30 bg-white/10! placeholder:text-white/60! autofill:text-white! group-data-[has-value=true]:text-white!",
+                      "border-white/30 bg-white/10! group-data-[has-value=true]:text-white! placeholder:text-white/60! autofill:text-white!",
                     inputWrapper:
-                      "bg-white/10! hover:bg-white/10! group-data-[data-focus-within=true]:bg-white/10! group-data-[data-invalid=true]:bg-white/10! group-data-[focus=true]:bg-white/10! group-data-[hover=true]:bg-white/10!",
+                      "bg-white/10! group-data-[data-focus-within=true]:bg-white/10! group-data-[data-invalid=true]:bg-white/10! group-data-[focus=true]:bg-white/10! group-data-[hover=true]:bg-white/10! hover:bg-white/10!",
                   }}
                 />
               </div>
@@ -91,9 +91,9 @@ export default function SubscribeComponent() {
                     classNames={{
                       errorMessage: "text-white",
                       input:
-                        "border-white/30! bg-white/10! placeholder:text-white/60! autofill:text-white! group-data-[has-value=true]:text-white!",
+                        "border-white/30! bg-white/10! group-data-[has-value=true]:text-white! placeholder:text-white/60! autofill:text-white!",
                       inputWrapper:
-                        "rounded-r-none bg-white/10! hover:bg-white/10! group-data-[focus=true]:bg-white/10! group-data-[hover=true]:bg-white/10!",
+                        "rounded-r-none bg-white/10! group-data-[focus=true]:bg-white/10! group-data-[hover=true]:bg-white/10! hover:bg-white/10!",
                     }}
                   />
                   <Button

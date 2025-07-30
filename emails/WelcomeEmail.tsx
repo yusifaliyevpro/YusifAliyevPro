@@ -52,10 +52,10 @@ export default function WelcomeEmail({ firstName, lastName }: TWelcomeEmail) {
             </Column>
           </Row>
           <Section className="mt-8 text-center">
-            <Heading as="h1" className="m-0 mb-6 mt-2 text-4xl font-semibold leading-9 text-[#007bff]">
+            <Heading as="h1" className="m-0 mt-2 mb-6 text-4xl leading-9 font-semibold text-[#007bff]">
               {firstName} {lastName}
             </Heading>
-            <Heading as="h1" className="m-0 mt-2 text-3xl font-semibold leading-9 text-gray-900">
+            <Heading as="h1" className="m-0 mt-2 text-3xl leading-9 font-semibold text-gray-900">
               Thank you for subscribing!
             </Heading>
             <Text className="my-5 text-xl leading-6 text-gray-500 lg:px-20">

@@ -48,7 +48,7 @@ export function EmailHeader() {
               {staticRoutes.map((route, i) => (
                 <Column key={i} className="px-[8px]">
                   <Link
-                    className="flex-nowrap whitespace-nowrap text-base font-semibold text-gray-600 [text-decoration:none]"
+                    className="flex-nowrap text-base font-semibold whitespace-nowrap text-gray-600 [text-decoration:none]"
                     href={BASE_URL + route.link}
                   >
                     {route.name}

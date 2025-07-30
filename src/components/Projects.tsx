@@ -31,7 +31,7 @@ export default async function Projects() {
         {projects.map((project, i) => (
           <motion.li
             key={i}
-            className="items-center justify-center rounded-2xl shadow-neon-blue"
+            className="shadow-neon-blue items-center justify-center rounded-2xl"
             variants={itemVariants}
             viewport={{ once: true }}
           >
@@ -50,7 +50,7 @@ export default async function Projects() {
                 <Image
                   alt={`${project.name} logo`}
                   blurDataURL={project.imageMetadata.lqip || ""}
-                  className="aspect-16/10 size-auto max-h-44 rounded-2xl object-cover shadow-medium transition-all hover:blur-md md:max-h-48"
+                  className="shadow-medium aspect-16/10 size-auto max-h-44 rounded-2xl object-cover transition-all hover:blur-md md:max-h-48"
                   height={200}
                   placeholder="blur"
                   quality={100}

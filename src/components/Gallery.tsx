@@ -93,7 +93,7 @@ export default function Gallery({
             <Image
               alt="Images"
               blurDataURL={images[currentIndex].lqip as string}
-              className="select-none object-contain"
+              className="object-contain select-none"
               height={500}
               placeholder="blur"
               src={images[currentIndex].image as string}
@@ -108,7 +108,7 @@ export default function Gallery({
       </div>
       <div
         ref={previewContainerRef}
-        className="relative flex w-full flex-row items-center gap-x-6 overflow-y-hidden overflow-x-scroll scrollbar-hide"
+        className="scrollbar-hide relative flex w-full flex-row items-center gap-x-6 overflow-x-scroll overflow-y-hidden"
       >
         {images.map((image, i) => (
           <div
@@ -126,7 +126,7 @@ export default function Gallery({
               placeholder="blur"
               src={image.image as string}
               width={200}
-              className={cn("select-none rounded-xl border-2 object-contain", {
+              className={cn("rounded-xl border-2 object-contain select-none", {
                 "border-blue-700": i == currentIndex,
               })}
             />

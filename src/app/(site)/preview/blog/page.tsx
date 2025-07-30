@@ -1,5 +1,5 @@
 import { getDraftBlogPosts } from "@/data-access/blog/draft/get";
-import { BlogRefreshButton } from "@/components/Refresh";
+import { RefreshRouterButton } from "@/components/Refresh";
 import { BlogPostsPageUI } from "../../blog/page";
 import { AdminSignIn } from "@/components/AdminSignIn";
 import { auth } from "@/lib/auth";
@@ -16,7 +16,7 @@ export default async function DraftBlogPostsPage() {
   return (
     <>
       <BlogPostsPageUI blogPosts={blogPosts.data} />
-      <BlogRefreshButton />
+      <RefreshRouterButton />
     </>
   );
 }

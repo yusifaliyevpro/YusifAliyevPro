@@ -5,6 +5,7 @@ import { auth } from "@/lib/auth";
 import { AdminSignIn } from "@/components/AdminSignIn";
 import { sharedMetadata, sharedOpenGraph } from "@/lib/shared-metadata";
 import type { Metadata } from "next";
+import { RefreshRouterButton } from "@/components/Refresh";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -36,5 +37,10 @@ export default async function DraftBlogPostPage({ params }: { params: Promise<{ 
   if (!session) return <AdminSignIn />;
   const data = await getDraftBlogPost(slug);
   if (data.error || !data.blogPost) notFound();
-  return <BlogPostPageUI blogPost={data.blogPost} />;
+  return (
+    <>
+      <BlogPostPageUI blogPost={data.blogPost} />;
+      <RefreshRouterButton />
+    </>
+  );
 }

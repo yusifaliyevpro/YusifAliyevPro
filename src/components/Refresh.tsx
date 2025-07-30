@@ -5,7 +5,7 @@ import { addToast } from "@heroui/toast";
 import { useRouter } from "next/navigation";
 import { RxUpdate } from "react-icons/rx";
 
-export function BlogRefreshButton() {
+export function RefreshRouterButton() {
   const router = useRouter();
   const refresh = () => {
     router.refresh();
@@ -18,7 +18,7 @@ export function BlogRefreshButton() {
   };
   return (
     <div
-      className={`pointer-events-none fixed right-0 top-5 flex h-full w-full flex-row justify-end pb-28 pr-9`}
+      className={`pointer-events-none fixed top-5 right-0 flex h-full w-full flex-row justify-end pr-9 pb-28`}
     >
       <Button
         isIconOnly

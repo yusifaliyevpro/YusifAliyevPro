@@ -15,7 +15,7 @@ export default function NotFound() {
             <Image
               priority
               alt="Profile Picture"
-              className="rounded-full border-2 shadow-small max-lg:h-36 max-lg:w-36 max-md:h-28 max-md:w-28"
+              className="shadow-small rounded-full border-2 max-lg:h-36 max-lg:w-36 max-md:h-28 max-md:w-28"
               height={250}
               quality={100}
               src={"/Profile.png"}

@@ -47,7 +47,7 @@ export default function Reveal<T extends ElementType = "div">({
       </motion.span>
       <motion.span
         animate={slideControls}
-        className="absolute bottom-0 left-0 right-0 top-0 z-200 rounded-sm bg-blue-500"
+        className="absolute top-0 right-0 bottom-0 left-0 z-200 rounded-sm bg-blue-500"
         initial="hidden"
         transition={{ duration: 0.5, ease: "easeInOut" }}
         variants={{
