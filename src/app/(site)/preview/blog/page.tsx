@@ -10,7 +10,7 @@ export { metadata } from "@/src/app/(site)/blog/page";
 export default async function DraftBlogPostsPage() {
   const session = await auth();
   if (!session) return <AdminSignIn />;
-  const { data: blogPosts } = await sanityFetch({ query: BlogPostsQuery, perspective: "drafts" });
+  const { data: blogPosts } = await sanityFetch({ query: BlogPostsQuery, perspective: "previewDrafts" });
 
   if (!blogPosts) notFound();
 

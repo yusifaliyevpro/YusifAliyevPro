@@ -12,6 +12,7 @@ if (!token) {
 export const { sanityFetch, SanityLive } = defineLive({
   client: client.withConfig({
     useCdn: true,
+    token,
     stega: { studioUrl: "/studio" },
   }),
   serverToken: token,

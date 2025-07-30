@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { data: blogPost } = await sanityFetch({
     query: BlogPostQuery,
     params: { slug },
-    perspective: "drafts",
+    perspective: "previewDrafts",
     stega: false,
   });
   if (!blogPost) notFound();
@@ -42,7 +42,7 @@ export default async function DraftBlogPostPage({ params }: { params: Promise<{ 
   const { data } = await sanityFetch({
     query: BlogPostQuery,
     params: { slug },
-    perspective: "drafts",
+    perspective: "previewDrafts",
   });
   if (!data) notFound();
   return (
