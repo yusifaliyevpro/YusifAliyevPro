@@ -1,22 +1,19 @@
 import { notFound } from "next/navigation";
 import { BlogPostPageUI } from "../../../blog/[slug]/page";
-import { auth } from "@/lib/auth";
-import { AdminSignIn } from "@/components/AdminSignIn";
 import { sharedMetadata, sharedOpenGraph } from "@/lib/shared-metadata";
 import type { Metadata } from "next";
-import { sanityFetch } from "@/sanity/lib/live";
 import { BlogPostQuery } from "@/data-access/blog/get";
+import { draftMode } from "next/headers";
+import { client } from "@/sanity/lib/client";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const session = await auth();
-  if (!session) return {};
-  const { data: blogPost } = await sanityFetch({
-    query: BlogPostQuery,
-    params: { slug },
-    perspective: "drafts",
-    stega: false,
-  });
+  const { isEnabled } = await draftMode();
+  const blogPost = await client.fetch(
+    BlogPostQuery,
+    { slug },
+    isEnabled ? { perspective: "drafts", stega: false } : { next: { revalidate: 3600 } },
+  );
   if (!blogPost) notFound();
   return {
     ...sharedMetadata,
@@ -37,13 +34,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function DraftBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const session = await auth();
-  if (!session) return <AdminSignIn />;
-  const { data } = await sanityFetch({
-    query: BlogPostQuery,
-    params: { slug },
-    perspective: "drafts",
-  });
+  const { isEnabled } = await draftMode();
+
+  const data = await client.fetch(
+    BlogPostQuery,
+    { slug },
+    isEnabled ? { perspective: "drafts", stega: true } : { next: { revalidate: 3600 } },
+  );
   if (!data) notFound();
   return <BlogPostPageUI blogPost={data} />;
 }

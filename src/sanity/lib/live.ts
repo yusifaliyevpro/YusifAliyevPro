@@ -3,8 +3,8 @@
 // https://github.com/sanity-io/next-sanity#live-content-api for more information.
 import { defineLive } from "next-sanity";
 import { client } from "./client";
+import { token } from "./token";
 
-export const token = process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN;
 if (!token) {
   throw new Error("Missing SANITY_API_READ_TOKEN");
 }

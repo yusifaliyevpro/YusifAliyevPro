@@ -1,15 +1,17 @@
 import { BlogPostsPageUI } from "../../blog/page";
-import { AdminSignIn } from "@/components/AdminSignIn";
-import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
-import { sanityFetch } from "@/sanity/lib/live";
 import { BlogPostsQuery } from "@/data-access/blog/get";
+import { draftMode } from "next/headers";
+import { client } from "@/sanity/lib/client";
 export { metadata } from "@/src/app/(site)/blog/page";
 
 export default async function DraftBlogPostsPage() {
-  const session = await auth();
-  if (!session) return <AdminSignIn />;
-  const { data: blogPosts } = await sanityFetch({ query: BlogPostsQuery, perspective: "drafts" });
+  const { isEnabled } = await draftMode();
+  const blogPosts = await client.fetch(
+    BlogPostsQuery,
+    {},
+    isEnabled ? { perspective: "drafts", stega: true } : { next: { revalidate: 3600 } },
+  );
 
   if (!blogPosts) notFound();
 
