@@ -4,7 +4,7 @@ import { auth } from "@/lib/auth";
 import { AdminSignIn } from "@/components/AdminSignIn";
 import { sharedMetadata, sharedOpenGraph } from "@/lib/shared-metadata";
 import type { Metadata } from "next";
-import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { sanityFetch } from "@/sanity/lib/live";
 import { BlogPostQuery } from "@/data-access/blog/get";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { data: blogPost } = await sanityFetch({
     query: BlogPostQuery,
     params: { slug },
-    perspective: "previewDrafts",
+    perspective: "drafts",
     stega: false,
   });
   if (!blogPost) notFound();
@@ -42,13 +42,8 @@ export default async function DraftBlogPostPage({ params }: { params: Promise<{ 
   const { data } = await sanityFetch({
     query: BlogPostQuery,
     params: { slug },
-    perspective: "previewDrafts",
+    perspective: "drafts",
   });
   if (!data) notFound();
-  return (
-    <>
-      <BlogPostPageUI blogPost={data} />;
-      <SanityLive />
-    </>
-  );
+  return <BlogPostPageUI blogPost={data} />;
 }
