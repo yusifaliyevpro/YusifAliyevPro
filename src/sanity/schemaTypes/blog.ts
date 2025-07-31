@@ -4,6 +4,9 @@ import PreviewMode from "../components/Preview";
 import SendEmailComponent from "../components/SendEmail";
 
 const blog = defineType({
+  name: "blogs",
+  title: "Blog",
+  type: "document",
   fields: [
     defineField({
       name: "title",
@@ -105,9 +108,6 @@ const blog = defineType({
       type: "text",
     }),
   ],
-  name: "blogs",
-  title: "Blog",
-  type: "document",
 });
 
 export default blog;

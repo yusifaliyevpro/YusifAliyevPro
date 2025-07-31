@@ -5,8 +5,8 @@ import { FaCss3, FaHtml5, FaReact, FaRegFile } from "react-icons/fa";
 import { RiJavascriptFill } from "react-icons/ri";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
-
 import CopyButton from "./CopyButton";
+import type { CodeInputValue } from "@sanity/code-input";
 
 export function getFileIcon(language: string) {
   switch (language) {
@@ -29,15 +29,9 @@ export function getFileIcon(language: string) {
   }
 }
 
-type CodeBlockProps = {
-  code: string;
-  fileName: string;
-  language: string;
-};
-
-export default function CodeBlock({ code, fileName, language }: CodeBlockProps) {
+export default function CodeBlock({ code, filename, language, highlightedLines }: Required<CodeInputValue>) {
   if (language === "sh") {
-    const commands = code.split("\n");
+    const commands = code!.split("\n");
     return (
       <div className="my-5 flex flex-col items-center justify-center space-y-3">
         <Snippet color="primary" size="lg" variant="flat">
@@ -58,7 +52,7 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
       <div className="flex items-center justify-between rounded-t-lg border-b border-gray-500 bg-gray-200/80 px-4 py-1">
         <div className="text-md flex flex-row items-center justify-center gap-2 py-2 font-semibold">
           {getFileIcon(language)}
-          <span className="text-lg">{fileName}</span>
+          <span className="text-lg">{filename}</span>
         </div>
         <div className="flex items-center gap-2">
           <CopyButton text={code} />
@@ -71,6 +65,20 @@ export default function CodeBlock({ code, fileName, language }: CodeBlockProps) 
           style={oneLight}
           lineNumberStyle={
             code.trim().split("\n").length < 15 ? { marginLeft: "calc(var(--spacing) * 3)" } : {}
+          }
+          wrapLines
+          lineProps={(lineNumber) =>
+            highlightedLines?.includes(lineNumber)
+              ? {
+                  style: {
+                    backgroundColor: "var(--color-blue-200)",
+                    padding: "0.1rem",
+                    width: "100%",
+                    paddingRight: "0.5rem",
+                    borderRadius: "0 0.1rem 0.1rem 0",
+                  },
+                }
+              : {}
           }
           customStyle={{
             margin: 0,

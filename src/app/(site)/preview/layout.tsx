@@ -5,7 +5,7 @@ export default async function Layout({ children }: { children: Readonly<React.Re
   return (
     <>
       {children}
-      {(await draftMode()).isEnabled && (
+      {!(await draftMode()).isEnabled && (
         <>
           <VisualEditing />
         </>

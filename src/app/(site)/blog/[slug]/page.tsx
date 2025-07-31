@@ -1,11 +1,10 @@
-import type { PortableTextBlock } from "next-sanity";
+import { createDataAttribute, type PortableTextBlock } from "next-sanity";
 import type { Metadata } from "next/types";
 
 import Gallery from "@/components/Gallery";
 import RichText from "@/components/RichText";
-import { cn } from "@/lib/cn";
 import { dateFormatter, getReadTime } from "@/lib/format";
-import { getBlogPost, getBlogPosts } from "@/data-access/blog/get";
+import { getBlogPost } from "@/data-access/blog/get";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -36,11 +35,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export async function generateStaticParams() {
-  const blogPosts = await getBlogPosts();
-  return blogPosts.map((post) => ({ slug: post.slug }));
-}
-
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const blogPost = await getBlogPost(slug);
@@ -49,25 +43,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 }
 
 export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQueryResult> }) {
+  const sanityAttr = createDataAttribute({
+    id: blogPost._id,
+    type: blogPost._type,
+  });
+
   return (
     <main className="flex min-h-svh w-full flex-col items-center justify-center pb-10 font-sans transition-all">
-      <article
-        className={cn(
-          "relative top-0 flex min-h-[50svh] w-full flex-col justify-center pt-5",
-          "md:px-10",
-          "lg:px-24",
-          "xl:px-44",
-          "bg-linear-to-tr from-blue-500 to-blue-200",
-        )}
-      >
-        <header
-          className={cn(
-            "mt-24 flex min-h-[50svh] w-full flex-col items-center bg-white p-8 py-12",
-            "md:rounded-t-md md:border-b-[0.8px]",
-            "lg:shadow-ltr-small",
-            "border-b-0 border-solid border-gray-300",
-          )}
-        >
+      <article className="relative top-0 flex min-h-[50svh] w-full flex-col justify-center bg-linear-to-tr from-blue-500 to-blue-200 pt-5 md:px-10 lg:px-24 xl:px-44">
+        <header className="lg:shadow-ltr-small mt-24 flex min-h-[50svh] w-full flex-col items-center border-b-0 border-solid border-gray-300 bg-white p-8 py-12 md:rounded-t-md md:border-b-[0.8px]">
           <div className="flex flex-row items-center justify-center gap-x-3">
             <Image
               alt="Yusif Aliyev Picture"
@@ -86,7 +70,11 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
           <div className="mt-4 flex flex-row items-center justify-center gap-x-5 font-semibold text-gray-500">
             <div className="flex flex-row items-center gap-x-1">
               <GoClock aria-hidden />
-              <time className="text-md tabular-nums" dateTime={blogPost.publishedAt}>
+              <time
+                className="text-md tabular-nums"
+                dateTime={blogPost.publishedAt}
+                data-sanity={sanityAttr("publishedAt").toString()}
+              >
                 {dateFormatter(blogPost.publishedAt)}
               </time>
             </div>
@@ -99,13 +87,7 @@ export function BlogPostPageUI({ blogPost }: { blogPost: NonNullable<BlogPostQue
             <h1 className="flex px-5 py-5 text-center text-4xl leading-snug font-bold lg:text-5xl">
               {blogPost.title}
             </h1>
-            <p
-              className={cn(
-                "text-center text-lg leading-normal font-normal text-pretty text-gray-500",
-                "md:px-12",
-                "lg:px-20 lg:text-xl",
-              )}
-            >
+            <p className="text-center text-lg leading-normal font-normal text-pretty text-gray-500 md:px-12 lg:px-20 lg:text-xl">
               {blogPost.description}
             </p>
           </div>

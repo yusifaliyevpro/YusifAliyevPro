@@ -26,6 +26,8 @@ export async function getBlogPosts() {
 
 export const BlogPostQuery = defineQuery(`
   *[_type == 'blogs' && slug.current == $slug][0] {
+    _id,
+    _type,
     title,
     "plainText": title + pt::text(text) + description,
     "poster": poster.asset->url,

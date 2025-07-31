@@ -60,9 +60,7 @@ const components: PortableTextComponents = {
     code: ({ children }) => <span className="bg-gray-200 px-1 font-medium text-gray-600">{children}</span>,
   },
   types: {
-    code: ({ value }: { value: Required<CodeInputValue> }) => (
-      <CodeBlock code={value.code} fileName={value.filename} language={value.language} />
-    ),
+    code: ({ value }: { value: Required<CodeInputValue> }) => CodeBlock(value),
     image: ({ value }: { value: { alt: string; image: string; lqip: string } & SanityImageAsset }) => {
       const { aspectRatio, height, width } = getImageDimensions(value);
       return (

@@ -54,7 +54,7 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult
         </header>
       </section>
       <section className="mb-4 flex w-full items-center justify-center rounded-xl">
-        <p className="bg-linear-to-t from-blue-300 to-blue-500 bg-clip-text text-2xl font-semibold text-transparent drop-shadow-sm">
+        <p className="bg-linear-to-t from-blue-300 to-blue-500 bg-clip-text text-center text-2xl font-semibold text-transparent drop-shadow-sm">
           🌐 Multilingual posts coming soon. Stay tuned!
         </p>
       </section>
