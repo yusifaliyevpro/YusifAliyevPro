@@ -78,7 +78,13 @@ function DescriptionComponent({ after, href, linkText }: { after: string; href: 
 const events: Event[] = [
   {
     name: "REST Countries Typed API",
-    description: "NPM Package",
+    description: (
+      <DescriptionComponent
+        after="NPM Package"
+        href="https://www.npmjs.com/package/@yusifaliyevpro/countries"
+        linkText="See"
+      />
+    ),
   },
   {
     name: "eComX Traning Program",
