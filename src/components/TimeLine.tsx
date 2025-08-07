@@ -80,9 +80,9 @@ const events: Event[] = [
     name: "REST Countries Typed API",
     description: (
       <DescriptionComponent
-        after="NPM Package"
+        after="Open Source Contribution"
         href="https://www.npmjs.com/package/@yusifaliyevpro/countries"
-        linkText="See"
+        linkText="NPM Package"
       />
     ),
   },
@@ -102,7 +102,7 @@ const events: Event[] = [
     name: "UniBot | Full Stack Developer",
     description: (
       <DescriptionComponent
-        after="Read"
+        after="Education | University"
         href="https://yusifaliyevpro.com/blog/unibot-make-your-study-easier"
         linkText="StartUp"
       />
