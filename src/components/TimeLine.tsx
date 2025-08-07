@@ -77,6 +77,10 @@ function DescriptionComponent({ after, href, linkText }: { after: string; href: 
 }
 const events: Event[] = [
   {
+    name: "REST Countries Typed API",
+    description: "NPM Package",
+  },
+  {
     name: "eComX Traning Program",
     description: "E-Commerce | ecomx.az | 3 months",
   },
@@ -87,6 +91,16 @@ const events: Event[] = [
   {
     name: "SABAH.HUB StartUp Academy",
     description: "AzTU | Entrepreneurship | Succesfully Finished ✅",
+  },
+  {
+    name: "UniBot | Full Stack Developer",
+    description: (
+      <DescriptionComponent
+        after="Read"
+        href="https://yusifaliyevpro.com/blog/unibot-make-your-study-easier"
+        linkText="StartUp"
+      />
+    ),
   },
   { year: 2025 },
   {
