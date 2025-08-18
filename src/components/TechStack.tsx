@@ -37,7 +37,7 @@ export function TechStack() {
             <h3 className="sr-only">{tech.name}</h3>
             <Tooltip shouldFlip showArrow color="primary" content={tech.name} offset={23} size="lg">
               <Image
-                alt={tech.name}
+                alt={`${tech.name} icon`}
                 className="aspect-square object-contain drop-shadow-2xl select-none max-lg:size-16"
                 height={90}
                 src={tech.icon}
@@ -57,7 +57,7 @@ const techs: Tech[] = [
   { icon: "/techs/next.svg", link: "https://nextjs.org/", name: "NextJS 15" },
   { icon: "/techs/ts.png", link: "https://nextjs.org/", name: "TypeScript" },
   { icon: "/techs/tailwind.svg", link: "https://tailwindcss.com/", name: "Tailwind CSS" },
-  { icon: "/techs/python.svg", link: "https://nestjs.com/", name: "Python" },
+  { icon: "/techs/python.png", link: "https://nestjs.com/", name: "Python" },
   { icon: "/techs/c++.png", link: "https://nestjs.com/", name: "C++" },
   { icon: "/techs/nextauth.png", link: "https://nextjs.org/", name: "NextAuth" },
   { icon: "/techs/prisma.svg", link: "https://nextjs.org/", name: "Prisma" },

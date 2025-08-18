@@ -20,7 +20,11 @@ export const BlogPostsQuery = defineQuery(`
 `);
 
 export async function getBlogPosts() {
-  const data = await client.fetch<BlogPostsQueryResult>(BlogPostsQuery, {}, { next: { revalidate: 3600 } });
+  const data = await client.fetch<BlogPostsQueryResult>(
+    BlogPostsQuery,
+    {},
+    { next: { revalidate: 3600 }, cache: "force-cache" },
+  );
   return data;
 }
 
