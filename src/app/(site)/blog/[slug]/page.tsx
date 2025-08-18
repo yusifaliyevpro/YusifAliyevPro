@@ -4,7 +4,7 @@ import type { Metadata } from "next/types";
 import Gallery from "@/components/Gallery";
 import RichText from "@/components/RichText";
 import { dateFormatter, getReadTime } from "@/lib/format";
-import { getBlogPost } from "@/data-access/blog/get";
+import { getBlogPost, getBlogPosts } from "@/data-access/blog/get";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -33,6 +33,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `/blog/${blogPost.slug}`,
     },
   };
+}
+
+export async function generateStaticParams() {
+  const blogPosts = await getBlogPosts();
+  return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
