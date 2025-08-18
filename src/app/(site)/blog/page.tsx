@@ -44,8 +44,8 @@ export function BlogPostsPageUI({ blogPosts }: { blogPosts: BlogPostsQueryResult
             </span>
           </div>
           <div className="mt-5 flex flex-row items-center justify-center">
-            <a href="#subscription">
-              <Button isIconOnly color="primary">
+            <a href="#subscription" aria-label="Subscribe To Newsletter">
+              <Button isIconOnly aria-label="Subscribe To Newsletter" color="primary">
                 <FaRegBell className="size-5" />
               </Button>
             </a>

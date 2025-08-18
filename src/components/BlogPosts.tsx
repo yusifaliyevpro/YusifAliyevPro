@@ -59,7 +59,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
                 <figcaption className="sr-only">{blogPost.title} Poster</figcaption>
               </figure>
               <div className="w-full pr-4 pl-6">
-                <h3 className="my-5 line-clamp-2 min-h-14 text-left text-2xl font-bold">{blogPost.title}</h3>
+                <h2 className="my-5 line-clamp-2 min-h-14 text-left text-2xl font-bold">{blogPost.title}</h2>
                 <p className="font-signika line-clamp-2 w-fit text-lg leading-relaxed font-medium text-wrap text-gray-500 md:line-clamp-6">
                   {blogPost.description}
                 </p>

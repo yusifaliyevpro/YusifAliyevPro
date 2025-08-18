@@ -50,7 +50,7 @@ export default function ContactsTable({ contactsPromise }: { contactsPromise: Ge
       aria-label="User management table"
       color="primary"
       disabledKeys={calledIDs}
-      classNames={{ wrapper: "min-h-[400px]" }}
+      classNames={{ wrapper: "min-h-100" }}
     >
       <TableHeader columns={columns}>
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
