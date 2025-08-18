@@ -37,7 +37,7 @@ export function TechStack() {
             <h3 className="sr-only">{tech.name}</h3>
             <Tooltip shouldFlip showArrow color="primary" content={tech.name} offset={23} size="lg">
               <Image
-                alt={tech.name}
+                alt={`${tech.name} icon`}
                 className="aspect-square object-contain drop-shadow-2xl select-none max-lg:size-16"
                 height={90}
                 src={tech.icon}
