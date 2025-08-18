@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import * as motion from "motion/react-client";
 import Reveal from "./Reveal";
-import type { Variants } from "motion/dist/react";
+import type { Variants } from "motion/react";
 import { FaGraduationCap } from "react-icons/fa6";
 import { BiAward, BiCode, BiTrophy } from "react-icons/bi";
 
@@ -15,13 +15,19 @@ const textVariants: Variants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.4, stiffness: 80, type: "spring" } },
 };
 
-const getIcon = (name: string) => {
-  if (name?.includes("Developer") || name?.includes("Creator")) return <BiCode className="size-8" />;
-  if (name?.includes("Medal") || name?.includes("First Place")) return <BiTrophy className="size-8" />;
-  if (name?.includes("Academy") || name?.includes("School") || name?.includes("AzTU"))
-    return <FaGraduationCap className="size-8" />;
+const iconMap: [string[], JSX.Element][] = [
+  [["developer", "creator"], <BiCode key={1} className="size-8" />],
+  [["medal", "first place"], <BiTrophy key={2} className="size-8" />],
+  [["academy", "school", "aztu"], <FaGraduationCap key={3} className="size-8" />],
+];
+
+function getIcon(name: string) {
+  const lower = name.toLowerCase();
+  for (const [keywords, icon] of iconMap) {
+    if (keywords.some((k) => lower.includes(k))) return icon;
+  }
   return <BiAward className="size-8" />;
-};
+}
 
 export default function Timeline() {
   return (

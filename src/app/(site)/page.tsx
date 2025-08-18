@@ -10,6 +10,7 @@ import { profileOGImage, sharedMetadata, sharedOpenGraph } from "@/src/lib/share
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import { Typewriter } from "nextjs-simple-typewriter";
+import { getProjects } from "@/data-access/projects/get";
 
 export const metadata: Metadata = {
   title: "Hi👋, I'm a Full-Stack Developer",
@@ -24,6 +25,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <main className="flex min-h-screen flex-col items-center gap-y-56 pb-20 transition-all">
       <section
@@ -117,7 +120,7 @@ export default async function Home() {
 
       {/* <MyCodeSkills /> */}
       <TechStack />
-      <Projects />
+      <Projects projects={projects} />
       <MySoftSkills />
       <Timeline />
     </main>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { TbExternalLink } from "react-icons/tb";
 import Reveal from "./Reveal";
 import type { Variants } from "motion/dist/react";
-import { getProjects } from "@/data-access/projects/get";
+import type { ProjectsQueryResult } from "@/sanity/types";
 
 const containerVariants: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.3 } } };
 const itemVariants: Variants = {
@@ -11,8 +11,7 @@ const itemVariants: Variants = {
   visible: { opacity: 1, transition: { duration: 0.2, stiffness: 60, type: "spring" } },
 };
 
-export default async function Projects() {
-  const projects = await getProjects();
+export default function Projects({ projects }: { projects: ProjectsQueryResult }) {
   return (
     <section aria-label="My Projects" className="flex min-h-svh flex-col items-center gap-y-16">
       <Reveal
