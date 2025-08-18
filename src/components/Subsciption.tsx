@@ -7,11 +7,7 @@ import { addToast } from "@heroui/toast";
 import { type FormEvent, startTransition, useActionState, useEffect, useRef } from "react";
 import { FiMail } from "react-icons/fi";
 
-const initialState = {
-  success: false,
-  data: { fullName: "", email: "" },
-  errors: {},
-};
+const initialState = { success: false, data: { fullName: "", email: "" }, errors: {} };
 
 export default function SubscribeComponent() {
   const [state, formAction, isPending] = useActionState(addSubscriber, initialState);

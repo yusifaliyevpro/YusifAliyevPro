@@ -29,13 +29,6 @@ model Contact {
   createdAt   DateTime @default(now())
 }
 
-model ShortenLink {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  slug      String   @unique
-  link      String
-  createdAt DateTime @default(now())
-}
-
 // Auth.JS
 
 model User {
