@@ -57,7 +57,7 @@ const techs: Tech[] = [
   { icon: "/techs/next.svg", link: "https://nextjs.org/", name: "NextJS 15" },
   { icon: "/techs/ts.png", link: "https://nextjs.org/", name: "TypeScript" },
   { icon: "/techs/tailwind.svg", link: "https://tailwindcss.com/", name: "Tailwind CSS" },
-  { icon: "/techs/python.svg", link: "https://nestjs.com/", name: "Python" },
+  { icon: "/techs/python.png", link: "https://nestjs.com/", name: "Python" },
   { icon: "/techs/c++.png", link: "https://nestjs.com/", name: "C++" },
   { icon: "/techs/nextauth.png", link: "https://nextjs.org/", name: "NextAuth" },
   { icon: "/techs/prisma.svg", link: "https://nextjs.org/", name: "Prisma" },
