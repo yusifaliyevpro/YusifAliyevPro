@@ -24,7 +24,7 @@ export default function LoadMore() {
       <Button
         size="lg"
         className="mt-10 bg-linear-to-r from-blue-500 to-blue-400 text-lg text-white"
-        onPress={() => router.push("?" + createQueryString("page", String(pageQuery + 1)), { scroll: false })}
+        onPress={() => router.push(`?${createQueryString("page", String(pageQuery + 1))}`, { scroll: false })}
       >
         Load More...
       </Button>
