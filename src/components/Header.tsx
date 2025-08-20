@@ -20,6 +20,7 @@ import { PiLinkedinLogoBold } from "react-icons/pi";
 
 import { FacebookAccount, GitHubAccount, InstagramAccount, LinkedInAccount } from "../lib/constants";
 import { cn } from "@/lib/cn";
+import type { Route } from "next";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -104,7 +105,7 @@ export default function Header() {
 }
 
 const staticRoutes: {
-  link: string;
+  link: Route;
   name: string;
 }[] = [
   {

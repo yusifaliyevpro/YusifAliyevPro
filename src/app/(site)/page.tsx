@@ -34,16 +34,14 @@ export default async function Home() {
         className={cn(
           "mt-24 flex min-h-[70svh] w-full flex-col items-center justify-between px-8",
           "md:mt-32 md:min-h-[88svh] md:pb-[10svh]",
-          "lg:px-[6.7rem]",
-          "xl:mt-2 xl:min-h-svh xl:flex-row",
+          "lg:px-[6.7rem] xl:mt-2 xl:min-h-svh xl:flex-row",
         )}
       >
         <div
           className={cn(
             "relative ml-3 flex flex-col gap-y-2 text-5xl",
             "max-lg:w-full max-lg:items-center max-lg:justify-center",
-            "md:mt-0 md:ml-0 md:gap-y-2 md:text-5xl",
-            "xl:text-[4.2rem]",
+            "md:mt-0 md:ml-0 md:gap-y-2 md:text-5xl xl:text-[4.2rem]",
           )}
         >
           <h1 className="sr-only">Hi👋, I&apos;m Yusif Aliyev, a Full-Stack Developer</h1>
@@ -92,14 +90,10 @@ export default async function Home() {
           </Reveal>
         </div>
         <motion.div
+          initial={{ opacity: 0.3, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2, stiffness: 70, type: "spring" }}
           className="rounded-full bg-linear-to-r from-[#0c8bea] to-[#0B66C2] p-1 shadow-2xl shadow-blue-500 select-none"
-          initial={{ opacity: 0, scale: 0.5 }}
-          transition={{
-            duration: 0.3,
-            stiffness: 70,
-            type: "spring",
-          }}
         >
           <Image
             priority
@@ -111,8 +105,7 @@ export default async function Home() {
             className={cn(
               "max-h-[250px] max-w-[250px] rounded-full select-none",
               "md:max-h-[300px] md:max-w-[300px]",
-              "lg:px-0",
-              "xl:min-h-[360px] xl:min-w-[360px]",
+              "lg:px-0 xl:min-h-[360px] xl:min-w-[360px]",
             )}
           />
         </motion.div>

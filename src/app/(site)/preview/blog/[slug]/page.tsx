@@ -6,7 +6,7 @@ import { BlogPostQuery } from "@/data-access/blog/get";
 import { draftMode } from "next/headers";
 import { client } from "@/sanity/lib/client";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/preview/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const { isEnabled } = await draftMode();
   const blogPost = await client.fetch(
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function DraftBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Page({ params }: PageProps<"/preview/blog/[slug]">) {
   const { slug } = await params;
   const { isEnabled } = await draftMode();
 

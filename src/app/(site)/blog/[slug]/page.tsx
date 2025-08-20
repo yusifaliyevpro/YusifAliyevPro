@@ -14,7 +14,7 @@ import { GoClock } from "react-icons/go";
 import type { BlogPostQueryResult } from "@/sanity/types";
 import { sharedMetadata, sharedOpenGraph } from "@/lib/shared-metadata";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const blogPost = await getBlogPost(slug);
   if (!blogPost) notFound();
@@ -40,7 +40,7 @@ export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Page({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
   const blogPost = await getBlogPost(slug);
   if (!blogPost) notFound();

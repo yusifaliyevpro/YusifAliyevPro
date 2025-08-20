@@ -45,7 +45,7 @@ export default function Blogs({ blogPosts }: { blogPosts: BlogPostsQueryResult }
             key={blogPost.slug}
             className="shadow-medium col-span-1 flex h-full cursor-pointer flex-col items-center justify-start rounded-lg border-solid bg-white pb-5 transition-all hover:scale-105"
           >
-            <Link href={`blog/${blogPost.slug}`} className="flex flex-col items-center justify-between">
+            <Link href={`/blog/${blogPost.slug}`} className="flex flex-col items-center justify-between">
               <figure className="flex aspect-video max-h-68 w-full rounded-t-lg border-t-0 border-b border-solid border-gray-200">
                 <Image
                   alt={`${blogPost.title} Poster`}

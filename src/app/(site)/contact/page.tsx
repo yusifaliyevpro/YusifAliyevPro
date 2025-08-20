@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: { ...sharedOpenGraph, images: [profileOGImage] },
 };
 
-export default function ContactPage() {
+export default function Page() {
   return (
     <main className="flex min-h-svh w-full flex-col scroll-smooth">
       <section className="flex min-h-svh flex-col items-center justify-center px-5 text-center lg:px-40">

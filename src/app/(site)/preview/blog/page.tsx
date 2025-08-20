@@ -5,7 +5,7 @@ import { draftMode } from "next/headers";
 import { client } from "@/sanity/lib/client";
 export { metadata } from "@/src/app/(site)/blog/page";
 
-export default async function DraftBlogPostsPage() {
+export default async function Page() {
   const { isEnabled } = await draftMode();
   const blogPosts = await client.fetch(
     BlogPostsQuery,
