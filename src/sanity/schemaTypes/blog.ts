@@ -2,11 +2,13 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 
 import PreviewMode from "../components/Preview";
 import SendEmailComponent from "../components/SendEmail";
+import { EditIcon } from "@sanity/icons";
 
 const blog = defineType({
   name: "blogs",
   title: "Blog",
   type: "document",
+  icon: EditIcon,
   fields: [
     defineField({
       name: "title",

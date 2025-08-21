@@ -1,6 +1,11 @@
 import { defineField, defineType } from "sanity";
+import { ProjectsIcon } from "@sanity/icons";
 
 const project = defineType({
+  name: "projects",
+  title: "Projects",
+  type: "document",
+  icon: ProjectsIcon,
   fields: [
     defineField({
       name: "name",
@@ -45,8 +50,5 @@ const project = defineType({
       validation: (rule) => rule.required(),
     }),
   ],
-  name: "projects",
-  title: "Projects",
-  type: "document",
 });
 export default project;

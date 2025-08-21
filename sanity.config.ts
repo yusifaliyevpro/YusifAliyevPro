@@ -16,6 +16,7 @@ import { structure } from "./src/sanity/structure";
 import { defineConfig } from "sanity";
 
 export default defineConfig({
+  title: "Yusif Aliyev",
   basePath: "/studio",
   projectId,
   dataset,

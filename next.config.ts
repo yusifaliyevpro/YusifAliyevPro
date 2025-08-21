@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     qualities: [75, 100],
   },
   typedRoutes: true,
+  experimental: { globalNotFound: true },
 };
 
 export default nextConfig;

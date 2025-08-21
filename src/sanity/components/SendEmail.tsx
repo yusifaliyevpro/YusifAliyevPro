@@ -8,8 +8,10 @@ import { useFormValue } from "sanity";
 
 export default function SendEmailComponent() {
   const slug = useFormValue(["slug"]) as { _type: "slug"; current: string };
-  const isPublished = useFormValue(["isPublished"]) as boolean;
+  const isPublished = !(useFormValue(["_id"]) as string).startsWith("drafts.");
+
   const [state, action] = useActionState(broadcastBlogPostEmail, { message: "", success: false });
+
   useEffect(() => {
     if (state.success) addToast({ color: "success", title: state.message });
     else if (state.message) addToast({ color: "danger", title: state.message });
