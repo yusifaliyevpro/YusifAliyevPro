@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import ContactsTable from "@/components/ContactsTable";
 import { getContacts } from "@/data-access/contact/get";
 import { Suspense } from "react";
@@ -6,11 +5,6 @@ import { auth } from "@/lib/auth";
 import { AdminSignIn } from "@/components/AdminSignIn";
 import { Skeleton } from "@/components/Skeleton";
 import { checkIsAdmin } from "@/lib/utils";
-
-export const metadata: Metadata = {
-  title: "Admin Console",
-  robots: { follow: false, index: false },
-};
 
 export default async function Admin() {
   const session = await auth();
